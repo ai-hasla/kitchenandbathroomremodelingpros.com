@@ -1,0 +1,80 @@
+---
+import { SITE } from '@/lib/constants';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+  };
+  geoCity?: string;
+  geoLat?: number;
+  geoLng?: number;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/images/og-default.svg',
+  ogType = 'website',
+  noindex = false,
+  article,
+  geoCity,
+  geoLat,
+  geoLng,
+} = Astro.props;
+
+const geoPlacename = geoCity || SITE.address.city;
+const geoLatValue = geoLat ?? SITE.coordinates.lat;
+const geoLngValue = geoLng ?? SITE.coordinates.lng;
+
+const fullTitle = title.includes(SITE.shortName)
+  ? title
+  : `${title} | ${SITE.shortName}`;
+
+const ogImageUrl = ogImage.startsWith('http')
+  ? ogImage
+  : `${SITE.url}${ogImage}`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Article-specific -->
+{article?.publishedTime && (
+  <meta property="article:published_time" content={article.publishedTime} />
+)}
+{article?.modifiedTime && (
+  <meta property="article:modified_time" content={article.modifiedTime} />
+)}
+
+<!-- Geo Tags for Local SEO -->
+<meta name="geo.region" content="US-WA" />
+<meta name="geo.placename" content={geoPlacename} />
+<meta name="geo.position" content={`${geoLatValue};${geoLngValue}`} />
+<meta name="ICBM" content={`${geoLatValue}, ${geoLngValue}`} />

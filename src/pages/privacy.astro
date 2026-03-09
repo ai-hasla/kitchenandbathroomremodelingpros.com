@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+---
+
+<BaseLayout
+  title="Privacy Policy | Kitchen & Bathroom Remodeling Pros"
+  description="Privacy policy for Kitchen & Bathroom Remodeling Pros. Learn how we collect, use, and protect your personal information."
+  showSchema={false}
+>
+  <SchemaBreadcrumb items={[{ label: 'Privacy Policy', href: '/privacy/' }]} />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <h1 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white">Privacy Policy</h1>
+      <p class="text-white/70 mt-2">Last updated: March 2026</p>
+    </Container>
+  </section>
+
+  <section class="py-16">
+    <Container class="max-w-3xl">
+      <div class="prose prose-lg max-w-none text-body-text">
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Information We Collect</h2>
+        <p>When you use our website or request a quote, we may collect personal information including your name, email address, phone number, home address, and project details. This information is collected when you voluntarily submit it through our contact forms, quote request forms, or when you call us directly.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">How We Use Your Information</h2>
+        <p>We use your personal information to:</p>
+        <ul>
+          <li>Respond to your inquiries and provide estimates</li>
+          <li>Schedule and manage remodeling projects</li>
+          <li>Send you relevant updates about your project</li>
+          <li>Improve our services and website experience</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Information Sharing</h2>
+        <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with trusted partners who assist us in operating our website and conducting our business, provided they agree to keep your information confidential.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Cookies and Analytics</h2>
+        <p>Our website uses Google Analytics to help us understand how visitors use our site. This tool uses cookies to collect anonymous usage data. You can opt out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Data Security</h2>
+        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Your Rights</h2>
+        <p>You have the right to access, correct, or delete your personal information at any time. To exercise these rights, please contact us at <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a> or call <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a>.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Contact Us</h2>
+        <p>{SITE.name}<br />{SITE.address.full}<br />{SITE.phone}<br />{SITE.email}</p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

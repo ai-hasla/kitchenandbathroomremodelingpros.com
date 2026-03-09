@@ -1,0 +1,488 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE, COMBO_SERVICES } from '@/lib/constants';
+import { locationData, type LocationData } from '@/data/locations/location-data';
+
+export function getStaticPaths() {
+  const paths: {
+    params: { city: string; service: string };
+    props: { location: LocationData; serviceSlug: string };
+  }[] = [];
+
+  for (const loc of Object.values(locationData)) {
+    for (const service of COMBO_SERVICES) {
+      paths.push({
+        params: { city: loc.slug, service },
+        props: { location: loc, serviceSlug: service },
+      });
+    }
+  }
+
+  return paths;
+}
+
+interface Props {
+  location: LocationData;
+  serviceSlug: string;
+}
+
+const { location, serviceSlug } = Astro.props;
+
+const isKitchen = serviceSlug === 'kitchen-remodeling';
+const serviceName = isKitchen ? 'Kitchen Remodeling' : 'Bathroom Remodeling';
+const serviceNameLower = isKitchen ? 'kitchen remodeling' : 'bathroom remodeling';
+const serviceRoom = isKitchen ? 'kitchen' : 'bathroom';
+
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+
+// Dynamic cost ranges based on median home value
+const costMultiplier = location.medianHomeValue / 500000;
+const baseCostLow = isKitchen ? 25000 : 15000;
+const baseCostHigh = isKitchen ? 75000 : 45000;
+const costLow = Math.round((baseCostLow * costMultiplier) / 1000) * 1000;
+const costHigh = Math.round((baseCostHigh * costMultiplier) / 1000) * 1000;
+const avgCost = Math.round(((costLow + costHigh) / 2) / 1000) * 1000;
+
+// Filter relevant popular projects
+const relevantProjects = location.popularProjects.filter((p) => {
+  const lower = p.toLowerCase();
+  if (isKitchen) {
+    return lower.includes('kitchen') || lower.includes('cabinet') || lower.includes('countertop') || lower.includes('island') || lower.includes('pantry');
+  }
+  return lower.includes('bathroom') || lower.includes('bath') || lower.includes('shower') || lower.includes('tub') || lower.includes('vanity') || lower.includes('tile') || lower.includes('floor');
+});
+
+// Use all projects if none matched the filter
+const displayProjects = relevantProjects.length > 0 ? relevantProjects : location.popularProjects.slice(0, 3);
+
+// Generate FAQ content
+const faqs = isKitchen
+  ? [
+      {
+        question: `How much does a kitchen remodel cost in ${location.city}, WA?`,
+        answer: `For ${location.city} homes valued around ${formatCurrency(location.medianHomeValue)}, we typically see kitchen remodels ranging from ${formatCurrency(costLow)} for a basic refresh (cabinet refacing, new countertops, updated fixtures) to ${formatCurrency(costHigh)} for a high-end renovation with custom cabinetry, premium stone, and layout changes. The average project in ${location.city} runs about ${formatCurrency(avgCost)}. Older ${location.housingStyles[0].toLowerCase()} homes in the area often need electrical or plumbing updates once walls are opened, which can add 10-15% — we identify these issues during your free in-home consultation so there are no budget surprises.`,
+      },
+      {
+        question: `How long does a kitchen remodel take in ${location.city}?`,
+        answer: `A basic refresh in ${location.city} takes 2-3 weeks. A mid-range remodel with new cabinets and countertops runs 6-8 weeks. High-end renovations with layout changes take 10-16 weeks. If your project requires permits from ${location.county} County, add 2-5 weeks for plan review before construction starts — we use that time for material selection and ordering so you're not waiting twice. The ${location.medianHomeAge}-year-old homes common in ${location.city} sometimes reveal surprises during demo that add a few days, which is why we always build contingency into our project schedule.`,
+      },
+      {
+        question: `Do I need a permit for a kitchen remodel in ${location.city}?`,
+        answer: `${location.permitInfo} Bottom line: if you're moving plumbing, adding electrical circuits, or touching structural walls, you need a permit. Cosmetic work (painting, countertops on existing cabinets, hardware) does not. We handle the entire permit process — filing, plan review, inspections — as part of our service. It's included in every quote, not an add-on.`,
+      },
+      {
+        question: `What kitchen remodeling styles are popular in ${location.city}?`,
+        answer: `The most common requests from ${location.city} homeowners: opening up closed-off galley kitchens (very common in the area's ${location.housingStyles[0].toLowerCase()} homes), quartz countertops to replace worn laminate, shaker-style cabinets in white or warm wood tones, and modern tile backsplashes. With homes here averaging ${location.medianHomeAge} years old, many kitchens still have the original cabinets and layout. Popular upgrades also include ${displayProjects.slice(0, 2).join(', ').toLowerCase()} — projects that match the housing stock and lifestyle in this part of the Puget Sound.`,
+      },
+    ]
+  : [
+      {
+        question: `How much does a bathroom remodel cost in ${location.city}, WA?`,
+        answer: `For ${location.city} homes valued around ${formatCurrency(location.medianHomeValue)}, bathroom remodels range from ${formatCurrency(costLow)} for a cosmetic refresh (new vanity, fixtures, paint, lighting) to ${formatCurrency(costHigh)} for a full spa-style renovation with custom tile, frameless glass shower, heated floors, and premium fixtures. The average project in ${location.city} comes in around ${formatCurrency(avgCost)}. Tile selection is the biggest cost variable — porcelain at $7-14/sqft vs. marble at $18-35/sqft can swing the total by $3,000-$8,000. We'll walk through all the options during your free consultation.`,
+      },
+      {
+        question: `How long does a bathroom remodel take in ${location.city}?`,
+        answer: `A cosmetic refresh takes 5-8 days. A mid-range remodel with new tile and fixtures runs 2-3 weeks. A full gut renovation in ${location.city} takes 4-6 weeks. Permits from ${location.county} County add 2-4 weeks before construction if your project involves plumbing or electrical work. Tile is the biggest time factor — a fully tiled shower with floor-to-ceiling tile needs 3-5 days just for the tile setter, plus cure time. In ${location.city}'s ${location.medianHomeAge}-year-old homes, we sometimes find plumbing or waterproofing issues during demo that add a couple of days.`,
+      },
+      {
+        question: `Do I need a permit for a bathroom remodel in ${location.city}?`,
+        answer: `${location.permitInfo} In practical terms: a tub-to-shower conversion requires a plumbing permit. Adding or moving electrical outlets or circuits requires an electrical permit. Structural changes need a building permit. Cosmetic updates (new vanity, paint, accessories) don't need permits. We handle all the paperwork and inspections as part of our standard service — it's included in your quote.`,
+      },
+      {
+        question: `What are popular bathroom remodel features in ${location.city}?`,
+        answer: `The #1 request from ${location.city} homeowners is converting an old tub-shower combo to a walk-in shower with frameless glass — we do this project more than any other. Heated tile floors are extremely popular in our PNW climate (they cost $600-$1,600 and add about $30/year to your electric bill). Other common requests: floating vanities, large-format porcelain tile that mimics marble, proper exhaust fans with humidity sensors, and built-in shower niches. In the ${location.housingStyles[0].toLowerCase()} homes common to ${location.city}, improving ventilation is especially important given our 9 months of damp weather.`,
+      },
+    ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const pageTitle = `${serviceName} ${location.city}, WA | ${SITE.shortName}`;
+const pageDescription = `Expert ${serviceNameLower} in ${location.city}, WA. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Licensed, insured, ${SITE.reviews.count}+ 5-star reviews. Free estimates.`;
+
+const nearbyLocations = location.nearbyAreas
+  .map((slug) => locationData[slug])
+  .filter(Boolean);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  showSchema={false}
+  geoCity={location.city}
+  geoLat={location.coordinates.lat}
+  geoLng={location.coordinates.lng}
+>
+  <SchemaBreadcrumb
+    items={[
+      { label: 'Areas We Serve', href: '/areas-served/' },
+      { label: location.city, href: `/areas-served/${location.slug}/` },
+      { label: serviceName, href: `/areas-served/${location.slug}/${serviceSlug}/` },
+    ]}
+  />
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero Section -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="text-sm text-white/60 mb-6">
+          <ol class="flex flex-wrap items-center gap-1.5">
+            <li class="flex items-center gap-1.5">
+              <a href="/" class="hover:text-white transition-colors">Home</a>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/areas-served/" class="hover:text-white transition-colors">Areas We Serve</a>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href={`/areas-served/${location.slug}/`} class="hover:text-white transition-colors">{location.city}</a>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-white font-medium">{serviceName}</span>
+            </li>
+          </ol>
+        </nav>
+
+        <h1 class="text-4xl lg:text-5xl font-[family-name:var(--font-heading)] text-white leading-tight mb-6">
+          {serviceName} in {location.city}, WA
+        </h1>
+        <p class="text-white/80 text-lg leading-relaxed mb-8">
+          {isKitchen
+            ? `We've remodeled kitchens in ${location.city}'s ${location.housingStyles[0].toLowerCase()} homes, ${location.housingStyles[1]?.toLowerCase() || 'newer construction'}, and everything in between. Whether your kitchen is a cramped galley from 1955 or an open-concept layout that just needs better finishes, we know how to make it work for your life and your budget.`
+            : `From tub-to-shower conversions in ${location.city}'s older ${location.housingStyles[0].toLowerCase()} homes to full spa-style builds in newer construction, we handle bathroom remodels of every scope. Proper waterproofing, quality tile work, and fixtures that last — built for the PNW climate.`}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button variant="primary" size="lg" href="/contact/">
+            Get a Free {serviceName} Estimate
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href={`tel:${SITE.phoneRaw}`}
+            class="border-white text-white hover:bg-white/10 border-2"
+          >
+            Call {SITE.phone}
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-6">
+          {isKitchen
+            ? `What ${location.city} Homeowners Typically Want in a Kitchen Remodel`
+            : `What ${location.city} Homeowners Ask for in Bathroom Remodels`}
+        </h2>
+        <div class="prose prose-lg max-w-none text-body-text leading-relaxed space-y-6">
+          <p>
+            {isKitchen
+              ? `Most of the ${location.city} kitchens we remodel are in ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'mid-century'} homes that are ${location.medianHomeAge} years old on average. At that age, you're typically looking at dated cabinets, laminate countertops, worn flooring, and a layout that doesn't match how families cook and live today. With homes here valued around ${formatCurrency(location.medianHomeValue)}, most ${location.city} homeowners invest ${formatCurrency(Math.round(location.medianHomeValue * 0.06 / 1000) * 1000)} to ${formatCurrency(Math.round(location.medianHomeValue * 0.12 / 1000) * 1000)} in a kitchen remodel — enough to make a real transformation without overcapitalizing relative to the neighborhood.`
+              : `The bathrooms we see in ${location.city}'s ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'mid-century'} homes are typically ${location.medianHomeAge} years old and showing it: cracked grout, dated tile, worn-out fixtures, and ventilation that can't keep up with PNW moisture levels. With homes valued around ${formatCurrency(location.medianHomeValue)}, ${location.city} homeowners are putting ${formatCurrency(Math.round(location.medianHomeValue * 0.03 / 1000) * 1000)} to ${formatCurrency(Math.round(location.medianHomeValue * 0.07 / 1000) * 1000)} into bathroom remodels that solve real problems while adding lasting value.`}
+          </p>
+          <p>
+            {location.description}
+          </p>
+          <p>
+            {isKitchen
+              ? `Here's what we see most often from ${location.city} homeowners: they want more counter space, better storage, updated finishes, and a kitchen that feels connected to the rest of the home. Many ${location.housingStyles[0].toLowerCase()} homes in the area have closed-off galley kitchens — opening that up to the dining or living area is one of our most requested projects. Others have the right layout but need everything resurfaced: new quartz countertops, refaced or replaced cabinets, modern backsplash, and better lighting. We'll help you figure out which approach makes sense for your home and your budget during a free in-home consultation.`
+              : `The most common requests from ${location.city} homeowners: converting an old tub-shower combo to a walk-in shower, upgrading to a modern vanity with storage, replacing worn tile throughout, and — this is a big one in the Pacific Northwest — fixing ventilation issues that are causing mold or moisture damage. Heated tile floors are also a popular add-on in our climate. We start every ${location.city} bathroom project with an assessment of the existing plumbing, electrical, and waterproofing situation so there are no surprises once demo starts.`}
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Popular Projects in This Area -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="max-w-5xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4 text-center">
+          Popular {serviceName} Projects in {location.city}
+        </h2>
+        <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
+          {isKitchen
+            ? `Given ${location.city}'s mix of ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'newer'} homes, here are the kitchen projects we complete most often for homeowners in this area.`
+            : `With homes averaging ${location.medianHomeAge} years old in ${location.city}, these are the bathroom projects we see the most demand for from local homeowners.`}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayProjects.map((project) => (
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+              <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="font-bold text-dark-text mb-2">{project}</h3>
+              <p class="text-sm text-muted">
+                A common request from {location.city}'s {location.housingStyles[0].toLowerCase()} and
+                {' '}{location.housingStyles[1]?.toLowerCase() || 'newer'} homeowners.
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Cost Information -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-6 text-center">
+          {serviceName} Cost in {location.city}, WA
+        </h2>
+        <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
+          {isKitchen
+            ? `These ranges reflect what ${location.city} homeowners are actually paying, adjusted for local home values and the typical scope of work we see in this area's ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'newer'} homes.`
+            : `Based on ${location.city}'s home values and the typical bathroom conditions we encounter in the area's ${location.medianHomeAge}-year-old housing stock. Your actual cost depends on scope, tile selections, and what we find behind the walls.`}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-light rounded-2xl p-6 text-center">
+            <p class="text-sm text-muted mb-2">{isKitchen ? 'Budget Kitchen Remodel' : 'Budget Bathroom Remodel'}</p>
+            <p class="text-3xl font-bold text-dark-text">{formatCurrency(costLow)}</p>
+            <p class="text-xs text-muted mt-2">
+              {isKitchen
+                ? 'Cabinet refacing, new countertops, updated fixtures'
+                : 'New vanity, tub refinishing, updated fixtures & paint'}
+            </p>
+          </div>
+          <div class="bg-accent/5 border-2 border-accent/20 rounded-2xl p-6 text-center">
+            <p class="text-sm text-accent font-semibold mb-2">Average {serviceName}</p>
+            <p class="text-3xl font-bold text-dark-text">{formatCurrency(avgCost)}</p>
+            <p class="text-xs text-muted mt-2">
+              {isKitchen
+                ? 'New cabinets, quartz counters, appliances, tile backsplash'
+                : 'Walk-in shower, custom tile, new vanity, heated floors'}
+            </p>
+          </div>
+          <div class="bg-light rounded-2xl p-6 text-center">
+            <p class="text-sm text-muted mb-2">{isKitchen ? 'Premium Kitchen Remodel' : 'Premium Bathroom Remodel'}</p>
+            <p class="text-3xl font-bold text-dark-text">{formatCurrency(costHigh)}</p>
+            <p class="text-xs text-muted mt-2">
+              {isKitchen
+                ? 'Custom cabinets, premium stone, pro appliances, layout changes'
+                : 'Full spa conversion, custom everything, premium stone & fixtures'}
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-light rounded-xl p-6 text-center">
+          <p class="text-sm text-muted">
+            {isKitchen
+              ? `These estimates reflect ${location.city}'s median home value of ${formatCurrency(location.medianHomeValue)} and current Puget Sound labor rates ($65-95/hour for skilled trades). Older homes in ${location.city} may require electrical or plumbing updates that add 10-15% — we'll identify those during your free in-home consultation before quoting a final price.`
+              : `Based on ${location.city}'s median home value of ${formatCurrency(location.medianHomeValue)} and current Seattle-area labor and material costs. Tile selection is the biggest cost variable in any bathroom — it can shift your total by $3,000-$8,000 depending on material. We'll walk through all the options during your free consultation.`}
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Permit Info -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 lg:p-10">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-4">
+                {serviceName} Permits in {location.city}
+              </h2>
+              <p class="text-body-text leading-relaxed mb-4">
+                {location.permitInfo}
+              </p>
+              <p class="text-body-text leading-relaxed">
+                {isKitchen
+                  ? `In ${location.city}, you'll need a permit for any kitchen remodel involving structural changes (wall removal), plumbing relocation (moving the sink or gas line), or new electrical circuits. We handle the entire permit process as part of our service — filing the application, managing plan review, and scheduling inspections. It's included in your quote, not an add-on. Our crews work with ${location.city}'s building department regularly and know exactly what they require.`
+                  : `Even converting a tub to a walk-in shower typically triggers a plumbing permit in ${location.city}. Electrical changes (new circuits, GFCI outlets, exhaust fan wiring) also require permits. We handle all of it — the application, the plan review, the inspections — as part of our standard service. No extra charge, no hassle. Unpermitted bathroom work creates real problems when you sell your home, so we do every project by the book.`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-10 text-center">
+          {serviceName} in {location.city}: Common Questions
+        </h2>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-light rounded-xl border border-gray-100 overflow-hidden">
+              <summary class="flex items-center justify-between cursor-pointer p-6 text-left">
+                <h3 class="text-lg font-bold text-dark-text pr-8">{faq.question}</h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 text-muted flex-shrink-0 transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-body-text leading-relaxed">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Cross-Links -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Link to City Page -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 class="text-lg font-bold text-dark-text mb-3">
+              More Remodeling Services in {location.city}
+            </h3>
+            <p class="text-sm text-muted mb-4">
+              {isKitchen
+                ? `Need a bathroom remodel in ${location.city} too? Many homeowners do both — and we offer project bundling that can save 5-8% on combined work.`
+                : `Also thinking about your kitchen? Many ${location.city} homeowners remodel both — we offer bundled pricing that saves 5-8% on combined projects.`}
+            </p>
+            <a
+              href={`/areas-served/${location.slug}/`}
+              class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all duration-300"
+            >
+              View {location.city} Remodeling Services
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Link to Service Page -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <h3 class="text-lg font-bold text-dark-text mb-3">
+              {serviceName} Details
+            </h3>
+            <p class="text-sm text-muted mb-4">
+              See our full {serviceNameLower} process, material options, and what
+              to expect from start to finish.
+            </p>
+            <a
+              href={`/services/${serviceSlug}/`}
+              class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all duration-300"
+            >
+              View {serviceName} Service Details
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Nearby Area Links -->
+        {nearbyLocations.length > 0 && (
+          <div class="mt-10">
+            <h3 class="text-lg font-bold text-dark-text mb-4 text-center">
+              {serviceName} in Nearby Communities
+            </h3>
+            <div class="flex flex-wrap justify-center gap-3">
+              {nearbyLocations.map((nearby) => (
+                <a
+                  href={`/areas-served/${nearby.slug}/${serviceSlug}/`}
+                  class="bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 px-4 py-2 text-sm font-medium text-body-text hover:text-accent"
+                >
+                  {serviceName} in {nearby.city}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-accent py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    <Container class="relative z-10">
+      <div class="text-center max-w-3xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-6">
+          Start Your {location.city} {serviceName} Today
+        </h2>
+        <p class="text-white/90 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          {isKitchen
+            ? `We'll come to your ${location.city} home, measure the kitchen, look at the existing plumbing and electrical, and give you a detailed line-item estimate. No vague ranges, no pressure, no "let me check with my manager." Just a straight answer from people who remodel kitchens every day.`
+            : `We'll visit your ${location.city} home, assess the bathroom's plumbing, waterproofing, and layout, and give you an honest line-item estimate. We'll tell you what needs fixing, what's optional, and where your money will have the biggest impact. No charge, no obligation.`}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button
+            variant="primary"
+            size="lg"
+            href="/contact/"
+            class="bg-white text-accent hover:bg-white/90 shadow-lg shadow-black/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+            Schedule Free Consultation
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href={`tel:${SITE.phoneRaw}`}
+            class="border-white text-white hover:bg-white/10 border-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Call {SITE.phone}
+          </Button>
+        </div>
+        <p class="text-sm text-white/70">
+          &#9733; Licensed, Bonded & Insured &bull; 15+ Years Experience &bull; 500+ Projects Completed
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

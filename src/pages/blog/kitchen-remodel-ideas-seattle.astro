@@ -1,0 +1,321 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: '15 Kitchen Remodel Ideas for Seattle Homes', href: '/blog/kitchen-remodel-ideas-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: '15 Kitchen Remodel Ideas for Seattle Homes in 2026',
+  description: 'Explore 15 inspiring kitchen remodel ideas perfect for Seattle and Pacific Northwest homes. From waterfall islands to open shelving, find inspiration for your next project.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-20',
+  dateModified: '2026-02-20',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+};
+---
+
+<BaseLayout
+  title="15 Kitchen Remodel Ideas for Seattle Homes in 2026"
+  description="Discover 15 kitchen remodel ideas perfect for Seattle homes in 2026. From waterfall islands and two-tone cabinets to PNW-inspired designs. Expert tips from local remodelers."
+  canonical={`${SITE.url}/blog/kitchen-remodel-ideas-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-20', modifiedTime: '2026-02-20', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">February 20, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 10 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">15 Kitchen Remodel Ideas for Seattle Homes in 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Whether you live in a classic Craftsman bungalow in Capitol Hill or a modern home in Bellevue, these kitchen remodel ideas will help you create a space that's beautiful, functional, and perfectly suited to the Pacific Northwest lifestyle.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Seattle homeowners have a unique set of priorities when it comes to kitchen design. Our long, gray winters mean we spend more time indoors than homeowners in sunnier climates, making the kitchen — the heart of the home — even more important. We value natural light, warm materials, connection to the outdoors, and spaces that can handle everything from morning coffee to hosting a dinner party on a Saturday night.
+            </p>
+            <p>
+              After completing hundreds of <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodels</a> across the greater Seattle area, we've identified the ideas and trends that work best for Pacific Northwest homes. Here are 15 kitchen remodel ideas that are defining Seattle kitchens in 2026.
+            </p>
+          </div>
+
+          <!-- Idea 1 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">1. Waterfall Edge Kitchen Islands</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The waterfall island has become the signature feature of modern Seattle kitchens. In this design, the countertop material cascades down the sides of the island to the floor, creating a stunning visual statement. Quartz is the most popular choice for waterfall islands in Seattle — it's durable, low-maintenance, and available in beautiful marble-look patterns that elevate the entire space.
+              </p>
+              <p>
+                A waterfall island works particularly well in open-concept layouts common in remodeled Craftsman and mid-century homes. It serves as a visual anchor that defines the kitchen zone while providing a clean, contemporary feel. Budget $4,000-$8,000 for a quartz waterfall island depending on size and material choice. See our <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">kitchen remodel cost guide</a> for full pricing details.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 2 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">2. Two-Tone Cabinetry</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Two-tone cabinets continue to dominate Seattle kitchen design in 2026. The most popular combination is white or light gray upper cabinets paired with a darker shade on the lowers — navy blue, forest green, or charcoal are trending favorites. This approach adds depth and visual interest without overwhelming the space, and it works beautifully in both traditional and contemporary settings.
+              </p>
+              <p>
+                For Craftsman homes, consider white uppers with a sage or olive green lower. Mid-century ranchers look stunning with walnut-stained lowers and white uppers. The contrast creates a designer look that photographs beautifully and never goes out of style. <a href="/services/custom-cabinetry/" class="text-accent hover:underline">Custom cabinetry</a> gives you the most flexibility with two-tone designs, but semi-custom options can achieve a similar effect at a lower price point.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 3 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">3. Open Shelving Mixed with Closed Cabinets</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Full open shelving can feel impractical (especially in earthquake-prone Seattle), but mixing a few open shelves with closed cabinets strikes the perfect balance. Replace one section of upper cabinets with floating wood shelves to display pottery, cookbooks, and plants. This opens up the kitchen visually and adds a lived-in, curated feel that Seattle homeowners love.
+              </p>
+              <p>
+                Natural wood floating shelves in walnut, white oak, or reclaimed Douglas fir complement the Pacific Northwest aesthetic beautifully. They pair well with subway tile or shiplap backsplashes and provide an opportunity to bring warmth and personality into the space. Keep the remaining uppers as closed cabinets for practical storage of items you'd rather keep out of sight.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 4 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">4. Maximizing Natural Light</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                In a city where overcast skies are the norm for much of the year, maximizing natural light in the kitchen is more than an aesthetic choice — it's essential for daily well-being. Popular strategies include enlarging existing windows, adding a garden window above the sink, or installing a skylight or solar tube. Removing a wall to open the kitchen to an adjacent room also floods the space with borrowed light.
+              </p>
+              <p>
+                Light-reflective surfaces amplify whatever natural light enters the room. White or light gray cabinets, quartz countertops, glass tile backsplashes, and light-colored flooring all contribute. Under-cabinet LED lighting and recessed ceiling lights fill in on dark days. Many of our Seattle clients also opt for interior window pass-throughs to connect the kitchen with sunnier rooms.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 5 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">5. Statement Range Hoods</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The range hood has evolved from a purely functional appliance to a major design element. In Seattle kitchens, we're seeing custom wood-wrapped hoods, sleek stainless steel chimneys, and even plaster hoods that create a seamless, sculptural look. A statement hood draws the eye upward and adds architectural interest — especially impactful in kitchens with high ceilings or open floor plans.
+              </p>
+              <p>
+                Beyond aesthetics, a properly sized hood is essential for air quality. Seattle's tight home construction means cooking odors and moisture linger without proper ventilation. We recommend hoods rated at least 600 CFM for standard ranges and 900+ CFM for professional-grade cooktops. Budget $500-$3,000 for the hood itself, plus $300-$800 for ducting and installation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 6 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">6. Herringbone and Chevron Backsplashes</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                While subway tile remains a classic choice, herringbone and chevron patterns are gaining serious traction in Seattle kitchens. These angled patterns add movement and sophistication to a space without adding cost — since the tiles themselves are often standard subway tiles, the design interest comes entirely from the installation pattern.
+              </p>
+              <p>
+                White or light gray herringbone backsplashes work beautifully in Craftsman kitchens, while larger format tiles in a chevron pattern create a more contemporary look. Pair a herringbone backsplash with shaker cabinets and brass hardware for a timeless Seattle kitchen that will look fresh for decades. The installation is slightly more labor-intensive, adding approximately $3-$5 per square foot compared to a standard stack or brick pattern.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 7 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">7. Indoor-Outdoor Connection</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Even though Seattle doesn't have the sunniest climate, connecting the kitchen to outdoor space is a top priority for PNW homeowners. Bi-fold or sliding glass patio doors that open the kitchen to a covered deck create a dramatic sense of openness and connection to nature. When the weather cooperates (and it does more than most people think), you can extend your living space seamlessly.
+              </p>
+              <p>
+                For year-round enjoyment, combine indoor-outdoor access with a covered outdoor cooking area or a window herb garden. Large picture windows overlooking a backyard garden also create this connection without requiring a door. The key is framing views of greenery — something Seattle's lush landscape provides in abundance.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 8 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">8. Warm Wood Accents</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                White kitchens aren't going anywhere, but in 2026, Seattle homeowners are warming them up with natural wood accents. Walnut or white oak floating shelves, a butcher block island top, wood-wrapped range hoods, and wood-framed pendant lights bring warmth and organic texture to an otherwise cool palette.
+              </p>
+              <p>
+                This approach is rooted in the Pacific Northwest's connection to its forests and natural surroundings. Reclaimed wood from local sources, like deconstructed barns or salvaged Douglas fir, adds character and a sustainability story. Even small touches — wooden cutting board storage, a live-edge floating shelf, or wood-clad island ends — make a meaningful difference in the kitchen's personality.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 9 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">9. Hidden Pantry and Appliance Garages</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Clutter-free countertops are a hallmark of well-designed Seattle kitchens. Hidden pantries (walk-in or cabinet-style) and appliance garages keep small appliances, snacks, and everyday items tucked away but easily accessible. Pocket doors or cabinet doors with internal shelving create dedicated stations for coffee makers, toasters, blenders, and stand mixers.
+              </p>
+              <p>
+                A walk-in pantry with custom shelving is one of the most requested features in our <a href="/services/kitchen-layout-design/" class="text-accent hover:underline">kitchen layout designs</a>. Even if your kitchen doesn't have space for a walk-in, a tall pantry cabinet with pull-out drawers provides tremendous storage capacity. These solutions keep countertops clear while keeping everything within arm's reach — the best of both worlds.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 10 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">10. Undermount and Workstation Sinks</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The kitchen sink has evolved into a true workstation. Oversized single-bowl sinks with integrated accessories — cutting boards, colanders, drying racks, and roll-up grids — turn the sink into a prep station, cleaning zone, and drying area all in one. Brands like Kraus and Ruvati offer workstation sinks that fit standard cabinet sizes.
+              </p>
+              <p>
+                For Craftsman and farmhouse-style Seattle kitchens, apron-front (farmhouse) sinks remain hugely popular. Fireclay and stainless steel are the most durable options. Pair with a commercial-style pull-down faucet in brushed gold or matte black for a look that's both functional and on-trend.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 11 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">11. Mixed Metal Hardware</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Gone are the days when every metal finish in the kitchen had to match. In 2026, Seattle designers are confidently mixing metals — brushed brass cabinet pulls with a matte black faucet and stainless steel appliances, for example. The key is intentionality: choose two or three metals and distribute them thoughtfully throughout the space.
+              </p>
+              <p>
+                Brushed brass and champagne bronze continue to be the most popular cabinet hardware finishes in the Seattle market, followed by matte black and satin nickel. Hardware is one of the most affordable ways to update a kitchen's look. Even in a budget-friendly <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a> project, new hardware can completely transform the feel of the space.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 12 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">12. Earthy Color Palettes</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The all-white kitchen had a long run, but Seattle is embracing warmer, earthier tones in 2026. Think sage green cabinets, warm taupe walls, terracotta tile accents, and mushroom-toned countertops. These colors connect to the natural beauty of the Pacific Northwest — the mossy greens of the forests, the warm grays of river stones, the rich browns of cedar bark.
+              </p>
+              <p>
+                Deep greens (Benjamin Moore's Cushing Green or Sherwin-Williams' Pewter Green) are especially popular for island bases or lower cabinets. Warm white tones like Swiss Coffee or Simply White have replaced stark bright whites. These palettes create kitchens that feel calm, grounded, and inherently connected to the PNW landscape.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 13 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">13. Integrated Charging Stations and Tech</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                As the kitchen becomes the family command center, thoughtful tech integration is increasingly important. Built-in USB and wireless charging pads integrated into countertops or inside drawers keep devices powered without cluttering the counter. Pop-up power strips recessed into the island provide easy access to outlets for laptops and small appliances.
+              </p>
+              <p>
+                Smart home features like touchless faucets, voice-controlled lighting, and smart appliances are also gaining adoption in Seattle kitchens. Under-cabinet tablet mounts keep recipes visible while cooking. These features are easiest and most affordable to add during a remodel when walls are open and electrical circuits are being updated.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 14 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">14. Large Format Floor Tiles</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Large format tiles (12x24 or 24x24 inches) are replacing smaller tiles on kitchen floors throughout Seattle. The larger surface area means fewer grout lines, which creates a cleaner, more expansive look and makes maintenance easier. Porcelain tiles in concrete, stone, or wood-look finishes are the most popular choices.
+              </p>
+              <p>
+                For <a href="/services/flooring-installation/" class="text-accent hover:underline">kitchen flooring</a>, luxury vinyl plank (LVP) remains the top choice for value-conscious homeowners who want a wood look without the maintenance. But for clients seeking a premium feel, large format porcelain tiles with minimal grout lines deliver a sophisticated, European-inspired aesthetic that works beautifully in modern and transitional Seattle kitchens.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 15 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">15. Dedicated Coffee and Beverage Stations</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle is, of course, the coffee capital of the world. It's no surprise that dedicated coffee stations are one of the most requested features in local kitchen remodels. A built-in nook with counter space, upper shelving for mugs, a dedicated outlet for the espresso machine, and even a small sink creates a barista-quality setup at home.
+              </p>
+              <p>
+                Beverage bars that go beyond coffee — including a small wine fridge, cocktail mixing area, or tea station — are also popular for entertaining-focused Seattle homeowners. These stations work particularly well in a corner of the kitchen, inside a pantry with pocket doors, or as part of a butler's pantry between the kitchen and dining room. They keep the primary prep areas free while providing a social, interactive element for guests.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Bringing Your Vision to Life</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The best kitchen remodel is one that reflects how you actually live. Whether you're drawn to the warmth of wood accents and earthy colors or the clean lines of a contemporary waterfall island, your kitchen should feel like home. We recommend choosing 3 to 5 ideas from this list that resonate with you and sharing them with your remodeling team during the design consultation.
+              </p>
+              <p>
+                At Kitchen & Bathroom Remodeling Pros, we've been helping Seattle homeowners turn their kitchen dreams into reality since 2010. Our design team stays on top of current trends while always prioritizing the timeless principles of good design — function, flow, and finish quality. Ready to explore what's possible? <a href="/get-a-quote/" class="text-accent hover:underline">Request a free estimate</a> and let's start the conversation.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Remodel Your Kitchen?</h2>
+            <p class="text-white/80 mb-6">Schedule your free in-home consultation and let's discuss which ideas will work best in your space.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Kitchen Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Discuss these ideas with our design team. No obligation.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">10 Bathroom Remodel Ideas for Seattle</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">2026 Kitchen Color Trends</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/kitchen-layout-design/" class="text-accent hover:underline text-sm font-medium">Kitchen Layout Design</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

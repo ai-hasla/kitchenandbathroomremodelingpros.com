@@ -1,0 +1,374 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Quartz vs Granite Countertops', href: '/blog/quartz-vs-granite-countertops-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Quartz vs Granite Countertops: Which is Best for Seattle Homes?',
+  description: 'In-depth comparison of quartz and granite countertops for Seattle homes. Compare durability, maintenance, cost, appearance, and resale value with PNW-specific recommendations.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-03-05',
+  dateModified: '2026-03-05',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is quartz or granite better for Seattle kitchens?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Quartz is generally the better choice for Seattle kitchens due to its non-porous surface, zero-maintenance properties, and superior stain resistance. In Seattle\'s moisture-heavy climate, quartz\'s resistance to mold and bacteria growth is a significant advantage over granite, which requires annual sealing to prevent moisture absorption.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is quartz more expensive than granite in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Quartz and granite have overlapping price ranges. Granite costs $40-$100 per square foot installed in Seattle, while quartz runs $50-$120 per square foot. Entry-level granite is cheaper than entry-level quartz, but mid-range options are comparable. When you factor in the lifetime cost of annual sealing for granite ($100-$200 per year), quartz often has a lower total cost of ownership.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which countertop has better resale value in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Both quartz and granite are considered premium countertop materials that appeal to Seattle buyers. However, quartz has surpassed granite as the most in-demand countertop material in the Puget Sound real estate market. Quartz countertops are a strong selling point that signals a modern, updated kitchen to potential buyers.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you put hot pans on quartz countertops?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Quartz is heat-resistant but not heat-proof. Temperatures above 300 degrees Fahrenheit can damage the resin binders in quartz, potentially causing discoloration or cracking. Always use trivets or hot pads under hot cookware. Granite handles heat better since it is a natural stone without resin, but using trivets is still recommended for both materials.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long do quartz and granite countertops last?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Both materials are extremely durable and will last the lifetime of your kitchen with proper care. Granite can last 100+ years as a natural stone. Quartz typically lasts 25-50 years before showing wear. Both come with manufacturer warranties of 10-15 years for residential use. For the typical 15-20 year kitchen remodel cycle, either material will outlast the kitchen around it.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Quartz vs Granite Countertops: Which is Best for Seattle Homes?"
+  description="Quartz vs granite countertops compared for Seattle homeowners. Durability, maintenance, cost, appearance, and resale value. Expert recommendations for PNW kitchens."
+  canonical={`${SITE.url}/blog/quartz-vs-granite-countertops-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-03-05', modifiedTime: '2026-03-05', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">March 5, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 11 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Quartz vs Granite Countertops: Which is Best for Seattle Homes?</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          An honest, side-by-side comparison of the two most popular countertop materials in Seattle. We'll help you decide which one is the right fit for your kitchen, your lifestyle, and the PNW climate.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              When Seattle homeowners start planning a kitchen remodel, one question comes up more than almost any other: "Should I go with quartz or granite?" It's a great question, and one that doesn't have a one-size-fits-all answer. Both are premium materials that look stunning, last for decades, and add significant value to your home.
+            </p>
+            <p>
+              Having installed thousands of countertops across the Seattle metro area, we've seen both materials perform beautifully in PNW kitchens. But they have meaningful differences in maintenance requirements, moisture performance, heat resistance, and overall aesthetics. This guide breaks down every factor so you can make a confident, informed decision.
+            </p>
+            <p>
+              The short answer? For most Seattle homeowners, we recommend quartz — but granite is the better choice in certain situations. Let's explore why.
+            </p>
+          </div>
+
+          <!-- Comparison Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Quartz vs Granite: At a Glance</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Factor</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Quartz</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Granite</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Cost (installed)</td>
+                    <td class="px-4 py-3 text-sm">$50 - $120/sq ft</td>
+                    <td class="px-4 py-3 text-sm">$40 - $100/sq ft</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Composition</td>
+                    <td class="px-4 py-3 text-sm">93% ground quartz + 7% resin</td>
+                    <td class="px-4 py-3 text-sm">100% natural stone</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Maintenance</td>
+                    <td class="px-4 py-3 text-sm">None — wipe clean with soap and water</td>
+                    <td class="px-4 py-3 text-sm">Annual sealing required</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Stain Resistance</td>
+                    <td class="px-4 py-3 text-sm">Excellent (non-porous)</td>
+                    <td class="px-4 py-3 text-sm">Good (when sealed)</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Heat Resistance</td>
+                    <td class="px-4 py-3 text-sm">Moderate (use trivets)</td>
+                    <td class="px-4 py-3 text-sm">Excellent (natural heat tolerance)</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Scratch Resistance</td>
+                    <td class="px-4 py-3 text-sm">Very good</td>
+                    <td class="px-4 py-3 text-sm">Very good</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Appearance</td>
+                    <td class="px-4 py-3 text-sm">Consistent, uniform patterns</td>
+                    <td class="px-4 py-3 text-sm">Unique, one-of-a-kind patterns</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Seams</td>
+                    <td class="px-4 py-3 text-sm">Less visible (consistent pattern)</td>
+                    <td class="px-4 py-3 text-sm">Can be more noticeable</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Environmental</td>
+                    <td class="px-4 py-3 text-sm">Manufactured product, some recycled content</td>
+                    <td class="px-4 py-3 text-sm">Quarried natural stone</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Lifespan</td>
+                    <td class="px-4 py-3 text-sm">25-50 years</td>
+                    <td class="px-4 py-3 text-sm">50-100+ years</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Detailed Comparison -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Detailed Comparison</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Durability</h3>
+              <p>
+                Both quartz and granite are extremely durable surfaces that will hold up to decades of daily kitchen use. Granite is a natural igneous rock, formed under extreme heat and pressure, making it incredibly hard and nearly indestructible. Quartz countertops are engineered by combining about 93% ground natural quartz with 7% polymer resins, creating a surface that is slightly more flexible and less prone to chipping than granite.
+              </p>
+              <p>
+                In practical terms, both materials resist scratches from normal kitchen use (though you should always use cutting boards). Granite has a slight edge in heat resistance — you can set a hot pan directly on granite without damage, while quartz can be damaged by extreme heat. For the typical home kitchen, both are more than durable enough.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Maintenance</h3>
+              <p>
+                This is where quartz has a clear advantage, and it's a particularly important factor for Seattle homeowners. Quartz is non-porous, meaning it never needs sealing, won't absorb liquids or stains, and naturally resists mold and bacteria growth. Day-to-day cleaning requires nothing more than soap and water or a gentle household cleaner.
+              </p>
+              <p>
+                Granite is a porous natural stone that requires annual sealing to maintain its stain resistance. If the sealant breaks down (which happens faster in high-use areas), spills like red wine, coffee, and citrus juice can penetrate and stain the surface. In Seattle's humid climate, unsealed granite can also absorb ambient moisture, potentially leading to darkened spots or mineral deposits over time.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Appearance</h3>
+              <p>
+                Appearance is subjective, and both materials are beautiful. Granite offers truly unique, one-of-a-kind patterns — no two slabs are identical. The natural variation includes veining, speckling, crystals, and depth that's impossible to replicate artificially. If you love the idea of having a countertop that's genuinely unique, granite delivers.
+              </p>
+              <p>
+                Quartz offers consistency, which is its own kind of appeal. You can choose a pattern you love and know that every section of your countertop will look the same. Modern quartz designs have become remarkably sophisticated, with marble-look patterns (like Calacatta and Carrara styles) that are nearly indistinguishable from real marble. This consistency also makes seams less visible, since the pattern is uniform across slabs.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Cost</h3>
+              <p>
+                The price ranges overlap considerably. Entry-level granite ($40-$60/sq ft) is less expensive than entry-level quartz ($50-$70/sq ft). But mid-range and premium options are closely comparable. For a typical 40 square foot Seattle kitchen, here's the cost comparison:
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">$2,000 - $4,800</p>
+                  <p class="text-sm text-body-text">Quartz (40 sq ft installed)</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">$1,600 - $4,000</p>
+                  <p class="text-sm text-body-text">Granite (40 sq ft installed)</p>
+                </div>
+              </div>
+              <p>
+                When you factor in the ongoing cost of annual granite sealing ($100-$200 per year over 15-20 years), the total cost of ownership for quartz is often equal to or less than granite. See our complete <a href="/cost-guides/countertop-installation-cost/" class="text-accent hover:underline">countertop installation cost guide</a> for detailed pricing on all materials.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Resale Value</h3>
+              <p>
+                Both quartz and granite are considered premium countertop materials that add value to your home. In the Seattle real estate market, quartz has overtaken granite as the most sought-after countertop material among buyers. Real estate agents report that quartz countertops are a strong selling point that signals a modern, well-maintained kitchen. That said, high-quality granite also impresses buyers — particularly unique or exotic slabs that serve as a design focal point.
+              </p>
+            </div>
+          </div>
+
+          <!-- PNW Considerations -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">PNW-Specific Considerations</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Living in the Pacific Northwest introduces some specific factors that influence the quartz vs. granite decision:
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Moisture and Humidity</h3>
+              <p>
+                Seattle's climate means higher indoor humidity levels, especially during the rainy months from October through May. Quartz's non-porous surface is inherently resistant to moisture absorption, mold, and mildew. Granite's porous nature makes it more susceptible to moisture-related issues if the sealant is compromised. For kitchens near windows that are frequently open to damp air, quartz provides better long-term performance.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Light and Color</h3>
+              <p>
+                Seattle's lower light levels for much of the year make countertop color choice particularly important. Light-colored countertops (white, cream, light gray) help brighten the kitchen and reflect available light. Both quartz and granite are available in light colors, but quartz offers more options in clean, bright whites and light marble-look patterns that maximize light reflection. Darker granites, while beautiful, can make a kitchen feel heavier in Seattle's gray months.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Sustainability</h3>
+              <p>
+                Environmental consciousness runs deep in the Pacific Northwest. Granite is quarried from the earth, requiring extraction and transportation (often from overseas). Some quartz manufacturers use recycled content and have smaller carbon footprints due to regionalized manufacturing. Cambria, a popular quartz brand in the Seattle market, manufactures in the USA and has implemented sustainability initiatives. Neither material is clearly "greener" than the other, but it's worth considering if sustainability is a priority for you.
+              </p>
+            </div>
+          </div>
+
+          <!-- Popular Brands -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Popular Brands in the Seattle Market</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Top Quartz Brands</h3>
+              <ul class="space-y-2 ml-4">
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> <strong>Cambria</strong> — Premium USA-made quartz, beautiful designs, lifetime warranty. $70-$120/sq ft installed.</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> <strong>Caesarstone</strong> — Israeli manufacturer known for pioneering engineered stone. Modern designs. $60-$100/sq ft.</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> <strong>Silestone</strong> — Spanish manufacturer, wide color range, antibacterial protection. $55-$95/sq ft.</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> <strong>MSI Q Quartz</strong> — Budget-friendly option with good quality. Great marble-look patterns. $50-$75/sq ft.</li>
+              </ul>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Where to Shop in Seattle</h3>
+              <p>
+                The Seattle area has numerous stone yards and showrooms where you can view full slabs and samples. For granite, visiting a slab yard in person is essential since every slab is unique. For quartz, showroom samples are representative of the final product. Your remodeling contractor can also bring samples to your home so you can see how different materials look in your kitchen's specific lighting conditions.
+              </p>
+              <p>
+                When you work with a full-service remodeling company like ours, we guide you through the selection process, provide expert recommendations based on your specific kitchen and budget, and leverage our trade relationships to offer competitive pricing on premium materials. <a href="/services/countertop-installation/" class="text-accent hover:underline">Learn more about our countertop installation services</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Expert Recommendation -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Our Expert Recommendation</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="bg-accent-light border border-accent/20 rounded-2xl p-6">
+                <p class="font-semibold text-primary mb-3">For most Seattle homeowners, we recommend quartz.</p>
+                <p class="text-sm">The combination of zero maintenance, superior moisture resistance, consistent beauty, and strong resale value makes quartz the ideal choice for Pacific Northwest kitchens. You'll spend zero time and money on annual sealing, never worry about stains from coffee or red wine, and enjoy a surface that looks as good in year 15 as it does on day one.</p>
+              </div>
+
+              <p class="mt-6"><strong>Choose granite if:</strong></p>
+              <ul class="space-y-2 ml-4">
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You want a truly one-of-a-kind natural stone slab</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You frequently set hot pots and pans directly on the counter</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You're working with a tighter budget (entry-level granite is less expensive)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You love the depth and character of natural stone</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You don't mind the commitment to annual sealing</li>
+              </ul>
+
+              <p class="mt-4"><strong>Choose quartz if:</strong></p>
+              <ul class="space-y-2 ml-4">
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You want zero maintenance beyond basic cleaning</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You love the look of marble but not the upkeep</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You have a busy household with kids and frequent cooking</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You want a consistent, predictable appearance</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> You're planning to sell your home in the next few years</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is quartz or granite better for Seattle kitchens?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Quartz is generally the better choice for Seattle kitchens due to its non-porous surface, zero-maintenance properties, and superior stain resistance. In Seattle's moisture-heavy climate, quartz's resistance to mold and bacteria growth is a significant advantage over granite.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is quartz more expensive than granite in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The price ranges overlap. Granite costs $40-$100 per square foot installed, while quartz runs $50-$120. Entry-level granite is cheaper, but mid-range options are comparable. Factoring in annual sealing costs for granite, quartz often has a lower total cost of ownership.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Which countertop has better resale value in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Both are premium materials that appeal to buyers, but quartz has surpassed granite as the most in-demand countertop material in the Puget Sound real estate market. Quartz signals a modern, updated kitchen to potential buyers.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can you put hot pans on quartz countertops?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Quartz is heat-resistant but not heat-proof. Temperatures above 300 degrees Fahrenheit can damage the resin binders. Always use trivets or hot pads. Granite handles direct heat better as a natural stone without resin.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long do quartz and granite countertops last?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Both are extremely durable. Granite can last 100+ years as a natural stone. Quartz typically lasts 25-50 years. Both come with 10-15 year manufacturer warranties. For the typical 15-20 year kitchen remodel cycle, either material will outlast the kitchen around it.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Choose Your Countertops?</h2>
+            <p class="text-white/80 mb-6">Schedule a free consultation and we'll help you select the perfect countertop material for your kitchen and budget.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Countertop Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Not sure which material is right? We'll bring samples to your home.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/countertop-installation-cost/" class="text-accent hover:underline text-sm font-medium">Countertop Installation Cost 2026</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">15 Kitchen Remodel Ideas for Seattle</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

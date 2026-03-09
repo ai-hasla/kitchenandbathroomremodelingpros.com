@@ -1,0 +1,265 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SERVICES, SITE } from '@/lib/constants';
+
+const kitchenServices = SERVICES.filter((s) => s.category === 'kitchen');
+const bathroomServices = SERVICES.filter((s) => s.category === 'bathroom');
+const generalServices = SERVICES.filter((s) => s.category === 'general');
+
+const serviceIcons: Record<string, string> = {
+  kitchen: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M3 6v12a2 2 0 002 2h14a2 2 0 002-2V6M3 6l1-3h16l1 3M8 6v4M16 6v4M12 6v4M7 14h4M13 14h4" />
+  </svg>`,
+  bathroom: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13h18v2a4 4 0 01-4 4H7a4 4 0 01-4-4v-2zM5 13V6a2 2 0 012-2h1a2 2 0 012 2v1M21 17l-1 4M3 17l1 4" />
+  </svg>`,
+  cabinets: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM3 12h18M12 5v16M9 8.5h-2M17 8.5h-2M9 15.5h-2M17 15.5h-2" />
+  </svg>`,
+  countertop: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h16M4 10v8a2 2 0 002 2h12a2 2 0 002-2v-8M4 10l2-6h12l2 6M8 14v2M16 14v2" />
+  </svg>`,
+  tile: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+  </svg>`,
+  shower: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v3m0 0a3 3 0 013 3H9a3 3 0 013-3zM7 12v1m2-1v2m2-2v3m2-3v2m2-2v1M5 20h14" />
+  </svg>`,
+  bathtub: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13h18v2a4 4 0 01-4 4H7a4 4 0 01-4-4v-2zM5 13V6a2 2 0 012-2h1a2 2 0 012 2v1M21 17l-1 4M3 17l1 4" />
+  </svg>`,
+  vanity: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h16M4 10v8a2 2 0 002 2h12a2 2 0 002-2v-8M4 10l2-6h12l2 6M8 14v2M16 14v2" />
+  </svg>`,
+  layout: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15M4.5 9h15M4.5 15h15M4.5 4.5h15v15h-15z" />
+  </svg>`,
+  flooring: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+  </svg>`,
+  accessible: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 0v3m0 0h3.75m-3.75 0H8.25m3.75 0v6.75m0 0l2.25 3.75m-2.25-3.75L9.75 18" />
+  </svg>`,
+};
+
+function getIcon(iconName: string): string {
+  return serviceIcons[iconName] || serviceIcons['kitchen'];
+}
+
+const categoryLabels: Record<string, string> = {
+  kitchen: 'Kitchen',
+  bathroom: 'Bathroom',
+  general: 'General',
+};
+---
+
+<BaseLayout
+  title="Kitchen & Bathroom Remodeling Services Seattle | KB Remodeling Pros"
+  description="Explore our full range of kitchen and bathroom remodeling services in Seattle, WA. From complete renovations to cabinet refacing, countertops, tile, and aging-in-place modifications. Free estimates."
+>
+  <SchemaBreadcrumb items={[{ label: 'Services', href: '/services/' }]} />
+
+  <!-- Hero Section -->
+  <section class="bg-primary py-20 pt-32">
+    <Container>
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">
+          Our Remodeling Services
+        </h1>
+        <p class="text-lg lg:text-xl text-white/80 leading-relaxed">
+          From complete kitchen and bathroom transformations to specialized installations, our expert team delivers exceptional craftsmanship on every project across the greater Seattle area.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Breadcrumbs -->
+  <section class="bg-light border-b border-border">
+    <Container>
+      <nav aria-label="Breadcrumb" class="py-3 text-sm text-muted">
+        <ol class="flex items-center gap-1.5">
+          <li class="flex items-center gap-1.5">
+            <a href="/" class="hover:text-accent transition-colors">Home</a>
+          </li>
+          <li class="flex items-center gap-1.5">
+            <svg class="h-3.5 w-3.5 text-muted/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-dark-text font-medium">Services</span>
+          </li>
+        </ol>
+      </nav>
+    </Container>
+  </section>
+
+  <!-- Kitchen Services -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="mb-10" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          Kitchen Remodeling Services
+        </h2>
+        <p class="text-lg text-muted max-w-2xl">
+          Transform your kitchen into the heart of your home with our comprehensive kitchen remodeling solutions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" data-reveal-stagger>
+        {kitchenServices.map((service) => (
+          <a
+            href={`/services/${service.slug}/`}
+            class="group bg-white rounded-2xl p-8 border border-border shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-14 h-14 rounded-full bg-accent-light text-accent flex items-center justify-center mb-5">
+              <Fragment set:html={getIcon(service.icon)} />
+            </div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+              {categoryLabels[service.category]}
+            </span>
+            <h3 class="text-xl font-semibold text-dark-text mb-3 font-[family-name:var(--font-heading)]">
+              {service.title}
+            </h3>
+            <p class="text-muted mb-5 leading-relaxed">
+              {service.shortDescription}
+            </p>
+            <span class="text-accent font-medium inline-flex items-center gap-1.5 group-hover:underline">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Bathroom Services -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="mb-10" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          Bathroom Remodeling Services
+        </h2>
+        <p class="text-lg text-muted max-w-2xl">
+          Create your dream bathroom with our expert renovation, tile, shower, and fixture installation services.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" data-reveal-stagger>
+        {bathroomServices.map((service) => (
+          <a
+            href={`/services/${service.slug}/`}
+            class="group bg-white rounded-2xl p-8 border border-border shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-14 h-14 rounded-full bg-accent-light text-accent flex items-center justify-center mb-5">
+              <Fragment set:html={getIcon(service.icon)} />
+            </div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+              {categoryLabels[service.category]}
+            </span>
+            <h3 class="text-xl font-semibold text-dark-text mb-3 font-[family-name:var(--font-heading)]">
+              {service.title}
+            </h3>
+            <p class="text-muted mb-5 leading-relaxed">
+              {service.shortDescription}
+            </p>
+            <span class="text-accent font-medium inline-flex items-center gap-1.5 group-hover:underline">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- General Services -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="mb-10" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          Additional Remodeling Services
+        </h2>
+        <p class="text-lg text-muted max-w-2xl">
+          Specialized services for flooring and accessible home modifications to meet every need.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" data-reveal-stagger>
+        {generalServices.map((service) => (
+          <a
+            href={`/services/${service.slug}/`}
+            class="group bg-white rounded-2xl p-8 border border-border shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="w-14 h-14 rounded-full bg-accent-light text-accent flex items-center justify-center mb-5">
+              <Fragment set:html={getIcon(service.icon)} />
+            </div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+              {categoryLabels[service.category]}
+            </span>
+            <h3 class="text-xl font-semibold text-dark-text mb-3 font-[family-name:var(--font-heading)]">
+              {service.title}
+            </h3>
+            <p class="text-muted mb-5 leading-relaxed">
+              {service.shortDescription}
+            </p>
+            <span class="text-accent font-medium inline-flex items-center gap-1.5 group-hover:underline">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-accent py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    <Container class="relative z-10">
+      <div class="text-center max-w-3xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-6">
+          Not Sure Which Service You Need?
+        </h2>
+        <p class="text-white/90 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          Our design consultants will help you explore options and create a plan tailored to your home, budget, and lifestyle. Schedule a free in-home consultation today.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button
+            variant="primary"
+            size="lg"
+            href="/contact/"
+            class="bg-white text-accent hover:bg-white/90 shadow-lg shadow-black/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+            Schedule Free Consultation
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href={`tel:${SITE.phoneRaw}`}
+            class="border-white text-white hover:bg-white/10 border-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Call {SITE.phone}
+          </Button>
+        </div>
+        <p class="text-sm text-white/70">
+          &#9733; Licensed, Bonded & Insured &bull; 15+ Years Experience &bull; 500+ Projects Completed
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,272 @@
+---
+import { SITE, NAV_LINKS } from '@/lib/constants';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <!-- Top bar -->
+  <div class="bg-primary text-white/80 text-sm hidden lg:block">
+    <Container class="flex items-center justify-between py-1.5">
+      <div class="flex items-center gap-6">
+        <a href={`tel:${SITE.phoneRaw}`} class="flex items-center gap-1.5 hover:text-white transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          {SITE.phone}
+        </a>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {SITE.hours}
+        </span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Serving Seattle, Bellevue, Kirkland & Surrounding Areas
+      </div>
+    </Container>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="bg-white/95 backdrop-blur-md border-b border-border/50 shadow-sm" aria-label="Main navigation">
+    <Container class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 shrink-0">
+        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-lg lg:text-xl font-[family-name:var(--font-heading)]">KB</span>
+        </div>
+        <div class="hidden sm:block">
+          <div class="text-sm lg:text-base font-bold text-dark-text leading-tight">Kitchen & Bathroom</div>
+          <div class="text-xs lg:text-sm text-accent font-semibold leading-tight">Remodeling Pros</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-1">
+        <!-- Services Dropdown -->
+        <div class="relative group">
+          <button
+            class="nav-link px-3 py-2 text-sm font-medium text-dark-text hover:text-accent transition-colors flex items-center gap-1"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            Services
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Mega Menu -->
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="bg-white rounded-xl shadow-2xl border border-border/50 p-6 w-[600px] grid grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xs font-bold text-accent uppercase tracking-wider mb-3">Kitchen</h3>
+                <ul class="space-y-1">
+                  {NAV_LINKS.services.children.kitchen.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class={`block px-3 py-2 text-sm rounded-lg transition-colors ${currentPath === link.href ? 'bg-accent-light text-accent font-medium' : 'text-body-text hover:bg-light hover:text-dark-text'}`}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xs font-bold text-accent uppercase tracking-wider mb-3">Bathroom</h3>
+                <ul class="space-y-1">
+                  {NAV_LINKS.services.children.bathroom.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class={`block px-3 py-2 text-sm rounded-lg transition-colors ${currentPath === link.href ? 'bg-accent-light text-accent font-medium' : 'text-body-text hover:bg-light hover:text-dark-text'}`}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <h3 class="text-xs font-bold text-accent uppercase tracking-wider mb-3 mt-4">General</h3>
+                <ul class="space-y-1">
+                  {NAV_LINKS.services.children.general.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class={`block px-3 py-2 text-sm rounded-lg transition-colors ${currentPath === link.href ? 'bg-accent-light text-accent font-medium' : 'text-body-text hover:bg-light hover:text-dark-text'}`}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/areas-served/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath.startsWith('/areas-served') ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          Areas We Serve
+        </a>
+        <a href="/gallery/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath.startsWith('/gallery') ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          Gallery
+        </a>
+        <a href="/cost-guides/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath.startsWith('/cost-guides') ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          Cost Guides
+        </a>
+        <a href="/blog/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath.startsWith('/blog') ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          Blog
+        </a>
+        <a href="/about/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath === '/about/' ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          About
+        </a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a
+          href={`tel:${SITE.phoneRaw}`}
+          class="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center gap-1.5"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          {SITE.phone}
+        </a>
+        <Button href="/get-a-quote/" variant="primary" size="sm" magnetic>
+          Free Estimate
+        </Button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-dark-text hover:text-accent transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6 menu-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 menu-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </Container>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-x-0 top-16 bottom-0 bg-white z-40 transform translate-x-full transition-transform duration-300 overflow-y-auto">
+    <div class="p-4 space-y-1">
+      <a href="/services/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">
+        All Services
+      </a>
+      {NAV_LINKS.services.children.kitchen.map((link) => (
+        <a href={link.href} class="block px-4 py-2.5 pl-8 text-sm text-body-text rounded-lg hover:bg-light">
+          {link.label}
+        </a>
+      ))}
+      {NAV_LINKS.services.children.bathroom.map((link) => (
+        <a href={link.href} class="block px-4 py-2.5 pl-8 text-sm text-body-text rounded-lg hover:bg-light">
+          {link.label}
+        </a>
+      ))}
+      <div class="border-t border-border my-2"></div>
+      <a href="/areas-served/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Areas We Serve</a>
+      <a href="/gallery/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Gallery</a>
+      <a href="/cost-guides/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Cost Guides</a>
+      <a href="/blog/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Blog</a>
+      <a href="/about/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">About</a>
+      <a href="/contact/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Contact</a>
+      <div class="border-t border-border my-2"></div>
+      <a href={`tel:${SITE.phoneRaw}`} class="flex items-center gap-2 px-4 py-3 text-base font-bold text-primary">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        {SITE.phone}
+      </a>
+      <div class="px-4 pt-2">
+        <Button href="/get-a-quote/" variant="primary" size="lg" class="w-full justify-center">
+          Get Free Estimate
+        </Button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Sticky mobile CTA bar -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+  <div class="grid grid-cols-2 divide-x divide-border">
+    <a
+      href={`tel:${SITE.phoneRaw}`}
+      class="flex items-center justify-center gap-2 py-3.5 text-sm font-bold text-primary active:bg-light"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+      Call Now
+    </a>
+    <a
+      href="/get-a-quote/"
+      class="flex items-center justify-center gap-2 py-3.5 text-sm font-bold text-white bg-accent active:bg-accent-hover"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      Free Estimate
+    </a>
+  </div>
+</div>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = menuBtn?.querySelector('.menu-open');
+  const closeIcon = menuBtn?.querySelector('.menu-close');
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('translate-x-0');
+    mobileMenu?.classList.toggle('translate-x-full', !!isOpen);
+    mobileMenu?.classList.toggle('translate-x-0', !isOpen);
+    openIcon?.classList.toggle('hidden', !isOpen);
+    closeIcon?.classList.toggle('hidden', !!isOpen);
+    document.body.classList.toggle('overflow-hidden', !isOpen);
+    menuBtn?.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Header scroll behavior - shrink on scroll
+  const header = document.getElementById('site-header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      header?.classList.add('header-scrolled');
+    } else {
+      header?.classList.remove('header-scrolled');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+</script>
+
+<style is:global>
+  .header-scrolled nav {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .header-scrolled .lg\:h-20 {
+    height: 3.5rem;
+  }
+</style>

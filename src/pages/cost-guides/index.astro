@@ -1,0 +1,129 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'Cost Guides', href: '/cost-guides/' }];
+
+const guides = [
+  {
+    title: 'Kitchen Remodel Cost',
+    slug: 'kitchen-remodel-cost-seattle',
+    description: 'A comprehensive breakdown of kitchen remodeling costs in Seattle for 2026. From budget-friendly updates to premium renovations, see what your kitchen remodel will cost.',
+    costRange: '$15,000 - $85,000+',
+    averageCost: '$42,000',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    title: 'Bathroom Remodel Cost',
+    slug: 'bathroom-remodel-cost-seattle',
+    description: 'Everything you need to know about bathroom remodeling costs in Seattle. Includes costs for showers, tubs, vanities, tile, and more with 2026 pricing.',
+    costRange: '$8,000 - $45,000+',
+    averageCost: '$22,000',
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    title: 'Cabinet Refacing Cost',
+    slug: 'cabinet-refacing-cost',
+    description: 'How much does cabinet refacing cost in Seattle? Learn about materials, labor, and factors that affect pricing for this popular kitchen update.',
+    costRange: '$4,000 - $12,000',
+    averageCost: '$7,500',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    title: 'Countertop Installation Cost',
+    slug: 'countertop-installation-cost',
+    description: 'Compare countertop prices for quartz, granite, marble, and other materials. Includes 2026 installation costs specific to the Seattle market.',
+    costRange: '$2,000 - $8,000',
+    averageCost: '$4,200',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    title: 'Shower Remodel Cost',
+    slug: 'shower-remodel-cost',
+    description: 'What does a shower remodel cost in Seattle? From simple updates to luxury walk-in showers, get detailed pricing for your shower renovation.',
+    costRange: '$3,000 - $15,000',
+    averageCost: '$7,000',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80',
+  },
+];
+---
+
+<BaseLayout
+  title="Remodeling Cost Guides | Seattle Kitchen & Bathroom"
+  description="Detailed cost guides for kitchen and bathroom remodeling in Seattle. Get 2026 pricing for kitchen remodels, bathroom renovations, cabinets, countertops, and more."
+  canonical={`${SITE.url}/cost-guides/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Pricing Information</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Remodeling Cost Guides</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Transparent pricing is one of our core values. These cost guides give you a clear picture of what to expect for kitchen and bathroom remodeling projects in the Seattle area.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Cost Guides Grid -->
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal-stagger>
+        {guides.map((guide) => (
+          <a
+            href={`/cost-guides/${guide.slug}/`}
+            class="group bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300"
+          >
+            <div class="aspect-[16/10] overflow-hidden">
+              <img
+                src={guide.image}
+                alt={guide.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                width="600"
+                height="375"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-2 group-hover:text-accent transition-colors">{guide.title}</h2>
+              <p class="text-body-text text-sm mb-4 leading-relaxed">{guide.description}</p>
+              <div class="flex items-center justify-between pt-4 border-t border-border">
+                <div>
+                  <p class="text-xs text-muted uppercase tracking-wider">Cost Range</p>
+                  <p class="font-bold text-primary">{guide.costRange}</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-xs text-muted uppercase tracking-wider">Average</p>
+                  <p class="font-bold text-accent">{guide.averageCost}</p>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-accent font-medium text-sm mt-4 group-hover:gap-2.5 transition-all">
+                Read Guide
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Want an Exact Price for Your Project?</h2>
+        <p class="text-body-text text-lg mb-8">
+          Cost guides provide helpful ranges, but every project is unique. Get a detailed, no-obligation estimate tailored to your specific home and goals.
+        </p>
+        <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

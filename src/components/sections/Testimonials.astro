@@ -1,0 +1,77 @@
+---
+import Container from '@/components/ui/Container.astro';
+import { SITE } from '@/lib/constants';
+
+const testimonials = [
+  {
+    name: 'Sarah & Michael T.',
+    location: '1942 Craftsman — Capitol Hill, Seattle',
+    text: "Our kitchen hadn't been touched since the 70s — avocado green counters and all. They replaced the old oak cabinets with soft-close shaker-style ones, put in Cambria Torquay quartz countertops, and opened up the wall between the kitchen and dining room. We were nervous about whether the wall was load-bearing (it was), but they engineered a proper beam and the permit inspection passed first try. Four weeks start to finish, and the price was exactly what the contract said.",
+  },
+  {
+    name: 'David L.',
+    location: 'Split-level — Somerset, Bellevue',
+    text: "Our master bath had a fiberglass tub/shower combo from 1988 that was starting to crack. They ripped it out and built a curbless walk-in shower with Schluter waterproofing and large-format porcelain tile. I was worried about the permit process since Bellevue can be slow, but they had the permit in hand before demo day. The heated floors were my wife's idea and honestly the best $1,800 we spent on the whole project. Only hiccup was a two-day tile delay from the supplier, and they kept us posted the whole time.",
+  },
+  {
+    name: 'Jennifer & Robert K.',
+    location: '1978 Ranch — Kirkland, WA',
+    text: "We hired them for our kitchen first — replaced laminate counters with quartz, added an island with a prep sink, and installed KitchenAid appliances. We liked them enough to bring them back for both bathrooms. One thing I didn't expect: they found knob-and-tube wiring behind the kitchen wall and handled the electrician and re-inspection without us having to coordinate anything. That's the kind of thing you can't judge from a website, but it's why we keep recommending them to our neighbors.",
+  },
+];
+---
+
+<section class="bg-light py-16 lg:py-24">
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-12 lg:mb-16" data-reveal>
+      <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">
+        Straight from Seattle Homeowners
+      </h2>
+      <p class="text-body-text text-lg max-w-2xl mx-auto">
+        Real projects, real neighborhoods, real numbers &mdash; not stock testimonials
+      </p>
+    </div>
+
+    <!-- Testimonial Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" data-reveal-stagger>
+      {testimonials.map((testimonial) => (
+        <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-border flex flex-col">
+          <!-- 5 Gold Stars -->
+          <div class="flex gap-1 mb-4">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote Text -->
+          <p class="text-body-text leading-relaxed italic flex-1 mb-6">
+            "{testimonial.text}"
+          </p>
+
+          <!-- Divider -->
+          <div class="border-t border-border pt-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-semibold text-dark-text">{testimonial.name}</p>
+                <p class="text-sm text-muted">{testimonial.location}</p>
+              </div>
+              <!-- Google Review Badge -->
+              <div class="flex items-center gap-1.5 text-muted">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                </svg>
+                <span class="text-xs font-medium">Google</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

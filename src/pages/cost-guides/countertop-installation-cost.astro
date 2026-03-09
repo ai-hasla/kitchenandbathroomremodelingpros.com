@@ -1,0 +1,433 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Countertop Installation Cost', href: '/cost-guides/countertop-installation-cost/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Countertop Installation Cost 2026 | Seattle Price Guide',
+  description: 'Complete guide to countertop installation costs in Seattle for 2026. Pricing for quartz, granite, marble, butcher block, and laminate. Includes labor, edge profiles, and removal costs.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-20',
+  dateModified: '2026-03-01',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much do quartz countertops cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Quartz countertops in Seattle cost $50 to $120 per square foot installed in 2026. For a typical 40 square foot kitchen countertop, expect to pay $2,000 to $4,800 total. Premium brands like Cambria and Caesarstone fall on the higher end, while budget-friendly options from MSI start around $50 per square foot.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the cheapest countertop material to install?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Laminate is the most affordable countertop material at $10 to $30 per square foot installed. For a 40 square foot kitchen, laminate countertops cost $400 to $1,200 total. Modern laminates are far more attractive and durable than older versions, with realistic stone and wood patterns available.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does it cost to remove old countertops?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Countertop removal and disposal costs $200 to $600 in Seattle, depending on the material. Laminate is the easiest and cheapest to remove. Granite and quartz are heavier and require more labor. Tile countertops take the longest to demolish. Most countertop installers include removal in their quote if you are purchasing new countertops.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does countertop installation take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Countertop installation typically takes 1 to 2 days for the actual installation after a templating appointment. The full process from template to install usually spans 1 to 3 weeks, as the slab needs to be fabricated and cut based on your template. Laminate and butcher block countertops can often be installed in a single day.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does countertop installation include the sink cutout?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, most professional countertop quotes include standard sink and faucet cutouts. Additional cutouts for soap dispensers, cooktop openings, or unusual configurations may incur extra charges of $100 to $300 each. Undermount sink installation is typically included, while farmhouse sink cutouts may cost extra due to added complexity.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Countertop Installation Cost 2026 | Seattle Price Guide"
+  description="How much do new countertops cost in Seattle in 2026? Quartz $50-120/sqft, granite $40-100, marble $75-200. Complete pricing guide with labor, edge profiles, and removal costs."
+  canonical={`${SITE.url}/cost-guides/countertop-installation-cost/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-20', modifiedTime: '2026-03-01', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Countertop Installation Cost 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Everything you need to know about countertop prices in Seattle. From quartz and granite to marble and laminate, get accurate pricing for every material and installation detail.
+        </p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-01">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>11 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article Content -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+
+        <!-- Main Content -->
+        <article class="lg:col-span-8 prose-custom">
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Countertop Costs Per Square Foot (Installed)</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Budget</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$10 - $40</p>
+                <p class="text-xs text-body-text">Laminate / Tile</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Mid-Range</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">$50 - $120</p>
+                <p class="text-xs text-body-text">Quartz / Granite</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Premium</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$75 - $200+</p>
+                <p class="text-xs text-body-text">Marble / Quartzite</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              New countertops are one of the highest-impact upgrades you can make to your kitchen or bathroom. They anchor the visual design, affect daily functionality, and significantly influence your home's resale value. In the Seattle area, <a href="/services/countertop-installation/" class="text-accent hover:underline">countertop installation</a> costs vary widely depending on the material you choose, the amount of counter space, edge profile, and any additional features like integrated sinks or waterfall edges.
+            </p>
+            <p>
+              This guide covers every major countertop material available in the Seattle market, including detailed per-square-foot pricing, labor costs, edge profile options, and removal and disposal fees. All pricing reflects 2026 market rates from fabricators and installers in the Puget Sound region.
+            </p>
+            <p>
+              A typical Seattle kitchen has 30 to 50 square feet of countertop surface. At mid-range quartz pricing, that translates to $2,500 to $5,000 installed. But material choice creates dramatic differences — the same kitchen could cost $500 in laminate or $10,000+ in premium marble. Let's break down every option.
+            </p>
+          </div>
+
+          <!-- Cost by Material -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Countertop Cost by Material</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              Here's what each countertop material costs per square foot installed in Seattle, including templating, fabrication, and professional installation:
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Material</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Per Sq Ft (Installed)</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">40 Sq Ft Kitchen</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Best For</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Laminate</td>
+                    <td class="px-4 py-3 text-sm">$10 - $30</td>
+                    <td class="px-4 py-3 text-sm">$400 - $1,200</td>
+                    <td class="px-4 py-3 text-sm">Budget-friendly updates, rentals</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Butcher Block</td>
+                    <td class="px-4 py-3 text-sm">$30 - $70</td>
+                    <td class="px-4 py-3 text-sm">$1,200 - $2,800</td>
+                    <td class="px-4 py-3 text-sm">Warm aesthetic, islands, prep areas</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Granite</td>
+                    <td class="px-4 py-3 text-sm">$40 - $100</td>
+                    <td class="px-4 py-3 text-sm">$1,600 - $4,000</td>
+                    <td class="px-4 py-3 text-sm">Natural stone beauty, heat resistance</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Quartz</td>
+                    <td class="px-4 py-3 text-sm">$50 - $120</td>
+                    <td class="px-4 py-3 text-sm">$2,000 - $4,800</td>
+                    <td class="px-4 py-3 text-sm">Low maintenance, consistent patterns</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Marble</td>
+                    <td class="px-4 py-3 text-sm">$75 - $200</td>
+                    <td class="px-4 py-3 text-sm">$3,000 - $8,000</td>
+                    <td class="px-4 py-3 text-sm">Luxury aesthetic, baking, classic style</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Quartzite</td>
+                    <td class="px-4 py-3 text-sm">$80 - $200</td>
+                    <td class="px-4 py-3 text-sm">$3,200 - $8,000</td>
+                    <td class="px-4 py-3 text-sm">Natural stone with quartz durability</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Material Deep Dives -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Material Breakdown: What You Need to Know</h2>
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Quartz (Engineered Stone)</h3>
+                  <span class="font-bold text-accent">$50 - $120/sq ft</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Quartz is the most popular countertop choice in Seattle kitchens, and for good reason. It's engineered from natural quartz crystals and resin, making it non-porous, stain-resistant, and maintenance-free — no sealing required. Popular brands in the Seattle market include Cambria (made in Minnesota), Caesarstone, Silestone, and MSI. Quartz comes in hundreds of colors and patterns, including stunning marble-look designs that eliminate the maintenance concerns of real marble. Budget options from MSI start around $50/sq ft; premium Cambria patterns run $90-$120/sq ft.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Granite</h3>
+                  <span class="font-bold text-accent">$40 - $100/sq ft</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Granite was the gold standard for decades and remains a popular choice for its natural beauty and heat resistance. Each slab is unique, offering one-of-a-kind patterns. Common colors in Seattle homes include White Ice, Colonial White, Steel Gray, and Black Pearl. Granite requires annual sealing to prevent staining — a consideration in Seattle's damp climate. Entry-level granites start around $40/sq ft, while exotic or rare varieties can exceed $100/sq ft installed.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Marble</h3>
+                  <span class="font-bold text-accent">$75 - $200/sq ft</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Marble is the ultimate luxury countertop material. Carrara, Calacatta, and Statuario are the most sought-after varieties in Seattle's high-end kitchens. Marble is softer and more porous than granite or quartz, which means it etches from acidic foods and stains more easily. It requires regular sealing and careful maintenance. Many Seattle homeowners compromise by using marble only on the island or a baking station while choosing quartz for the main work surfaces.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Butcher Block</h3>
+                  <span class="font-bold text-accent">$30 - $70/sq ft</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Butcher block brings warmth and character that no stone can replicate. Maple is the most popular species for its hardness and light color. Walnut is a premium choice for a rich, dark look. Butcher block is popular as an island topping or secondary counter surface in Seattle kitchens. It requires periodic oiling and is susceptible to water damage if not properly maintained — an important consideration in moisture-heavy PNW kitchens. Many homeowners pair a butcher block island with quartz perimeter counters.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Laminate</h3>
+                  <span class="font-bold text-accent">$10 - $30/sq ft</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Modern laminate countertops have come a long way. Brands like Formica and Wilsonart now offer realistic stone, marble, and wood-grain patterns with improved durability. Laminate is the most budget-friendly option and is ideal for rental properties, secondary kitchens, or budget-conscious updates. It's lightweight, easy to install, and comes in hundreds of patterns. The main drawback is that it can scorch, chip, and is not as resilient as stone surfaces.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Labor and Installation Costs -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Installation Labor Costs</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The per-square-foot prices above include standard installation labor. However, understanding what goes into that labor helps explain the pricing and identify areas where costs can vary.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Templating ($150 - $300)</h3>
+              <p>
+                Before fabrication, a technician visits your home to create a precise digital template of your countertop layout using laser measurement tools. This ensures a perfect fit. Most fabricators include templating in their quote, but some charge separately. Templates typically take 1 to 2 hours to complete.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Fabrication (Included in Per-Sq-Ft Price)</h3>
+              <p>
+                Stone slabs are cut, polished, and finished at the fabrication shop based on your template. This includes all sink cutouts, edge profiling, and surface finishing. Fabrication takes 5 to 10 business days for most materials. Complex projects with multiple seams, unusual angles, or waterfall edges take longer.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Installation ($300 - $800)</h3>
+              <p>
+                Professional installation involves delivering the fabricated countertops, setting them on the cabinets with proper support, making final adjustments for fit, seaming multi-piece layouts, and applying adhesive and caulk. Standard kitchen installations take 2 to 4 hours. Larger projects or complex layouts may require a full day.
+              </p>
+            </div>
+          </div>
+
+          <!-- Edge Profiles -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Edge Profile Pricing</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              The edge profile is the shape of the finished edge of your countertop. Standard edges are typically included in the base price, while decorative profiles cost extra:
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Edge Profile</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Additional Cost Per LF</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Style</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Eased / Straight</td>
+                    <td class="px-4 py-3 text-sm">Included (standard)</td>
+                    <td class="px-4 py-3 text-sm">Modern, clean</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Beveled</td>
+                    <td class="px-4 py-3 text-sm">$5 - $10</td>
+                    <td class="px-4 py-3 text-sm">Transitional, subtle angle</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Bullnose (Half or Full)</td>
+                    <td class="px-4 py-3 text-sm">$10 - $20</td>
+                    <td class="px-4 py-3 text-sm">Traditional, rounded</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Ogee</td>
+                    <td class="px-4 py-3 text-sm">$15 - $30</td>
+                    <td class="px-4 py-3 text-sm">Classic, ornate S-curve</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Mitered / Waterfall</td>
+                    <td class="px-4 py-3 text-sm">$40 - $80</td>
+                    <td class="px-4 py-3 text-sm">Thick, luxurious, modern</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-body-text leading-relaxed text-sm">
+              For a kitchen with 20 linear feet of exposed edge, upgrading from eased to bullnose adds approximately $200-$400. A mitered edge that creates a thick countertop look adds $800-$1,600 for the same length.
+            </p>
+          </div>
+
+          <!-- Removal Costs -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Old Countertop Removal and Disposal</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Unless you're installing countertops in a new construction or recently gutted kitchen, you'll need to remove the existing countertops. Here's what removal costs in Seattle:
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$200 - $400</p>
+                  <p class="text-sm text-body-text">Laminate or butcher block removal</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$300 - $600</p>
+                  <p class="text-sm text-body-text">Granite, quartz, or marble removal</p>
+                </div>
+              </div>
+              <p>
+                Many countertop installers include removal in their quote when you purchase new countertops. Always ask whether removal and disposal is included before signing a contract. Tile countertop removal is particularly labor-intensive and can cost $400-$800 due to the demolition required and potential damage to underlying cabinets.
+              </p>
+            </div>
+          </div>
+
+          <!-- Seattle Market Info -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Seattle Countertop Market: Where to Shop</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle has a robust network of stone yards, fabricators, and countertop suppliers. Here are some market-specific considerations for Puget Sound homeowners:
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Supply and Fabrication</h3>
+              <p>
+                The Seattle metro area has several large stone yards where you can view and select full slabs in person. Visiting a slab yard is highly recommended for natural stone (granite, marble, quartzite), as each slab is unique and photos don't do them justice. For engineered quartz, showroom samples are typically representative since the material is manufactured for consistency.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Lead Times</h3>
+              <p>
+                In the Seattle market, expect 2 to 4 weeks from template to installation for most materials. During peak season (spring and summer), lead times can stretch to 4 to 6 weeks. Exotic or specialty stones that need to be ordered may take 6 to 8 weeks. Laminate and butcher block countertops have the shortest lead times, often available within a week.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Working with a Full-Service Remodeler</h3>
+              <p>
+                When you work with a full-service remodeling company like Kitchen & Bathroom Remodeling Pros, countertop selection, procurement, and installation are handled as part of your overall project. This eliminates the hassle of coordinating between suppliers, fabricators, and installers — and our trade relationships often result in better pricing than retail. <a href="/services/countertop-installation/" class="text-accent hover:underline">Learn more about our countertop installation services</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much do quartz countertops cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Quartz countertops in Seattle cost $50 to $120 per square foot installed in 2026. For a typical 40 square foot kitchen countertop, expect to pay $2,000 to $4,800 total. Premium brands like Cambria and Caesarstone fall on the higher end, while budget-friendly options from MSI start around $50 per square foot.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the cheapest countertop material to install?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Laminate is the most affordable countertop material at $10 to $30 per square foot installed. For a 40 square foot kitchen, laminate countertops cost $400 to $1,200 total. Modern laminates are far more attractive and durable than older versions, with realistic stone and wood patterns available.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does it cost to remove old countertops?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Countertop removal and disposal costs $200 to $600 in Seattle, depending on the material. Laminate is the easiest and cheapest to remove. Granite and quartz are heavier and require more labor. Most countertop installers include removal in their quote if you are purchasing new countertops.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does countertop installation take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Countertop installation typically takes 1 to 2 days for the actual installation after a templating appointment. The full process from template to install usually spans 1 to 3 weeks, as the slab needs to be fabricated and cut based on your template.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Does countertop installation include the sink cutout?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, most professional countertop quotes include standard sink and faucet cutouts. Additional cutouts for soap dispensers, cooktop openings, or unusual configurations may incur extra charges of $100 to $300 each. Undermount sink installation is typically included.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA in article -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Get an Exact Price for Your Countertops</h2>
+            <p class="text-white/80 mb-6">Every kitchen is unique. Get a free, personalized countertop estimate including material, fabrication, and installation.</p>
+            <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your countertop project.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/cabinet-refacing-cost/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing Cost Guide</a></li>
+                <li><a href="/blog/quartz-vs-granite-countertops-seattle/" class="text-accent hover:underline text-sm font-medium">Quartz vs Granite: Which Is Best?</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Our Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-3">See Our Work</h3>
+              <p class="text-body-text text-sm mb-4">Browse completed countertop installations in the Seattle area.</p>
+              <Button href="/gallery/" variant="outline" size="sm" class="w-full">View Gallery</Button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

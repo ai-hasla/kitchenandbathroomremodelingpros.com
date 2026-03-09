@@ -1,0 +1,91 @@
+---
+import Container from '@/components/ui/Container.astro';
+
+const steps = [
+  {
+    number: 1,
+    title: 'In-Home Consultation (Free, 60–90 Min)',
+    description: "We come to you. We'll measure your space, check your plumbing and electrical, look at your home's existing conditions, and talk through your wishlist and budget — honestly, including what's realistic and what's not.",
+  },
+  {
+    number: 2,
+    title: 'Design & Material Selection',
+    description: "You'll get a 3D rendering so you can see the layout, cabinet style, countertop material, and finishes before anything gets ordered. We visit showrooms with you if you want — or handle it all if you'd rather not.",
+  },
+  {
+    number: 3,
+    title: 'Fixed-Price Contract',
+    description: "You get a line-item proposal: every cabinet, tile, fixture, and labor hour spelled out. No allowances, no TBDs. The number on the contract is the number you pay. Period.",
+  },
+  {
+    number: 4,
+    title: 'Build (Materials Arrive Before Demo Day)',
+    description: "We order all materials before swinging a hammer — so your project isn't stalled waiting on a backordered sink. Your lead carpenter is on-site daily, and you'll get a photo update every evening.",
+  },
+  {
+    number: 5,
+    title: 'Walkthrough & Punch List',
+    description: "We walk every inch together with a punch list. Crooked outlet cover? We fix it. Caulk line not perfect? We redo it. We don't collect final payment until you're genuinely happy — not just \"fine with it.\"",
+  },
+];
+---
+
+<section class="bg-white py-16 lg:py-24">
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-12 lg:mb-16" data-reveal>
+      <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">
+        How We Work (and Why It's Different)
+      </h2>
+      <p class="text-body-text text-lg max-w-2xl mx-auto">
+        Most remodeling horror stories come from poor communication and surprise costs. Here's how we prevent both.
+      </p>
+    </div>
+
+    <!-- Steps - Desktop: horizontal timeline, Mobile: vertical timeline -->
+    <div class="hidden lg:grid lg:grid-cols-5 gap-0" data-reveal-stagger>
+      {steps.map((step, index) => (
+        <div class="flex flex-col items-center text-center relative">
+          <!-- Connection line (between steps) -->
+          {index < steps.length - 1 && (
+            <div class="absolute top-6 left-[calc(50%+24px)] right-[calc(-50%+24px)] h-0.5 bg-border z-0"></div>
+          )}
+
+          <!-- Step number circle -->
+          <div class="w-12 h-12 bg-accent text-white font-bold rounded-full flex items-center justify-center text-lg relative z-10 mb-4 shrink-0">
+            {step.number}
+          </div>
+
+          <!-- Step content -->
+          <h3 class="font-semibold text-dark-text mb-2">{step.title}</h3>
+          <p class="text-sm text-muted leading-relaxed max-w-[200px]">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Steps - Mobile: vertical timeline -->
+    <div class="lg:hidden space-y-0" data-reveal-stagger>
+      {steps.map((step, index) => (
+        <div class="flex gap-4 relative">
+          <!-- Vertical line and circle column -->
+          <div class="flex flex-col items-center">
+            <!-- Step number circle -->
+            <div class="w-12 h-12 bg-accent text-white font-bold rounded-full flex items-center justify-center text-lg relative z-10 shrink-0">
+              {step.number}
+            </div>
+            <!-- Vertical connector line -->
+            {index < steps.length - 1 && (
+              <div class="w-0.5 bg-border flex-1 min-h-8"></div>
+            )}
+          </div>
+
+          <!-- Step content -->
+          <div class={`pt-2.5 ${index < steps.length - 1 ? 'pb-8' : 'pb-0'}`}>
+            <h3 class="font-semibold text-dark-text mb-1">{step.title}</h3>
+            <p class="text-sm text-muted leading-relaxed">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

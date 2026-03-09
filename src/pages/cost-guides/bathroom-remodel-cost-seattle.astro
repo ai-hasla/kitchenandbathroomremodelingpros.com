@@ -1,0 +1,449 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Bathroom Remodel Cost Seattle', href: '/cost-guides/bathroom-remodel-cost-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Bathroom Remodel Cost Seattle 2026 | Complete Price Guide',
+  description: 'Comprehensive guide to bathroom remodeling costs in Seattle for 2026. From simple updates to luxury spa-like renovations, get detailed pricing and cost breakdowns.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-01-15',
+  dateModified: '2026-03-01',
+  image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a bathroom remodel cost in Seattle in 2026?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From our project data across 200+ bathroom remodels in the Seattle area: a cosmetic refresh runs $8,500-$15,000, a mid-range full remodel costs $18,000-$35,000, and a high-end spa-style renovation runs $40,000-$65,000+. Seattle bathroom remodels cost 15-20% more than national averages because labor is $65-95/hour, waterproofing standards are critical in our climate, and many older PNW homes need plumbing and electrical updates once walls are opened.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a walk-in shower cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A tub-to-shower conversion with a basic tiled walk-in and standard glass door costs $5,500-$8,500 installed. A mid-range walk-in with porcelain tile, a frameless glass enclosure, linear drain, and rain showerhead runs $9,000-$14,000. A premium walk-in with natural stone tile, body jets, multiple showerheads, a bench seat, and niche shelving costs $15,000-$22,000. The frameless glass enclosure alone runs $1,800-$3,500 depending on size and configuration.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the most expensive part of a bathroom remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Labor takes the biggest share — 40-45% of total cost on a typical Seattle bathroom remodel. Bathrooms are labor-intensive because of tile work, waterproofing, plumbing connections, and the tight quarters involved. After labor, the shower or tub area is the largest material expense at $3,500-$12,000, followed by the vanity and countertop at $1,500-$5,500.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a bathroom remodel take in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A cosmetic refresh takes 5-8 days. A mid-range remodel with new tile, vanity, and fixtures takes 2-3 weeks. A full gut renovation with layout changes runs 4-6 weeks. Add 2-4 weeks for SDCI permit review if your project involves plumbing relocation or electrical work. Tile work is the biggest time factor — a fully tiled shower with floor-to-ceiling tile requires 3-5 days for the tile setter alone, plus cure time for mortar and grout.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I remodel a bathroom for under $10,000 in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, but you need to be strategic. For under $10,000, you can replace the vanity and countertop ($1,200-$2,500), install a new toilet ($350-$650), update all fixtures and hardware ($400-$900), add new lighting ($300-$600), paint everything ($400-$700), and either refinish the tub ($450-$800) or install a new tub surround ($1,200-$2,000). You need to keep all plumbing in its current location and skip the tile floor — LVP at $4-8/sqft is a waterproof alternative that looks great.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does a bathroom remodel increase home value in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Per the 2025 Cost vs. Value Report, a mid-range bathroom remodel in the Pacific region recoups 62-70% of cost in added home value. But the real value is in marketability — Seattle Realtors consistently tell us that homes with outdated bathrooms sit on the market 2-4 weeks longer. If your home has only one bathroom, adding a second (even a small half-bath at $12,000-$18,000) can increase home value by 8-10%.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Bathroom Remodel Cost Seattle 2026 | Complete Price Guide"
+  description="How much does a bathroom remodel cost in Seattle in 2026? Average costs from $5,000 to $45,000+. Detailed breakdowns for showers, vanities, tile, and more."
+  canonical={`${SITE.url}/cost-guides/bathroom-remodel-cost-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-01-15', modifiedTime: '2026-03-01', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Bathroom Remodel Cost Seattle 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Based on 200+ bathroom remodels we've completed across the Seattle metro since 2012. Real numbers from real projects — not generic estimates pulled from national databases.
+        </p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-01">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>11 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article Content -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+
+        <!-- Main Content -->
+        <article class="lg:col-span-8 prose-custom">
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">What Seattle Bathrooms Actually Cost in 2026</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Cosmetic Refresh</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$8.5K - $15K</p>
+                <p class="text-xs text-body-text">New vanity, fixtures, paint, lighting</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Mid-Range</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">$18K - $35K</p>
+                <p class="text-xs text-body-text">New tile, shower, vanity, everything</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">High-End Spa</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$40K - $65K+</p>
+                <p class="text-xs text-body-text">Freestanding tub, custom everything</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              After 200+ <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodels across the Seattle metro</a>, we've learned one thing: the "average bathroom remodel cost" you find online is almost always wrong for this market. National databases say $10,000-$15,000. Our actual Seattle project average is $24,500 for a mid-range full remodel. The gap exists because most cost data doesn't account for Seattle's $65-95/hour trade labor, the waterproofing demands of the PNW climate, or the surprises you find inside the walls of a 1940s Craftsman.
+            </p>
+            <p>
+              This guide reflects what we've actually charged and what our clients have actually paid. We track every tile order, every plumbing invoice, every permit fee. If you're planning a bathroom remodel anywhere in the Seattle-Bellevue-Tacoma metro, these are the numbers you should plan around — not the national average that assumes your house was built in 2005 and your plumber charges $40/hour.
+            </p>
+            <p>
+              We're going to break down costs by project scope, by component, and by bathroom type. We'll also tell you where to spend, where to save, and which upgrades actually matter for your daily life versus which ones are just nice to look at on Pinterest.
+            </p>
+          </div>
+
+          <!-- Costs by Scope -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Bathroom Remodel Costs by Project Scope</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              These ranges are pulled from our 2024-2026 project invoices. They reflect what Seattle-area homeowners are actually paying right now, including materials, labor, permits, and our project management:
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Scope</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Cost Range</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Timeline</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">What's Included</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Cosmetic Refresh</td>
+                    <td class="px-4 py-3 text-sm">$8,500 - $15,000</td>
+                    <td class="px-4 py-3 text-sm">5-8 days</td>
+                    <td class="px-4 py-3 text-sm">New vanity, toilet, fixtures, mirror, lighting, paint, tub refinish or surround</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Mid-Range Remodel</td>
+                    <td class="px-4 py-3 text-sm">$18,000 - $35,000</td>
+                    <td class="px-4 py-3 text-sm">2-3 weeks</td>
+                    <td class="px-4 py-3 text-sm">New tile floor and shower, vanity with stone top, toilet, all fixtures, same layout</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Full Gut Renovation</td>
+                    <td class="px-4 py-3 text-sm">$30,000 - $48,000</td>
+                    <td class="px-4 py-3 text-sm">4-6 weeks</td>
+                    <td class="px-4 py-3 text-sm">Everything to the studs, layout changes, plumbing relocation, new subfloor, premium materials</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">High-End Spa Bath</td>
+                    <td class="px-4 py-3 text-sm">$40,000 - $65,000+</td>
+                    <td class="px-4 py-3 text-sm">5-8 weeks</td>
+                    <td class="px-4 py-3 text-sm">Freestanding tub, custom frameless glass shower, heated floors, body jets, premium stone, built-in storage</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-body-text leading-relaxed">
+              The mid-range remodel at $18,000-$35,000 is our bread and butter — about 65% of the bathrooms we do fall in this range. Powder rooms (half-baths) with no shower or tub usually come in at $7,500-$14,000. Master bathrooms with separate shower and tub, double vanity, and premium tile push into the $35,000-$65,000 range. The biggest variable isn't room size — it's the tile. A bathroom with $5/sqft porcelain costs dramatically less than one with $22/sqft marble.
+            </p>
+          </div>
+
+          <!-- Cost Breakdown by Component -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Cost Breakdown by Component</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              Here's exactly how the money breaks down on a typical Seattle bathroom remodel. These percentages come from our average mid-range project ($18K-$35K):
+            </p>
+
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Labor</h3>
+                  <span class="font-bold text-accent">40-45% of total project</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Bathrooms are the most labor-intensive room to remodel, period. Everything happens in a tight space: demolition, plumbing rough-in, electrical, waterproofing membrane, cement board, tile setting, grouting, vanity installation, trim work, painting. In Seattle, tradespeople earn $65-95/hour. A tile setter working on a shower with floor-to-ceiling tile needs 3-5 days just for the tile portion. On a $28,000 mid-range project, labor runs $11,000-$13,000. There's no way around this — cheap labor means shortcuts, and shortcuts in a bathroom mean water damage in 3 years.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Shower / Tub</h3>
+                  <span class="font-bold text-accent">$3,500 - $14,000 (15-25%)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">This is typically the centerpiece. A standard tub-shower combo replacement (acrylic surround, standard Moen or Delta valve, chrome finish) runs $3,500-$5,500. A <a href="/services/shower-remodeling/" class="text-accent hover:underline">tiled walk-in shower</a> with a frameless glass enclosure, linear drain, and rain showerhead costs $9,000-$14,000. The frameless glass alone runs $1,800-$3,500 — it's the single most expensive item in most shower builds. A freestanding soaking tub (Woodbridge, Vanity Art, or similar) adds $800-$2,200 for the fixture plus $600-$1,200 for freestanding faucet and installation.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Tile</h3>
+                  <span class="font-bold text-accent">$2,500 - $9,000 (12-22%)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed"><a href="/services/tile-installation/" class="text-accent hover:underline">Tile is where costs vary wildly</a> — and it's the #1 place where bathrooms go over budget. Ceramic tile runs $4-$8/sqft installed. Porcelain is $7-$14/sqft. Marble is $18-$35/sqft. A typical 50-sqft bathroom floor in porcelain tile costs $500-$800 for materials and labor. But when you add shower walls (60-90 sqft), a tiled niche, and possibly wainscoting — you can easily need 150-200 sqft of tile total. At marble prices, that's $4,000-$7,000 in tile material alone. Our advice: use premium tile as an accent (shower feature wall, floor pattern) and standard porcelain elsewhere.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Vanity & Countertop</h3>
+                  <span class="font-bold text-accent">$1,500 - $5,500 (8-14%)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">A quality <a href="/services/vanity-installation/" class="text-accent hover:underline">36" single vanity</a> with a quartz or cultured marble top costs $1,200-$2,800 installed. A 60" double vanity runs $2,000-$4,500. Floating (wall-mounted) vanities are the most popular style in Seattle right now and typically cost $1,500-$3,800. Custom floating vanities with solid wood and stone tops can hit $5,000-$7,000. Don't forget the mirror — a frameless or LED mirror runs $200-$600, and a recessed medicine cabinet is $300-$800 installed.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Plumbing</h3>
+                  <span class="font-bold text-accent">$1,200 - $4,500 (5-12%)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">If you're keeping everything in its current location, plumbing costs $1,200-$2,200 for new valve installation, supply line connections, and drain hookups. Moving a toilet costs $700-$1,500. Relocating a shower drain: $800-$2,000 (especially on concrete slab). In older Seattle homes with galvanized supply lines, we strongly recommend replacing them with copper or PEX while the walls are open — that's an extra $1,200-$3,000, but it prevents future leaks and improves water pressure immediately. A new toilet (we recommend Toto Drake or Kohler Cimarron) costs $350-$700 for the fixture plus $200-$350 for installation.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Electrical & Lighting</h3>
+                  <span class="font-bold text-accent">$600 - $2,800 (3-8%)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">This isn't optional in Seattle — our climate demands proper electrical work. A high-CFM exhaust fan with humidity sensor (Panasonic WhisperGreen is our go-to) costs $350-$650 installed. GFCI outlets are code-required and run $150-$250 per outlet. Vanity lighting: $200-$600 for the fixture plus installation. Recessed shower lighting (must be wet-rated): $150-$350 per can. Heated floor wiring (Nuheat or SunTouch mats) adds $600-$1,600 including thermostat, depending on bathroom size — and it's worth every penny in this climate.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Fixtures & Hardware</h3>
+                  <span class="font-bold text-accent">$500 - $3,000 (3-8%)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Faucets, showerheads, towel bars, robe hooks, TP holders, shower niches — the details that finish the room. A solid mid-range set from Delta or Moen (shower valve, showerhead, faucet, towel bar, robe hook, TP holder) runs $600-$1,200 in matching finishes. Kohler or Brizo mid-tier pushes to $1,200-$2,200. Premium fixtures from Grohe, Rohl, or Waterworks start at $2,500 and go well past $5,000. Our take: brushed nickel and matte black are the most popular finishes in Seattle. Polished chrome works too. Avoid trendy finishes you might tire of — this hardware should last 15-20 years.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bathroom Types and Costs -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Cost by Bathroom Type</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Half-Bath / Powder Room ($7,500 - $16,000)</h3>
+              <p>
+                Powder rooms are the most cost-effective bathroom to remodel because there's no shower or tub. You're looking at a vanity, toilet, faucet, mirror, light fixture, paint, and flooring — that's it. Because the room is small (typically 20-30 sqft), this is where you can make bold choices without blowing the budget: a $25/sqft handmade tile accent wall only costs $300-$500 in materials. A floating vanity with a vessel sink makes a 25-sqft room feel modern and spacious. We've done gorgeous powder room remodels in Seattle for $8,000-$12,000 that completely transform the impression guests get of the home.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Hall / Guest Bathroom ($15,000 - $30,000)</h3>
+              <p>
+                The hall bath is the workhorse — it gets used by family, kids, and guests every day. Most Seattle homes built before 1990 have a tub-shower combo here, and most homeowners keep that layout because the tub serves double duty for bathing kids. A mid-range remodel means all new tile in the tub surround and floor (porcelain — skip marble here, it can't take the abuse), a new vanity with stone top, new toilet, updated faucets and showerhead, proper exhaust fan, and fresh paint. Durability matters most in this room. We recommend porcelain tile rated PEI 4 or higher for floors, commercial-grade faucets from Delta or Moen, and a toilet with a powerful flush like the Toto Drake. Budget $18,000-$26,000 for a solid mid-range guest bath remodel in Seattle.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Master Bathroom ($25,000 - $55,000+)</h3>
+              <p>
+                This is where Seattle homeowners invest the most — and where we see the biggest transformations. The most requested project is converting an old tub-shower combo into a separate walk-in shower and freestanding tub. That conversion alone runs $12,000-$22,000 depending on tile selections and glass enclosure type. Add a 60" double vanity with quartz top ($2,500-$5,000), heated tile floors ($600-$1,600), a linen tower or built-in storage ($800-$2,000), and premium fixtures throughout, and you're looking at $35,000-$55,000 for a master bath that feels like a private retreat. We've built plenty of spa-style master baths in Capitol Hill, Ballard, and Bellevue in the $45,000-$65,000 range with body jets, towel warmers, rain showerheads, and ambient LED lighting.
+              </p>
+            </div>
+          </div>
+
+          <!-- Seattle-Specific Factors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Seattle-Specific Considerations</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Moisture Is the Enemy — And Seattle Has Plenty of It</h3>
+              <p>
+                We see the consequences of poor bathroom ventilation every week: black mold creeping up grout lines, paint peeling within a year of application, and wood rot in the framing that costs thousands to repair. In a climate where outdoor humidity regularly exceeds 80%, a bathroom without a proper exhaust fan is a ticking time bomb. We install a Panasonic WhisperGreen or equivalent on every single project — 110+ CFM with a humidity sensor that runs automatically. That's $350-$650 installed and it's non-negotiable. Per Washington State's energy code (WAC 51-11C), bathroom exhaust fans must vent to the exterior (not into the attic, which we still find in older homes). If yours currently vents into the attic, we'll reroute it as part of the remodel.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Waterproofing: Where We Absolutely Refuse to Cut Corners</h3>
+              <p>
+                Every shower we build gets a full Schluter Kerdi membrane or equivalent liquid-applied waterproofing system on all wet walls and the shower pan. This adds $800-$1,500 in materials and labor to the shower build, but it's what separates a 20-year shower from a 5-year shower. When we open up older Seattle bathrooms, we find failed waterproofing roughly 3 out of 10 times — water behind the tile, soft subfloor, sometimes mold in the framing. Budget a 10-15% contingency fund for any home built before 1985. If we find damage, we'll show you, explain the repair, and give you a clear price before proceeding.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Galvanized Plumbing: Fix It Now or Fix It Later (For More)</h3>
+              <p>
+                If your Seattle home was built before 1965, there's a good chance the supply lines are galvanized steel. Galvanized pipes corrode from the inside out, restricting water flow and eventually leaking. When we open walls for a bathroom remodel and find galvanized supply lines, we recommend replacing them with copper or PEX. That's $1,200-$3,000 for the bathroom's supply lines, but it prevents a $5,000-$15,000 water damage event down the road. Cast iron drain pipes in homes from the same era may also need attention — a cracked cast iron drain under the floor can run $1,500-$4,000 to replace. We'd rather catch these issues while the walls are already open than have you deal with them five years after your beautiful new bathroom is finished.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Heated Floors: The Upgrade Every Seattle Client Loves</h3>
+              <p>
+                Of all the upgrades we offer, heated bathroom floors have the highest satisfaction rate. It's not even close. An electric radiant heat mat from Nuheat or SunTouch costs $600-$1,600 installed (including a programmable thermostat), depending on bathroom size. It adds roughly $25-$40/year to your electricity bill. Set the thermostat to warm up 30 minutes before your alarm goes off, and stepping onto that tile floor on a 38-degree, pitch-dark Seattle morning in January goes from miserable to pleasant. Clients who skip it during planning almost always wish they hadn't. If there's one thing to add to your budget, this is it.
+              </p>
+            </div>
+          </div>
+
+          <!-- Money-Saving Tips -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Where to Spend and Where to Save (Advice From People Who Do This Every Day)</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">1.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Don't Move the Toilet</h3>
+                  <p>Moving a toilet to a new location means relocating the drain line — that's $700-$1,500 in plumbing work alone, and on a slab foundation it means cutting concrete. Moving a shower drain is $800-$2,000. Unless the current layout genuinely doesn't work, keep fixtures where they are and put the savings toward better tile or a frameless glass enclosure. You can completely transform a bathroom without moving a single drain.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">2.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Refinish the Tub Instead of Replacing It</h3>
+                  <p>If your cast iron or steel tub is structurally sound but looks rough, professional refinishing costs $450-$800 and lasts 10-15 years. Compare that to <a href="/services/bathtub-replacement/" class="text-accent hover:underline">tub removal and replacement</a> at $1,800-$4,000 (plus tile work to repair the surround walls). The old cast iron tubs in Seattle's pre-war homes are actually superior products — deeper, quieter, and better insulated than most modern tubs. Refinish them and put the $2,000+ savings elsewhere.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">3.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Use Porcelain Tile That Looks Like Marble</h3>
+                  <p>Modern porcelain tile has gotten incredibly realistic. Brands like MSI, Daltile, and Florida Tile make large-format porcelain that mimics Carrara or Calacatta marble almost perfectly. At $7-$14/sqft installed versus $18-$35/sqft for real marble, you save 50-60% and get a product that never needs sealing, won't etch from soap, and handles moisture without staining. In a Seattle bathroom where humidity is always a concern, porcelain is actually the smarter material choice, not just the cheaper one.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">4.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Buy a Stock Vanity, Then Upgrade the Top</h3>
+                  <p>A 36" stock vanity from a quality brand costs $500-$1,200. A custom vanity in the same size runs $2,500-$5,000. The trick: buy the stock vanity in a clean design and pair it with a quartz or stone top from a local fabricator ($300-$600 for a bathroom-sized piece). The result looks custom for half the price. Stock vanities in standard sizes (24", 30", 36", 48", 60") are also in stock, meaning no 6-8 week wait for custom fabrication.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">5.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Tile Strategically, Not Everywhere</h3>
+                  <p>Floor-to-ceiling tile in a shower looks stunning, but it's expensive — a fully tiled shower enclosure (walls, ceiling, bench, niche) with mid-range porcelain runs $3,500-$5,500 in materials and labor. If budget is tight, tile the shower walls to 7 feet and paint above with a high-quality moisture-resistant paint. Or use a premium feature tile on the back wall of the shower (the wall you face) and standard tile on the side walls. Nobody will notice the cheaper tile on the side walls once the glass door is closed.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROI -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What a Bathroom Remodel Does for Your Home's Value</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Per the 2025 Cost vs. Value Report for the Pacific region, here's what bathroom remodels return at resale:
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">62-70%</p>
+                  <p class="text-sm text-body-text">ROI on mid-range bathroom remodels</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">56-64%</p>
+                  <p class="text-sm text-body-text">ROI on upscale bathroom remodels</p>
+                </div>
+              </div>
+              <p>
+                Those percentages look lower than kitchen remodels, but here's what the data misses: bathrooms have a disproportionate effect on how fast your home sells. Multiple Seattle-area Realtors we work with confirm that homes with dated bathrooms sit on the market 2-4 weeks longer than comparable homes with updated baths. In Seattle's market, that longer listing time often leads to price reductions that exceed the cost of the remodel.
+              </p>
+              <p>
+                If your home has only one bathroom, adding a second one — even a compact half-bath carved out of a closet or utility area — can increase home value by 8-10%. At Seattle's median home price, that's $60,000-$85,000 in added value for a $12,000-$18,000 project. It's one of the highest-ROI improvements you can make.
+              </p>
+              <p>
+                But honestly? Most of our clients aren't remodeling their bathrooms to sell. They're doing it because they're tired of looking at pink tile from 1963, or because the shower leaks, or because stepping onto an ice-cold floor every morning for 15 years has finally gotten to them. The financial return is a bonus — the real return is using a space you actually enjoy, twice a day, every single day.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a bathroom remodel cost in Seattle in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From our project data across 200+ bathroom remodels: a cosmetic refresh runs $8,500-$15,000 (new vanity, fixtures, paint, lighting). A mid-range full remodel costs $18,000-$35,000 (new tile, shower, vanity, toilet, everything). A high-end spa-style renovation runs $40,000-$65,000+. Seattle costs 15-20% more than national averages because of $65-95/hour trade labor, PNW waterproofing requirements, and surprises in older homes.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a walk-in shower cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A basic tiled walk-in with standard glass door costs $5,500-$8,500. A mid-range walk-in with porcelain tile, frameless glass enclosure, linear drain, and rain showerhead runs $9,000-$14,000. Premium builds with natural stone, body jets, and multiple showerheads cost $15,000-$22,000. The frameless glass enclosure alone is $1,800-$3,500.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the most expensive part of a bathroom remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Labor takes 40-45% of the total cost. Bathrooms are the most labor-intensive room to remodel because of tile work, waterproofing, plumbing, and tight spaces. After labor, the shower/tub area is the largest material expense ($3,500-$14,000), followed by the vanity and countertop ($1,500-$5,500). Tile is the wildcard — it can be 10% or 25% of the budget depending on your selections.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does a bathroom remodel take in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A cosmetic refresh takes 5-8 days. A mid-range remodel with new tile, shower, and vanity takes 2-3 weeks. A full gut renovation runs 4-6 weeks. Add 2-4 weeks for SDCI permit review if your project involves plumbing or electrical work. The tile portion alone takes 3-5 days for a full shower build, plus cure time.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I remodel a bathroom for under $10,000 in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, but you need to be strategic. For under $10,000 you can: replace the vanity and countertop ($1,200-$2,500), install a new toilet ($350-$650), update all fixtures and hardware ($400-$900), add new lighting ($300-$600), paint everything ($400-$700), and refinish the tub ($450-$800) or install a new surround ($1,200-$2,000). Keep all plumbing in its current location and use LVP flooring instead of tile.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Does a bathroom remodel increase home value in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A mid-range bathroom remodel recoups 62-70% of cost in added value (per the 2025 Cost vs. Value Report, Pacific region). But the bigger impact is marketability — homes with dated bathrooms sit 2-4 weeks longer on the Seattle market. If you have only one bathroom, adding a second (even a half-bath) can increase home value by 8-10%, often exceeding the $12,000-$18,000 project cost.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Want to Know Exactly What Your Bathroom Will Cost?</h2>
+            <p class="text-white/80 mb-6">Cost guides are useful for ballpark planning, but your bathroom has its own dimensions, plumbing situation, and wish list. We'll come measure, look at what's behind the walls, and give you a line-item estimate — no charge, no sales pitch.</p>
+            <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your bathroom remodel.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/shower-remodel-cost/" class="text-accent hover:underline text-sm font-medium">Shower Remodel Cost Guide</a></li>
+                <li><a href="/cost-guides/countertop-installation-cost/" class="text-accent hover:underline text-sm font-medium">Countertop Installation Cost Guide</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Our Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+                <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement</a></li>
+                <li><a href="/services/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-3">See Our Work</h3>
+              <p class="text-body-text text-sm mb-4">Browse completed bathroom remodeling projects in the Seattle area.</p>
+              <Button href="/gallery/" variant="outline" size="sm" class="w-full">View Gallery</Button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

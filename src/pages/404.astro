@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | Kitchen & Bathroom Remodeling Pros"
+  description="The page you're looking for doesn't exist. Browse our kitchen and bathroom remodeling services in Seattle."
+  noindex={true}
+  showSchema={false}
+>
+  <section class="min-h-[70vh] flex items-center justify-center bg-light pt-32 pb-20">
+    <Container class="text-center max-w-2xl">
+      <p class="text-8xl font-[family-name:var(--font-heading)] text-accent mb-4">404</p>
+      <h1 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-4">
+        Page Not Found
+      </h1>
+      <p class="text-lg text-muted mb-8">
+        Sorry, the page you're looking for doesn't exist or has been moved.
+        Let us help you find what you need.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/" variant="primary" size="lg">
+          Back to Home
+        </Button>
+        <Button href="/services/" variant="outline" size="lg">
+          View Our Services
+        </Button>
+      </div>
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+        <a href="/services/kitchen-remodeling/" class="p-4 bg-white rounded-xl border border-border hover:border-accent transition-colors group">
+          <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Kitchen Remodeling</h3>
+          <p class="text-sm text-muted mt-1">Transform your kitchen</p>
+        </a>
+        <a href="/services/bathroom-remodeling/" class="p-4 bg-white rounded-xl border border-border hover:border-accent transition-colors group">
+          <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Bathroom Remodeling</h3>
+          <p class="text-sm text-muted mt-1">Stunning bathroom renovations</p>
+        </a>
+        <a href="/get-a-quote/" class="p-4 bg-white rounded-xl border border-border hover:border-accent transition-colors group">
+          <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Get a Free Quote</h3>
+          <p class="text-sm text-muted mt-1">No obligation estimate</p>
+        </a>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

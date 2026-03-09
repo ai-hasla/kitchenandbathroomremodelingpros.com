@@ -1,0 +1,71 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  magnetic?: boolean;
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: className = '',
+  magnetic = false,
+  ...rest
+} = Astro.props;
+
+const baseClasses =
+  'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 cursor-pointer font-[family-name:var(--font-body)]';
+
+const variants = {
+  primary:
+    'bg-accent text-white hover:bg-accent-hover shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 active:translate-y-0',
+  secondary:
+    'bg-primary text-white hover:bg-primary-light shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0',
+  outline:
+    'border-2 border-accent text-accent hover:bg-accent hover:text-white hover:-translate-y-0.5 active:translate-y-0',
+  ghost:
+    'text-dark-text hover:text-accent hover:bg-light',
+};
+
+const sizes = {
+  sm: 'px-4 py-2 text-sm gap-1.5',
+  md: 'px-6 py-3 text-base gap-2',
+  lg: 'px-8 py-4 text-lg gap-2.5',
+};
+
+const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${magnetic ? 'btn-magnetic' : ''} ${className}`;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  type={!href ? type : undefined}
+  class={classes}
+  data-magnetic={magnetic ? '' : undefined}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+{magnetic && (
+  <script>
+    document.querySelectorAll('[data-magnetic]').forEach((btn) => {
+      btn.addEventListener('mousemove', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+        const rect = (btn as HTMLElement).getBoundingClientRect();
+        const x = mouseEvent.clientX - rect.left - rect.width / 2;
+        const y = mouseEvent.clientY - rect.top - rect.height / 2;
+        (btn as HTMLElement).style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        (btn as HTMLElement).style.transform = '';
+      });
+    });
+  </script>
+)}

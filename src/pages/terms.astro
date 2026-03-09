@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+---
+
+<BaseLayout
+  title="Terms of Service | Kitchen & Bathroom Remodeling Pros"
+  description="Terms of service for Kitchen & Bathroom Remodeling Pros website. Read our terms and conditions."
+  showSchema={false}
+>
+  <SchemaBreadcrumb items={[{ label: 'Terms of Service', href: '/terms/' }]} />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <h1 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white">Terms of Service</h1>
+      <p class="text-white/70 mt-2">Last updated: March 2026</p>
+    </Container>
+  </section>
+
+  <section class="py-16">
+    <Container class="max-w-3xl">
+      <div class="prose prose-lg max-w-none text-body-text">
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Acceptance of Terms</h2>
+        <p>By accessing and using the {SITE.name} website, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Services</h2>
+        <p>We provide kitchen and bathroom remodeling services in the greater Seattle, Washington area. All estimates, timelines, and project scopes are subject to on-site evaluation and may vary based on actual conditions discovered during the project.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Estimates and Pricing</h2>
+        <p>All estimates provided through our website or in person are non-binding until a formal contract is signed. Cost ranges and guides published on this website are for informational purposes only and reflect general market conditions. Actual project costs depend on specific requirements, materials chosen, and site conditions.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Intellectual Property</h2>
+        <p>All content on this website — including text, images, graphics, logos, and project photography — is the property of {SITE.name} and is protected by copyright law. You may not reproduce, distribute, or use any content without our written permission.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Limitation of Liability</h2>
+        <p>The information provided on this website is for general informational purposes only. While we strive to keep the information accurate and up to date, we make no representations or warranties about the completeness, accuracy, or reliability of the information.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Governing Law</h2>
+        <p>These terms shall be governed by and construed in accordance with the laws of the State of Washington, without regard to its conflict of law provisions.</p>
+
+        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Contact</h2>
+        <p>Questions about these terms? Contact us at <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a> or call <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a>.</p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

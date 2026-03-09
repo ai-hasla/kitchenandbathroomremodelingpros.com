@@ -1,0 +1,321 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: '10 Bathroom Remodel Ideas That Add Value', href: '/blog/bathroom-remodel-ideas-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: '10 Bathroom Remodel Ideas That Add Value to Your Seattle Home',
+  description: 'Discover 10 bathroom remodel ideas that look stunning and increase your Seattle home\'s value. Expert advice from local remodelers on what buyers want.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-12',
+  dateModified: '2026-02-12',
+  image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
+};
+---
+
+<BaseLayout
+  title="10 Bathroom Remodel Ideas That Add Value to Your Seattle Home"
+  description="10 bathroom remodel ideas that boost home value in Seattle. Walk-in showers, heated floors, double vanities, and more. Expert tips from local remodelers."
+  canonical={`${SITE.url}/blog/bathroom-remodel-ideas-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-12', modifiedTime: '2026-02-12', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">February 12, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 9 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">10 Bathroom Remodel Ideas That Add Value to Your Seattle Home</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Not all bathroom renovations are created equal when it comes to return on investment. These 10 ideas deliver both the "wow" factor and real value in the competitive Seattle housing market.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              In Seattle's competitive real estate market, an updated bathroom can make the difference between a home that sits on the market and one that sells in a weekend with multiple offers. But not every bathroom upgrade delivers equal value. Some improvements look great but don't move the needle on resale. Others are both beautiful and financially smart.
+            </p>
+            <p>
+              As <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodeling specialists</a> who have worked with hundreds of Seattle homeowners, we know which upgrades buyers are looking for in this market. Whether you're planning to sell or simply want to enjoy your home more while building equity, these 10 bathroom remodel ideas consistently deliver the best combination of aesthetics and value in the greater Seattle area.
+            </p>
+            <p>
+              For detailed pricing on each of these ideas, refer to our <a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline">comprehensive bathroom remodel cost guide</a>.
+            </p>
+          </div>
+
+          <!-- Idea 1 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">1. Walk-In Showers with Frameless Glass</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                If there's one bathroom upgrade that consistently tops the list for both buyer appeal and home value, it's converting a dated tub-shower combo into a spacious walk-in shower with a frameless glass enclosure. The effect is transformative — the bathroom immediately feels larger, brighter, and more luxurious.
+              </p>
+              <p>
+                In Seattle, where many homes have smaller bathrooms (especially those built in the early-to-mid 20th century), a well-designed <a href="/services/shower-remodeling/" class="text-accent hover:underline">walk-in shower</a> makes far better use of space than a tub that rarely gets used. Frameless glass allows natural light to flow through the bathroom unobstructed, which is especially valuable in the PNW's gray-sky climate. Add a built-in niche for shampoo and a bench for comfort, and you have a feature that buyers will remember.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $6,000 - $12,000 | <strong>Value added:</strong> High. This is the single most impactful bathroom upgrade in the Seattle market.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 2 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">2. Heated Tile Floors</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle buyers absolutely love heated bathroom floors, and for good reason. There are few greater small luxuries than stepping onto a warm tile floor on a dark, cold January morning. Radiant floor heating uses electric mats installed beneath tile — it adds warmth to the tile surface without significantly impacting your energy bill.
+              </p>
+              <p>
+                This upgrade is surprisingly affordable when done during a bathroom remodel (when the floors are already being replaced). The heating mats cost $8-$15 per square foot for materials, and installation adds minimal labor since the mats are laid before tiling. For a typical 50-square-foot bathroom, the total cost is $500-$1,200 including a programmable thermostat. It's one of the best dollar-for-dollar upgrades you can make.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $500 - $1,200 | <strong>Value added:</strong> High. A relatively small investment that makes a big impression on buyers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 3 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">3. Double Vanity Conversion</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                For master bathrooms, upgrading from a single sink to a double <a href="/services/vanity-installation/" class="text-accent hover:underline">vanity</a> is one of the most value-adding improvements you can make. Couples view double vanities as essential, and homes with double-vanity master baths consistently command higher prices and sell faster in the Seattle market.
+              </p>
+              <p>
+                If space allows, a 60-inch or 72-inch double vanity with undermount sinks and stone or quartz countertops creates a spa-like feel. Floating vanities are trending in 2026 — they make the bathroom feel larger by exposing floor space underneath and create a clean, modern aesthetic. Pair with large rectangular mirrors and wall-mounted sconce lighting for a polished look.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $2,500 - $6,000 | <strong>Value added:</strong> High, especially for master bathrooms.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 4 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">4. Large-Format Wall and Floor Tile</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Oversized tiles (12x24 or larger) have replaced the small mosaic tiles that dominated bathroom design for years. Large-format tiles create a cleaner, more contemporary look with significantly fewer grout lines — which means less maintenance and a more polished appearance. In small Seattle bathrooms, the reduced visual noise makes the space feel larger and more open.
+              </p>
+              <p>
+                Porcelain tiles that mimic natural marble or travertine are the most popular choice. They deliver the high-end look of natural stone at a fraction of the cost and with zero maintenance requirements. For shower walls, consider running the same large-format tile from floor to ceiling for a seamless, spa-like effect. <a href="/services/tile-installation/" class="text-accent hover:underline">Professional tile installation</a> is essential for large-format tiles, as they require a perfectly level substrate and precise cuts.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $2,000 - $6,000 | <strong>Value added:</strong> Medium to high. Modern tile work is one of the first things buyers notice.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 5 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">5. Proper Ventilation and Moisture Control</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                This may not be the most glamorous upgrade, but in Seattle's wet climate, proper bathroom ventilation is arguably the most important. Inadequate ventilation leads to mold, mildew, paint peeling, and even structural wood rot — problems that home inspectors flag immediately and that can kill a deal.
+              </p>
+              <p>
+                Upgrading to a high-quality exhaust fan with a humidity sensor (like those from Panasonic's WhisperGreen line) ensures your bathroom stays dry automatically. These fans are whisper-quiet, energy-efficient, and turn on when humidity rises above a set threshold. Pairing a good fan with a proper waterproofing system in the shower area protects your remodeling investment for decades. Smart buyers in Seattle appreciate this kind of thoughtful, practical upgrade.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $300 - $800 | <strong>Value added:</strong> Medium. Not flashy, but prevents costly problems and impresses savvy buyers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 6 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">6. Freestanding Soaking Tub</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                While many homeowners are removing tubs from their master baths in favor of larger showers, having at least one bathtub in the home remains important for resale — especially in family-oriented Seattle neighborhoods. A freestanding soaking tub is the most impactful way to include a tub while making a design statement.
+              </p>
+              <p>
+                Freestanding tubs (particularly modern oval or slipper-style designs) serve as sculptural focal points in the bathroom. Position one near a window if possible — the combination of a soaking tub with a view of Pacific Northwest greenery is incredibly appealing. <a href="/services/bathtub-replacement/" class="text-accent hover:underline">Acrylic freestanding tubs</a> are the most affordable option at $800-$2,000. Cast iron and stone resin options range from $2,000-$5,000+.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $1,500 - $4,000 installed | <strong>Value added:</strong> Medium to high. Keeps your home appealing to families.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 7 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">7. Modern Lighting Design</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Lighting makes or breaks a bathroom's ambiance. The single builder-grade vanity light over the mirror that came with most Seattle homes is doing your bathroom no favors. A layered lighting approach — combining recessed ceiling lights, vanity sconces flanking the mirror, and accent lighting — creates a spa-like atmosphere that photographs beautifully and impresses buyers.
+              </p>
+              <p>
+                Wall-mounted sconces at eye level on either side of the mirror provide the most flattering light for grooming. Recessed lights on a dimmer handle general illumination while allowing you to set the mood. LED strip lights under a floating vanity or behind a mirror add a touch of luxury. Consider warm-white LEDs (2700K-3000K) to create a relaxing, inviting atmosphere — especially important during Seattle's dark winter evenings.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $500 - $2,000 | <strong>Value added:</strong> Medium. Transformative for the bathroom's feel and great in listing photos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 8 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">8. Built-In Storage Solutions</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Storage is always at a premium in Seattle bathrooms, especially in older homes where closets are small and bathrooms are compact. Smart built-in storage solutions make the space feel organized and intentional. Recessed medicine cabinets, built-in shower niches, floating shelves, and vanities with deep drawers all maximize storage without consuming floor space.
+              </p>
+              <p>
+                A recessed niche between studs in the shower area costs only $200-$500 to add during a remodel but provides permanent, waterproof storage for shampoo and soap. A tall linen cabinet or tower next to the vanity adds vertical storage. Vanities with full-extension soft-close drawers are far more practical than door-and-shelf designs. These details signal thoughtful design and quality construction — exactly what Seattle buyers look for.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $300 - $2,000 | <strong>Value added:</strong> Medium. Practical improvements that buyers notice during tours.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 9 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">9. Water-Efficient Fixtures</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle homeowners are environmentally conscious, and water-efficient fixtures resonate strongly in this market. WaterSense-certified toilets, low-flow showerheads, and faucet aerators reduce water usage by 20-60% compared to standard fixtures without sacrificing performance. Dual-flush toilets, which let you choose between a light and full flush, are increasingly popular.
+              </p>
+              <p>
+                Modern low-flow showerheads from brands like Moen and Delta have come a long way — they deliver strong water pressure while using as little as 1.5 GPM (compared to the standard 2.5 GPM). A WaterSense toilet uses 1.28 GPM or less versus 1.6+ GPM for older models. These upgrades appeal to eco-minded Seattle buyers and reduce monthly water bills. They're also often required by current plumbing code when fixtures are being replaced.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $300 - $1,200 | <strong>Value added:</strong> Medium. Appeals to Seattle's environmentally conscious buyer base.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 10 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">10. Accessible and Universal Design Features</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                <a href="/services/aging-in-place/" class="text-accent hover:underline">Universal design</a> — creating spaces that work for people of all ages and abilities — is one of the most forward-thinking bathroom investments you can make. As Seattle's population ages and more families care for older relatives, accessible bathrooms are becoming a selling point rather than a negative.
+              </p>
+              <p>
+                The best accessible bathrooms don't look "medical." A curbless (zero-threshold) shower is both stylish and wheelchair-accessible. Grab bars that double as towel bars blend seamlessly into the design. Comfort-height toilets (17-19 inches) are more comfortable for most adults, not just those with mobility issues. A hand-held showerhead on a slide bar is both a luxury spa feature and an accessibility aid. These thoughtful details show buyers that the home is ready for the long term.
+              </p>
+              <p>
+                <strong>Estimated cost:</strong> $500 - $3,000 | <strong>Value added:</strong> Medium to high. Growing importance as more buyers consider long-term livability.
+              </p>
+            </div>
+          </div>
+
+          <!-- Which Ideas to Prioritize -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Which Ideas Should You Prioritize?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                If you're working with a limited budget, focus on the ideas that deliver the highest impact per dollar. Our recommended priority order for Seattle homeowners:
+              </p>
+              <ol class="list-decimal list-inside space-y-2 ml-4">
+                <li><strong>Walk-in shower with frameless glass</strong> — the single biggest value-add</li>
+                <li><strong>Heated tile floors</strong> — small cost, big impression in the PNW climate</li>
+                <li><strong>Proper ventilation</strong> — prevents costly problems and reassures buyers</li>
+                <li><strong>Double vanity</strong> — near-universal preference for master bathrooms</li>
+                <li><strong>Modern lighting</strong> — transforms the entire feel of the room</li>
+              </ol>
+              <p>
+                A mid-range bathroom remodel incorporating the top 3-4 ideas from this list typically costs $15,000-$25,000 in Seattle and adds meaningful value to your home. For a full pricing breakdown, check our <a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline">2026 bathroom remodel cost guide</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Let's Create Your Dream Bathroom</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Whether you're planning to sell your Seattle home soon or simply want to enjoy a more beautiful, functional bathroom, these ideas are proven winners. The key is working with an experienced remodeling team that understands both design trends and the practical realities of renovating in the Pacific Northwest.
+              </p>
+              <p>
+                At Kitchen & Bathroom Remodeling Pros, we help Seattle homeowners make smart remodeling decisions every day. Our design consultants will walk you through options that fit your budget, timeline, and goals — with honest advice about what adds value and what doesn't. <a href="/get-a-quote/" class="text-accent hover:underline">Schedule your free consultation</a> and let's talk about your bathroom transformation.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Transform Your Bathroom?</h2>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate for your bathroom remodel. We'll help you choose upgrades that maximize both beauty and value.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Bathroom Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Discuss these ideas with our design team. No obligation.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">15 Kitchen Remodel Ideas for Seattle</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide 2026</a></li>
+                <li><a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">Aging-in-Place Bathroom Guide</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+                <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement</a></li>
+                <li><a href="/services/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+
+            <!-- Reviews -->
+            <div class="bg-light rounded-2xl p-6">
+              <div class="flex gap-0.5 mb-2">
+                {[1,2,3,4,5].map(() => (
+                  <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                ))}
+              </div>
+              <p class="font-bold text-primary text-sm">{SITE.reviews.rating}/5 from {SITE.reviews.count} reviews</p>
+              <a href="/reviews/" class="text-accent text-sm font-medium hover:underline mt-1 inline-block">Read Reviews</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

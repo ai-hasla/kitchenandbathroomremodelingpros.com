@@ -1,0 +1,392 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'Get a Free Estimate', href: '/get-a-quote/' }];
+---
+
+<BaseLayout
+  title="Get a Free Estimate | Kitchen & Bathroom Remodeling Seattle"
+  description="Request your free, no-obligation estimate for kitchen or bathroom remodeling in Seattle. Transparent pricing, expert craftsmanship. Response within 24 hours."
+  canonical={`${SITE.url}/get-a-quote/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Free Estimate</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Get Your Free Remodeling Estimate</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Fill out the form below and we'll get back to you within 24 hours with a personalized estimate for your project. No obligation, no pressure.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Form + Trust Signals -->
+  <section class="py-20">
+    <Container>
+      <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+
+        <!-- Quote Form -->
+        <div class="lg:col-span-2" data-reveal>
+          <!--
+            FORM ENDPOINT: This form currently uses client-side handling only.
+            To receive submissions, replace with one of these services:
+            - Formspree: <form action="https://formspree.io/f/YOUR_ID" method="POST">
+            - Netlify Forms: <form name="quote" method="POST" data-netlify="true">
+            - Basin: <form action="https://usebasin.com/f/YOUR_ID" method="POST">
+          -->
+          <form id="quote-form" class="space-y-10">
+            <!-- Honeypot field for spam protection (hidden from real users) -->
+            <div class="hidden" aria-hidden="true">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <!-- Step 1: Project Details -->
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <span class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">1</span>
+                <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary">Project Details</h2>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="project-type" class="block text-sm font-medium text-primary mb-2">Project Type *</label>
+                  <select
+                    id="project-type"
+                    name="project_type"
+                    required
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                  >
+                    <option value="">Select project type</option>
+                    <option value="kitchen-remodel">Kitchen Remodel</option>
+                    <option value="bathroom-remodel">Bathroom Remodel</option>
+                    <option value="kitchen-and-bathroom">Kitchen & Bathroom</option>
+                    <option value="cabinet-refacing">Cabinet Refacing</option>
+                    <option value="countertop-install">Countertop Installation</option>
+                    <option value="shower-remodel">Shower Remodel</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="scope" class="block text-sm font-medium text-primary mb-2">Project Scope *</label>
+                  <select
+                    id="scope"
+                    name="scope"
+                    required
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                  >
+                    <option value="">Select scope</option>
+                    <option value="cosmetic">Cosmetic Update (surfaces & fixtures)</option>
+                    <option value="partial">Partial Remodel (some layout changes)</option>
+                    <option value="full">Full Remodel (complete transformation)</option>
+                    <option value="gut">Gut Renovation (down to studs)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="timeline" class="block text-sm font-medium text-primary mb-2">Desired Timeline</label>
+                  <select
+                    id="timeline"
+                    name="timeline"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                  >
+                    <option value="">When do you want to start?</option>
+                    <option value="asap">As soon as possible</option>
+                    <option value="1-3months">1-3 months</option>
+                    <option value="3-6months">3-6 months</option>
+                    <option value="6-12months">6-12 months</option>
+                    <option value="planning">Just planning ahead</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="budget" class="block text-sm font-medium text-primary mb-2">Budget Range</label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                  >
+                    <option value="">Select budget range</option>
+                    <option value="under-15k">Under $15,000</option>
+                    <option value="15k-30k">$15,000 - $30,000</option>
+                    <option value="30k-50k">$30,000 - $50,000</option>
+                    <option value="50k-75k">$50,000 - $75,000</option>
+                    <option value="75k-100k">$75,000 - $100,000</option>
+                    <option value="100k-plus">$100,000+</option>
+                    <option value="unsure">Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Home Details -->
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <span class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">2</span>
+                <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary">Home Details</h2>
+              </div>
+              <div class="grid sm:grid-cols-3 gap-6">
+                <div>
+                  <label for="zip" class="block text-sm font-medium text-primary mb-2">ZIP Code *</label>
+                  <input
+                    type="text"
+                    id="zip"
+                    name="zip"
+                    required
+                    placeholder="98101"
+                    pattern="[0-9]{5}"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="home-age" class="block text-sm font-medium text-primary mb-2">Home Age</label>
+                  <select
+                    id="home-age"
+                    name="home_age"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                  >
+                    <option value="">Select age range</option>
+                    <option value="new">Less than 10 years</option>
+                    <option value="10-25">10-25 years</option>
+                    <option value="25-50">25-50 years</option>
+                    <option value="50-75">50-75 years</option>
+                    <option value="75-plus">75+ years</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="home-type" class="block text-sm font-medium text-primary mb-2">Home Type</label>
+                  <select
+                    id="home-type"
+                    name="home_type"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                  >
+                    <option value="">Select home type</option>
+                    <option value="single-family">Single Family Home</option>
+                    <option value="townhouse">Townhouse</option>
+                    <option value="condo">Condo / Apartment</option>
+                    <option value="multi-family">Multi-Family</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Contact Info -->
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <span class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">3</span>
+                <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary">Your Information</h2>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-primary mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="John Smith"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-primary mb-2">Phone Number *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    placeholder="(206) 555-0000"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="email" class="block text-sm font-medium text-primary mb-2">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="john@example.com"
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="message" class="block text-sm font-medium text-primary mb-2">Additional Details</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us about your project — specific features you want, problems you're trying to solve, or any other details that would help us prepare an accurate estimate."
+                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-y"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <Button type="submit" variant="primary" size="lg">Request Free Estimate</Button>
+              <p class="text-sm text-muted">We respond within 24 hours. No spam, ever.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Trust Signals Sidebar -->
+        <div class="lg:col-span-1 space-y-8" data-reveal="right">
+          <!-- No Obligation -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+            <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            </div>
+            <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">100% No Obligation</h3>
+            <p class="text-body-text text-sm">Your estimate is completely free. No high-pressure sales tactics, no hidden fees. Just honest pricing.</p>
+          </div>
+
+          <!-- Rating -->
+          <div class="bg-light rounded-2xl p-6 text-center">
+            <div class="flex justify-center gap-1 mb-2">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">{SITE.reviews.rating}/5</p>
+            <p class="text-body-text text-sm">{SITE.reviews.count} verified reviews</p>
+            <a href="/reviews/" class="text-accent text-sm font-medium hover:underline mt-2 inline-block">Read Reviews</a>
+          </div>
+
+          <!-- License Info -->
+          <div class="bg-light rounded-2xl p-6">
+            <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Why Choose Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-body-text text-sm">Licensed & bonded in Washington State</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-body-text text-sm">5-year workmanship warranty</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-body-text text-sm">Transparent line-item pricing</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-body-text text-sm">500+ projects completed since 2010</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-body-text text-sm">EPA Lead-Safe certified</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 text-success shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span class="text-body-text text-sm">Financing options available</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Call CTA -->
+          <div class="bg-primary rounded-2xl p-6 text-center">
+            <h3 class="text-lg font-[family-name:var(--font-heading)] text-white mb-2">Prefer to Call?</h3>
+            <p class="text-white/70 text-sm mb-4">Speak directly with a remodeling consultant.</p>
+            <a href={`tel:${SITE.phoneRaw}`} class="text-2xl font-bold text-accent hover:text-white transition-colors">{SITE.phone}</a>
+            <p class="text-white/60 text-xs mt-2">{SITE.hours}</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-[family-name:var(--font-heading)] text-primary mb-10 text-center" data-reveal>Questions About Our Estimates</h2>
+        <div class="space-y-6" data-reveal-stagger>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">Is the estimate really free?</h3>
+            <p class="text-body-text">Yes, 100% free with no obligation. We'll visit your home, discuss your project, and provide a detailed written estimate at no cost. There's never any pressure to commit.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">How quickly will I hear back?</h3>
+            <p class="text-body-text">We respond to all estimate requests within 24 hours, typically much sooner during business hours. We'll reach out by phone or email to schedule your in-home consultation at a time that works for you.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">What should I prepare before the consultation?</h3>
+            <p class="text-body-text">Gather any inspiration photos you like (Pinterest boards, magazine clippings, photos from friends' homes). Think about what you love and don't love about your current space. Having a general budget range in mind helps us tailor our recommendations, but it's not required.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">How detailed is the estimate?</h3>
+            <p class="text-body-text">Very detailed. Our estimates include a line-item breakdown of all materials, labor, permits, and other costs. You'll know exactly what you're paying for. We don't use vague "allowances" or leave room for surprise charges.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">Do you offer financing?</h3>
+            <p class="text-body-text">Yes! We offer several financing options to help make your remodel affordable. Visit our <a href="/financing/" class="text-accent hover:underline">financing page</a> to learn more about available plans and payment options.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('quote-form') as HTMLFormElement | null;
+      if (!form) return;
+
+      form.addEventListener('submit', (e: Event) => {
+        e.preventDefault();
+
+        // Honeypot check — if filled, silently reject (bot submission)
+        const honeypot = (form.querySelector('[name="company"]') as HTMLInputElement)?.value;
+        if (honeypot) return;
+
+        // Validate required fields
+        const projectType = (form.querySelector('[name="project_type"]') as HTMLSelectElement)?.value;
+        const scope = (form.querySelector('[name="scope"]') as HTMLSelectElement)?.value;
+        const zip = (form.querySelector('[name="zip"]') as HTMLInputElement)?.value.trim();
+        const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value.trim();
+        const phone = (form.querySelector('[name="phone"]') as HTMLInputElement)?.value.trim();
+        const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value.trim();
+
+        if (!projectType || !scope || !zip || !name || !phone || !email) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+
+        // ZIP code validation
+        if (!/^[0-9]{5}$/.test(zip)) {
+          alert('Please enter a valid 5-digit ZIP code.');
+          return;
+        }
+
+        // Replace form with success message
+        const formContainer = form.parentElement;
+        if (formContainer) {
+          formContainer.innerHTML = `
+            <div class="text-center py-12">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-primary mb-3">Thank you!</h2>
+              <p class="text-lg text-body-text">We'll contact you within 24 hours.</p>
+            </div>
+          `;
+        }
+      });
+    });
+  </script>
+</BaseLayout>

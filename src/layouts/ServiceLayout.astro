@@ -1,0 +1,309 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SERVICES, SITE, ALL_LOCATIONS } from '@/lib/constants';
+
+interface Props {
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  slug: string;
+  category: 'kitchen' | 'bathroom' | 'general';
+  heroImage: string;
+  features: string[];
+}
+
+const { title, metaTitle, metaDescription, slug, category, heroImage, features } = Astro.props;
+
+// Related services: same category but not this one
+const relatedServices = SERVICES.filter(
+  (s) => s.category === category && s.slug !== slug
+);
+
+// Build schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: title,
+  description: metaDescription,
+  provider: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: SITE.name,
+    telephone: SITE.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.state,
+      postalCode: SITE.address.zip,
+    },
+    url: SITE.url,
+  },
+  areaServed: ALL_LOCATIONS.map((loc) => ({
+    '@type': 'City',
+    name: `${loc.city}, WA`,
+  })),
+  url: `${SITE.url}/services/${slug}/`,
+};
+
+const categoryLabel: Record<string, string> = {
+  kitchen: 'Kitchen Services',
+  bathroom: 'Bathroom Services',
+  general: 'Home Services',
+};
+---
+
+<BaseLayout title={metaTitle} description={metaDescription}>
+  <SchemaBreadcrumb
+    items={[
+      { label: 'Services', href: '/services/' },
+      { label: title, href: `/services/${slug}/` },
+    ]}
+  />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- Hero Section -->
+  <section class="bg-primary pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img
+        src={heroImage}
+        alt=""
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+    </div>
+    <Container class="relative z-10">
+      <nav aria-label="Breadcrumb" class="mb-6 text-sm text-white/60">
+        <ol class="flex flex-wrap items-center gap-1.5">
+          <li class="flex items-center gap-1.5">
+            <a href="/" class="hover:text-white transition-colors">Home</a>
+          </li>
+          <li class="flex items-center gap-1.5">
+            <svg class="h-3.5 w-3.5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <a href="/services/" class="hover:text-white transition-colors">Services</a>
+          </li>
+          <li class="flex items-center gap-1.5">
+            <svg class="h-3.5 w-3.5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="text-white font-medium">{title}</span>
+          </li>
+        </ol>
+      </nav>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white max-w-4xl">
+        <slot name="hero-title">
+          {title} in Seattle, WA
+        </slot>
+      </h1>
+    </Container>
+  </section>
+
+  <!-- Currently Working In Banner -->
+  <div class="py-3 lg:py-4">
+    <Container>
+      <div class="bg-accent-light border border-accent/20 rounded-xl py-3 px-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6">
+        <p class="text-sm text-dark-text text-center sm:text-left leading-relaxed">
+          <span class="mr-1" aria-hidden="true">&#128296;</span>
+          Currently working on projects in <strong>Capitol Hill</strong>, <strong>Bellevue</strong>, and <strong>Kirkland</strong> &mdash; booking April/May 2026 now.
+        </p>
+        <a
+          href="/get-a-quote/"
+          class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors whitespace-nowrap flex-shrink-0"
+        >
+          Schedule Now
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </Container>
+  </div>
+
+  <!-- Main Content -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        <!-- Content Column -->
+        <div class="lg:col-span-2">
+          <slot />
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1">
+          <!-- Quick Contact Card -->
+          <div class="bg-primary rounded-2xl p-8 mb-8 sticky top-28">
+            <h3 class="text-xl font-[family-name:var(--font-heading)] text-white mb-4">
+              Get a Free Estimate
+            </h3>
+            <p class="text-white/80 mb-6 text-sm leading-relaxed">
+              Ready to start your {title.toLowerCase()} project? Contact us for a free, no-obligation consultation and estimate.
+            </p>
+            <div class="flex flex-col gap-3">
+              <Button
+                variant="primary"
+                size="md"
+                href="/contact/"
+                class="w-full bg-accent text-white hover:bg-accent-hover"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                </svg>
+                Schedule Consultation
+              </Button>
+              <Button
+                variant="outline"
+                size="md"
+                href={`tel:${SITE.phoneRaw}`}
+                class="w-full border-white/30 text-white hover:bg-white/10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                Call {SITE.phone}
+              </Button>
+            </div>
+          </div>
+
+          <!-- Quick Quote Widget -->
+          <div class="mb-8">
+            <QuickQuoteWidget />
+          </div>
+
+          <!-- Related Services -->
+          {relatedServices.length > 0 && (
+            <div class="bg-light rounded-2xl p-8">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-dark-text mb-4">
+                Related {categoryLabel[category]}
+              </h3>
+              <ul class="space-y-3">
+                {relatedServices.map((service) => (
+                  <li>
+                    <a
+                      href={`/services/${service.slug}/`}
+                      class="flex items-center gap-2 text-body-text hover:text-accent transition-colors group"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                      <span class="group-hover:underline">{service.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </aside>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-10 text-center">
+          What's Included
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {features.map((feature) => (
+            <div class="flex items-start gap-3 bg-white rounded-xl p-5 border border-border">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-dark-text font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section (slot) -->
+  <slot name="faq" />
+
+  <!-- Areas Served Section -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="text-center mb-10" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-4">
+          {title} Across the Puget Sound
+        </h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">
+          We proudly offer {title.toLowerCase()} services throughout the greater Seattle metropolitan area.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3" data-reveal>
+        {ALL_LOCATIONS.slice(0, 15).map((location) => (
+          <a
+            href={`/areas-served/${location.slug}/`}
+            class="group bg-light hover:bg-accent-light rounded-lg px-4 py-3 transition-colors text-center border border-border hover:border-accent/20"
+          >
+            <span class="text-dark-text font-medium group-hover:text-accent transition-colors text-sm">
+              {location.city}, WA
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8" data-reveal>
+        <a
+          href="/areas-served/"
+          class="inline-flex items-center gap-2 text-accent font-semibold hover:underline"
+        >
+          View All Service Areas
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-accent py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    <Container class="relative z-10">
+      <div class="text-center max-w-3xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-6">
+          Ready to Start Your {title} Project?
+        </h2>
+        <p class="text-white/90 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          Contact us today for a free in-home consultation and detailed estimate. No obligation, no pressure — just expert advice from our experienced team.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button
+            variant="primary"
+            size="lg"
+            href="/contact/"
+            class="bg-white text-accent hover:bg-white/90 shadow-lg shadow-black/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+            Schedule Free Consultation
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href={`tel:${SITE.phoneRaw}`}
+            class="border-white text-white hover:bg-white/10 border-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Call {SITE.phone}
+          </Button>
+        </div>
+        <p class="text-sm text-white/70">
+          &#9733; Licensed, Bonded & Insured &bull; 15+ Years Experience &bull; 500+ Projects Completed
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

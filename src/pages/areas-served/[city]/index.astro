@@ -1,0 +1,470 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+import { locationData, type LocationData } from '@/data/locations/location-data';
+
+export function getStaticPaths() {
+  return Object.values(locationData).map((loc) => ({
+    params: { city: loc.slug },
+    props: { location: loc },
+  }));
+}
+
+interface Props {
+  location: LocationData;
+}
+
+const { location } = Astro.props;
+
+const formatCurrency = (value: number) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+
+const nearbyLocations = location.nearbyAreas
+  .map((slug) => locationData[slug])
+  .filter(Boolean);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: SITE.name,
+  url: `${SITE.url}/areas-served/${location.slug}/`,
+  telephone: SITE.phone,
+  email: SITE.email,
+  description: `Expert kitchen and bathroom remodeling in ${location.city}, ${location.state}. ${SITE.name} provides premium renovation services.`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: location.city,
+    containedInPlace: {
+      '@type': 'AdministrativeArea',
+      name: `${location.county} County, ${location.state}`,
+    },
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: SITE.reviews.rating,
+    reviewCount: SITE.reviews.count,
+    bestRating: 5,
+  },
+  priceRange: '$$-$$$$',
+};
+---
+
+<BaseLayout
+  title={location.metaTitle}
+  description={location.metaDescription}
+  showSchema={false}
+  geoCity={location.city}
+  geoLat={location.coordinates.lat}
+  geoLng={location.coordinates.lng}
+>
+  <SchemaBreadcrumb
+    items={[
+      { label: 'Areas We Serve', href: '/areas-served/' },
+      { label: location.city, href: `/areas-served/${location.slug}/` },
+    ]}
+  />
+
+  <!-- LocalBusiness Schema for this city -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Hero Section -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="text-sm text-white/60 mb-6">
+          <ol class="flex flex-wrap items-center gap-1.5">
+            <li class="flex items-center gap-1.5">
+              <a href="/" class="hover:text-white transition-colors">Home</a>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/areas-served/" class="hover:text-white transition-colors">Areas We Serve</a>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-white font-medium">{location.city}</span>
+            </li>
+          </ol>
+        </nav>
+
+        <h1 class="text-4xl lg:text-5xl font-[family-name:var(--font-heading)] text-white leading-tight mb-6">
+          Kitchen & Bathroom Remodeling in {location.city}, WA
+        </h1>
+        <p class="text-white/80 text-lg leading-relaxed mb-8">
+          If you're a {location.city} homeowner planning a kitchen or bathroom remodel, you're in the right place. We've been working in {location.city} neighborhoods like {location.neighborhoods[0]}, {location.neighborhoods[1]}, and {location.neighborhoods[2]} for over 15 years — and we know the homes here inside and out. {SITE.reviews.count}+ five-star reviews from clients across the Puget Sound.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button variant="primary" size="lg" href="/contact/">
+            Get a Free Estimate
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href={`tel:${SITE.phoneRaw}`}
+            class="border-white text-white hover:bg-white/10 border-2"
+          >
+            Call {SITE.phone}
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- City Introduction -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-6">
+          We Know {location.city} Homes — We've Been Remodeling Them for 15 Years
+        </h2>
+        <div class="prose prose-lg max-w-none text-body-text leading-relaxed">
+          <p>{location.description}</p>
+          <p>
+            We know {location.city} well — from the {location.housingStyles[0].toLowerCase()} homes to the {location.housingStyles[1]?.toLowerCase() || 'newer construction'}, we've worked on them all. With homes in {location.city} averaging {formatCurrency(location.medianHomeValue)}, homeowners here typically invest 10-15% of their home's value in a kitchen remodel — which means most projects fall between {formatCurrency(Math.round(location.medianHomeValue * 0.10 / 1000) * 1000)} and {formatCurrency(Math.round(location.medianHomeValue * 0.15 / 1000) * 1000)}. Bathroom remodels typically run about half that range.
+          </p>
+          <p>
+            Our crews have worked in neighborhoods across {location.city} — from {location.neighborhoods.slice(0, 3).join(', ')} to{' '}
+            {location.neighborhoods.slice(3, 6).join(', ')} and everywhere in between. We understand the quirks of {location.medianHomeAge}-year-old homes in this area: the plumbing situations, the electrical panels, the load-bearing walls. That local knowledge saves you time, money, and surprises during your remodel.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="text-center mb-12" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4">
+          Our Remodeling Services in {location.city}
+        </h2>
+        <p class="text-muted text-lg max-w-2xl mx-auto">
+          We do two things and we do them well. No general contracting, no additions, no decks — just kitchens and bathrooms, every day, for over 15 years.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" data-reveal>
+        <!-- Kitchen Remodeling Card -->
+        <a
+          href={`/areas-served/${location.slug}/kitchen-remodeling/`}
+          class="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="bg-primary/5 p-8 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819" />
+            </svg>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-dark-text group-hover:text-accent transition-colors mb-3">
+              Kitchen Remodeling in {location.city}
+            </h3>
+            <p class="text-muted text-sm leading-relaxed mb-4">
+              From cabinet refacing to complete gut renovations in {location.city}'s{' '}
+              {location.housingStyles[0].toLowerCase()} homes. We handle layout changes, custom cabinetry, stone countertops, and everything in between.
+            </p>
+            <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Bathroom Remodeling Card -->
+        <a
+          href={`/areas-served/${location.slug}/bathroom-remodeling/`}
+          class="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+        >
+          <div class="bg-primary/5 p-8 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-dark-text group-hover:text-accent transition-colors mb-3">
+              Bathroom Remodeling in {location.city}
+            </h3>
+            <p class="text-muted text-sm leading-relaxed mb-4">
+              Walk-in shower conversions, custom tile work, vanity upgrades, and full gut renovations. Built for the PNW climate with proper waterproofing and ventilation.
+            </p>
+            <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Housing & Local Info -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-5xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-10 text-center">
+          What We Know About {location.city} Homes (And Why It Matters for Your Remodel)
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          <!-- Key Stats -->
+          <div class="bg-light rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-dark-text mb-4">Market Snapshot</h3>
+            <dl class="space-y-3">
+              <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                <dt class="text-muted text-sm">Median Home Value</dt>
+                <dd class="font-bold text-dark-text">{formatCurrency(location.medianHomeValue)}</dd>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                <dt class="text-muted text-sm">Median Home Age</dt>
+                <dd class="font-bold text-dark-text">{location.medianHomeAge} years</dd>
+              </div>
+              <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                <dt class="text-muted text-sm">Population</dt>
+                <dd class="font-bold text-dark-text">{location.population.toLocaleString()}</dd>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <dt class="text-muted text-sm">County</dt>
+                <dd class="font-bold text-dark-text">{location.county}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Housing Styles -->
+          <div class="bg-light rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-dark-text mb-4">Common Home Styles</h3>
+            <ul class="space-y-2">
+              {location.housingStyles.map((style) => (
+                <li class="flex items-start gap-2 text-sm text-body-text">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                  {style}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Popular Projects -->
+          <div class="bg-light rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-dark-text mb-4">Popular Projects</h3>
+            <ul class="space-y-2">
+              {location.popularProjects.map((project) => (
+                <li class="flex items-start gap-2 text-sm text-body-text">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.384-3.19A.75.75 0 005 12.604V17.4a.75.75 0 001.036.692l5.384-3.19a.75.75 0 000-1.332z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.42 15.17l-5.384-3.19A.75.75 0 0013 12.604V17.4a.75.75 0 001.036.692l5.384-3.19a.75.75 0 000-1.332z" />
+                  </svg>
+                  {project}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Permit Information -->
+  <section class="py-16 lg:py-24 bg-light">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 lg:p-10">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-4">
+                Permits in {location.city}: We Handle Everything
+              </h2>
+              <p class="text-body-text leading-relaxed mb-4">
+                {location.permitInfo} You'll need a permit from {location.city} for any remodel involving structural changes, plumbing relocation, or electrical work. Most projects over $6,000 in scope will trigger permit requirements.
+              </p>
+              <p class="text-muted text-sm">
+                We handle the entire permit process as part of our service — it's included in every quote. That means filing the application, responding to plan review comments, scheduling inspections, and making sure everything passes. Our crews are in {location.city}'s building department regularly and know what the inspectors look for.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Neighborhoods Served -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-5xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4 text-center">
+          {location.city} Neighborhoods We Serve
+        </h2>
+        <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
+          Our crews work across every corner of {location.city}. Whether your home is in {location.neighborhoods[0]} or {location.neighborhoods[location.neighborhoods.length - 1]}, we're familiar with the housing stock and can usually get to your door within 30 minutes.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {location.neighborhoods.map((neighborhood) => (
+            <div class="bg-light rounded-lg px-4 py-3 text-sm text-body-text font-medium flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+              {neighborhood}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Nearby Areas -->
+  {nearbyLocations.length > 0 && (
+    <section class="py-16 lg:py-24 bg-light">
+      <Container>
+        <div class="max-w-5xl mx-auto" data-reveal>
+          <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4 text-center">
+            Also Serving Nearby Communities
+          </h2>
+          <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
+            Live near {location.city} but not in city limits? We serve these neighboring communities with the same dedication and the same crews.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {nearbyLocations.map((nearby) => (
+              <a
+                href={`/areas-served/${nearby.slug}/`}
+                class="group bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 p-4 flex items-center justify-between"
+              >
+                <div>
+                  <span class="text-dark-text font-medium group-hover:text-accent transition-colors block">
+                    {nearby.city}, WA
+                  </span>
+                  <span class="text-muted text-xs">{nearby.county} County</span>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 text-muted/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  )}
+
+  <!-- Local Facts -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-10 text-center">
+          What We've Learned Remodeling in {location.city}
+        </h2>
+
+        <div class="space-y-6">
+          {location.localFacts.map((fact, index) => (
+            <div class="flex items-start gap-4 bg-light rounded-xl p-6">
+              <div class="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-accent font-bold text-sm">{index + 1}</span>
+              </div>
+              <p class="text-body-text leading-relaxed">{fact}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Testimonial Placeholder -->
+  <section class="py-16 lg:py-24 bg-primary">
+    <Container>
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-accent mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <blockquote class="text-xl lg:text-2xl text-white font-[family-name:var(--font-heading)] leading-relaxed mb-6">
+          "Our {location.housingStyles[0].toLowerCase()} in {location.city} needed a complete kitchen overhaul. {SITE.shortName} understood the quirks of our older home — they found galvanized plumbing and outdated wiring behind the walls and handled it all without blowing our budget. The finished kitchen looks incredible and actually works for our family. Worth every penny."
+        </blockquote>
+        <div class="text-white/70">
+          <p class="font-semibold text-white">Happy Homeowner</p>
+          <p class="text-sm">{location.city}, WA</p>
+        </div>
+        <div class="flex items-center justify-center gap-1 mt-4">
+          {[1, 2, 3, 4, 5].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
+            </svg>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-accent py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    <Container class="relative z-10">
+      <div class="text-center max-w-3xl mx-auto" data-reveal>
+        <h2 class="text-3xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-6">
+          Ready to Remodel Your {location.city} Home?
+        </h2>
+        <p class="text-white/90 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          We'll come to your {location.city} home, look at the space, talk through your wish list, and give you a detailed estimate with real line-item pricing. No ballparks, no sales pressure, no "let me check with my manager" games. Just an honest price from people who do this work every day.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button
+            variant="primary"
+            size="lg"
+            href="/contact/"
+            class="bg-white text-accent hover:bg-white/90 shadow-lg shadow-black/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+            Schedule Free Consultation
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href={`tel:${SITE.phoneRaw}`}
+            class="border-white text-white hover:bg-white/10 border-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Call {SITE.phone}
+          </Button>
+        </div>
+        <p class="text-sm text-white/70">
+          &#9733; Licensed, Bonded & Insured &bull; 15+ Years Experience &bull; 500+ Projects Completed
+        </p>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

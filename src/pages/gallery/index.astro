@@ -1,0 +1,204 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'Gallery', href: '/gallery/' }];
+
+const projects = [
+  {
+    title: 'Modern Craftsman Kitchen Remodel',
+    slug: 'modern-craftsman-kitchen-ballard',
+    location: 'Ballard, Seattle',
+    type: 'kitchen',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
+    description: 'Complete kitchen transformation featuring custom white shaker cabinets, quartz countertops, and a stunning herringbone backsplash.',
+  },
+  {
+    title: 'Luxury Spa Bathroom',
+    slug: 'luxury-spa-bathroom-bellevue',
+    location: 'Bellevue',
+    type: 'bathroom',
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80',
+    description: 'Master bathroom renovation with frameless glass walk-in shower, freestanding soaking tub, and heated porcelain tile floors.',
+  },
+  {
+    title: 'Open Concept Kitchen Renovation',
+    slug: 'open-concept-kitchen-kirkland',
+    location: 'Kirkland',
+    type: 'kitchen',
+    image: 'https://images.unsplash.com/photo-1556908153-58b56f5f6a82?auto=format&fit=crop&w=800&q=80',
+    description: 'Wall removal and full kitchen remodel with waterfall quartz island, two-tone cabinetry, and pendant lighting.',
+  },
+  {
+    title: 'Accessible Bathroom Renovation',
+    slug: 'accessible-bathroom-bothell',
+    location: 'Bothell',
+    type: 'bathroom',
+    image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=80',
+    description: 'Aging-in-place bathroom with zero-threshold shower, grab bars, comfort-height fixtures, and elegant non-slip tile.',
+  },
+  {
+    title: 'Farmhouse Kitchen Makeover',
+    slug: 'farmhouse-kitchen-sammamish',
+    location: 'Sammamish',
+    type: 'kitchen',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    description: 'Farmhouse-inspired kitchen with apron-front sink, butcher block island, open shelving, and shiplap accent wall.',
+  },
+  {
+    title: 'Contemporary Guest Bathroom',
+    slug: 'contemporary-guest-bathroom-redmond',
+    location: 'Redmond',
+    type: 'bathroom',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
+    description: 'Sleek guest bathroom with floating vanity, large-format wall tile, and modern matte black fixtures.',
+  },
+  {
+    title: 'Chef\'s Kitchen with Custom Cabinetry',
+    slug: 'chefs-kitchen-mercer-island',
+    location: 'Mercer Island',
+    type: 'kitchen',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+    description: 'Premium kitchen remodel featuring custom walnut cabinetry, professional-grade appliances, and marble countertops.',
+  },
+  {
+    title: 'Master Bath with Walk-In Shower',
+    slug: 'master-bath-walk-in-shower-renton',
+    location: 'Renton',
+    type: 'bathroom',
+    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80',
+    description: 'Tub-to-shower conversion with linear drain, rainfall showerhead, built-in niche, and floor-to-ceiling tile.',
+  },
+  {
+    title: 'Transitional Kitchen Update',
+    slug: 'transitional-kitchen-shoreline',
+    location: 'Shoreline',
+    type: 'kitchen',
+    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80',
+    description: 'Mid-range kitchen update with cabinet refacing, granite countertops, new backsplash, and under-cabinet lighting.',
+  },
+  {
+    title: 'Condo Bathroom Renovation',
+    slug: 'condo-bathroom-capitol-hill',
+    location: 'Capitol Hill, Seattle',
+    type: 'bathroom',
+    image: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=800&q=80',
+    description: 'Complete condo bathroom gut-and-rebuild with hex tile floor, subway tile shower, and custom vanity.',
+  },
+];
+
+const filters = [
+  { label: 'All Projects', value: 'all' },
+  { label: 'Kitchen', value: 'kitchen' },
+  { label: 'Bathroom', value: 'bathroom' },
+];
+---
+
+<BaseLayout
+  title="Project Gallery | Kitchen & Bathroom Remodeling Seattle"
+  description="Browse our kitchen and bathroom remodeling gallery. See real before-and-after photos from projects in Seattle, Bellevue, Kirkland, and beyond."
+  canonical={`${SITE.url}/gallery/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Our Work</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Project Gallery</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Explore our portfolio of completed kitchen and bathroom remodeling projects across the greater Seattle area. Each project showcases our commitment to quality craftsmanship.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Filter + Gallery Grid -->
+  <section class="py-20">
+    <Container>
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-3 mb-12 justify-center" data-reveal>
+        {filters.map((filter) => (
+          <button
+            class="gallery-filter px-6 py-2.5 rounded-full border-2 border-border font-medium text-sm transition-all hover:border-accent hover:text-accent data-[active]:bg-accent data-[active]:text-white data-[active]:border-accent"
+            data-filter={filter.value}
+            data-active={filter.value === 'all' ? '' : undefined}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Project Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid" data-reveal-stagger>
+        {projects.map((project) => (
+          <a
+            href="/gallery/"
+            class="gallery-item group block rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
+            data-type={project.type}
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                width="800"
+                height="600"
+                loading="lazy"
+              />
+              <span class={`absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${project.type === 'kitchen' ? 'bg-accent text-white' : 'bg-primary text-white'}`}>
+                {project.type}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-1 group-hover:text-accent transition-colors">{project.title}</h3>
+              <p class="text-sm text-muted mb-3">{project.location}</p>
+              <p class="text-body-text text-sm leading-relaxed">{project.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Love What You See?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Let's create something beautiful together. Schedule your free consultation and show us your vision.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href="/contact/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Contact Us</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Gallery Filter Script -->
+  <script>
+    document.querySelectorAll('.gallery-filter').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        document.querySelectorAll('.gallery-filter').forEach((b) => b.removeAttribute('data-active'));
+        btn.setAttribute('data-active', '');
+
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.gallery-item').forEach((item) => {
+          const type = item.getAttribute('data-type');
+          if (filter === 'all' || type === filter) {
+            (item as HTMLElement).style.display = '';
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

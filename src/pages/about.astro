@@ -1,0 +1,238 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'About Us', href: '/about/' }];
+
+const team = [
+  {
+    name: 'David Chen',
+    role: 'Founder & Lead Designer',
+    bio: 'With over 20 years of experience in residential remodeling, David founded KB Remodeling Pros to bring honest craftsmanship and transparent pricing to every Seattle homeowner.',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80',
+  },
+  {
+    name: 'Sarah Martinez',
+    role: 'Project Manager',
+    bio: 'Sarah ensures every project stays on schedule and within budget. Her attention to detail and clear communication keep homeowners informed at every stage.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80',
+  },
+  {
+    name: 'James Okafor',
+    role: 'Master Carpenter',
+    bio: 'James brings 15 years of fine woodworking expertise to our custom cabinetry and trim work. His precision craftsmanship is visible in every project he touches.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80',
+  },
+  {
+    name: 'Emily Nguyen',
+    role: 'Interior Design Consultant',
+    bio: 'Emily helps clients transform their vision into reality. Her background in interior design and knowledge of current trends ensures every remodel feels both timeless and modern.',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80',
+  },
+];
+
+const certifications = [
+  { name: 'Licensed & Bonded', detail: 'Washington State Contractor License #KITCHBR012AB' },
+  { name: 'EPA Lead-Safe Certified', detail: 'Certified for renovations in pre-1978 homes' },
+  { name: 'NKBA Member', detail: 'National Kitchen & Bath Association' },
+  { name: 'BBB A+ Rating', detail: 'Better Business Bureau accredited since 2012' },
+  { name: 'NARI Certified', detail: 'National Association of the Remodeling Industry' },
+  { name: 'Fully Insured', detail: 'General liability and workers compensation coverage' },
+];
+---
+
+<BaseLayout
+  title="About Kitchen & Bathroom Remodeling Pros | Seattle's Trusted Team"
+  description="Learn about Kitchen & Bathroom Remodeling Pros — Seattle's trusted remodeling team since 2010. Licensed, insured, and committed to exceptional craftsmanship."
+  canonical={`${SITE.url}/about/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Our Story</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">About Us</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Since 2010, we've been transforming kitchens and bathrooms across the greater Seattle area with honest craftsmanship, transparent pricing, and an unwavering commitment to quality.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Company Story -->
+  <section class="py-20">
+    <Container>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div data-reveal>
+          <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-6">Built on a Foundation of Trust</h2>
+          <div class="space-y-4 text-body-text leading-relaxed">
+            <p>
+              Kitchen & Bathroom Remodeling Pros was founded in 2010 by David Chen, a lifelong craftsman who grew up watching his father build homes across the Pacific Northwest. After spending over a decade working for large remodeling companies in Seattle, David noticed a troubling pattern: homeowners were consistently overcharged, underinformed, and left dealing with unreliable timelines. He knew there had to be a better way.
+            </p>
+            <p>
+              What started as a one-man operation working out of a garage in Ballard has grown into one of the most respected remodeling companies in the greater Seattle area. Today, our team of skilled designers, project managers, and craftspeople has completed over 500 kitchen and bathroom remodeling projects across King, Snohomish, and Pierce counties.
+            </p>
+            <p>
+              Our mission is simple: deliver exceptional remodeling results through transparent communication, fair pricing, and craftsmanship that stands the test of time. We believe every homeowner deserves to understand exactly what their project will cost, how long it will take, and what to expect at every stage of the process. No surprises, no hidden fees, no corners cut.
+            </p>
+            <p>
+              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 53 reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
+            </p>
+          </div>
+        </div>
+        <div class="relative" data-reveal="right">
+          <img
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
+            alt="Our remodeling team at work in a Seattle kitchen"
+            class="rounded-2xl shadow-xl w-full"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-accent text-white p-6 rounded-xl shadow-lg">
+            <p class="text-3xl font-bold font-[family-name:var(--font-heading)]">500+</p>
+            <p class="text-sm text-white/90">Projects Completed</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Our Values -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Our Core Values</h2>
+        <p class="text-muted text-lg">These principles guide every project we take on and every interaction we have.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8" data-reveal-stagger>
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-border">
+          <div class="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-3">Transparency</h3>
+          <p class="text-body-text leading-relaxed">Detailed quotes with no hidden fees. We believe you deserve to know exactly what you're paying for, and we'll never spring surprise costs on you mid-project.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-border">
+          <div class="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          </div>
+          <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-3">Craftsmanship</h3>
+          <p class="text-body-text leading-relaxed">We use premium materials and time-tested techniques. Every joint, every tile, every finish is executed to the highest standard because your home deserves nothing less.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-border">
+          <div class="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-3">Respect</h3>
+          <p class="text-body-text leading-relaxed">We respect your home, your time, and your budget. Our crews arrive on time, keep job sites clean, and communicate proactively about progress and any changes.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-20">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Meet Our Team</h2>
+        <p class="text-muted text-lg">The skilled professionals behind every successful remodel.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" data-reveal-stagger>
+        {team.map((member) => (
+          <div class="text-center group">
+            <div class="relative mb-5 overflow-hidden rounded-xl">
+              <img
+                src={member.image}
+                alt={member.name}
+                class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
+                width="400"
+                height="400"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary">{member.name}</h3>
+            <p class="text-accent font-medium text-sm mb-3">{member.role}</p>
+            <p class="text-body-text text-sm leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Licenses & Certifications -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Licenses & Certifications</h2>
+        <p class="text-muted text-lg">Fully licensed, bonded, and insured for your protection and peace of mind.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
+        {certifications.map((cert) => (
+          <div class="bg-white p-6 rounded-xl border border-border flex items-start gap-4">
+            <div class="w-10 h-10 bg-success/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-primary">{cert.name}</h3>
+              <p class="text-body-text text-sm">{cert.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Community -->
+  <section class="py-20">
+    <Container>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1" data-reveal="left">
+          <img
+            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+            alt="Community involvement in Seattle"
+            class="rounded-2xl shadow-xl w-full"
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 lg:order-2" data-reveal>
+          <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-6">Giving Back to Our Community</h2>
+          <div class="space-y-4 text-body-text leading-relaxed">
+            <p>
+              We believe in being more than just a business in Seattle -- we're part of the community. Every year, our team donates time and materials to Habitat for Humanity of King County, helping build and renovate kitchens and bathrooms for families in need.
+            </p>
+            <p>
+              We're also proud sponsors of the Ballard Little League and active participants in the West Seattle Junction neighborhood cleanup program. Several members of our team volunteer as mentors through the Seattle Apprenticeship Program, helping train the next generation of skilled tradespeople.
+            </p>
+            <p>
+              Our commitment to sustainability extends beyond our community work. We prioritize eco-friendly materials, recycle construction waste whenever possible, and partner with local suppliers to reduce our carbon footprint. When you choose KB Remodeling Pros, you're supporting a company that invests in Seattle's future.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Work With Us?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Schedule a free in-home consultation and see why hundreds of Seattle homeowners trust us with their remodeling projects.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href="/contact/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Contact Us</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

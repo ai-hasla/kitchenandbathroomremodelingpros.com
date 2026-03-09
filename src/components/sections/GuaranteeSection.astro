@@ -1,0 +1,63 @@
+---
+import Container from '@/components/ui/Container.astro';
+---
+
+<section class="py-16 lg:py-24 bg-light">
+  <Container>
+    <div class="text-center mb-12" data-reveal>
+      <p class="text-accent uppercase tracking-widest text-sm font-semibold mb-4 font-[family-name:var(--font-body)]">
+        OUR PROMISES
+      </p>
+      <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary leading-tight">
+        Guarantees That Actually Mean Something
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" data-reveal-stagger>
+      <!-- Fixed-Price Guarantee -->
+      <div class="bg-white border border-border rounded-2xl p-8 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          Fixed-Price Guarantee
+        </h3>
+        <p class="text-body-text text-sm leading-relaxed">
+          The quote we give you is the price you pay. Period. No change orders, no surprises, no "we found something" markup. If we missed something in our assessment, that's on us.
+        </p>
+      </div>
+
+      <!-- 2-Year Craftsmanship Warranty -->
+      <div class="bg-white border border-border rounded-2xl p-8 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          2-Year Craftsmanship Warranty
+        </h3>
+        <p class="text-body-text text-sm leading-relaxed">
+          Every project comes with our 2-year craftsmanship warranty. If anything we installed fails or doesn't perform as expected, we'll fix it at no charge. Most of our material warranties extend 10&ndash;25 years.
+        </p>
+      </div>
+
+      <!-- Clean Jobsite Promise -->
+      <div class="bg-white border border-border rounded-2xl p-8 flex flex-col items-start">
+        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          Clean Jobsite Promise
+        </h3>
+        <p class="text-body-text text-sm leading-relaxed">
+          We lay down floor protection on day one, run a HEPA air scrubber during demo, and clean up every single day. Your home is your home &mdash; we treat it that way.
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>

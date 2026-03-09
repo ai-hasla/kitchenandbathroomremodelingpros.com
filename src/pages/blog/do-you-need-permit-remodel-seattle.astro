@@ -1,0 +1,389 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Do You Need a Permit to Remodel in Seattle?', href: '/blog/do-you-need-permit-remodel-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Do You Need a Permit to Remodel in Seattle? 2026 Guide',
+  description: 'Complete guide to remodeling permits in Seattle for 2026. Learn when permits are required, SDCI process, costs, timelines, and what happens if you skip permits.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-28',
+  dateModified: '2026-03-01',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit to remodel my kitchen in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'In most cases, yes. The City of Seattle requires a building permit for kitchen remodels that involve structural changes, plumbing modifications, electrical work, or projects valued over $6,000. Cosmetic updates like painting, replacing hardware, or swapping a faucet typically do not require permits. If you are changing the layout, moving plumbing, or adding circuits, you will need permits from SDCI.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a remodeling permit cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Remodeling permit costs in Seattle vary by project scope. A basic building permit for a residential remodel costs $200 to $1,000. Separate mechanical, electrical, and plumbing permits add $100 to $400 each. For a typical mid-range kitchen or bathroom remodel, total permit costs range from $500 to $2,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does it take to get a remodeling permit in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Simple residential remodeling permits in Seattle are often processed in 2 to 4 weeks through the standard review. Subject-to-field-inspection (STFI) permits for straightforward projects can be issued in 1 to 3 business days. Complex projects requiring full plan review may take 4 to 8 weeks or longer depending on SDCI workload and project complexity.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens if I remodel without a permit in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Remodeling without required permits in Seattle carries serious consequences. If discovered, the City can issue stop-work orders, require you to obtain after-the-fact permits at double the normal fee, and mandate inspection of all completed work — which may require opening finished walls. Unpermitted work also creates problems when selling your home, as buyers and lenders require permit histories.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit to replace a toilet or faucet in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'No, like-for-like replacements of fixtures such as toilets, faucets, showerheads, and light fixtures do not require permits in Seattle. These are considered maintenance and repair activities. However, if you are moving a fixture to a new location, changing pipe sizes, or adding new circuits, a permit is required.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Do You Need a Permit to Remodel in Seattle? 2026 Guide"
+  description="When do you need a permit to remodel in Seattle? Complete 2026 guide covering SDCI requirements, permit types, costs, timelines, and consequences of skipping permits."
+  canonical={`${SITE.url}/blog/do-you-need-permit-remodel-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-28', modifiedTime: '2026-03-01', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Permits</span>
+          <span class="text-white/60 text-sm">February 28, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 12 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Do You Need a Permit to Remodel in Seattle?</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A complete 2026 guide to remodeling permits in the City of Seattle and surrounding Eastside cities. Know when permits are required, how to get them, and why skipping them is a costly mistake.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              One of the most common questions we hear from Seattle homeowners planning a kitchen or bathroom remodel is: "Do I really need a permit for this?" It's a fair question — permits add time, cost, and paperwork to your project. But the answer matters more than you might think, because getting it wrong can cost you far more than the permit itself.
+            </p>
+            <p>
+              The City of Seattle has some of the most detailed building codes and permitting requirements in the country, administered by the Seattle Department of Construction and Inspections (SDCI). Understanding when permits are required — and when they're not — helps you plan your project timeline, budget for permit costs, and avoid potentially serious legal and financial consequences.
+            </p>
+            <p>
+              This guide covers everything you need to know about remodeling permits in Seattle and the surrounding cities of Bellevue, Kirkland, and Redmond for 2026. We'll explain which projects require permits, walk you through the process, break down costs and timelines, and explain what happens if you skip them.
+            </p>
+          </div>
+
+          <!-- When Permits Are Required -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">When Are Permits Required in Seattle?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The general rule of thumb: if your remodeling project involves structural changes, plumbing modifications, electrical work, or is valued at more than $6,000, you almost certainly need a permit from SDCI. Here's a more detailed breakdown:
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Projects That DO Require Permits</h3>
+              <ul class="space-y-2 ml-4">
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Removing or modifying load-bearing walls</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Moving or adding plumbing lines (supply or drain)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Adding, moving, or modifying electrical circuits or panels</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Installing or relocating gas lines</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Adding or enlarging windows or exterior doors</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Installing a new exhaust fan that requires new ductwork</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Converting a tub to a walk-in shower (involves plumbing changes)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Adding a bathroom or kitchen to your home</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Any project valued over $6,000 (City of Seattle threshold)</li>
+              </ul>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Projects That Do NOT Require Permits</h3>
+              <ul class="space-y-2 ml-4">
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Painting walls, cabinets, or trim</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Replacing cabinet hardware (knobs, pulls, hinges)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Like-for-like fixture replacements (faucet, toilet, showerhead)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Installing new countertops (if no plumbing changes)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Cabinet refacing (no structural or plumbing changes)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Replacing flooring (if no subfloor structural work)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Installing a new backsplash</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Replacing light fixtures in existing locations (same circuit)</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#8226;</span> Minor cosmetic updates under $6,000 in value</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SDCI Process -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">The SDCI Permit Process: Step by Step</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The Seattle Department of Construction and Inspections (SDCI) is the city agency that issues building permits and conducts inspections. Here's how the process works for a typical residential remodel:
+              </p>
+
+              <div class="bg-light rounded-xl p-5 mt-6">
+                <h3 class="font-semibold text-primary mb-2">Step 1: Determine Permit Type</h3>
+                <p class="text-sm">Identify which permits you need based on your scope of work. Most kitchen and bathroom remodels require a building permit. If the project involves plumbing, electrical, or mechanical (HVAC) work, you'll need separate trade permits for each discipline.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5 mt-4">
+                <h3 class="font-semibold text-primary mb-2">Step 2: Prepare Documentation</h3>
+                <p class="text-sm">Gather required documents: site plan, floor plans (existing and proposed), scope of work description, and contractor license information. For structural work, you'll need engineering drawings prepared by a licensed structural engineer. Your remodeling contractor should handle this process.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5 mt-4">
+                <h3 class="font-semibold text-primary mb-2">Step 3: Submit Application</h3>
+                <p class="text-sm">Applications are submitted online through the Seattle Services Portal (previously known as the Seattle Permit Portal). Your contractor can submit on your behalf as the applicant or agent. Permit fees are paid at submission.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5 mt-4">
+                <h3 class="font-semibold text-primary mb-2">Step 4: Plan Review</h3>
+                <p class="text-sm">SDCI reviews your plans for code compliance. Simple projects may qualify for Subject-to-Field-Inspection (STFI) review, which is faster. Complex projects go through standard or full plan review. Corrections may be requested, which your contractor addresses and resubmits.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5 mt-4">
+                <h3 class="font-semibold text-primary mb-2">Step 5: Permit Issuance and Construction</h3>
+                <p class="text-sm">Once approved, the permit is issued and construction can begin. The permit must be posted visibly at the job site. Work must comply with the approved plans — significant deviations require plan revisions.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5 mt-4">
+                <h3 class="font-semibold text-primary mb-2">Step 6: Inspections and Final Approval</h3>
+                <p class="text-sm">SDCI inspectors visit at key stages: rough-in (before walls are closed), and final inspection. Inspections are scheduled online and typically occur within 1-2 business days. Once the final inspection passes, the permit is finalized — this becomes part of your property's permanent record.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Types of Permits -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Types of Remodeling Permits in Seattle</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Permit Type</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Cost</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Review Time</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">When Needed</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Building Permit</td>
+                    <td class="px-4 py-3 text-sm">$200 - $1,000</td>
+                    <td class="px-4 py-3 text-sm">1-6 weeks</td>
+                    <td class="px-4 py-3 text-sm">Structural changes, wall removal, window changes</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Electrical Permit</td>
+                    <td class="px-4 py-3 text-sm">$100 - $300</td>
+                    <td class="px-4 py-3 text-sm">1-5 days</td>
+                    <td class="px-4 py-3 text-sm">New circuits, panel upgrades, outlet additions</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Plumbing Permit</td>
+                    <td class="px-4 py-3 text-sm">$100 - $400</td>
+                    <td class="px-4 py-3 text-sm">1-5 days</td>
+                    <td class="px-4 py-3 text-sm">Moving or adding plumbing, new fixtures in new locations</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Mechanical Permit</td>
+                    <td class="px-4 py-3 text-sm">$100 - $300</td>
+                    <td class="px-4 py-3 text-sm">1-5 days</td>
+                    <td class="px-4 py-3 text-sm">New ductwork, exhaust systems, gas line work</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">
+              For a typical mid-range kitchen or bathroom remodel in Seattle, total permit costs range from $500 to $2,000. Your general contractor handles all permit applications, fees, and inspections as part of their scope of work.
+            </p>
+          </div>
+
+          <!-- Timeline and Costs -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Permit Timeline and Costs for 2026</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Permit processing times at SDCI fluctuate based on staffing levels and application volume. Here's what to expect in 2026:
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">1-3 Days</p>
+                  <p class="text-sm text-body-text">STFI permits (simple scope)</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">2-4 Weeks</p>
+                  <p class="text-sm text-body-text">Standard plan review</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">4-8 Weeks</p>
+                  <p class="text-sm text-body-text">Complex projects / full review</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">$500 - $2,000</p>
+                  <p class="text-sm text-body-text">Total permit fees (typical remodel)</p>
+                </div>
+              </div>
+
+              <p>
+                To minimize delays, submit complete applications with all required documentation. Incomplete submissions result in correction requests that restart the review clock. Experienced contractors know exactly what SDCI reviewers look for and prepare applications that minimize revision rounds.
+              </p>
+            </div>
+          </div>
+
+          <!-- What Happens If You Skip -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Happens If You Skip Permits</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                We understand the temptation to skip permits — they add time and cost. But the consequences of unpermitted work in Seattle are significant and far-reaching:
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Stop-Work Orders</h3>
+              <p>
+                If SDCI discovers unpermitted construction (through complaints, routine inspections, or other means), they can issue a stop-work order immediately. All construction must cease until proper permits are obtained. This leaves your kitchen or bathroom torn apart indefinitely while you navigate the after-the-fact permitting process.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Double Fees and Required Inspections</h3>
+              <p>
+                After-the-fact permits in Seattle cost approximately double the standard fee. Worse, the city may require you to expose completed work for inspection — meaning opening up finished walls, removing tile, or cutting into new drywall so inspectors can verify the work meets code. The cost of this disruption far exceeds what the original permit would have cost.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Problems When Selling Your Home</h3>
+              <p>
+                This is where unpermitted work causes the most trouble for Seattle homeowners. When you sell your home, buyers' agents and home inspectors check SDCI permit records. If they find completed work that doesn't match the permit history, it raises red flags. Buyers may demand the work be inspected and brought up to code at your expense, negotiate a significant price reduction, or walk away from the deal entirely. Lenders may also decline to finance homes with known unpermitted work.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Insurance and Liability Issues</h3>
+              <p>
+                If unpermitted work causes damage — a plumbing leak, electrical fire, or structural failure — your homeowner's insurance may deny the claim. This exposes you to potentially hundreds of thousands of dollars in uninsured losses. Permits exist to ensure work is done safely and to code; bypassing them transfers that risk entirely to you.
+              </p>
+            </div>
+          </div>
+
+          <!-- Eastside Differences -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Permit Differences: Bellevue, Kirkland, and Redmond</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                If you live on the Eastside, your permits are issued by your city's development services department rather than Seattle's SDCI. While the general rules are similar (structural, plumbing, and electrical work requires permits), there are some notable differences:
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Bellevue</h3>
+              <p>
+                The City of Bellevue's Development Services department handles permits. Bellevue has a reputation for thorough reviews and strict code enforcement. Permit processing times are typically comparable to Seattle at 2-4 weeks for standard residential remodels. Bellevue offers online permit applications and inspection scheduling through its MyBuildingPermit portal. Fees are slightly lower than Seattle for most residential projects.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Kirkland</h3>
+              <p>
+                Kirkland's permit process is generally faster than Seattle's, with many residential permits processed in 1-2 weeks. The city uses the MyBuildingPermit system shared with several Eastside cities, which simplifies the application process. Kirkland's permit fees tend to be moderate, and the inspection process is efficient.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Redmond</h3>
+              <p>
+                Redmond also uses the MyBuildingPermit system and typically processes residential remodel permits in 2-3 weeks. The city's building department is responsive and generally easier to work with than larger jurisdictions. For straightforward projects, over-the-counter permits are sometimes available for same-day issuance.
+              </p>
+
+              <p class="mt-6">
+                Regardless of which city you're in, your licensed general contractor should be intimately familiar with local permitting requirements and handle the entire process on your behalf. At Kitchen & Bathroom Remodeling Pros, we manage permits across the entire Puget Sound region and know the specific requirements of each jurisdiction.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Do I need a permit to remodel my kitchen in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">In most cases, yes. Seattle requires permits for kitchen remodels involving structural changes, plumbing modifications, electrical work, or projects valued over $6,000. Cosmetic updates like painting, replacing hardware, or swapping a faucet typically do not require permits.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a remodeling permit cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A basic building permit for a residential remodel costs $200 to $1,000. Separate mechanical, electrical, and plumbing permits add $100 to $400 each. For a typical mid-range kitchen or bathroom remodel, total permit costs range from $500 to $2,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does it take to get a remodeling permit in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Simple STFI permits can be issued in 1 to 3 business days. Standard review takes 2 to 4 weeks. Complex projects requiring full plan review may take 4 to 8 weeks or longer depending on SDCI workload.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What happens if I remodel without a permit in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Consequences include stop-work orders, after-the-fact permits at double the normal fee, required inspection of completed work (which may mean opening finished walls), problems when selling your home, and potential insurance claim denials if damage results from unpermitted work.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Do I need a permit to replace a toilet or faucet in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">No, like-for-like replacements of fixtures such as toilets, faucets, showerheads, and light fixtures do not require permits. These are considered maintenance and repair activities. However, moving a fixture to a new location or changing pipe sizes requires a permit.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">We Handle Permits So You Don't Have To</h2>
+            <p class="text-white/80 mb-6">Our team manages the entire permit process — applications, plan review, inspections, and final approval. Focus on choosing your finishes while we handle the paperwork.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/our-process/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">See Our Process</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">We Handle All Permits</h3>
+              <p class="text-body-text text-sm mb-4">Let us manage the entire permit process for your remodel.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/how-long-kitchen-remodel-take/" class="text-accent hover:underline text-sm font-medium">How Long Does a Kitchen Remodel Take?</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Our Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import Container from '@/components/ui/Container.astro';
+---
+
+<section class="py-4 lg:py-5">
+  <Container>
+    <div
+      class="bg-accent-light border border-accent/20 rounded-xl py-3 px-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6"
+      data-reveal
+    >
+      <p class="text-sm text-dark-text text-center sm:text-left leading-relaxed">
+        <span class="mr-1" aria-hidden="true">&#128296;</span>
+        Currently working on projects in <strong>Capitol Hill</strong>, <strong>Bellevue</strong>, and <strong>Kirkland</strong> &mdash; we're booking April/May 2026 projects now.
+      </p>
+      <a
+        href="/get-a-quote/"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors whitespace-nowrap flex-shrink-0"
+      >
+        Book Your Consultation
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </Container>
+</section>

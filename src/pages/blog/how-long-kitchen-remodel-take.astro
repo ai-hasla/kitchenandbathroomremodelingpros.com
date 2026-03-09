@@ -1,0 +1,356 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'How Long Does a Kitchen Remodel Take?', href: '/blog/how-long-kitchen-remodel-take/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How Long Does a Kitchen Remodel Take? Timeline Guide 2026',
+  description: 'Realistic kitchen remodel timelines for 2026. Minor remodels take 2-4 weeks, mid-range 6-10 weeks, and major renovations 12-16 weeks. Phase-by-phase breakdown with Seattle-specific factors.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-03-03',
+  dateModified: '2026-03-03',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How long does a typical kitchen remodel take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A typical mid-range kitchen remodel takes 6 to 10 weeks from demolition to completion. Minor cosmetic updates can be completed in 2 to 4 weeks. Major renovations involving structural changes, layout modifications, and custom cabinetry take 12 to 16 weeks or longer. Add 2 to 6 weeks of pre-construction time for design, material selection, and permitting.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the longest phase of a kitchen remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The cabinetry and countertop phase is typically the longest, taking 2 to 4 weeks. Custom cabinets have a 6 to 12 week lead time before installation begins. Countertop fabrication adds another 2 to 3 weeks after templating. These long lead times are why pre-ordering materials early in the design phase is critical for staying on schedule.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What causes kitchen remodel delays in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Common delays in Seattle include permit processing times at SDCI (2-6 weeks), hidden problems in older homes (knob-and-tube wiring, galvanized plumbing, water damage), material supply chain issues, change orders during construction, and scheduling conflicts during peak season (spring and summer). Building a 10-15% time buffer into your schedule helps account for these factors.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use my kitchen during a remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'During a full kitchen remodel, your kitchen will be unusable for most of the construction period (typically 4-8 weeks). We recommend setting up a temporary kitchen station in another room with a microwave, toaster oven, coffee maker, and access to a bathroom sink. For cosmetic-only updates like cabinet refacing or countertop replacement, you may retain partial use of your kitchen.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="How Long Does a Kitchen Remodel Take? Timeline Guide 2026"
+  description="Realistic kitchen remodel timelines for Seattle in 2026. Minor 2-4 weeks, mid-range 6-10 weeks, major 12-16 weeks. Phase-by-phase breakdown and tips to stay on schedule."
+  canonical={`${SITE.url}/blog/how-long-kitchen-remodel-take/`}
+  ogType="article"
+  article={{ publishedTime: '2026-03-03', modifiedTime: '2026-03-03', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">March 3, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 10 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">How Long Does a Kitchen Remodel Take?</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Realistic timelines for every scope of kitchen remodel, from quick cosmetic updates to full gut renovations. Includes a phase-by-phase breakdown and Seattle-specific factors that affect your schedule.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              "How long is my kitchen going to be torn apart?" It's one of the most important questions for any homeowner planning a remodel — and rightly so. Living without a functional kitchen is disruptive, stressful, and expensive (hello, takeout budget). You need a realistic timeline so you can plan accordingly.
+            </p>
+            <p>
+              The honest answer: it depends on the scope. A cosmetic refresh can be done in a couple of weeks. A mid-range remodel typically takes 6 to 10 weeks. A major renovation with structural changes can stretch to 12 to 16 weeks. And those timelines don't include the pre-construction phase of design, material selection, and permitting, which adds another 2 to 8 weeks before anyone picks up a hammer.
+            </p>
+            <p>
+              This guide provides realistic timelines based on hundreds of kitchen remodels we've completed across the Seattle metro area. We'll walk you through each phase, explain what affects the schedule, and share practical tips to keep your project on track.
+            </p>
+          </div>
+
+          <!-- Timeline by Scope -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Kitchen Remodel Timeline by Scope</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Scope</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Pre-Construction</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Construction</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Total</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Minor / Cosmetic</td>
+                    <td class="px-4 py-3 text-sm">1-2 weeks</td>
+                    <td class="px-4 py-3 text-sm">2-4 weeks</td>
+                    <td class="px-4 py-3 text-sm font-semibold">3-6 weeks</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Mid-Range</td>
+                    <td class="px-4 py-3 text-sm">2-4 weeks</td>
+                    <td class="px-4 py-3 text-sm">6-10 weeks</td>
+                    <td class="px-4 py-3 text-sm font-semibold">8-14 weeks</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Major / Full Gut</td>
+                    <td class="px-4 py-3 text-sm">4-8 weeks</td>
+                    <td class="px-4 py-3 text-sm">12-16 weeks</td>
+                    <td class="px-4 py-3 text-sm font-semibold">16-24 weeks</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Minor / Cosmetic (2-4 Weeks Construction)</h3>
+              <p>
+                Cosmetic kitchen updates include painting cabinets or <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a>, replacing hardware, installing a new backsplash, updating light fixtures, and swapping out a faucet. These projects don't involve structural changes, plumbing relocation, or electrical work, so no permits are needed and construction moves quickly. You may even retain partial use of your kitchen during the process.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Mid-Range (6-10 Weeks Construction)</h3>
+              <p>
+                A mid-range remodel replaces cabinets, countertops, flooring, and appliances while keeping the existing layout. This scope involves some plumbing and electrical work (connecting the new sink, dishwasher, and possibly adding under-cabinet lighting or outlets) but doesn't require moving major utilities. Permits are typically needed, adding 2-4 weeks of pre-construction time. This is the most common scope for Seattle kitchen remodels.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Major / Full Gut (12-16 Weeks Construction)</h3>
+              <p>
+                Major renovations involve tearing the kitchen down to studs and starting fresh. This scope includes layout changes, wall removal (often requiring structural engineering), plumbing and electrical relocation, new subfloor, custom cabinetry, and premium finishes. Full plan review permits are required, and the extensive scope means more trade coordination and longer lead times for custom materials. See our <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">kitchen remodel cost guide</a> for detailed pricing at each scope level.
+              </p>
+            </div>
+          </div>
+
+          <!-- Phase by Phase -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Phase-by-Phase Timeline Breakdown</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              Here's what happens during each phase of a typical mid-range kitchen remodel and how long each stage takes:
+            </p>
+
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 1: Demolition</h3>
+                  <span class="font-bold text-accent">2-4 Days</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Removal of existing cabinets, countertops, flooring, backsplash, and appliances. In older Seattle homes, this phase often reveals hidden conditions — knob-and-tube wiring, galvanized plumbing, water damage behind cabinets, or inadequate subfloor support. If discovered, addressing these issues adds time but is essential for a quality result.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 2: Rough-In (Plumbing, Electrical, Framing)</h3>
+                  <span class="font-bold text-accent">1-2 Weeks</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Plumbers relocate supply and drain lines. Electricians run new circuits, add outlets, and install dedicated lines for appliances. If walls are being moved, framing happens here. A rough-in inspection is required before walls are closed up. This is the "behind the walls" work that creates the foundation for everything that follows.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 3: Drywall and Prep</h3>
+                  <span class="font-bold text-accent">3-5 Days</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">New drywall is hung, taped, mudded, and sanded. This takes multiple days because each coat of joint compound needs to dry (12-24 hours) before sanding and the next coat. Primer is applied once the drywall is smooth. Any ceiling work, patching, or insulation is completed in this phase.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 4: Cabinet Installation</h3>
+                  <span class="font-bold text-accent">2-5 Days</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Cabinets are installed on the walls and leveled precisely. This requires careful measurement and adjustment, especially in older Seattle homes where walls and floors are rarely perfectly level. Upper cabinets go in first, followed by base cabinets. Crown molding, trim, and filler pieces are fitted last. Note: custom cabinets have a 6-12 week lead time from order to delivery.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 5: Countertop Templating and Installation</h3>
+                  <span class="font-bold text-accent">2-3 Weeks (Including Lead Time)</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">After cabinets are installed, a countertop fabricator visits to create a precise digital template. The slab is then cut and fabricated at their shop (1-3 weeks). Installation typically takes one day. During this waiting period, other work continues — painting, flooring, and backsplash prep. This lead time is why countertop material should be selected early in the design process.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 6: Flooring, Backsplash, and Paint</h3>
+                  <span class="font-bold text-accent">1-2 Weeks</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Flooring installation (LVP, tile, or hardwood), backsplash tile setting and grouting, and final paint application. These tasks can sometimes overlap. Tile backsplash needs 24 hours to set before grouting, and grout needs another 24 hours to cure. Flooring is typically installed before cabinets for floating floors (LVP) or after for tile.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Phase 7: Finishing Touches</h3>
+                  <span class="font-bold text-accent">3-5 Days</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Appliance delivery and installation, plumbing fixture hook-up (sink, faucet, garbage disposal, dishwasher), light fixture installation, hardware mounting, caulking, final paint touch-ups, and thorough cleanup. Final inspection is scheduled with the city. This is when your new kitchen comes together and you see the finished result for the first time.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Factors That Cause Delays -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Factors That Cause Delays</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">1.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Hidden Problems in Older Homes</h3>
+                  <p>Seattle has a large stock of homes built in the 1920s-1960s. Opening walls commonly reveals knob-and-tube wiring, galvanized plumbing, asbestos-containing materials, or moisture damage. Addressing these issues is essential but adds days to weeks to the timeline. Budget 10-15% time contingency for homes built before 1970.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">2.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Permit Processing at SDCI</h3>
+                  <p>City of Seattle permits take 2 to 6 weeks depending on project complexity and current SDCI workload. Eastside cities (Bellevue, Kirkland, Redmond) are generally faster. Incomplete applications or revision requests can extend this timeline. Learn more in our <a href="/blog/do-you-need-permit-remodel-seattle/" class="text-accent hover:underline">Seattle remodeling permit guide</a>.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">3.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Material Lead Times and Supply Chain</h3>
+                  <p>Custom cabinets take 6-12 weeks to manufacture. Specialty tile, imported fixtures, and certain appliance models may have extended lead times. In 2026, most standard materials are readily available, but specialty orders still require planning. Selecting materials early in the design phase prevents construction delays.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">4.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Change Orders During Construction</h3>
+                  <p>Changing your mind about materials, layout, or finishes mid-project is the single most controllable cause of delays. Each change requires repricing, reordering, and potentially reworking completed tasks. Making final decisions during the design phase and sticking to them keeps your project on track.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-accent font-bold text-lg shrink-0 mt-0.5">5.</span>
+                <div>
+                  <h3 class="font-semibold text-primary">Seasonal Demand in Seattle</h3>
+                  <p>Spring and summer are peak season for Seattle remodelers. Contractors, subcontractors, and suppliers are busiest from March through September, which can lead to longer lead times and scheduling gaps. Starting your remodel in fall or winter often results in a faster project due to greater availability.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tips to Stay on Schedule -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">5 Tips to Keep Your Remodel on Schedule</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="bg-light rounded-xl p-5">
+                <h3 class="font-semibold text-primary mb-2">1. Finalize All Selections Before Construction Starts</h3>
+                <p class="text-sm">Choose your cabinets, countertops, tile, flooring, fixtures, hardware, paint colors, and appliances before demolition day. This allows your contractor to order everything with proper lead times and schedule trades efficiently. Indecision is the enemy of a smooth timeline.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <h3 class="font-semibold text-primary mb-2">2. Order Long-Lead Materials Early</h3>
+                <p class="text-sm">Custom cabinets, specialty tile, and certain appliances have the longest lead times. Order these as soon as selections are finalized — ideally 8-12 weeks before construction begins. Your contractor should provide a materials procurement schedule that aligns with the construction timeline.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <h3 class="font-semibold text-primary mb-2">3. Hire a Contractor Who Manages the Full Process</h3>
+                <p class="text-sm">A general contractor who handles design, permitting, material procurement, and all trade coordination keeps every piece of the puzzle moving in sync. DIY project management with individual subcontractors almost always leads to scheduling conflicts and delays.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <h3 class="font-semibold text-primary mb-2">4. Build in a Buffer for Surprises</h3>
+                <p class="text-sm">Add 10-15% to your timeline estimate, especially in older homes. Not every wall hides problems, but when they do, having schedule cushion means surprises don't derail your completion date. It's better to finish early than to constantly push back the deadline.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <h3 class="font-semibold text-primary mb-2">5. Set Up a Temporary Kitchen</h3>
+                <p class="text-sm">Living through a kitchen remodel is more manageable with a plan. Set up a temporary kitchen station in the dining room, garage, or a spare room with a microwave, toaster oven, electric kettle, and coffee maker. Stock up on disposable plates and utensils. This reduces the urgency to rush the project and allows your contractor to do quality work at the right pace.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does a typical kitchen remodel take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A typical mid-range kitchen remodel takes 6 to 10 weeks from demolition to completion. Minor cosmetic updates take 2 to 4 weeks. Major renovations involving structural changes take 12 to 16 weeks or longer. Add 2 to 6 weeks of pre-construction time for design, materials, and permitting.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the longest phase of a kitchen remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The cabinetry and countertop phase is typically the longest, taking 2 to 4 weeks for installation. Custom cabinets have a 6 to 12 week lead time before installation begins. Countertop fabrication adds another 2 to 3 weeks after templating.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What causes kitchen remodel delays in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Common delays include permit processing times (2-6 weeks), hidden problems in older homes, material supply chain issues, change orders during construction, and scheduling conflicts during peak season. Building a 10-15% time buffer helps account for these factors.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I use my kitchen during a remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">During a full remodel, your kitchen will be unusable for most of the construction period (4-8 weeks). We recommend setting up a temporary kitchen station in another room. For cosmetic-only updates like cabinet refacing or countertop replacement, you may retain partial use.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Plan Your Kitchen Remodel Timeline?</h2>
+            <p class="text-white/80 mb-6">We'll give you a realistic, project-specific timeline along with your free estimate. No surprises.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/our-process/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">See Our Process</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Get a Timeline for Your Project</h3>
+              <p class="text-body-text text-sm mb-4">We'll provide a detailed, realistic schedule with your free estimate.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/do-you-need-permit-remodel-seattle/" class="text-accent hover:underline text-sm font-medium">Do You Need a Permit to Remodel in Seattle?</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">15 Kitchen Remodel Ideas for Seattle</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/kitchen-layout-design/" class="text-accent hover:underline text-sm font-medium">Kitchen Layout Design</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

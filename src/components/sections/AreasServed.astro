@@ -1,0 +1,57 @@
+---
+import Container from '@/components/ui/Container.astro';
+import { LOCATIONS_TIER1 } from '@/lib/constants';
+---
+
+<section class="py-16 lg:py-24 bg-primary">
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-12" data-reveal>
+      <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-white leading-tight mb-4">
+        Proudly Serving the Greater Seattle Area
+      </h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto">
+        From Seattle to Tacoma and everywhere in between, our team delivers expert kitchen and
+        bathroom remodeling across the Puget Sound region.
+      </p>
+    </div>
+
+    <!-- Location Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-10" data-reveal>
+      {LOCATIONS_TIER1.map((location) => (
+        <a
+          href={`/areas-served/${location.slug}/`}
+          class="group bg-white/5 hover:bg-white/10 rounded-lg px-4 py-3 transition-colors flex items-center justify-between gap-2"
+        >
+          <div>
+            <span class="text-white font-medium block">{location.city}</span>
+            <span class="text-white/50 text-sm">WA</span>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4 text-white/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      ))}
+    </div>
+
+    <!-- See All Link -->
+    <div class="text-center" data-reveal>
+      <a
+        href="/areas-served/"
+        class="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300"
+      >
+        See All Service Areas
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </Container>
+</section>

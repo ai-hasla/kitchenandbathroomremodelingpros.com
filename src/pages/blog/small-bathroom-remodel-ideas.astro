@@ -1,0 +1,346 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: '25 Small Bathroom Remodel Ideas', href: '/blog/small-bathroom-remodel-ideas/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: '25 Small Bathroom Remodel Ideas That Maximize Space | Seattle',
+  description: '25 proven small bathroom remodel ideas that maximize space, storage, and style. Storage solutions, visual tricks, fixture upgrades, and design tips for Seattle homes with compact bathrooms.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-03-07',
+  dateModified: '2026-03-07',
+  image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do you make a small bathroom look bigger?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The most effective strategies for making a small bathroom look bigger include: using large-format tiles with minimal grout lines, installing a frameless glass shower door instead of a curtain, adding a large mirror or full-wall mirror, choosing light colors for walls and tile, using wall-mounted fixtures (floating vanity, wall-mount toilet) to expose floor space, and ensuring adequate lighting with layered light sources.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the cheapest way to remodel a small bathroom?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The most affordable small bathroom updates include: painting walls and cabinets ($200-$500), replacing hardware and fixtures ($100-$400), adding a new mirror and lighting ($200-$600), installing a new toilet seat and showerhead ($50-$200), and updating accessories like towel bars and hooks ($50-$150). These cosmetic changes can be done for under $1,500 total.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does it cost to remodel a small bathroom in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A small bathroom remodel in Seattle costs $5,000 to $20,000 depending on scope. Cosmetic updates (paint, fixtures, accessories) cost $2,000-$5,000. A mid-range remodel (new vanity, tile, toilet, fixtures) runs $8,000-$15,000. A full renovation with layout changes costs $15,000-$25,000. Small bathrooms cost less in materials but similar in labor since the work is the same.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Should I use a tub or shower in a small bathroom?',
+      acceptedAnswer: { '@type': 'Answer', text: 'For most small bathrooms, a shower-only design maximizes usable space. However, if the bathroom serves as the only full bath in your home, keeping at least one tub is recommended for resale value — families with young children strongly prefer a bathtub. A tub-shower combo is the most space-efficient way to have both. Walk-in showers with frameless glass create the most open feeling.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What tile size is best for a small bathroom?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Contrary to popular belief, large-format tiles (12x24 or larger) actually make small bathrooms look bigger. Fewer grout lines create a cleaner, more expansive visual. Use the same tile on the floor and shower walls to create visual continuity. If using smaller tiles, keep grout lines thin and choose a grout color that matches the tile to minimize visual breaks.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="25 Small Bathroom Remodel Ideas That Maximize Space | Seattle"
+  description="25 small bathroom remodel ideas that maximize space in compact Seattle bathrooms. Storage solutions, visual tricks, fixture upgrades, and design tips with budget ranges."
+  canonical={`${SITE.url}/blog/small-bathroom-remodel-ideas/`}
+  ogType="article"
+  article={{ publishedTime: '2026-03-07', modifiedTime: '2026-03-07', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">March 7, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 12 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">25 Small Bathroom Remodel Ideas That Maximize Space</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Proven ideas to make your compact bathroom feel larger, function better, and look stunning. Perfect for Seattle's older homes where small bathrooms are the norm.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Small bathrooms are a fact of life in Seattle. The city's beloved Craftsman bungalows, Tudor revivals, and mid-century ranchers were built in an era when bathrooms were purely functional spaces — compact, efficient, and rarely more than 40 square feet. Even many newer condos and townhomes in Capitol Hill, Ballard, and Fremont have bathrooms that feel tight by modern standards.
+            </p>
+            <p>
+              But a small bathroom doesn't have to feel cramped. With smart design choices, the right fixtures, and clever storage solutions, even the tiniest bathroom can feel open, organized, and beautiful. We've remodeled hundreds of small bathrooms across the Seattle area, and these 25 ideas represent our most effective strategies for maximizing every square inch.
+            </p>
+            <p>
+              Each idea includes an approximate budget range so you can mix and match based on your project scope. Whether you're doing a quick refresh or a complete renovation, you'll find ideas here that work for your space and your budget.
+            </p>
+          </div>
+
+          <!-- Storage Solutions -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Storage Solutions</h2>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">1. Floating Vanity ($800 - $3,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A wall-mounted <a href="/services/vanity-installation/" class="text-accent hover:underline">floating vanity</a> is the single most effective upgrade for a small bathroom. By exposing the floor beneath, it creates a visual sense of openness that makes the entire room feel larger. The space underneath can hold a basket for towels or a small step stool. Choose a vanity with deep drawers rather than cabinet doors for more efficient storage in tight spaces.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">2. Recessed Medicine Cabinet ($200 - $800)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A recessed medicine cabinet is built into the wall, providing storage without projecting into the room. Choose a model with a mirrored front to double as your bathroom mirror. Modern recessed cabinets come in frameless designs with adjustable shelves and soft-close doors. They're typically 3.5 to 4 inches deep — enough for toiletries, medications, and daily essentials.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">3. Recessed Shower Niches ($200 - $500 per niche)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Built-in niches (recessed shelves in the shower wall) eliminate the need for hanging caddies and corner shelves that take up space and look cluttered. We typically install two niches in a small shower — one at standing height for shampoo and soap, and one lower for shaving supplies. Niches are waterproofed during construction and tiled to match the shower walls for a seamless look.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">4. Over-Toilet Storage ($100 - $600)</h3>
+                <p class="text-body-text text-sm leading-relaxed">The wall space above the toilet is often wasted. Floating shelves ($100-$200), a narrow cabinet ($200-$400), or a built-in recessed shelf ($300-$600) can transform this dead zone into valuable storage. In small Seattle bathrooms, this is often the only available wall space for storage — use it wisely with attractive baskets or boxes that keep items organized and out of sight.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">5. Towel Hooks Instead of Bars ($30 - $100)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A 24-inch towel bar takes up significant wall space that could serve other purposes. Individual towel hooks occupy a fraction of the space and can be placed behind the door, on the side of the vanity, or on any small wall section. Multiple hooks accommodate the whole family while using far less room than a single bar.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">6. Pull-Out Vanity Organizers ($50 - $200)</h3>
+                <p class="text-body-text text-sm leading-relaxed">The space under the vanity is often poorly utilized. Pull-out wire baskets, sliding drawers, and tiered organizers maximize every inch inside the cabinet. A pull-out tray around the plumbing pipes makes the back of the cabinet accessible. These inexpensive add-ons can double the usable storage capacity of your existing vanity.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">7. Built-In Linen Niche ($400 - $1,200)</h3>
+                <p class="text-body-text text-sm leading-relaxed">If your bathroom shares a wall with a closet or another room, you may be able to create a built-in storage niche by borrowing space from the adjacent area. A shallow recessed cabinet (4-6 inches deep) can store rolled towels, toiletries, and cleaning supplies. This is a particularly clever solution in Seattle's older homes where adding a linen closet isn't possible.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Tricks -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Visual Tricks to Make Small Bathrooms Feel Bigger</h2>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">8. Large-Format Floor Tiles ($6 - $15/sq ft installed)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Contrary to what many people assume, larger tiles make small rooms feel bigger. A 12x24 or even 24x24 porcelain tile has fewer grout lines, creating a cleaner, more expansive look. Use a grout color that closely matches the tile to further minimize visual breaks. For a 40 sq ft bathroom floor, this costs $240-$600 in materials plus installation.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">9. Frameless Glass Shower Door ($1,200 - $2,500)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A frameless glass door or panel is the most impactful visual upgrade in a small bathroom. Unlike a shower curtain or framed glass, frameless glass creates an uninterrupted sightline that makes the bathroom feel like one continuous space. The investment is significant but transformative. For the smallest spaces, a single fixed glass panel without a door is even more streamlined.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">10. Oversized Mirror ($200 - $800)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A mirror that spans the full width of the vanity (or even the full wall) doubles the perceived depth of the room and reflects natural light throughout the space. In Seattle's low-light climate, this light reflection is especially valuable. Skip the small, framed mirror and go as large as possible. Edge-lit LED mirrors combine illumination with the spacious feel of a large mirror.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">11. Continuous Floor Tile Into the Shower ($500 - $1,500 additional)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Using the same tile on both the bathroom floor and the shower floor creates visual continuity that makes the room feel larger. A curbless (zero-threshold) shower entry amplifies this effect by eliminating the visual break between shower and bathroom. This approach requires careful waterproofing and drainage planning but is one of the most effective space-expanding techniques available.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">12. Vertical Tile Patterns ($0 - $300 additional labor)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Running subway tiles or rectangular tiles vertically instead of horizontally draws the eye upward and makes ceilings feel higher. This trick costs nothing extra in materials — only slightly more in installation labor for the adjusted pattern. Vertical stack-bond patterns look particularly modern and are trending in Seattle bathrooms.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">13. Light Color Palette ($200 - $500 for paint)</h3>
+                <p class="text-body-text text-sm leading-relaxed">White, soft gray, warm greige, and pale blue walls make small bathrooms feel airier and brighter. Dark walls can work as an accent but absorb light, making the room feel smaller. In Seattle's often overcast climate, light walls help compensate for limited natural light. Pair with white or light-toned fixtures and tile for maximum effect.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">14. Glass Mosaic Accent Strip ($200 - $600)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A horizontal strip of glass mosaic tile at eye level creates a sense of width and adds a touch of sparkle and depth without overwhelming the space. Glass reflects light beautifully, adding dimension to the room. Keep it to one narrow band (2-4 inches wide) for subtle impact that complements rather than competes with the room's proportions.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fixture Upgrades -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Space-Saving Fixture Upgrades</h2>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">15. Wall-Mounted Toilet ($400 - $1,500 installed)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A wall-hung toilet with a concealed tank gains 10-12 inches of floor space compared to a standard toilet. The clean, floating design makes the bathroom feel more open and also makes floor cleaning effortless. The concealed tank is hidden inside the wall. Installation costs more due to the in-wall carrier frame, but the space savings are significant in bathrooms under 50 square feet.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">16. Compact or Corner Sink ($300 - $1,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">For half-baths and ultra-compact bathrooms, a wall-mounted corner sink or a narrow-depth vanity (18-20 inches deep versus the standard 22-24 inches) saves critical inches. Corner sinks are particularly effective in powder rooms where a standard vanity would block the door swing or crowd the toilet. Round vessel sinks on narrow floating shelves offer another space-saving option.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">17. Sliding Barn Door ($300 - $800)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A sliding barn door eliminates the 6-8 square feet of floor space consumed by a swinging door. This is a game-changer in small bathrooms where the door swing blocks access to the vanity or toilet. Modern barn door hardware comes in sleek profiles (flat black, brushed nickel) that work with any style. A pocket door achieves the same goal if wall space allows.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">18. Rain Showerhead With Handheld ($200 - $600)</h3>
+                <p class="text-body-text text-sm leading-relaxed">A ceiling-mounted rain showerhead with a separate handheld on a slide bar provides a spa-like experience without taking up wall space with bulky fixtures. The clean ceiling mount eliminates a protruding shower arm and head from the wall. The handheld is practical for cleaning and rinsing, and the slide bar adjusts for different users' heights.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">19. Japanese-Style Soaking Tub ($1,500 - $4,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">If you want a tub in a small bathroom, a Japanese soaking tub (ofuro) is shorter in length but deeper than a standard tub. At 40-48 inches long versus the standard 60 inches, it frees up 12-20 inches of floor space while providing a deep, immersive bathing experience. These tubs have become increasingly popular in Seattle's space-conscious remodels.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">20. Pedestal Sink to Vanity Conversion ($500 - $2,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Many older Seattle bathrooms have pedestal sinks that offer zero storage. Replacing a pedestal with a 24-inch or 30-inch vanity (the same footprint or smaller) adds a cabinet full of storage without using more floor space. A floating vanity in this size is ideal — it provides storage while maintaining the open floor that makes the room feel spacious.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Design Choices -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Design Choices for Small Spaces</h2>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">21. Minimal Clutter, Maximum Impact ($0 - $200)</h3>
+                <p class="text-body-text text-sm leading-relaxed">The less you have on display, the larger the room feels. Clear countertops (store everything in the vanity or medicine cabinet), matching containers for exposed items, a single plant, and one piece of art create a curated look that breathes. This costs nothing but requires discipline and sufficient closed storage — which is why the storage ideas above are so important.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">22. Layered Lighting ($300 - $1,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Good lighting makes a small bathroom feel much larger. Layer your light sources: recessed ceiling downlights for general illumination, wall sconces flanking the mirror for task lighting, and an LED strip under the vanity for ambient glow. Dimmer switches let you adjust the mood. In Seattle where natural light is limited for months at a time, well-designed lighting is essential, not optional.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">23. Matching Hardware Finish ($50 - $300)</h3>
+                <p class="text-body-text text-sm leading-relaxed">In a small space, visual cohesion is everything. Matching your faucet, shower trim, towel hooks, toilet lever, cabinet pulls, and shower glass hardware in a single finish (matte black, brushed nickel, or brushed gold) creates a unified, intentional look that makes the room feel designed rather than assembled. This simple detail has an outsized impact in compact spaces.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">24. Heated Tile Floor ($500 - $1,500)</h3>
+                <p class="text-body-text text-sm leading-relaxed">In a small bathroom, every surface contributes to the experience. <a href="/services/tile-installation/" class="text-accent hover:underline">Heated tile floors</a> are an affordable luxury in compact bathrooms because the small square footage keeps the cost low. A 40 sq ft bathroom needs about $300-$600 in radiant heat materials plus installation. The warm floor feels incredible on Seattle's cold, rainy mornings and eliminates the need for a bath mat that takes up visual space.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">25. Natural Light Maximization ($200 - $3,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Natural light makes any room feel larger. If your small bathroom has a window, maximize it: use frosted glass for privacy instead of a curtain, keep the window trim minimal, and consider enlarging it if your budget allows. If there's no window, a solar tube (sun tunnel) costs $500-$1,500 installed and brings natural light down through the roof. Even a small amount of daylight transforms a compact bathroom from cave-like to inviting.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seattle Context -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Small Bathrooms in Seattle Homes</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle's housing stock presents unique challenges and opportunities for small bathroom remodeling. Craftsman bungalows from the 1910s-1930s typically have one bathroom of 35-50 square feet, often with original claw-foot tubs and pedestal sinks. Mid-century ranchers (1950s-1970s) usually have two bathrooms but both are compact, often with dated tile and fixtures. Even many newer condos and townhomes built in the 2000s-2020s have bathrooms under 60 square feet due to high land costs driving compact floor plans.
+              </p>
+              <p>
+                The good news is that small bathroom remodels cost less in materials (less tile, less countertop, smaller vanity) even though labor costs are similar to larger bathrooms. A full <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodel</a> of a 40-square-foot bathroom in Seattle typically runs $8,000 to $20,000, compared to $15,000 to $35,000 for a larger master bath. That makes it easier to invest in premium materials and smart upgrades that maximize every inch.
+              </p>
+              <p>
+                We also strongly recommend including proper ventilation in any small bathroom remodel. Compact spaces trap moisture more than larger rooms, and Seattle's ambient humidity makes this worse. A quality exhaust fan with a humidity sensor is a non-negotiable upgrade. See our <a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline">bathroom remodel cost guide</a> for detailed pricing information.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How do you make a small bathroom look bigger?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Use large-format tiles with minimal grout lines, install a frameless glass shower door, add a large or full-wall mirror, choose light colors, use wall-mounted fixtures (floating vanity, wall-mount toilet) to expose floor space, and ensure adequate layered lighting.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the cheapest way to remodel a small bathroom?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The most affordable updates include painting walls and cabinets ($200-$500), replacing hardware and fixtures ($100-$400), adding a new mirror and lighting ($200-$600), and updating accessories ($50-$150). These cosmetic changes can be done for under $1,500 total.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does it cost to remodel a small bathroom in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">$5,000 to $20,000 depending on scope. Cosmetic updates cost $2,000-$5,000. A mid-range remodel (new vanity, tile, toilet, fixtures) runs $8,000-$15,000. A full renovation with layout changes costs $15,000-$25,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Should I use a tub or shower in a small bathroom?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A shower-only design maximizes usable space. However, if it's the only full bath in your home, keeping a tub is recommended for resale value. A tub-shower combo is the most space-efficient option. Walk-in showers with frameless glass create the most open feeling.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What tile size is best for a small bathroom?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Large-format tiles (12x24 or larger) make small bathrooms look bigger. Fewer grout lines create a cleaner, more expansive visual. Use matching grout color to minimize visual breaks. Carry the same tile from the floor into the shower for continuity.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Transform Your Small Bathroom?</h2>
+            <p class="text-white/80 mb-6">We specialize in making compact Seattle bathrooms feel larger, brighter, and more functional. Get a free design consultation.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Bathroom Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Let us show you what's possible in your small bathroom.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">10 Bathroom Remodel Ideas for Seattle</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide 2026</a></li>
+                <li><a href="/cost-guides/shower-remodel-cost/" class="text-accent hover:underline text-sm font-medium">Shower Remodel Cost Guide</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+                <li><a href="/services/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+                <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

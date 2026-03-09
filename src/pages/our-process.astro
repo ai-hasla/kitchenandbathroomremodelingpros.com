@@ -1,0 +1,177 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'Our Process', href: '/our-process/' }];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Free In-Home Consultation',
+    description: `Every great remodel starts with a conversation. During your free in-home consultation, one of our experienced design consultants will visit your home to understand your vision, assess the current space, and discuss your goals, preferences, and budget. We'll take detailed measurements, photograph the existing layout, and note any structural or plumbing considerations that could affect the project scope.
+
+This is also your opportunity to ask questions, share inspiration photos, and get a feel for how we work. We'll walk you through our process, explain typical timelines for your type of project, and provide preliminary guidance on material options and costs. There's absolutely no obligation — this meeting is about understanding what you want and determining how we can bring it to life.
+
+Most consultations last about 60 to 90 minutes. We want to make sure we thoroughly understand your needs before moving forward.`,
+    expect: 'A thorough assessment of your space, honest answers to your questions, and a clear understanding of what\'s possible within your budget.',
+  },
+  {
+    number: '02',
+    title: 'Custom Design & Material Selection',
+    description: `Once we understand your vision, our design team gets to work creating a custom plan tailored to your home and lifestyle. For kitchen remodels, this includes layout optimization, cabinet configurations, countertop material selection, backsplash designs, lighting plans, and appliance placement. For bathroom projects, we'll design the shower or tub configuration, vanity layout, tile patterns, fixture selections, and storage solutions.
+
+We use professional design software to create detailed 3D renderings so you can visualize your new space before a single tile is removed. You'll be able to see how different cabinet finishes, countertop materials, and color schemes look together, making it easy to make confident decisions.
+
+Our design consultant will guide you through our material showroom and trusted supplier partners. We'll present options at various price points so you can make informed choices that align with your aesthetic goals and budget. We never push premium materials when a mid-range option will achieve the same result.`,
+    expect: 'Detailed 3D renderings of your new space, a curated selection of materials at multiple price points, and a finalized design you love.',
+  },
+  {
+    number: '03',
+    title: 'Detailed Quoting & Scheduling',
+    description: `Transparency is one of our core values, and nowhere is that more apparent than in our quoting process. Once the design is finalized, we prepare a comprehensive, line-item quote that breaks down every cost: materials, labor, permits, disposal, and any subcontractor work. You'll know exactly where every dollar is going.
+
+We don't believe in vague estimates or surprise change orders. Our quotes include a detailed scope of work document that spells out precisely what's included and what isn't. If anything changes during the project, we'll discuss it with you and get written approval before proceeding.
+
+Once you approve the quote, we'll create a detailed project schedule with specific milestones. We coordinate material deliveries, permit applications, and subcontractor schedules to ensure everything is lined up before demolition begins. Most kitchen remodels take 3 to 6 weeks; bathroom remodels typically run 2 to 4 weeks. We'll give you a realistic timeline and stick to it.`,
+    expect: 'A transparent, line-item quote with no hidden fees, a clear project timeline, and a detailed scope of work for your approval.',
+  },
+  {
+    number: '04',
+    title: 'Expert Construction',
+    description: `This is where the transformation happens. On day one, your dedicated project manager will walk you through the construction schedule and set up dust barriers to protect the rest of your home. Our crews arrive on time, work efficiently, and clean up at the end of every day.
+
+Throughout the construction phase, your project manager serves as your single point of contact. You'll receive regular progress updates with photos, and they're always available to answer questions or address concerns. If any unexpected issues arise — such as hidden water damage or outdated wiring — we'll inform you immediately, discuss options, and provide a cost estimate before proceeding.
+
+Our skilled craftspeople take pride in their work. From precise tile cuts to perfectly aligned cabinetry, every detail matters. We use quality installation techniques that ensure your remodel not only looks stunning but also stands the test of time. We coordinate all trades — plumbing, electrical, tile, paint — to keep the project moving smoothly and minimize disruption to your daily life.`,
+    expect: 'Professional crews who respect your home, daily cleanup, regular progress updates, and expert craftsmanship at every stage.',
+  },
+  {
+    number: '05',
+    title: 'Final Walkthrough & Warranty',
+    description: `Before we consider the project complete, we conduct a thorough final walkthrough with you. Together, we'll inspect every aspect of the work: cabinet doors and drawers, countertop seams, grout lines, paint touch-ups, fixture operation, and overall finish quality. We bring a punch list and won't rest until every item meets our standards — and yours.
+
+We'll also provide a comprehensive care guide with maintenance tips specific to your new materials. Whether it's sealing natural stone countertops, caring for hardwood floors, or maintaining your new tile grout, we want your remodel to look beautiful for years to come.
+
+Every project is backed by our industry-leading warranty: 5 years on workmanship and we pass through all manufacturer warranties on materials and fixtures. If something isn't right, we'll come back and make it right — no questions asked. Our relationship doesn't end when the last tool is packed up. Many of our clients call us back for additional projects, and we're always happy to help.`,
+    expect: 'A detailed inspection with you present, a care and maintenance guide, and our 5-year workmanship warranty for complete peace of mind.',
+  },
+];
+---
+
+<BaseLayout
+  title="Our Remodeling Process | 5 Simple Steps"
+  description="Discover our proven 5-step remodeling process — from free consultation to final walkthrough. Transparent pricing, expert craftsmanship, and clear communication every step of the way."
+  canonical={`${SITE.url}/our-process/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">How We Work</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Our Remodeling Process</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Five simple steps from your first call to your dream kitchen or bathroom. We keep you informed and in control at every stage.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Intro CTA -->
+  <section class="py-12 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6" data-reveal>
+        <div>
+          <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-1">Ready to Get Started?</h2>
+          <p class="text-body-text">Schedule your free in-home consultation today. No obligation, no pressure.</p>
+        </div>
+        <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Steps -->
+  {steps.map((step, index) => (
+    <section class={`py-20 ${index % 2 === 1 ? 'bg-light' : ''}`}>
+      <Container>
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-2" data-reveal>
+            <span class="text-7xl md:text-8xl font-[family-name:var(--font-heading)] text-accent/20 leading-none">{step.number}</span>
+          </div>
+          <div class="lg:col-span-10" data-reveal>
+            <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-6">{step.title}</h2>
+            <div class="space-y-4 text-body-text leading-relaxed max-w-3xl">
+              {step.description.split('\n\n').map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+            <div class="mt-8 bg-accent-light border border-accent/20 rounded-xl p-6">
+              <p class="font-semibold text-primary mb-1">What to Expect</p>
+              <p class="text-body-text">{step.expect}</p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  ))}
+
+  <!-- Mid CTA -->
+  <section class="py-16 bg-accent-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Your Project Starts With a Conversation</h2>
+        <p class="text-body-text text-lg mb-6">
+          We'd love to hear about your remodeling goals. Reach out today and let's talk about how we can transform your space.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-[family-name:var(--font-heading)] text-primary mb-10 text-center" data-reveal>Frequently Asked Questions</h2>
+        <div class="space-y-6" data-reveal-stagger>
+          <div class="border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">How long does a typical remodel take?</h3>
+            <p class="text-body-text">Kitchen remodels typically take 3 to 6 weeks depending on scope. Bathroom remodels usually run 2 to 4 weeks. We'll provide a detailed timeline during the quoting phase and keep you updated throughout the project.</p>
+          </div>
+          <div class="border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">Can I stay in my home during the remodel?</h3>
+            <p class="text-body-text">Yes! Most homeowners remain in their homes during the project. We'll set up dust barriers and take precautions to minimize disruption. For kitchen remodels, we recommend setting up a temporary kitchen area with a microwave, coffee maker, and small fridge.</p>
+          </div>
+          <div class="border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">Do you handle permits?</h3>
+            <p class="text-body-text">Absolutely. We handle all necessary permits for your project, including building, plumbing, and electrical permits in your jurisdiction. Permit costs are included in your detailed quote so there are never any surprises.</p>
+          </div>
+          <div class="border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">What if I change my mind about something mid-project?</h3>
+            <p class="text-body-text">Changes happen, and we're flexible. If you want to adjust something during construction, we'll discuss the impact on timeline and cost, provide a written change order for your approval, and proceed only after you give the go-ahead.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Let's Start Your Remodel</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Ready to transform your kitchen or bathroom? Contact us today for a free, no-obligation estimate.
+        </p>
+        <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

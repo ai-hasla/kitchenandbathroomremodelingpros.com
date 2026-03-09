@@ -1,0 +1,221 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'Financing', href: '/financing/' }];
+
+const plans = [
+  {
+    title: 'Same-As-Cash',
+    term: '12 Months',
+    apr: '0% APR',
+    detail: 'No interest if paid in full within 12 months. Perfect for smaller projects like cabinet refacing, countertop installation, or bathroom updates.',
+    minProject: '$5,000',
+    monthlyExample: '$417/mo on $5,000',
+  },
+  {
+    title: 'Low Monthly Payment',
+    term: '60 Months',
+    apr: '6.99% APR',
+    detail: 'Spread your payments over 5 years for manageable monthly costs. Ideal for mid-range kitchen or bathroom remodels.',
+    minProject: '$10,000',
+    monthlyExample: '$198/mo on $10,000',
+    popular: true,
+  },
+  {
+    title: 'Extended Term',
+    term: '120 Months',
+    apr: '8.99% APR',
+    detail: 'Our longest term option for premium full-scale renovations. Keep monthly payments low while investing in your home.',
+    minProject: '$25,000',
+    monthlyExample: '$316/mo on $25,000',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Quick Approval',
+    description: 'Get a credit decision in minutes, not days. Our streamlined application process means you can move forward with your project faster.',
+    icon: 'clock',
+  },
+  {
+    title: 'Competitive Rates',
+    description: 'We partner with top lending institutions to offer interest rates that are lower than most credit cards and personal loans.',
+    icon: 'trending-down',
+  },
+  {
+    title: 'Flexible Terms',
+    description: 'Choose from multiple repayment periods to find a monthly payment that fits comfortably within your budget.',
+    icon: 'sliders',
+  },
+  {
+    title: 'No Prepayment Penalties',
+    description: 'Pay off your balance early without any fees. If you come into extra funds, you can reduce your balance and save on interest.',
+    icon: 'dollar',
+  },
+  {
+    title: 'Home Value Increase',
+    description: 'Kitchen and bathroom remodels typically recoup 60-80% of their cost in home value. Your investment pays for itself.',
+    icon: 'home',
+  },
+  {
+    title: 'Simple Application',
+    description: 'Apply online or in person during your consultation. We just need basic personal and financial information to get started.',
+    icon: 'check-circle',
+  },
+];
+---
+
+<BaseLayout
+  title="Financing Options | Kitchen & Bathroom Remodeling Seattle"
+  description="Affordable financing for kitchen and bathroom remodeling in Seattle. 0% APR options, low monthly payments, and quick approval. Make your dream remodel a reality."
+  canonical={`${SITE.url}/financing/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Affordable Options</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Financing Your Remodel</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Don't let budget concerns hold you back from the kitchen or bathroom of your dreams. We offer flexible financing options with competitive rates and terms to fit your needs.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Payment Plans -->
+  <section class="py-20">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Payment Plans</h2>
+        <p class="text-muted text-lg">Choose the financing option that best fits your project and budget. All plans are subject to credit approval.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8" data-reveal-stagger>
+        {plans.map((plan) => (
+          <div class={`relative bg-white rounded-2xl border-2 p-8 ${plan.popular ? 'border-accent shadow-xl' : 'border-border'}`}>
+            {plan.popular && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+            )}
+            <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-1">{plan.title}</h3>
+            <p class="text-sm text-muted mb-4">{plan.term}</p>
+            <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-accent mb-4">{plan.apr}</p>
+            <p class="text-body-text text-sm mb-6 leading-relaxed">{plan.detail}</p>
+            <div class="border-t border-border pt-4 space-y-2">
+              <div class="flex justify-between text-sm">
+                <span class="text-muted">Min. project</span>
+                <span class="font-medium text-primary">{plan.minProject}</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-muted">Example</span>
+                <span class="font-medium text-primary">{plan.monthlyExample}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-sm text-muted mt-8" data-reveal>* Monthly payment examples are estimates. Actual rates and terms depend on creditworthiness and loan amount. All financing is subject to credit approval.</p>
+    </Container>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Benefits of Financing</h2>
+        <p class="text-muted text-lg">Here's why financing your remodel makes smart financial sense.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal-stagger>
+        {benefits.map((benefit) => (
+          <div class="bg-white p-8 rounded-xl border border-border">
+            <div class="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </div>
+            <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">{benefit.title}</h3>
+            <p class="text-body-text text-sm leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">How to Apply</h2>
+        <p class="text-muted text-lg">Getting approved for financing is simple and straightforward.</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-8" data-reveal-stagger>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold font-[family-name:var(--font-heading)]">1</div>
+          <h3 class="font-[family-name:var(--font-heading)] text-primary mb-2">Schedule Consultation</h3>
+          <p class="text-body-text text-sm">Book your free in-home consultation to discuss your project scope and goals.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold font-[family-name:var(--font-heading)]">2</div>
+          <h3 class="font-[family-name:var(--font-heading)] text-primary mb-2">Get Your Quote</h3>
+          <p class="text-body-text text-sm">Receive a detailed, line-item estimate for your remodeling project.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold font-[family-name:var(--font-heading)]">3</div>
+          <h3 class="font-[family-name:var(--font-heading)] text-primary mb-2">Apply Online</h3>
+          <p class="text-body-text text-sm">Complete a quick application and get a credit decision within minutes.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold font-[family-name:var(--font-heading)]">4</div>
+          <h3 class="font-[family-name:var(--font-heading)] text-primary mb-2">Start Your Remodel</h3>
+          <p class="text-body-text text-sm">Once approved, we'll schedule your project and get to work on your dream space.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-[family-name:var(--font-heading)] text-primary mb-10 text-center" data-reveal>Financing FAQs</h2>
+        <div class="space-y-6" data-reveal-stagger>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">Does applying affect my credit score?</h3>
+            <p class="text-body-text">The initial pre-qualification uses a soft credit pull, which does not affect your score. A hard inquiry is only performed when you formally accept a financing offer.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">What credit score do I need?</h3>
+            <p class="text-body-text">Our lending partners work with a range of credit profiles. Generally, a score of 620 or above provides access to the best rates, but options may be available for lower scores as well.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">Can I combine financing with other promotions?</h3>
+            <p class="text-body-text">Yes, financing can typically be combined with any current promotions or seasonal discounts we may be offering. Ask your project consultant for details during your estimate.</p>
+          </div>
+          <div class="bg-white border border-border rounded-xl p-6">
+            <h3 class="font-semibold text-primary mb-2">What if my project costs change?</h3>
+            <p class="text-body-text">If your project scope changes after approval, we can adjust the financing amount. Increases may require a new application, while decreases simply lower your payment.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Get Started?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Schedule your free consultation and we'll discuss financing options that work for your budget. There's no obligation and no pressure.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

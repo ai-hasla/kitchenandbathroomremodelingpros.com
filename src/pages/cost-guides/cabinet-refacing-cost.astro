@@ -1,0 +1,404 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Cabinet Refacing Cost', href: '/cost-guides/cabinet-refacing-cost/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Cabinet Refacing Cost 2026 | Seattle Price Guide',
+  description: 'How much does cabinet refacing cost in Seattle in 2026? Average costs from $5,000 to $15,000. Compare refacing vs. replacing, material options, and cost per linear foot.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-15',
+  dateModified: '2026-03-01',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does cabinet refacing cost in Seattle in 2026?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Cabinet refacing in Seattle costs between $5,000 and $15,000 on average in 2026. The price depends on the number of cabinet doors and drawer fronts, the material you choose (laminate, wood veneer, or rigid thermofoil), and any additional upgrades like new hardware or soft-close hinges.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is cabinet refacing worth it compared to replacing?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Cabinet refacing is worth it if your existing cabinet boxes are structurally sound and your current layout works well. Refacing costs 40-60% less than full cabinet replacement while delivering a dramatic visual transformation. It is also faster, typically completing in 3-5 days versus 2-4 weeks for full replacement.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does cabinet refacing last?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Professionally refaced cabinets last 15 to 20 years or more with proper care. High-quality wood veneer and rigid thermofoil materials are extremely durable and resistant to warping, peeling, and fading. The longevity is comparable to brand new cabinets.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the cost per linear foot for cabinet refacing in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Cabinet refacing in Seattle costs approximately $150 to $400 per linear foot depending on the material. Laminate refacing runs $150-$220 per linear foot, wood veneer costs $200-$350, and rigid thermofoil averages $180-$280 per linear foot. These prices include materials, labor, and new hinges.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you change cabinet layout during refacing?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Standard refacing keeps the existing cabinet layout intact since the boxes remain in place. However, you can make minor modifications such as converting a cabinet to open shelving, adding glass-front doors, or replacing a section with a pull-out organizer. Major layout changes require full cabinet replacement.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Cabinet Refacing Cost 2026 | Seattle Price Guide"
+  description="How much does cabinet refacing cost in Seattle in 2026? Average costs from $5,000 to $15,000. Compare refacing vs. replacing, material costs, and tips to save."
+  canonical={`${SITE.url}/cost-guides/cabinet-refacing-cost/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-15', modifiedTime: '2026-03-01', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Cabinet Refacing Cost 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A complete guide to cabinet refacing costs in the Seattle area. Understand pricing by material, compare refacing vs. replacing, and learn how to maximize your kitchen budget.
+        </p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-01">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>10 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article Content -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+
+        <!-- Main Content -->
+        <article class="lg:col-span-8 prose-custom">
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Cabinet Refacing Costs in Seattle</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Laminate</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$5K - $8K</p>
+                <p class="text-xs text-body-text">Budget-friendly</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Wood Veneer</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">$8K - $15K</p>
+                <p class="text-xs text-body-text">Most popular</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Thermofoil</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">$6K - $10K</p>
+                <p class="text-xs text-body-text">Smooth finish</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Cabinet refacing is one of the smartest ways to transform your kitchen without the cost and disruption of a full remodel. Instead of ripping out your existing cabinets and starting from scratch, <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a> replaces the visible surfaces — doors, drawer fronts, and veneer on the cabinet boxes — while keeping the structurally sound boxes in place. The result is a kitchen that looks brand new at a fraction of the cost.
+            </p>
+            <p>
+              In the Seattle area, cabinet refacing typically costs between $5,000 and $15,000 for an average-sized kitchen with 20 to 30 doors and drawer fronts. That's roughly 40-60% less than full cabinet replacement, which runs $15,000 to $35,000 or more for comparable quality. If your cabinet boxes are in good condition and your current layout works for you, refacing is an excellent investment.
+            </p>
+            <p>
+              This guide breaks down cabinet refacing costs by material, explains what's included in a typical project, and helps you determine whether refacing or replacing is the right choice for your Seattle kitchen. All pricing reflects our 2026 project data from the greater Puget Sound region.
+            </p>
+          </div>
+
+          <!-- Cost by Material -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Cabinet Refacing Cost by Material</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              The material you choose for your new cabinet doors and drawer fronts is the biggest factor in the final cost. Here's what each option costs in Seattle in 2026:
+            </p>
+
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Laminate Refacing</h3>
+                  <span class="font-bold text-accent">$5,000 - $8,000</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Laminate is the most affordable refacing option and comes in a wide range of colors and patterns, including convincing wood-grain finishes. Modern high-pressure laminates are scratch-resistant, moisture-resistant, and easy to clean. A great choice for budget-conscious homeowners who want a clean, updated look. Cost per linear foot: $150-$220.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Wood Veneer Refacing</h3>
+                  <span class="font-bold text-accent">$8,000 - $15,000</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Real wood veneer is the most popular choice among our Seattle clients. Options include oak, maple, cherry, birch, and walnut. Wood veneer doors are made from solid wood frames with veneer panels, delivering the beauty and warmth of real wood cabinetry. They can be stained or painted to match any kitchen style. Cost per linear foot: $200-$350.</p>
+              </div>
+
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Rigid Thermofoil (RTF)</h3>
+                  <span class="font-bold text-accent">$6,000 - $10,000</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Rigid thermofoil is a vinyl laminate heat-wrapped around MDF door fronts. It produces a seamless, smooth finish that is easy to clean and resists moisture well. Available in solid colors and realistic wood grain patterns. RTF is popular for modern and contemporary kitchens with a clean, uniform look. Cost per linear foot: $180-$280.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost Per Linear Foot -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Cost Per Linear Foot Breakdown</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              Many contractors quote cabinet refacing by the linear foot. This measurement counts the total length of all cabinets (uppers and lowers combined). A typical Seattle kitchen has 25 to 35 linear feet of cabinetry.
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Material</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Per Linear Foot</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">25 LF Kitchen</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">35 LF Kitchen</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Laminate</td>
+                    <td class="px-4 py-3 text-sm">$150 - $220</td>
+                    <td class="px-4 py-3 text-sm">$3,750 - $5,500</td>
+                    <td class="px-4 py-3 text-sm">$5,250 - $7,700</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Rigid Thermofoil</td>
+                    <td class="px-4 py-3 text-sm">$180 - $280</td>
+                    <td class="px-4 py-3 text-sm">$4,500 - $7,000</td>
+                    <td class="px-4 py-3 text-sm">$6,300 - $9,800</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Wood Veneer</td>
+                    <td class="px-4 py-3 text-sm">$200 - $350</td>
+                    <td class="px-4 py-3 text-sm">$5,000 - $8,750</td>
+                    <td class="px-4 py-3 text-sm">$7,000 - $12,250</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Solid Wood</td>
+                    <td class="px-4 py-3 text-sm">$300 - $450</td>
+                    <td class="px-4 py-3 text-sm">$7,500 - $11,250</td>
+                    <td class="px-4 py-3 text-sm">$10,500 - $15,750</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-body-text leading-relaxed text-sm">
+              These prices include new doors, drawer fronts, veneer for exposed cabinet boxes, new hinges (soft-close), and professional installation. New hardware (knobs and pulls) typically adds $200-$600 depending on your selections.
+            </p>
+          </div>
+
+          <!-- Refacing vs Replacing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Refacing vs. Replacing: Side-by-Side Comparison</h2>
+            <p class="text-body-text leading-relaxed mb-6">
+              The biggest question homeowners face is whether to reface their existing cabinets or replace them entirely. Here's how the two options compare:
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Factor</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold">Cabinet Refacing</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Full Replacement</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Average Cost</td>
+                    <td class="px-4 py-3 text-sm">$5,000 - $15,000</td>
+                    <td class="px-4 py-3 text-sm">$15,000 - $35,000+</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Timeline</td>
+                    <td class="px-4 py-3 text-sm">3-5 days</td>
+                    <td class="px-4 py-3 text-sm">2-4 weeks</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Kitchen Disruption</td>
+                    <td class="px-4 py-3 text-sm">Minimal — kitchen usable during process</td>
+                    <td class="px-4 py-3 text-sm">Significant — kitchen out of commission</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Layout Changes</td>
+                    <td class="px-4 py-3 text-sm">Not possible (keeps existing layout)</td>
+                    <td class="px-4 py-3 text-sm">Full flexibility to redesign</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Visual Transformation</td>
+                    <td class="px-4 py-3 text-sm">Dramatic — looks like new cabinets</td>
+                    <td class="px-4 py-3 text-sm">Complete — entirely new cabinetry</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Environmental Impact</td>
+                    <td class="px-4 py-3 text-sm">Lower — keeps boxes out of landfill</td>
+                    <td class="px-4 py-3 text-sm">Higher — full demo and disposal</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 font-medium text-primary text-sm">Permits Required</td>
+                    <td class="px-4 py-3 text-sm">No</td>
+                    <td class="px-4 py-3 text-sm">Sometimes (if electrical/plumbing involved)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-body-text leading-relaxed">
+              <strong>Choose refacing if:</strong> your cabinet boxes are structurally sound, you're happy with your current layout, you want a faster project with less disruption, and you're looking to save 40-60% compared to full replacement.
+            </p>
+            <p class="text-body-text leading-relaxed mt-3">
+              <strong>Choose replacement if:</strong> your cabinet boxes are damaged, warped, or water-stained, you want to change the layout of your kitchen, you need to resize cabinets for new appliances, or your cabinets were cheaply built and lack structural integrity.
+            </p>
+          </div>
+
+          <!-- Factors Affecting Cost -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Factors That Affect Cabinet Refacing Cost</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-6 mb-3">Number of Doors and Drawers</h3>
+              <p>
+                The total count of cabinet doors and drawer fronts is the primary cost driver. A typical Seattle kitchen has 20 to 30 doors and 8 to 15 drawer fronts. Each additional door or drawer front adds $75-$200 depending on the material. Kitchens with extensive cabinetry (35+ doors) naturally cost more but also see the greatest cost savings versus replacement.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Door Style and Profile</h3>
+              <p>
+                Simple flat-panel (slab) doors cost the least. Shaker-style doors — the most popular choice in Seattle kitchens — are moderately priced. Raised panel and cathedral arch doors with detailed profiles cost the most due to additional manufacturing complexity. Specialty options like glass-insert doors add $50-$150 per door.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Hardware and Accessories</h3>
+              <p>
+                New knobs and pulls are a near-universal add-on during refacing. Budget hardware runs $3-$8 per piece. Mid-range options like brushed brass or matte black from brands like Amerock or Top Knobs cost $8-$20 each. Soft-close hinges are typically included in professional refacing. Adding interior organizers (pull-out trays, lazy Susans, spice racks) costs $100-$300 per cabinet.
+              </p>
+
+              <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Seattle-Specific Pricing</h3>
+              <p>
+                Cabinet refacing costs in Seattle run approximately 10-15% higher than the national average, driven by higher labor rates and the cost of doing business in the Puget Sound region. However, the savings ratio compared to full replacement remains consistent — refacing still delivers the same 40-60% savings over new cabinets. Many Seattle homeowners pair cabinet refacing with a new <a href="/services/countertop-installation/" class="text-accent hover:underline">countertop installation</a> and backsplash to achieve a completely transformed kitchen for $12,000-$22,000 — far less than a full remodel. See our <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">complete kitchen remodel cost guide</a> for more pricing context.
+              </p>
+            </div>
+          </div>
+
+          <!-- What's Included -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What's Included in Professional Cabinet Refacing</h2>
+            <div class="space-y-3 text-body-text leading-relaxed">
+              <p>When you hire a professional for cabinet refacing, here's what a typical project includes:</p>
+              <ul class="space-y-2 ml-4">
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> Removal of existing doors, drawer fronts, and hardware</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> Application of matching veneer to all visible cabinet box surfaces</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> Installation of new custom-fitted doors in your chosen style and material</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> Installation of new drawer fronts to match</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> New concealed soft-close hinges on all doors</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> New matching end panels and filler strips</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> Touch-up of crown molding or trim as needed</li>
+                <li class="flex gap-3"><span class="text-accent font-bold">&#10003;</span> Full cleanup and debris removal</li>
+              </ul>
+              <p class="mt-4">
+                Optional add-ons include new hardware installation, interior organizers, under-cabinet lighting, and new crown molding. Some homeowners also opt to add a few new cabinet boxes (such as a pull-out pantry or wine rack) during the refacing process, which can be done at additional cost.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does cabinet refacing cost in Seattle in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Cabinet refacing in Seattle costs between $5,000 and $15,000 on average in 2026. The price depends on the number of cabinet doors and drawer fronts, the material you choose (laminate, wood veneer, or rigid thermofoil), and any additional upgrades like new hardware or soft-close hinges.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is cabinet refacing worth it compared to replacing?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Cabinet refacing is worth it if your existing cabinet boxes are structurally sound and your current layout works well. Refacing costs 40-60% less than full cabinet replacement while delivering a dramatic visual transformation. It is also faster, typically completing in 3-5 days versus 2-4 weeks for full replacement.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does cabinet refacing last?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Professionally refaced cabinets last 15 to 20 years or more with proper care. High-quality wood veneer and rigid thermofoil materials are extremely durable and resistant to warping, peeling, and fading. The longevity is comparable to brand new cabinets.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the cost per linear foot for cabinet refacing in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Cabinet refacing in Seattle costs approximately $150 to $400 per linear foot depending on the material. Laminate refacing runs $150-$220 per linear foot, wood veneer costs $200-$350, and rigid thermofoil averages $180-$280 per linear foot. These prices include materials, labor, and new hinges.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can you change cabinet layout during refacing?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Standard refacing keeps the existing cabinet layout intact since the boxes remain in place. However, you can make minor modifications such as converting a cabinet to open shelving, adding glass-front doors, or replacing a section with a pull-out organizer. Major layout changes require full cabinet replacement.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA in article -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Get a Free Cabinet Refacing Estimate</h2>
+            <p class="text-white/80 mb-6">See how much you can save with cabinet refacing versus full replacement. Get a personalized, line-item quote for your kitchen.</p>
+            <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <!-- Quick CTA -->
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for cabinet refacing.</p>
+              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+
+            <!-- Related Guides -->
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/countertop-installation-cost/" class="text-accent hover:underline text-sm font-medium">Countertop Installation Cost Guide</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Seattle 2026</a></li>
+              </ul>
+            </div>
+
+            <!-- Related Services -->
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Our Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+              </ul>
+            </div>
+
+            <!-- Gallery Link -->
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-3">See Our Work</h3>
+              <p class="text-body-text text-sm mb-4">Browse completed cabinet refacing and kitchen projects in the Seattle area.</p>
+              <Button href="/gallery/" variant="outline" size="sm" class="w-full">View Gallery</Button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

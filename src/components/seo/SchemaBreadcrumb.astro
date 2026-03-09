@@ -1,0 +1,50 @@
+---
+import { SITE } from '@/lib/constants';
+
+interface BreadcrumbItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const allItems = [{ label: 'Home', href: '/' }, ...items];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: allItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    item: index < allItems.length - 1 ? `${SITE.url}${item.href}` : undefined,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<nav aria-label="Breadcrumb" class="text-sm text-muted">
+  <ol class="flex flex-wrap items-center gap-1.5">
+    {allItems.map((item, index) => (
+      <li class="flex items-center gap-1.5">
+        {index > 0 && (
+          <svg class="h-3.5 w-3.5 text-muted/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        )}
+        {index < allItems.length - 1 ? (
+          <a href={item.href} class="hover:text-accent transition-colors">
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-dark-text font-medium">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

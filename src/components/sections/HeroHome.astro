@@ -1,0 +1,97 @@
+---
+import { SITE } from '@/lib/constants';
+import Button from '@/components/ui/Button.astro';
+import Container from '@/components/ui/Container.astro';
+import StarRating from '@/components/ui/StarRating.astro';
+---
+
+<section class="relative min-h-screen overflow-hidden pt-28 lg:pt-32 pb-20 lg:pb-0 flex items-center">
+  <!-- Background image with Ken Burns zoom -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=2000&q=80"
+      alt="Modern white kitchen with marble countertops"
+      class="h-full w-full object-cover animate-hero-zoom"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Dark gradient overlay from left side -->
+  <div class="absolute inset-0 z-1 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+
+  <!-- Content -->
+  <Container class="relative z-10">
+    <div class="max-w-2xl">
+      <!-- Eyebrow -->
+      <p
+        class="text-accent text-xs sm:text-sm font-semibold uppercase tracking-widest mb-4 font-[family-name:var(--font-body)]"
+        data-reveal
+      >
+        15 Years Remodeling Seattle Homes &mdash; 500+ Projects Completed
+      </p>
+
+      <!-- Heading -->
+      <h1
+        class="text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-heading)] text-white leading-tight mb-6"
+        data-reveal
+      >
+        Seattle Kitchen &amp;<br />Bathroom Remodeling
+      </h1>
+
+      <!-- Subtitle -->
+      <p
+        class="text-lg text-white/80 max-w-xl mb-8 font-[family-name:var(--font-body)] leading-relaxed"
+        data-reveal
+      >
+        From dated 1960s galleys to open-concept dream kitchens. From pink-tile bathrooms
+        to spa-worthy retreats. We've transformed 500+ Seattle homes &mdash; with fixed-price
+        quotes and zero change-order surprises.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-10" data-reveal>
+        <Button variant="primary" size="lg" href="/contact/">
+          Get Your Free Estimate
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Button>
+        <Button
+          variant="outline"
+          size="lg"
+          href="/gallery/"
+          class="border-white text-white hover:bg-white hover:text-primary"
+        >
+          View Our Projects
+        </Button>
+      </div>
+
+      <!-- Trust badge row -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3" data-reveal>
+        <div class="flex items-center gap-2">
+          <StarRating rating={SITE.reviews.rating} showCount={false} size="sm" />
+          <span class="text-sm text-white/90 font-medium font-[family-name:var(--font-body)]">
+            {SITE.reviews.rating} &#9733; from {SITE.reviews.count} Google Reviews
+          </span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <span class="text-sm text-white/90 font-medium font-[family-name:var(--font-body)]">
+            WA Lic #KBREMRP787P3 &bull; Bonded &amp; Insured
+          </span>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden lg:flex flex-col items-center gap-2 animate-bounce">
+    <span class="text-white/50 text-xs uppercase tracking-widest font-[family-name:var(--font-body)]">Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</section>

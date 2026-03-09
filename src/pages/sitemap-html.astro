@@ -1,0 +1,180 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE, SERVICES, LOCATIONS_TIER1, LOCATIONS_TIER2 } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'Sitemap', href: '/sitemap-html/' }];
+
+const mainPages = [
+  { title: 'Home', href: '/' },
+  { title: 'About Us', href: '/about/' },
+  { title: 'Contact', href: '/contact/' },
+  { title: 'Get a Quote', href: '/get-a-quote/' },
+  { title: 'Gallery', href: '/gallery/' },
+  { title: 'Reviews', href: '/reviews/' },
+  { title: 'Financing', href: '/financing/' },
+  { title: 'Our Process', href: '/our-process/' },
+];
+
+const costGuides = [
+  { title: 'Kitchen Remodel Cost', slug: 'kitchen-remodel-cost-seattle' },
+  { title: 'Bathroom Remodel Cost', slug: 'bathroom-remodel-cost-seattle' },
+  { title: 'Cabinet Refacing Cost', slug: 'cabinet-refacing-cost' },
+  { title: 'Countertop Installation Cost', slug: 'countertop-installation-cost' },
+  { title: 'Shower Remodel Cost', slug: 'shower-remodel-cost' },
+];
+
+const blogPosts = [
+  { title: '15 Kitchen Remodel Ideas for Seattle Homes in 2026', slug: 'kitchen-remodel-ideas-seattle' },
+  { title: '10 Bathroom Remodel Ideas That Add Value to Your Seattle Home', slug: 'bathroom-remodel-ideas-seattle' },
+  { title: 'How to Choose the Right Countertop Material for Your Kitchen', slug: 'quartz-vs-granite-countertops-seattle' },
+  { title: 'The Complete Guide to Aging-in-Place Bathroom Design', slug: 'bathroom-remodel-ideas-seattle' },
+  { title: 'Seattle Remodeling Permits: What Homeowners Need to Know', slug: 'do-you-need-permit-remodel-seattle' },
+  { title: '2026 Kitchen Color Trends for Pacific Northwest Homes', slug: 'kitchen-remodel-ideas-seattle' },
+];
+
+const allLocations = [...LOCATIONS_TIER1, ...LOCATIONS_TIER2];
+---
+
+<BaseLayout
+  title="Sitemap | Kitchen & Bathroom Remodeling Pros"
+  description="Complete sitemap for Kitchen & Bathroom Remodeling Pros. Find all our pages including services, areas served, cost guides, and blog posts."
+  canonical={`${SITE.url}/sitemap-html/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-12">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Site Navigation</p>
+        <h1 class="text-4xl md:text-5xl font-[family-name:var(--font-heading)] text-white mb-4">Sitemap</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A complete directory of all pages on our website. Find exactly what you're looking for.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Sitemap Content -->
+  <section class="py-16 lg:py-20">
+    <Container>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+
+        <!-- Main Pages -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Main Pages</h2>
+          <ul class="space-y-2.5">
+            {mainPages.map((page) => (
+              <li>
+                <a href={page.href} class="text-muted hover:text-accent transition-colors">
+                  {page.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Services</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/services/" class="text-muted hover:text-accent transition-colors font-medium">
+                All Services
+              </a>
+            </li>
+            {SERVICES.map((service) => (
+              <li>
+                <a href={`/services/${service.slug}/`} class="text-muted hover:text-accent transition-colors">
+                  {service.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Areas Served -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Areas Served</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/areas-served/" class="text-muted hover:text-accent transition-colors font-medium">
+                All Areas
+              </a>
+            </li>
+            {allLocations.map((loc) => (
+              <li>
+                <a href={`/areas-served/${loc.slug}/`} class="text-muted hover:text-accent transition-colors">
+                  {loc.city}, WA
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Cost Guides -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Cost Guides</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/cost-guides/" class="text-muted hover:text-accent transition-colors font-medium">
+                All Cost Guides
+              </a>
+            </li>
+            {costGuides.map((guide) => (
+              <li>
+                <a href={`/cost-guides/${guide.slug}/`} class="text-muted hover:text-accent transition-colors">
+                  {guide.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Blog -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Blog</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/blog/" class="text-muted hover:text-accent transition-colors font-medium">
+                All Blog Posts
+              </a>
+            </li>
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.slug}/`} class="text-muted hover:text-accent transition-colors">
+                  {post.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Legal & Other -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Legal & Other</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/privacy/" class="text-muted hover:text-accent transition-colors">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="/terms/" class="text-muted hover:text-accent transition-colors">
+                Terms of Service
+              </a>
+            </li>
+            <li>
+              <a href="/sitemap-index.xml" class="text-muted hover:text-accent transition-colors">
+                XML Sitemap
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
