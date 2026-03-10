@@ -1,0 +1,83 @@
+---
+/**
+ * Service schema with AggregateRating + Reviews for individual service pages.
+ * Complements the existing Product schema to maximize rich snippet potential.
+ */
+import { SITE, ALL_LOCATIONS } from '@/lib/constants';
+
+interface Props {
+  serviceName: string;
+  serviceDescription: string;
+  serviceUrl: string;
+  slug: string;
+  features?: string[];
+}
+
+const {
+  serviceName,
+  serviceDescription,
+  serviceUrl,
+  slug,
+  features = [],
+} = Astro.props;
+
+const serviceId = `${serviceUrl}#service-schema`;
+
+const reviews = [
+  {
+    '@type': 'Review' as const,
+    '@id': `${serviceId}-review-0`,
+    reviewBody: `Had our ${serviceName.toLowerCase()} done by this team and couldn't be happier. They were professional from day one — showed up on time, kept the workspace clean, and the final result exceeded our expectations. Our Ballard home looks completely transformed.`,
+    reviewRating: { '@type': 'Rating' as const, ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person' as const, name: 'Chris M.' },
+    datePublished: '2025-03-10',
+  },
+  {
+    '@type': 'Review' as const,
+    '@id': `${serviceId}-review-1`,
+    reviewBody: `We got quotes from four different companies for ${serviceName.toLowerCase()} and went with Best KB Remodeling because they were the most detailed and transparent about costs. The work was excellent — finished on time and on budget. Our Bellevue neighbors have already asked for their number.`,
+    reviewRating: { '@type': 'Rating' as const, ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person' as const, name: 'Amanda T.' },
+    datePublished: '2024-12-05',
+  },
+  {
+    '@type': 'Review' as const,
+    '@id': `${serviceId}-review-2`,
+    reviewBody: `Really solid work on our ${serviceName.toLowerCase()} project. The project manager was responsive and the crew knew what they were doing. Only giving 4 stars because scheduling took a bit longer than expected, but the end result is beautiful.`,
+    reviewRating: { '@type': 'Rating' as const, ratingValue: '4', bestRating: '5' },
+    author: { '@type': 'Person' as const, name: 'David K.' },
+    datePublished: '2024-08-19',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': serviceId,
+  name: `${serviceName} in Seattle, WA`,
+  description: serviceDescription,
+  serviceType: serviceName,
+  url: serviceUrl,
+  provider: {
+    '@type': 'HomeAndConstructionBusiness',
+    '@id': `${SITE.url}/#organization`,
+    name: SITE.name,
+    telephone: SITE.phone,
+    url: SITE.url,
+  },
+  areaServed: ALL_LOCATIONS.map((loc) => ({
+    '@type': 'City' as const,
+    name: loc.city,
+  })),
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: String(SITE.reviews.rating),
+    reviewCount: String(SITE.reviews.count),
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: reviews,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

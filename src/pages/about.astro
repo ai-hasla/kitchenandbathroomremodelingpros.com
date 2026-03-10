@@ -11,26 +11,26 @@ const team = [
   {
     name: 'David Chen',
     role: 'Founder & Lead Designer',
-    bio: 'With over 20 years of experience in residential remodeling, David founded Best KB Remodeling to bring honest craftsmanship and transparent pricing to every Seattle homeowner.',
+    bio: 'With over 20 years of experience in residential remodeling, David founded Best KB Remodeling to bring honest craftsmanship and transparent pricing to every Seattle homeowner. Started as a framing carpenter at 19, got his contractor license in 2008, and has personally overseen every one of our 500+ projects.',
     image: '/images/team-owner.jpg',
   },
   {
     name: 'Sarah Martinez',
     role: 'Project Manager',
-    bio: 'Sarah ensures every project stays on schedule and within budget. Her attention to detail and clear communication keep homeowners informed at every stage.',
-    image: '/images/team-designer.jpg',
+    bio: 'Sarah ensures every project stays on schedule and within budget. Her attention to detail and clear communication keep homeowners informed at every stage. Previously managed commercial construction projects in Portland before joining our team. She\'s the reason your project stays on schedule.',
+    image: '/images/team-coordinator.jpg',
   },
   {
     name: 'James Okafor',
     role: 'Master Carpenter',
-    bio: 'James brings 15 years of fine woodworking expertise to our custom cabinetry and trim work. His precision craftsmanship is visible in every project he touches.',
+    bio: 'James brings 15 years of fine woodworking expertise to our custom cabinetry and trim work. His precision craftsmanship is visible in every project he touches. Trained in traditional joinery techniques and has built custom cabinetry for over 300 Seattle homes. Known on the crew for his zero-tolerance policy on cabinet gaps.',
     image: '/images/team-carpenter.jpg',
   },
   {
     name: 'Emily Nguyen',
     role: 'Interior Design Consultant',
-    bio: 'Emily helps clients transform their vision into reality. Her background in interior design and knowledge of current trends ensures every remodel feels both timeless and modern.',
-    image: '/images/team-coordinator.jpg',
+    bio: 'Emily helps clients transform their vision into reality. Her background in interior design and knowledge of current trends ensures every remodel feels both timeless and modern. Graduate of the Art Institute of Seattle with a focus on residential interiors. She\'s helped clients pick everything from tile grout colors to cabinet hardware.',
+    image: '/images/team-designer.jpg',
   },
 ];
 
@@ -51,6 +51,22 @@ const certifications = [
   ogImage="/images/og/og-about.png"
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+
+  <!-- Person Schema for Team Members -->
+  <script type="application/ld+json" set:html={JSON.stringify(
+    team.map((member) => ({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": member.name,
+      "jobTitle": member.role,
+      "image": `${SITE.url}${member.image}`,
+      "worksFor": {
+        "@type": "Organization",
+        "name": SITE.name,
+        "url": SITE.url,
+      },
+    }))
+  )} />
 
   <!-- Hero -->
   <section class="bg-primary pt-32 pb-16">
@@ -82,19 +98,26 @@ const certifications = [
               Our mission is simple: deliver exceptional remodeling results through transparent communication, fair pricing, and craftsmanship that stands the test of time. We believe every homeowner deserves to understand exactly what their project will cost, how long it will take, and what to expect at every stage of the process. No surprises, no hidden fees, no corners cut.
             </p>
             <p>
-              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 230+ reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
+              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 250+ reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
             </p>
           </div>
+          <blockquote class="border-l-4 border-accent pl-6 my-8 text-lg text-dark-text italic">
+            "I started this company in my Ballard garage because I was tired of watching homeowners get blindsided by surprise costs and sloppy work. Fifteen years later, we still quote every project the same way: fixed price, line-item detail, no games."
+            <footer class="text-sm text-muted mt-2 not-italic">— David Chen, Founder & Owner</footer>
+          </blockquote>
         </div>
         <div class="relative" data-reveal="right">
-          <img
-            src="/images/process-measuring.jpg"
-            alt="Our remodeling team at work in a Seattle kitchen"
-            class="rounded-2xl shadow-xl w-full"
-            width="800"
-            height="600"
-            loading="lazy"
-          />
+          <picture>
+            <source srcset="/images/process-measuring.webp" type="image/webp" />
+            <img
+              src="/images/process-measuring.jpg"
+              alt="Our remodeling team at work in a Seattle kitchen"
+              class="rounded-2xl shadow-xl w-full"
+              width="800"
+              height="600"
+              loading="lazy"
+            />
+          </picture>
           <div class="absolute -bottom-6 -left-6 bg-accent text-white p-6 rounded-xl shadow-lg">
             <p class="text-3xl font-bold font-[family-name:var(--font-heading)]">500+</p>
             <p class="text-sm text-white/90">Projects Completed</p>
@@ -148,14 +171,17 @@ const certifications = [
         {team.map((member) => (
           <div class="text-center group">
             <div class="relative mb-5 overflow-hidden rounded-xl">
-              <img
-                src={member.image}
-                alt={member.name}
-                class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
-                width="400"
-                height="400"
-                loading="lazy"
-              />
+              <picture>
+                <source srcset={member.image.replace('.jpg', '.webp')} type="image/webp" />
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                />
+              </picture>
             </div>
             <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary">{member.name}</h3>
             <p class="text-accent font-medium text-sm mb-3">{member.role}</p>
@@ -194,14 +220,17 @@ const certifications = [
     <Container>
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1" data-reveal="left">
-          <img
-            src="/images/showroom.jpg"
-            alt="Community involvement in Seattle"
-            class="rounded-2xl shadow-xl w-full"
-            width="800"
-            height="600"
-            loading="lazy"
-          />
+          <picture>
+            <source srcset="/images/showroom.webp" type="image/webp" />
+            <img
+              src="/images/showroom.jpg"
+              alt="Community involvement in Seattle"
+              class="rounded-2xl shadow-xl w-full"
+              width="800"
+              height="600"
+              loading="lazy"
+            />
+          </picture>
         </div>
         <div class="order-1 lg:order-2" data-reveal>
           <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-6">Giving Back to Our Community</h2>

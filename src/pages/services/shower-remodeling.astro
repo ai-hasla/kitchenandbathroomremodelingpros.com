@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -22,7 +23,7 @@ import Container from '@/components/ui/Container.astro';
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-muted leading-relaxed mb-8">
-      The shower is where most of us start and end our day, making it one of the most important spaces in your home. Whether you're replacing a worn-out tub-shower combo with a spacious walk-in design or upgrading to a spa-worthy steam shower, our team creates shower experiences that transform your daily routine. We've designed and built hundreds of custom showers across the Seattle metro, and we bring that expertise to every project.
+      The shower is where most of us start and end our day, making it one of the most important spaces in your home. If you're replacing a worn-out tub-shower combo with a spacious walk-in design or upgrading to a spa-worthy steam shower, we create shower experiences that transform your daily routine. We've designed and built hundreds of custom showers across the Seattle metro, and we bring that expertise to every project.
     </p>
 
     <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">
@@ -134,4 +135,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much does a walk-in shower cost in Seattle?', answer: 'A custom walk-in shower in Seattle typically costs between $8,000 and $20,000, depending on size, tile selection, glass enclosure type, and fixture quality. A basic tub-to-shower conversion starts around $6,000, while a high-end steam shower with premium finishes can reach $25,000+. We provide detailed, transparent pricing for every project.' },
+    { question: 'Can you convert a bathtub to a walk-in shower?', answer: 'Yes, tub-to-shower conversions are one of our most popular projects. We remove the existing tub, reconfigure the drain and supply plumbing, build a properly waterproofed shower pan, install tile, and add a glass enclosure. The result is a more spacious, modern shower. We recommend keeping at least one tub in your home if you have young children or for resale considerations.' },
+    { question: 'What is a curbless shower and is it right for me?', answer: 'A curbless shower has no raised threshold at the entry — the bathroom floor flows directly into the shower floor with a gentle slope toward the drain. This creates a sleek, modern look and provides barrier-free access, which is great for accessibility. The floor structure may need to be modified to accommodate the drain slope, which we assess during your consultation.' },
+    { question: 'How long does a shower remodel take?', answer: 'A standard shower remodel takes 7-14 days from demolition to completion. This includes demolition (1 day), plumbing and framing (1-2 days), waterproofing (1 day plus cure time), tile installation (3-5 days), grouting and sealing (1 day), and glass enclosure installation (1 day). We coordinate the schedule to minimize the time your bathroom is out of commission.' },
+  ]} />
 </ServiceLayout>

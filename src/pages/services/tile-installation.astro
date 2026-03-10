@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -127,4 +128,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much does tile installation cost per square foot?', answer: 'Tile installation labor in Seattle typically runs $8-$18 per square foot for standard floor tile and $10-$25 per square foot for shower and wall tile. Complex patterns, large-format tiles, and natural stone installations are at the higher end. Tile material costs are additional and range from $2-$30+ per square foot depending on the product. We provide complete, all-inclusive pricing in our estimates.' },
+    { question: 'Can you tile over existing tile?', answer: 'In some cases, yes — provided the existing tile is firmly bonded, the surface is level, and the additional height won\'t create problems at transitions and thresholds. However, we generally recommend removing old tile for the best long-term result, especially in wet areas. Removal allows us to inspect and repair the substrate and apply proper waterproofing membranes.' },
+    { question: 'What size tile is best for small bathrooms?', answer: 'Larger tiles (12x24 or bigger) actually make small bathrooms appear more spacious because there are fewer grout lines to break up the visual field. A consistent tile from the floor up through the shower walls creates continuity that visually expands the space. We typically recommend a maximum of 2-3 tile types in a small bathroom to keep the design cohesive and uncluttered.' },
+    { question: 'How long does tile installation take?', answer: 'A kitchen backsplash typically takes 1-2 days. A bathroom floor takes 2-3 days including substrate prep and grouting. A full shower with wall and floor tile takes 5-7 days, including waterproofing, tile setting, grouting, and curing time. We provide a specific timeline for your project during the consultation.' },
+  ]} />
 </ServiceLayout>

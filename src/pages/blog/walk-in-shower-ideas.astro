@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
 
 const breadcrumbs = [
   { label: 'Blog', href: '/blog/' },
@@ -75,7 +76,7 @@ const faqSchema = {
   description="Explore 12 stunning walk-in shower ideas perfect for Seattle bathroom remodels. Frameless glass, curbless designs, dual showerheads, built-in benches, and more from local experts."
   canonical={`${SITE.url}/blog/walk-in-shower-ideas/`}
   ogType="article"
-  article={{ publishedTime: '2026-01-20', modifiedTime: '2026-01-20', author: SITE.name }}
+  article={{ publishedTime: '2026-01-20', modifiedTime: '2026-01-20', author: SITE.name, section: 'Bathroom' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -92,7 +93,7 @@ const faqSchema = {
         </div>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">12 Walk-In Shower Ideas That Transform Your Bathroom</h1>
         <p class="text-lg text-white/80 leading-relaxed">
-          A walk-in shower is more than a functional upgrade — it's a design statement that can transform your entire bathroom. Whether you're working with a compact Seattle condo or a spacious Eastside primary suite, these ideas will inspire your next remodel.
+          A walk-in shower is more than a functional upgrade — it's a design statement that can transform your entire bathroom. From compact Seattle condos to spacious Eastside primary suites, these ideas will inspire your next remodel.
         </p>
       </div>
     </Container>
@@ -104,10 +105,18 @@ const faqSchema = {
       <div class="grid lg:grid-cols-12 gap-12">
         <article class="lg:col-span-8">
 
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
+
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
-              Walk-in showers have become the centerpiece of modern <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodels</a> across Seattle. They're spacious, accessible, easier to clean than traditional tub-shower combos, and they instantly elevate the look and feel of any bathroom. Whether you're converting an old bathtub alcove or designing a primary bathroom from scratch, the walk-in shower offers endless design possibilities.
+              Walk-in showers have become the centerpiece of modern <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodels</a> across Seattle. They're spacious, accessible, easier to clean than traditional tub-shower combos, and they instantly elevate the look and feel of any bathroom. Converting an old bathtub alcove or designing a primary bathroom from scratch? The walk-in shower offers endless design possibilities.
             </p>
             <p>
               After completing hundreds of shower installations across King County and the greater Puget Sound area, we've curated our 12 favorite walk-in shower ideas — the designs that deliver the most impact, best functionality, and strongest resale value in the Seattle market.
@@ -226,7 +235,7 @@ const faqSchema = {
                 Incorporating natural stone into a walk-in shower brings organic beauty that connects to the Pacific Northwest's natural landscape. Marble feature walls, pebble stone shower floors, or a travertine accent strip add texture and visual warmth that porcelain alone can't replicate. The key is using stone strategically — a full marble shower requires significant maintenance, but a marble accent wall paired with porcelain body tiles delivers the look with far less upkeep.
               </p>
               <p>
-                River rock pebble tile on the shower floor is a timeless choice that provides excellent traction and a spa-like feel underfoot. Honed marble in Calacatta or Carrara patterns creates an elegant feature wall. All natural stone in wet environments needs to be sealed properly and re-sealed periodically — our team can advise on the specific maintenance requirements for any stone you're considering.
+                River rock pebble <a href="/services/tile-installation/" class="text-accent hover:underline">tile</a> on the shower floor is a timeless choice that provides excellent traction and a spa-like feel underfoot. Honed marble in Calacatta or Carrara patterns creates an elegant feature wall. All natural stone in wet environments needs to be sealed properly and re-sealed periodically — our team can advise on the specific maintenance requirements for any stone you're considering.
               </p>
             </div>
           </div>
@@ -265,7 +274,7 @@ const faqSchema = {
                 Stepping onto a warm tile floor on a cold Seattle morning is a small luxury that makes a big impact on your daily routine. Electric radiant floor heating mats installed beneath the shower tile (and extending into the bathroom floor) keep the surface warm and comfortable year-round. They also help dry the shower floor after use, reducing mildew growth — a real benefit in the Pacific Northwest's humid environment.
               </p>
               <p>
-                In-floor heating systems like Schluter-DITRA-HEAT or Nuheat are thin, electric mats that add minimal height to the floor assembly. They're controlled by a programmable thermostat, so you can set them to warm up before your morning alarm. Adding heated floors to a shower remodel costs approximately $800-$1,500 for a typical bathroom, and the energy cost to operate is minimal — usually just a few dollars per month. It's one of the most popular add-ons in our Seattle <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodeling</a> projects.
+                In-floor heating systems like Schluter-DITRA-HEAT or Nuheat are thin, electric mats that add minimal height to the floor assembly. They're controlled by a programmable thermostat, so you can set them to warm up before your morning alarm. Adding heated floors to a shower remodel costs approximately $800-$1,500 for a typical bathroom (see our <a href="/cost-guides/shower-remodel-cost/" class="text-accent hover:underline">shower remodel cost guide</a> for detailed pricing), and the energy cost to operate is minimal — usually just a few dollars per month. It's one of the most popular add-ons in our Seattle <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodeling</a> projects.
               </p>
             </div>
           </div>
@@ -311,24 +320,7 @@ const faqSchema = {
           </div>
 
 
-          <!-- Related Articles -->
-          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
-            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
-            <div class="grid sm:grid-cols-3 gap-4">
-    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
-    </a>
-    <a href="/blog/seattle-bathroom-tile-trends/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Seattle Bathroom Tile Trends 2026</p>
-    </a>
-    <a href="/blog/aging-in-place-bathroom-remodel/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Aging-in-Place Bathroom Remodel Guide</p>
-    </a>
-            </div>
-          </div>
+          <RelatedPosts currentSlug="walk-in-shower-ideas" category="Bathroom" />
 
           <!-- End-of-Article CTA -->
           <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>

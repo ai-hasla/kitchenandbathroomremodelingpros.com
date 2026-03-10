@@ -1,0 +1,129 @@
+---
+interface Props {
+  currentSlug: string;
+  category: string;
+}
+
+const { currentSlug, category } = Astro.props;
+
+const blogPosts = [
+  {
+    slug: 'kitchen-remodel-ideas-seattle',
+    title: '15 Kitchen Remodel Ideas for Seattle Homes in 2026',
+    category: 'Kitchen',
+    description: 'Explore 15 inspiring kitchen remodel ideas perfect for Seattle and Pacific Northwest homes. From waterfall islands to open shelving, find inspiration for your next project.',
+  },
+  {
+    slug: 'bathroom-remodel-ideas-seattle',
+    title: '10 Bathroom Remodel Ideas That Add Value to Your Seattle Home',
+    category: 'Bathroom',
+    description: 'Discover 10 bathroom remodel ideas that look stunning and increase your Seattle home\'s value. Expert advice from local remodelers on what buyers want.',
+  },
+  {
+    slug: 'quartz-vs-granite-countertops-seattle',
+    title: 'Quartz vs Granite Countertops: Which is Best for Seattle Homes?',
+    category: 'Kitchen',
+    description: 'In-depth comparison of quartz and granite countertops for Seattle homes. Compare durability, maintenance, cost, appearance, and resale value.',
+  },
+  {
+    slug: 'small-bathroom-remodel-ideas',
+    title: '25 Small Bathroom Remodel Ideas That Maximize Space',
+    category: 'Bathroom',
+    description: '25 proven small bathroom remodel ideas that maximize space, storage, and style. Storage solutions, visual tricks, and design tips for compact bathrooms.',
+  },
+  {
+    slug: 'hardwood-vs-lvp-flooring-seattle',
+    title: 'Hardwood vs LVP Flooring: Which Is Best for Seattle Homes?',
+    category: 'Tips',
+    description: 'In-depth comparison of hardwood and luxury vinyl plank flooring for Seattle homes. Covers humidity, durability, cost, and which rooms suit each type.',
+  },
+  {
+    slug: 'kitchen-remodel-roi-seattle-2026',
+    title: 'Kitchen Remodel ROI in Seattle: Is It Worth the Investment in 2026?',
+    category: 'Kitchen',
+    description: 'Discover the real ROI of kitchen remodeling in Seattle for 2026. Data-driven analysis of which upgrades add the most value to your home.',
+  },
+  {
+    slug: 'master-bathroom-remodel-checklist',
+    title: 'Master Bathroom Remodel Checklist: 15 Things to Plan',
+    category: 'Bathroom',
+    description: 'Complete master bathroom remodel checklist for Seattle homeowners. 15 essential planning items covering budget, timeline, permits, layout, and more.',
+  },
+  {
+    slug: 'aging-in-place-bathroom-remodel',
+    title: 'Aging-in-Place Bathroom Remodel: A Complete Guide',
+    category: 'Bathroom',
+    description: 'Complete guide to aging-in-place bathroom remodeling in Seattle. ADA compliance, grab bars, curbless showers, and universal design principles.',
+  },
+  {
+    slug: 'bathroom-vanity-buying-guide',
+    title: 'Bathroom Vanity Buying Guide: Sizes, Styles & Tips',
+    category: 'Bathroom',
+    description: 'Complete bathroom vanity buying guide covering sizes, styles, materials, storage options, and professional installation tips for Seattle homeowners.',
+  },
+  {
+    slug: 'do-you-need-permit-remodel-seattle',
+    title: 'Do You Need a Permit to Remodel in Seattle? 2026 Guide',
+    category: 'Tips',
+    description: 'Complete guide to remodeling permits in Seattle for 2026. Learn when permits are required, SDCI process, costs, and timelines.',
+  },
+  {
+    slug: 'how-long-kitchen-remodel-take',
+    title: 'How Long Does a Kitchen Remodel Take? Timeline Guide',
+    category: 'Kitchen',
+    description: 'Realistic kitchen remodel timelines for 2026. Minor remodels take 2-4 weeks, mid-range 6-10 weeks, and major renovations 12-16 weeks.',
+  },
+  {
+    slug: 'kitchen-cabinet-styles-2026',
+    title: "Kitchen Cabinet Styles 2026: What's Trending in Seattle",
+    category: 'Kitchen',
+    description: 'Explore the top kitchen cabinet styles trending in Seattle for 2026. From shaker to flat-panel, two-tone to open shelving.',
+  },
+  {
+    slug: 'kitchen-lighting-design-guide',
+    title: 'Kitchen Lighting Design: Layered Lighting Ideas',
+    category: 'Kitchen',
+    description: 'Complete kitchen lighting design guide for Seattle homes. Task, ambient, and accent lighting layers, under-cabinet LEDs, and pendant islands.',
+  },
+  {
+    slug: 'open-concept-kitchen-remodel',
+    title: 'Open Concept Kitchen Remodel: Pros, Cons, and Costs',
+    category: 'Kitchen',
+    description: 'Complete guide to open concept kitchen remodeling in Seattle. Load-bearing walls, permits, island additions, lighting, and costs.',
+  },
+  {
+    slug: 'seattle-bathroom-tile-trends',
+    title: 'Seattle Bathroom Tile Trends 2026: Expert Design Guide',
+    category: 'Bathroom',
+    description: 'Explore the top bathroom tile trends for Seattle homes in 2026. Large format tiles, subway variations, natural stone, and expert design tips.',
+  },
+  {
+    slug: 'walk-in-shower-ideas',
+    title: '12 Walk-In Shower Ideas That Transform Your Bathroom',
+    category: 'Bathroom',
+    description: 'Discover 12 stunning walk-in shower ideas for your bathroom remodel. Frameless glass enclosures, curbless designs, and more.',
+  },
+];
+
+// Filter out current post
+const otherPosts = blogPosts.filter((post) => post.slug !== currentSlug);
+
+// Same category first, then others
+const sameCategory = otherPosts.filter((post) => post.category.toLowerCase() === category.toLowerCase());
+const diffCategory = otherPosts.filter((post) => post.category.toLowerCase() !== category.toLowerCase());
+
+const related = [...sameCategory, ...diffCategory].slice(0, 3);
+---
+
+<section class="py-12 border-t border-border mt-12">
+  <h2 class="text-2xl font-bold text-dark-text mb-6">Related Articles</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {related.map((post) => (
+      <a href={`/blog/${post.slug}/`} class="group">
+        <span class="text-xs font-semibold text-accent uppercase">{post.category}</span>
+        <h3 class="text-lg font-semibold text-dark-text group-hover:text-accent transition-colors mt-1">{post.title}</h3>
+        <p class="text-sm text-muted mt-2">{post.description}</p>
+      </a>
+    ))}
+  </div>
+</section>

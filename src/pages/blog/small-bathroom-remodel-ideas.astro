@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
 
 const breadcrumbs = [
   { label: 'Blog', href: '/blog/' },
@@ -60,7 +61,7 @@ const faqSchema = {
   description="25 small bathroom remodel ideas that maximize space in compact Seattle bathrooms. Storage solutions, visual tricks, fixture upgrades, and design tips with budget ranges."
   canonical={`${SITE.url}/blog/small-bathroom-remodel-ideas/`}
   ogType="article"
-  article={{ publishedTime: '2026-03-07', modifiedTime: '2026-03-07', author: SITE.name }}
+  article={{ publishedTime: '2026-03-07', modifiedTime: '2026-03-07', author: SITE.name, section: 'Bathroom' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -89,6 +90,14 @@ const faqSchema = {
       <div class="grid lg:grid-cols-12 gap-12">
         <article class="lg:col-span-8">
 
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
+
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
@@ -98,7 +107,7 @@ const faqSchema = {
               But a small bathroom doesn't have to feel cramped. With smart design choices, the right fixtures, and clever storage solutions, even the tiniest bathroom can feel open, organized, and beautiful. We've remodeled hundreds of small bathrooms across the Seattle area, and these 25 ideas represent our most effective strategies for maximizing every square inch.
             </p>
             <p>
-              Each idea includes an approximate budget range so you can mix and match based on your project scope. Whether you're doing a quick refresh or a complete renovation, you'll find ideas here that work for your space and your budget.
+              Each idea includes an approximate budget range so you can mix and match based on your project scope. Doing a quick refresh or a complete renovation? You'll find ideas here that work for your space and your budget.
             </p>
           </div>
 
@@ -299,24 +308,7 @@ const faqSchema = {
           </div>
 
 
-          <!-- Related Articles -->
-          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
-            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
-            <div class="grid sm:grid-cols-3 gap-4">
-    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
-    </a>
-    <a href="/blog/walk-in-shower-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">12 Walk-In Shower Ideas</p>
-    </a>
-    <a href="/blog/bathroom-vanity-buying-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Bathroom Vanity Buying Guide</p>
-    </a>
-            </div>
-          </div>
+          <RelatedPosts currentSlug="small-bathroom-remodel-ideas" category="Bathroom" />
 
           <!-- End-of-Article CTA -->
           <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>

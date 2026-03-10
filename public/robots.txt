@@ -1,8 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /privacy/
-Disallow: /terms/
 
 User-agent: Googlebot
 Crawl-delay: 0
@@ -20,6 +18,12 @@ Crawl-delay: 10
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
@@ -33,6 +37,12 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 Host: https://kitchenandbathroomremodelingpros.com

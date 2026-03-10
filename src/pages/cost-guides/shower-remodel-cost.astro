@@ -62,7 +62,7 @@ const faqSchema = {
   description="How much does a shower remodel cost in Seattle in 2026? Walk-in showers $7K-$20K, custom tile $5K-$15K, steam showers $10K-$25K. Complete pricing with PNW waterproofing tips."
   canonical={`${SITE.url}/cost-guides/shower-remodel-cost/`}
   ogType="article"
-  article={{ publishedTime: '2026-02-25', modifiedTime: '2026-03-01', author: SITE.name }}
+  article={{ publishedTime: '2026-02-25', modifiedTime: '2026-03-01', author: SITE.name, section: 'Bathroom' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -94,6 +94,14 @@ const faqSchema = {
         <!-- Main Content -->
         <article class="lg:col-span-8 prose-custom">
 
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
+
           <!-- Quick Summary -->
           <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
             <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Shower Remodel Costs in Seattle</h2>
@@ -120,7 +128,7 @@ const faqSchema = {
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
-              The shower is often the most used feature in any bathroom, and for Seattle homeowners, it's the first thing you step into on a cold, rainy morning. Whether you're replacing a worn-out tub-shower combo, upgrading to a luxurious walk-in, or installing a spa-worthy steam shower, understanding the true cost of a <a href="/services/shower-remodeling/" class="text-accent hover:underline">shower remodel</a> helps you plan your budget and set realistic expectations.
+              The shower is often the most used feature in any bathroom, and for Seattle homeowners, it's the first thing you step into on a cold, rainy morning. If you're replacing a worn-out tub-shower combo, upgrading to a luxurious walk-in, or installing a spa-worthy steam shower, understanding the true cost of a <a href="/services/shower-remodeling/" class="text-accent hover:underline">shower remodel</a> helps you plan your budget and set realistic expectations.
             </p>
             <p>
               Shower remodeling costs in Seattle range from as little as $1,500 for a simple prefabricated unit swap to $25,000 or more for a fully custom steam shower with premium tile, frameless glass, and multiple body sprays. The right choice depends on your budget, bathroom size, aesthetic preferences, and how long you plan to stay in your home.

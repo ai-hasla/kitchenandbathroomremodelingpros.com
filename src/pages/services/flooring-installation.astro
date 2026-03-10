@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -130,4 +131,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'What flooring is best for Seattle kitchens?', answer: 'For Seattle kitchens, we most often recommend luxury vinyl plank or porcelain tile. Both are 100% waterproof, durable, and easy to maintain. LVP offers a warmer, softer feel underfoot and faster installation. Tile provides more design variety and pairs well with radiant heating. Hardwood is also a beautiful kitchen option if you\'re prepared for occasional maintenance and quick cleanup of water spills.' },
+    { question: 'How much does flooring installation cost per square foot?', answer: 'All-in costs (material + labor) for the Seattle area: LVP runs $6-$14/sq ft, engineered hardwood $10-$18/sq ft, solid hardwood $12-$22/sq ft, and porcelain tile $10-$25/sq ft. Natural stone ranges from $15-$40/sq ft. These ranges include subfloor preparation, installation, and finishing. We provide exact pricing in our free estimates based on your specific product selection and subfloor condition.' },
+    { question: 'Can I install hardwood in my bathroom?', answer: 'We generally advise against hardwood in bathrooms due to moisture exposure from showers, tubs, and humidity. If you love the wood look, luxury vinyl plank provides a remarkably realistic wood appearance with complete waterproof protection. Wood-look porcelain tile is another excellent bathroom option. If hardwood is a must, teak or white oak with marine-grade finish are the most moisture-resistant options available.' },
+    { question: 'How long does flooring installation take?', answer: 'A typical kitchen or bathroom floor (80-150 sq ft) takes 1-2 days for LVP and 2-3 days for tile. Whole-home flooring projects (1,000-2,000 sq ft) take 3-7 days depending on the material. Site-finished hardwood requires additional time for staining and 2-3 coats of polyurethane with drying time between coats. We provide accurate timelines based on your specific scope and material choice.' },
+  ]} />
 </ServiceLayout>

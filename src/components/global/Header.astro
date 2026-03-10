@@ -8,7 +8,7 @@ const currentPath = Astro.url.pathname;
 
 <header
   id="site-header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform"
 >
   <!-- Top bar -->
   <div class="bg-primary text-white/80 text-sm hidden lg:block">
@@ -38,16 +38,18 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Main nav -->
-  <nav class="bg-white/95 backdrop-blur-md border-b border-border/50 shadow-sm" aria-label="Main navigation">
-    <Container class="flex items-center justify-between h-16 lg:h-20">
+  <nav class="bg-white/95 backdrop-blur-md border-b border-border/50 shadow-sm overflow-visible" aria-label="Main navigation">
+    <Container class="flex items-center justify-between h-16 lg:h-20 overflow-visible">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2.5 shrink-0">
+      <a href="/" class="flex items-center gap-2.5 shrink-0 relative z-10">
         <img
           src="/images/logo.png"
           alt="Best KB Remodeling"
           width="144"
           height="144"
-          class="w-14 h-14 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain"
+          decoding="async"
+          fetchpriority="high"
+          class="w-20 h-12 sm:w-24 sm:h-14 lg:w-32 lg:h-16 object-contain drop-shadow-md"
         />
         <div class="hidden sm:block">
           <div class="text-sm lg:text-base font-bold text-dark-text leading-tight">Best Kitchen &</div>
@@ -56,7 +58,7 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden lg:flex items-center gap-1">
+      <div class="hidden lg:flex items-center gap-1 whitespace-nowrap">
         <!-- Services Dropdown -->
         <div class="relative group">
           <button
@@ -141,7 +143,7 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- Desktop CTA -->
-      <div class="hidden lg:flex items-center gap-3">
+      <div class="hidden lg:flex items-center gap-3 whitespace-nowrap">
         <a
           href={`tel:${SITE.phoneRaw}`}
           class="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center gap-1.5"

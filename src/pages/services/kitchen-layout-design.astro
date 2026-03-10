@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -130,4 +131,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much does kitchen design cost?', answer: 'Our kitchen design service starts at $1,500-$3,500 depending on the kitchen\'s size and complexity. This includes multiple layout options, 3D renderings, material selection assistance, and construction-ready drawings. When you hire us for the full kitchen remodel, the design fee is credited toward your project cost — making the design essentially free.' },
+    { question: 'Can you design my kitchen without doing the construction?', answer: 'Absolutely. Many clients use our design services as a standalone offering, taking the completed plans to their own contractor. Our deliverables include detailed construction drawings, cabinet specifications, and material schedules that any qualified contractor can execute. Of course, we\'re happy to build it too — and we guarantee the best result when design and construction work together seamlessly.' },
+    { question: 'How long does the design process take?', answer: 'From the initial consultation to final approved plans, the design process typically takes 2-4 weeks. This includes the in-home measurement appointment, initial concept presentation (usually within 5-7 business days), 2-3 revision rounds, and final document preparation. More complex projects with structural changes or multiple layout options may take slightly longer.' },
+    { question: 'Can I open up my kitchen wall to the living room?', answer: 'In most cases, yes. Removing a wall to create an open-concept layout is one of our most common projects. If the wall is load-bearing, we install a properly sized beam or header to carry the structural load. This requires an engineer\'s approval and a building permit, both of which we coordinate. Our designer will show you exactly how the opened space will look and function using 3D renderings before any work begins.' },
+  ]} />
 </ServiceLayout>

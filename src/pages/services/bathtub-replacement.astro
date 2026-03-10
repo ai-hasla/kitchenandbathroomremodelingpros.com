@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -22,7 +23,7 @@ import Container from '@/components/ui/Container.astro';
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-muted leading-relaxed mb-8">
-      A new bathtub can completely redefine your bathroom's look and feel. Whether you're replacing a stained, cracked alcove tub with a modern acrylic version or installing a showpiece freestanding soaking tub, our team handles the entire process — from plumbing preparation to finishing details. We've installed hundreds of bathtubs across Seattle and understand the technical requirements and design possibilities for every type of installation.
+      A new bathtub can completely redefine your bathroom's look and feel. If you're replacing a stained, cracked alcove tub with a modern acrylic version or installing a showpiece freestanding soaking tub, we handle the entire process — from plumbing preparation to finishing details. We've installed hundreds of bathtubs across Seattle and understand the technical requirements and design possibilities for every type of installation.
     </p>
 
     <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">
@@ -127,4 +128,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much does bathtub replacement cost?', answer: 'A standard alcove tub replacement in Seattle typically costs $3,000-$6,000, including the tub, plumbing, and basic surround finishing. Freestanding tub installations range from $5,000-$12,000+ depending on the tub material, faucet selection, and floor work required. Japanese soaking tubs and models with jet systems cost more due to the specialized plumbing and electrical work involved.' },
+    { question: 'How long does a bathtub replacement take?', answer: 'A straightforward alcove tub swap can be completed in 2-3 days. Installations requiring subfloor repair, plumbing rerouting, or tile surround work take 4-7 days. Freestanding tub installations with floor modification typically take 3-5 days. We provide a detailed timeline specific to your project during the consultation.' },
+    { question: 'Can my floor support a freestanding tub?', answer: 'It depends on the tub material and your floor structure. An acrylic freestanding tub filled with water weighs 300-400 lbs and is typically fine for standard floor joists. A cast-iron tub filled with water can weigh 800-1,200 lbs and may require joist reinforcement. We evaluate your floor structure during the consultation and include any necessary reinforcement in our proposal.' },
+    { question: 'Should I replace or refinish my bathtub?', answer: 'Refinishing (reglazing) can extend a tub\'s life by 5-10 years at a lower cost. However, replacement is the better long-term investment if your tub has cracks, chips, or structural damage, or if you want to change the tub type, size, or style. We can assess your tub\'s condition during a free consultation and recommend the best option for your situation and budget.' },
+  ]} />
 </ServiceLayout>

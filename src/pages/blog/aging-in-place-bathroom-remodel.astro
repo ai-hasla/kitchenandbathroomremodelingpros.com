@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
 
 const breadcrumbs = [
   { label: 'Blog', href: '/blog/' },
@@ -75,7 +76,7 @@ const faqSchema = {
   description="Complete guide to aging-in-place bathroom remodeling in Seattle. ADA compliance, grab bars, curbless showers, non-slip flooring, wider doorways, and universal design from local experts."
   canonical={`${SITE.url}/blog/aging-in-place-bathroom-remodel/`}
   ogType="article"
-  article={{ publishedTime: '2025-12-10', modifiedTime: '2025-12-10', author: SITE.name }}
+  article={{ publishedTime: '2025-12-10', modifiedTime: '2025-12-10', author: SITE.name, section: 'Bathroom' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -104,6 +105,14 @@ const faqSchema = {
       <div class="grid lg:grid-cols-12 gap-12">
         <article class="lg:col-span-8">
 
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
+
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
@@ -125,7 +134,7 @@ const faqSchema = {
                 Seattle's housing stock presents unique challenges. Many of the city's most desirable homes — Craftsman bungalows, Tudor cottages, mid-century ranchers — were built with small bathrooms, narrow doorways, high-sided bathtubs, and no grab bars. These homes were designed for young families in eras when accessibility wasn't a design consideration. Retrofitting these bathrooms for safety and accessibility is now one of the most requested remodeling projects across King County.
               </p>
               <p>
-                There's also a strong financial incentive. The cost of an aging-in-place bathroom remodel ($15,000-$35,000) is a fraction of the cost of assisted living or nursing care, which in the Seattle area averages $5,000-$9,000 per month. Every year you can safely remain in your home saves tens of thousands of dollars. It's one of the smartest investments a homeowner can make.
+                There's also a strong financial incentive. The <a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline">cost of an aging-in-place bathroom remodel</a> ($15,000-$35,000) is a fraction of the cost of assisted living or nursing care, which in the Seattle area averages $5,000-$9,000 per month. Every year you can safely remain in your home saves tens of thousands of dollars. It's one of the smartest investments a homeowner can make.
               </p>
             </div>
           </div>
@@ -260,7 +269,7 @@ const faqSchema = {
             <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Planning Your Aging-in-Place Bathroom Remodel</h2>
             <div class="space-y-4 text-body-text leading-relaxed">
               <p>
-                The best time to plan an aging-in-place bathroom is before you need one. Incorporating universal design features during a planned remodel costs far less than retrofitting after a fall or health event, and you get to enjoy the improved comfort and safety immediately. Whether you're remodeling for yourself, for aging parents, or simply to future-proof your home, these modifications are a wise investment in both quality of life and home value.
+                The best time to plan an aging-in-place bathroom is before you need one. Incorporating universal design features during a planned remodel costs far less than retrofitting after a fall or health event, and you get to enjoy the improved comfort and safety immediately. If you're remodeling for yourself, for aging parents, or simply to future-proof your home, these modifications are a wise investment in both quality of life and home value.
               </p>
               <p>
                 At Best Kitchen and Bathroom Remodeling, we have extensive experience designing and building aging-in-place bathrooms across the Seattle area. We understand the technical requirements (waterproofing, blocking, ADA clearances), the product options (which grab bars, tiles, fixtures work best), and the design principles that make these bathrooms beautiful rather than institutional. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Schedule your free consultation</a> or call <a href="tel:+12066664370" class="text-accent hover:underline">(206) 666-4370</a> to start planning a bathroom that will serve you safely and beautifully for decades.
@@ -296,24 +305,7 @@ const faqSchema = {
           </div>
 
 
-          <!-- Related Articles -->
-          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
-            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
-            <div class="grid sm:grid-cols-3 gap-4">
-    <a href="/blog/master-bathroom-remodel-checklist/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Master Bathroom Remodel Checklist</p>
-    </a>
-    <a href="/blog/walk-in-shower-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">12 Walk-In Shower Ideas</p>
-    </a>
-    <a href="/blog/bathroom-vanity-buying-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Bathroom Vanity Buying Guide</p>
-    </a>
-            </div>
-          </div>
+          <RelatedPosts currentSlug="aging-in-place-bathroom-remodel" category="Bathroom" />
 
           <!-- End-of-Article CTA -->
           <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>

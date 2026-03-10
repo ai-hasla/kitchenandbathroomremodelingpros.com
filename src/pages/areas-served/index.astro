@@ -55,7 +55,7 @@ import { locationData } from '@/data/locations/location-data';
           ></iframe>
         </div>
         <p class="text-center text-muted text-sm mt-4">
-          Serving homeowners from Everett to Tacoma and across the Eastside
+          Serving homeowners in Everett, Tacoma and across the Eastside
         </p>
       </div>
     </Container>
@@ -100,14 +100,6 @@ import { locationData } from '@/data/locations/location-data';
               <p class="text-sm text-muted mb-3">
                 {location.county} County
               </p>
-              {data && (
-                <div class="mt-auto pt-3 border-t border-gray-50">
-                  <div class="flex items-center justify-between text-xs text-muted">
-                    <span>Pop. {location.population.toLocaleString()}</span>
-                    <span>From ${(data.medianHomeValue / 1000).toFixed(0)}K</span>
-                  </div>
-                </div>
-              )}
             </a>
           );
         })}

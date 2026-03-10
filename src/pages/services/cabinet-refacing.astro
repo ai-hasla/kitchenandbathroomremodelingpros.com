@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -131,4 +132,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: "What's the difference between refacing and refinishing?", answer: 'Refinishing involves sanding and repainting or restaining your existing doors. Refacing goes further — we replace the doors and drawer fronts entirely and apply new veneer to the face frames. Refacing gives you the ability to completely change your cabinet style and offers a more dramatic transformation.' },
+    { question: 'How much does cabinet refacing cost?', answer: 'Cabinet refacing in the Seattle area typically ranges from $6,000 to $15,000, depending on the number of cabinets, door style, and material selection. This is roughly 40-60% less than the cost of full cabinet replacement. We provide a detailed quote after our free in-home measurement appointment.' },
+    { question: 'Are my cabinets good candidates for refacing?', answer: 'Most cabinets are good candidates as long as the boxes are structurally sound, level, and free of significant water damage. If you\'re happy with your current layout and just want to update the look, refacing is an excellent option. During our free consultation, we\'ll assess your cabinets and let you know honestly whether refacing or replacement is the better investment.' },
+    { question: 'Can I change my cabinet layout during refacing?', answer: 'Refacing preserves your existing cabinet layout, so it\'s best suited for homeowners who are satisfied with their current configuration. However, we can add new cabinets to fill gaps, extend uppers to the ceiling, or add a pantry cabinet during the refacing process. For significant layout changes, a full kitchen remodel would be more appropriate.' },
+  ]} />
 </ServiceLayout>

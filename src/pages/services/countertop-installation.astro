@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -145,4 +146,12 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much do new countertops cost in Seattle?', answer: 'Countertop costs vary widely based on material and square footage. Engineered quartz typically runs $55-$120 per square foot installed, granite $50-$100, and marble $60-$150. Butcher block is generally $40-$80 per square foot. A typical Seattle kitchen with 40-50 square feet of countertop space will run $2,500-$6,000 for most materials.' },
+    { question: 'Quartz vs. granite: which should I choose?', answer: 'Quartz is the better choice if you want zero maintenance, consistent color patterns, and stain resistance. Granite is ideal if you love natural stone\'s unique variations and don\'t mind annual sealing. Both are durable and long-lasting. We recommend visiting our showroom to compare samples side by side — most clients can feel the difference immediately.' },
+    { question: 'How long does countertop installation take?', answer: 'The installation itself typically takes just one day. The full process from template to installation is about 2-3 weeks: laser templating (1 day), fabrication (5-10 business days), and installation (1 day). We coordinate with your plumber to disconnect and reconnect the sink and faucet on installation day.' },
+    { question: 'Can you install countertops without replacing cabinets?', answer: 'Absolutely — in fact, that\'s one of our most common projects. As long as your existing cabinets are structurally sound and level, we can remove the old countertops and install new ones directly on top. This pairs beautifully with cabinet refacing for a complete kitchen makeover at a fraction of a full remodel\'s cost.' },
+    { question: 'Do quartz countertops stain or chip easily?', answer: 'Quartz is highly resistant to both staining and chipping. Its non-porous surface repels liquids like wine, coffee, and cooking oil. While extremely durable, it can chip if struck hard with a heavy object on the edge. Avoid placing extremely hot pots directly on the surface — use trivets to prevent thermal shock. With reasonable care, quartz countertops last a lifetime.' },
+  ]} />
 </ServiceLayout>

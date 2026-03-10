@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -22,7 +23,7 @@ import Container from '@/components/ui/Container.astro';
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-muted leading-relaxed mb-8">
-      Your home should adapt to your life — not the other way around. Aging-in-place remodeling ensures your kitchen and bathroom remain safe, comfortable, and functional as your needs evolve. Whether you're planning proactively for the future or addressing current mobility challenges, our team designs and builds accessible spaces that are every bit as beautiful as they are practical. We believe that safety features and stunning design go hand in hand.
+      Your home should adapt to your life — not the other way around. Aging-in-place remodeling ensures your kitchen and bathroom remain safe, comfortable, and functional as your needs evolve. If you're planning proactively for the future or addressing current mobility challenges, we design and build accessible spaces that are every bit as beautiful as they are practical. We believe that safety features and stunning design go hand in hand.
     </p>
 
     <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">
@@ -141,4 +142,12 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'When should I start planning aging-in-place modifications?', answer: 'The best time to incorporate aging-in-place features is during a planned remodel, when the walls are open and plumbing is accessible. Installing blocking for future grab bars during a bathroom remodel costs almost nothing but saves significant expense later. If you\'re in your 50s and planning a remodel, it\'s the perfect time to build in these features proactively. However, we also make standalone modifications whenever they\'re needed — it\'s never too early or too late.' },
+    { question: 'How much do aging-in-place modifications cost?', answer: 'Costs vary widely depending on scope. Simple modifications like grab bar installation ($150-$300 per bar), lever hardware replacement ($50-$100 per door), and raised toilet seats ($200-$500) are quite affordable. A curbless shower conversion runs $8,000-$15,000, and a comprehensive bathroom accessibility remodel ranges from $15,000-$40,000. We tailor projects to your budget and prioritize the modifications that will have the greatest safety impact.' },
+    { question: 'Will accessible modifications look institutional?', answer: 'Not at all. Today\'s accessible products are designed to be stylish and blend with any bathroom or kitchen aesthetic. Grab bars come in every finish from matte black to brushed gold. Curbless showers are a top design trend regardless of accessibility needs. Comfort-height toilets are now standard in most new construction. Our design team ensures every modification enhances both the safety and beauty of your space.' },
+    { question: 'Do aging-in-place modifications affect home value?', answer: 'When done well, aging-in-place modifications can increase your home\'s appeal and value. Universal Design features are attractive to buyers of all ages — wider doorways, curbless showers, and comfort-height fixtures are desirable in any well-designed home. As Seattle\'s population ages, homes with thoughtful accessibility features will be in increasing demand. Features that look and feel custom-designed add value; features that look like afterthoughts do not.' },
+    { question: 'Are there grants or programs to help pay for modifications?', answer: 'Yes, several programs can help. The VA\'s Specially Adapted Housing (SAH) grant assists veterans with service-connected disabilities. Washington State offers a Senior Citizens Property Tax Exemption. King County\'s Housing Repair Program provides assistance for income-qualifying homeowners. Some medical expenses related to accessibility modifications may be tax-deductible. We can point you toward resources that may apply to your situation.' },
+  ]} />
 </ServiceLayout>

@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -22,7 +23,7 @@ import Container from '@/components/ui/Container.astro';
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-muted leading-relaxed mb-8">
-      The vanity is your bathroom's workhorse and design anchor. It provides essential storage, houses the sink and faucet, sets the visual tone, and is the first thing you see every morning. Whether you're upgrading a builder-grade pedestal sink to a proper vanity cabinet or installing a sleek wall-mounted double vanity in a primary bath renovation, our team ensures precise fit, solid plumbing connections, and a polished final result.
+      The vanity is your bathroom's workhorse and design anchor. It provides essential storage, houses the sink and faucet, sets the visual tone, and is the first thing you see every morning. If you're upgrading a builder-grade pedestal sink to a proper vanity cabinet or installing a sleek wall-mounted double vanity in a primary bath renovation, we ensure precise fit, solid plumbing connections, and a polished final result.
     </p>
 
     <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">
@@ -130,4 +131,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much does vanity installation cost in Seattle?', answer: 'Vanity installation labor costs typically range from $500-$1,500 for a standard freestanding unit, and $800-$2,000 for floating vanities that require wall blocking. The vanity unit itself ranges from $300 for a basic 30" model to $3,000+ for a custom double vanity with a stone countertop. We provide complete pricing including labor, materials, plumbing, and finishing in our estimates.' },
+    { question: 'Can a floating vanity hold the same weight as a floor vanity?', answer: 'Yes, when properly installed with adequate wall blocking, a floating vanity can support a stone countertop, sink, and all the toiletries and supplies you need. We install horizontal blocking between studs and use heavy-duty mounting hardware rated for the load. Most floating vanities are rated to hold 200-300 lbs when properly installed.' },
+    { question: 'What vanity size should I choose?', answer: 'The ideal vanity size depends on your bathroom\'s dimensions and how many people use it. For powder rooms, 24"-30" is standard. Guest bathrooms typically accommodate 36"-48". Primary bathrooms usually warrant 60"-72" or a double configuration. We recommend leaving at least 4" of clearance from the vanity to the toilet or wall on each side for comfortable use.' },
+    { question: 'How long does vanity installation take?', answer: 'A standard vanity swap (removing the old unit, installing the new one, and connecting plumbing) takes about one day. Floating vanity installations that require wall blocking take 1.5-2 days. If we\'re also installing new flooring, tile, or mirrors as part of the project, the timeline extends accordingly. We keep your bathroom functional as much as possible during the work.' },
+  ]} />
 </ServiceLayout>

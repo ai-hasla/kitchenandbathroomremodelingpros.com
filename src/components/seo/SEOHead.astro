@@ -12,6 +12,7 @@ interface Props {
     publishedTime?: string;
     modifiedTime?: string;
     author?: string;
+    section?: string;
   };
   geoCity?: string;
   geoLat?: number;
@@ -79,6 +80,12 @@ const ogImageUrl = ogImage.startsWith('http')
 )}
 {article?.modifiedTime && (
   <meta property="article:modified_time" content={article.modifiedTime} />
+)}
+{article?.author && (
+  <meta property="article:author" content={article.author} />
+)}
+{article?.section && (
+  <meta property="article:section" content={article.section} />
 )}
 
 <!-- Geo Tags for Local SEO -->

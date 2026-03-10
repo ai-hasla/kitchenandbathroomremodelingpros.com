@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
-import { SITE, SERVICES, LOCATIONS_TIER1 } from '@/lib/constants';
+import { SITE, SERVICES, LOCATIONS_TIER1, LOCATIONS_TIER2, ALL_LOCATIONS, COMBO_SERVICES } from '@/lib/constants';
 
 const breadcrumbs = [{ label: 'Sitemap', href: '/sitemap-html/' }];
 
@@ -10,17 +10,16 @@ const mainPages = [
   { title: 'Home', href: '/' },
   { title: 'About Us', href: '/about/' },
   { title: 'Contact', href: '/contact/' },
-  { title: 'Get a Quote', href: 'https://nexfield.pro/crm/book?u=137' },
+  { title: 'Get a Quote', href: '/get-a-quote/' },
   { title: 'Our Process', href: '/our-process/' },
   { title: 'Gallery', href: '/gallery/' },
   { title: 'Financing', href: '/financing/' },
   { title: 'FAQ', href: '/faq/' },
-  { title: 'Reviews', href: '/reviews/' },
 ];
 
 const costGuides = [
-  { title: 'Kitchen Remodel Cost', slug: 'kitchen-remodel-cost-seattle' },
-  { title: 'Bathroom Remodel Cost', slug: 'bathroom-remodel-cost-seattle' },
+  { title: 'Kitchen Remodel Cost in Seattle', slug: 'kitchen-remodel-cost-seattle' },
+  { title: 'Bathroom Remodel Cost in Seattle', slug: 'bathroom-remodel-cost-seattle' },
   { title: 'Cabinet Refacing Cost', slug: 'cabinet-refacing-cost' },
   { title: 'Countertop Installation Cost', slug: 'countertop-installation-cost' },
   { title: 'Shower Remodel Cost', slug: 'shower-remodel-cost' },
@@ -58,8 +57,22 @@ const reviewCategories = [
   { title: 'Countertop Installation Reviews', href: '/reviews/countertop-installation/' },
 ];
 
-const topCities = LOCATIONS_TIER1.map((loc) => ({ title: `${loc.city}, WA`, slug: loc.slug }));
+const serviceNameMap: Record<string, string> = {
+  'kitchen-remodeling': 'Kitchen Remodeling',
+  'bathroom-remodeling': 'Bathroom Remodeling',
+};
 
+// Count pages
+const pageCount =
+  mainPages.length + // 8
+  1 + SERVICES.length + // services index + 12
+  1 + costGuides.length + // cost guides index + 5
+  1 + blogPosts.length + blogCategories.length + // blog index + 16 + 3
+  1 + reviewCategories.length + // reviews index + 4
+  1 + ALL_LOCATIONS.length + (ALL_LOCATIONS.length * COMBO_SERVICES.length) + // areas index + 28 cities + 56 combos
+  2 + // privacy, terms
+  1; // sitemap-html
+// Total: 8 + 13 + 6 + 20 + 5 + 85 + 2 + 1 = 140 (+ 404 = 141 but not listed)
 ---
 
 <BaseLayout
@@ -76,7 +89,7 @@ const topCities = LOCATIONS_TIER1.map((loc) => ({ title: `${loc.city}, WA`, slug
         <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Site Navigation</p>
         <h1 class="text-4xl md:text-5xl font-[family-name:var(--font-heading)] text-white mb-4">Sitemap</h1>
         <p class="text-lg text-white/80 leading-relaxed">
-          A complete directory of all pages on our website. Find exactly what you're looking for.
+          A complete directory of all {pageCount} pages on our website. Find exactly what you're looking for.
         </p>
       </div>
     </Container>
@@ -168,9 +181,9 @@ const topCities = LOCATIONS_TIER1.map((loc) => ({ title: `${loc.city}, WA`, slug
           </ul>
         </div>
 
-        <!-- Reviews by Service -->
+        <!-- Reviews -->
         <div>
-          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Reviews by Service</h2>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Reviews</h2>
           <ul class="space-y-2.5">
             <li>
               <a href="/reviews/" class="text-muted hover:text-accent transition-colors font-medium">
@@ -188,27 +201,60 @@ const topCities = LOCATIONS_TIER1.map((loc) => ({ title: `${loc.city}, WA`, slug
         </div>
 
         <!-- Areas Served -->
-        <div>
+        <div class="md:col-span-2 lg:col-span-3">
           <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Areas Served</h2>
-          <ul class="space-y-2.5">
+          <ul class="space-y-2.5 mb-6">
             <li>
               <a href="/areas-served/" class="text-muted hover:text-accent transition-colors font-medium">
-                All Areas
+                All Areas We Serve
               </a>
             </li>
-            {topCities.map((city) => (
-              <li>
-                <a href={`/areas-served/${city.slug}/`} class="text-muted hover:text-accent transition-colors">
-                  {city.title}
-                </a>
-              </li>
-            ))}
           </ul>
+
+          <h3 class="text-lg font-semibold font-[family-name:var(--font-heading)] text-dark-text mb-3">Major Service Areas</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1 mb-8">
+            {LOCATIONS_TIER1.map((loc) => (
+              <div>
+                <a href={`/areas-served/${loc.slug}/`} class="text-muted hover:text-accent transition-colors font-medium">
+                  {loc.city}, WA
+                </a>
+                <ul class="ml-4 mb-3 space-y-1">
+                  {COMBO_SERVICES.map((svc) => (
+                    <li>
+                      <a href={`/areas-served/${loc.slug}/${svc}/`} class="text-sm text-muted/80 hover:text-accent transition-colors">
+                        {serviceNameMap[svc]} in {loc.city}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <h3 class="text-lg font-semibold font-[family-name:var(--font-heading)] text-dark-text mb-3">Additional Service Areas</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1">
+            {LOCATIONS_TIER2.map((loc) => (
+              <div>
+                <a href={`/areas-served/${loc.slug}/`} class="text-muted hover:text-accent transition-colors font-medium">
+                  {loc.city}, WA
+                </a>
+                <ul class="ml-4 mb-3 space-y-1">
+                  {COMBO_SERVICES.map((svc) => (
+                    <li>
+                      <a href={`/areas-served/${loc.slug}/${svc}/`} class="text-sm text-muted/80 hover:text-accent transition-colors">
+                        {serviceNameMap[svc]} in {loc.city}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <!-- Legal -->
+        <!-- Legal & Other -->
         <div>
-          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Legal</h2>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Other</h2>
           <ul class="space-y-2.5">
             <li>
               <a href="/privacy/" class="text-muted hover:text-accent transition-colors">
@@ -218,6 +264,11 @@ const topCities = LOCATIONS_TIER1.map((loc) => ({ title: `${loc.city}, WA`, slug
             <li>
               <a href="/terms/" class="text-muted hover:text-accent transition-colors">
                 Terms of Service
+              </a>
+            </li>
+            <li>
+              <a href="/sitemap-html/" class="text-muted hover:text-accent transition-colors">
+                HTML Sitemap
               </a>
             </li>
             <li>

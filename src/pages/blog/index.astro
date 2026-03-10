@@ -186,14 +186,17 @@ const posts = [
             class="group bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300"
           >
             <div class="aspect-[16/10] overflow-hidden relative">
-              <img
-                src={post.image}
-                alt={post.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                width="800"
-                height="500"
-                loading="lazy"
-              />
+              <picture>
+                <source srcset={post.image.replace('.jpg', '.webp')} type="image/webp" />
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+              </picture>
               <span class="absolute top-4 left-4 bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                 {post.category}
               </span>
@@ -225,7 +228,7 @@ const posts = [
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Ready to Start Planning?</h2>
         <p class="text-body-text text-lg mb-8">
-          Whether you're in the research phase or ready to begin, we're here to help. Get a free estimate for your remodeling project.
+          Still researching or ready to go? Get a free estimate for your remodeling project.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>

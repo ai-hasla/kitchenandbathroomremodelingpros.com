@@ -1,0 +1,23 @@
+---
+import { SITE } from '@/lib/constants';
+
+const navItems = [
+  { name: 'Services', path: '/services/' },
+  { name: 'Areas We Serve', path: '/areas-served/' },
+  { name: 'Gallery', path: '/gallery/' },
+  { name: 'Cost Guides', path: '/cost-guides/' },
+  { name: 'Blog', path: '/blog/' },
+  { name: 'Reviews', path: '/reviews/' },
+  { name: 'About', path: '/about/' },
+  { name: 'Contact', path: '/contact/' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SiteNavigationElement',
+  name: navItems.map((item) => item.name),
+  url: navItems.map((item) => `${SITE.url}${item.path}`),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

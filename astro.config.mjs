@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://kitchenandbathroomremodelingpros.com',
@@ -34,15 +33,18 @@ export default defineConfig({
         return item;
       },
     }),
-    react(),
   ],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      cssMinify: true,
+      minify: 'esbuild',
+    },
   },
   image: {
     domains: ['images.unsplash.com'],
   },
   prefetch: {
-    defaultStrategy: 'hover',
+    defaultStrategy: 'viewport',
   },
 });

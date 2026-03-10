@@ -62,7 +62,7 @@ const faqSchema = {
   description="How much does cabinet refacing cost in Seattle in 2026? Average costs from $5,000 to $15,000. Compare refacing vs. replacing, material costs, and tips to save."
   canonical={`${SITE.url}/cost-guides/cabinet-refacing-cost/`}
   ogType="article"
-  article={{ publishedTime: '2026-02-15', modifiedTime: '2026-03-01', author: SITE.name }}
+  article={{ publishedTime: '2026-02-15', modifiedTime: '2026-03-01', author: SITE.name, section: 'Kitchen' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -93,6 +93,14 @@ const faqSchema = {
 
         <!-- Main Content -->
         <article class="lg:col-span-8 prose-custom">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
 
           <!-- Quick Summary -->
           <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>

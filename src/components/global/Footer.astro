@@ -11,7 +11,7 @@ import StarRating from '@/components/ui/StarRating.astro';
       <!-- Company Info -->
       <div class="lg:col-span-1">
         <a href="/" class="flex items-center gap-2 mb-5">
-          <img src="/images/logo.png" alt="Best KB Remodeling" width="144" height="144" class="w-12 h-12 object-contain" />
+          <img src="/images/logo.png" alt="Best KB Remodeling" width="144" height="144" decoding="async" class="w-12 h-12 object-contain" />
           <div>
             <div class="text-sm font-bold text-white leading-tight">Best Kitchen &</div>
             <div class="text-xs text-accent font-semibold leading-tight">Bathroom Remodeling</div>
@@ -126,7 +126,7 @@ import StarRating from '@/components/ui/StarRating.astro';
   <!-- Bottom bar -->
   <div class="border-t border-white/10">
     <Container class="py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/50">
-      <p>&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved. Licensed, Bonded & Insured.</p>
+      <p>&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved. Licensed, Bonded & Insured · WA License #KBREMRP787P3</p>
       <div class="flex gap-4">
         <a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a>
         <a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a>

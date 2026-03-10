@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button.astro';
 import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import SchemaProduct from '@/components/seo/SchemaProduct.astro';
+import SchemaService from '@/components/seo/SchemaService.astro';
 import { SERVICES, SITE, ALL_LOCATIONS } from '@/lib/constants';
 
 interface Props {
@@ -23,6 +24,22 @@ const { title, metaTitle, metaDescription, slug, category, heroImage, features }
 const relatedServices = SERVICES.filter(
   (s) => s.category === category && s.slug !== slug
 );
+
+// Cross-category related services for bottom section: prioritize same category, then others
+const allOtherServices = SERVICES.filter((s) => s.slug !== slug);
+const sameCategoryOthers = allOtherServices.filter((s) => s.category === category);
+const diffCategoryOthers = allOtherServices.filter((s) => s.category !== category);
+const bottomRelatedServices = [...sameCategoryOthers, ...diffCategoryOthers].slice(0, 3);
+
+// Cost guide mapping
+const costGuideMap: Record<string, string> = {
+  'kitchen-remodeling': '/cost-guides/kitchen-remodel-cost-seattle/',
+  'bathroom-remodeling': '/cost-guides/bathroom-remodel-cost-seattle/',
+  'cabinet-refacing': '/cost-guides/cabinet-refacing-cost/',
+  'countertop-installation': '/cost-guides/countertop-installation-cost/',
+  'shower-remodeling': '/cost-guides/shower-remodel-cost/',
+};
+const costGuideUrl = costGuideMap[slug] || (category === 'kitchen' ? '/cost-guides/kitchen-remodel-cost-seattle/' : category === 'bathroom' ? '/cost-guides/bathroom-remodel-cost-seattle/' : '/cost-guides/');
 
 // Build schema
 const serviceSchema = {
@@ -93,19 +110,29 @@ const categoryLabel: Record<string, string> = {
     productDescription={`Professional ${title.toLowerCase()} services in Seattle, Bellevue, Kirkland, and beyond. ${SITE.reviews.rating}-star rated, ${SITE.warranty} warranty, free estimates.`}
     pageUrl={`${SITE.url}/services/${slug}/`}
   />
+  <SchemaService
+    serviceName={title}
+    serviceDescription={metaDescription}
+    serviceUrl={`${SITE.url}/services/${slug}/`}
+    slug={slug}
+    features={features}
+  />
 
   <!-- Hero Section -->
   <section class="bg-primary pt-32 pb-16 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
-      <img
-        src={heroImage}
-        alt={`${title} project in Seattle, WA`}
-        class="w-full h-full object-cover"
-        width="2000"
-        height="1333"
-        loading="eager"
-        fetchpriority="high"
-      />
+      <picture>
+        <source srcset={heroImage.replace('.jpg', '.webp')} type="image/webp" />
+        <img
+          src={heroImage}
+          alt={`${title} project in Seattle, WA`}
+          class="w-full h-full object-cover"
+          width="2000"
+          height="1333"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </picture>
     </div>
     <Container class="relative z-10">
       <nav aria-label="Breadcrumb" class="mb-6 text-sm text-white/60">
@@ -295,6 +322,45 @@ const categoryLabel: Record<string, string> = {
         </a>
       </div>
     </Container>
+  </section>
+
+  <!-- Cost Guide Link -->
+  <section class="py-12 lg:py-16">
+    <Container>
+      <div class="max-w-3xl mx-auto text-center bg-accent-light border border-accent/20 rounded-2xl p-8" data-reveal>
+        <h2 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-3">
+          How Much Does {title} Cost in Seattle?
+        </h2>
+        <p class="text-muted mb-5 leading-relaxed">
+          Get a detailed breakdown of costs, timelines, and what affects pricing for your {title.toLowerCase()} project.
+        </p>
+        <a
+          href={costGuideUrl}
+          class="inline-flex items-center gap-2 text-accent font-semibold hover:underline text-lg"
+        >
+          See Our Detailed Cost Guide
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Related Services Grid -->
+  <section class="py-12 bg-light">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-dark-text text-center mb-8">Related Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {bottomRelatedServices.map((service) => (
+          <a href={`/services/${service.slug}/`} class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow text-center">
+            <h3 class="text-lg font-semibold text-dark-text mb-2">{service.title}</h3>
+            <p class="text-sm text-muted">{service.shortDescription}</p>
+            <span class="text-accent font-medium text-sm mt-3 inline-block">Learn More &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
 
   <!-- CTA Section -->

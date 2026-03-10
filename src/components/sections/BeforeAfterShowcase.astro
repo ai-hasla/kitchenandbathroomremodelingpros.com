@@ -38,13 +38,18 @@ const comparisons = [
             data-compare
           >
             <!-- After Image (full background) -->
-            <img
-              src={item.after}
-              alt={`After: ${item.caption}`}
-              class="absolute inset-0 w-full h-full object-cover pointer-events-none"
-              loading="lazy"
-              draggable="false"
-            />
+            <picture>
+              <source srcset={item.after.replace('.jpg', '.webp')} type="image/webp" />
+              <img
+                src={item.after}
+                alt={`After: ${item.caption}`}
+                class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                width="800"
+                height="600"
+                loading="lazy"
+                draggable="false"
+              />
+            </picture>
 
             <!-- Before Image (clipped overlay) -->
             <div
@@ -52,14 +57,19 @@ const comparisons = [
               style="width: 50%"
               data-compare-overlay
             >
-              <img
-                src={item.before}
-                alt={`Before: ${item.caption}`}
-                class="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                style="min-width: var(--compare-width, 100%)"
-                loading="lazy"
-                draggable="false"
-              />
+              <picture>
+                <source srcset={item.before.replace('.jpg', '.webp')} type="image/webp" />
+                <img
+                  src={item.before}
+                  alt={`Before: ${item.caption}`}
+                  class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                  style="min-width: var(--compare-width, 100%)"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  draggable="false"
+                />
+              </picture>
             </div>
 
             <!-- Labels -->

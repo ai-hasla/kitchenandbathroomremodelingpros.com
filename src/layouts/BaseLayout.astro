@@ -6,6 +6,7 @@ import SocialProofToast from '@/components/ui/SocialProofToast.astro';
 import ExitIntentPopup from '@/components/ui/ExitIntentPopup.astro';
 import SEOHead from '@/components/seo/SEOHead.astro';
 import SchemaLocalBusiness from '@/components/seo/SchemaLocalBusiness.astro';
+import SchemaSiteNavigation from '@/components/seo/SchemaSiteNavigation.astro';
 
 interface Props {
   title: string;
@@ -19,6 +20,7 @@ interface Props {
     publishedTime?: string;
     modifiedTime?: string;
     author?: string;
+    section?: string;
   };
   geoCity?: string;
   geoLat?: number;
@@ -42,23 +44,33 @@ const { showSchema = true, ...seoProps } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#1a2744" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Preconnect to external services -->
+    <link rel="preconnect" href="https://nexfield.pro" />
+    <link rel="dns-prefetch" href="https://nexfield.pro" />
 
     <!-- Preload critical fonts -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin />
 
+    <!-- Preload hero image for homepage -->
+    {Astro.url.pathname === '/' && (
+      <link rel="preload" href="/images/hero-home.webp" as="image" type="image/webp" />
+    )}
+
     <!-- LLMs.txt for AI discoverability -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site information" />
 
-    <!-- DNS Prefetch for external services -->
-    <link rel="dns-prefetch" href="https://nexfield.pro" />
     <SEOHead {...seoProps} />
     {showSchema && <SchemaLocalBusiness />}
+    <SchemaSiteNavigation />
   </head>
   <body class="bg-white text-body-text font-[family-name:var(--font-body)] antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:text-primary">Skip to main content</a>
     <Header />
 
-    <main>
+    <main id="main">
       <slot />
     </main>
 

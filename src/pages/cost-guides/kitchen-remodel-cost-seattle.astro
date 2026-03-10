@@ -72,7 +72,7 @@ const faqSchema = {
   description="How much does a kitchen remodel cost in Seattle in 2026? Average costs from $15,000 to $85,000+. Complete breakdown by scope, components, and money-saving tips."
   canonical={`${SITE.url}/cost-guides/kitchen-remodel-cost-seattle/`}
   ogType="article"
-  article={{ publishedTime: '2026-01-10', modifiedTime: '2026-03-01', author: SITE.name }}
+  article={{ publishedTime: '2026-01-10', modifiedTime: '2026-03-01', author: SITE.name, section: 'Kitchen' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -103,6 +103,14 @@ const faqSchema = {
 
         <!-- Main Content -->
         <article class="lg:col-span-8 prose-custom">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
 
           <!-- Quick Summary -->
           <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
@@ -135,7 +143,7 @@ const faqSchema = {
               The truth is, kitchen costs in Seattle run 15-20% higher than what you'll read on most websites. That's because those sites pull from national databases that include markets where labor is $35/hour and permits cost $200. In Seattle, skilled tradespeople earn $65-95/hour, the Seattle Department of Construction and Inspections (SDCI) charges $1,100-$2,800 for remodel permits, and half the homes we work on have surprises behind the walls — knob-and-tube wiring, galvanized pipes, or asbestos tile from the 1950s.
             </p>
             <p>
-              We're going to give you real numbers from real Seattle projects. We'll tell you where to spend, where to save, and what catches homeowners off guard. Whether you're doing a quick refresh or tearing it down to the studs, this is the pricing guide we wish someone had given us when we started this company.
+              We're going to give you real numbers from real Seattle projects. We'll tell you where to spend, where to save, and what catches homeowners off guard. From a quick cosmetic refresh to a full gut-and-rebuild, this is the pricing guide we wish someone had given us when we started this company.
             </p>
           </div>
 

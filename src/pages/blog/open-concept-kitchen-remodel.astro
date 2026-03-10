@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
 
 const breadcrumbs = [
   { label: 'Blog', href: '/blog/' },
@@ -60,7 +61,7 @@ const faqSchema = {
   description="Complete guide to open concept kitchen remodeling in Seattle. Load-bearing walls, permits, island additions, lighting, ventilation, and costs for Seattle homes."
   canonical={`${SITE.url}/blog/open-concept-kitchen-remodel/`}
   ogType="article"
-  article={{ publishedTime: '2026-01-05', modifiedTime: '2026-01-05', author: SITE.name }}
+  article={{ publishedTime: '2026-01-05', modifiedTime: '2026-01-05', author: SITE.name, section: 'Kitchen' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -88,6 +89,14 @@ const faqSchema = {
     <Container>
       <div class="grid lg:grid-cols-12 gap-12">
         <article class="lg:col-span-8">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
 
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
@@ -247,7 +256,7 @@ const faqSchema = {
             <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Open Concept Kitchen Remodel Costs in Seattle</h2>
             <div class="space-y-4 text-body-text leading-relaxed">
               <p>
-                Open concept kitchen remodels in Seattle span a wide range depending on what is involved. Here is a realistic breakdown based on projects we have completed across the Seattle metro area:
+                Open concept kitchen remodels in Seattle span a wide range depending on what is involved. For detailed pricing, see our <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">kitchen remodel cost guide</a>. Here is a realistic breakdown based on projects we have completed across the Seattle metro area:
               </p>
             </div>
             <div class="space-y-4 mt-6">
@@ -261,7 +270,7 @@ const faqSchema = {
               </div>
               <div class="border-l-4 border-accent pl-5">
                 <h3 class="font-semibold text-primary mb-1">High-End Open Concept Remodel: $70,000 - $120,000+</h3>
-                <p class="text-body-text text-sm leading-relaxed">Full <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> with custom cabinetry, premium countertops (quartzite, marble), professional-grade appliances, a large island with plumbing and seating, hardwood or premium LVP flooring throughout the open space, and designer lighting. Common in Magnolia, Madison Park, and Laurelhurst.</p>
+                <p class="text-body-text text-sm leading-relaxed">Full <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> with custom cabinetry, premium <a href="/services/countertop-installation/" class="text-accent hover:underline">countertops</a> (quartzite, marble), professional-grade appliances, a large island with plumbing and seating, hardwood or premium LVP flooring throughout the open space, and designer lighting. Common in Magnolia, Madison Park, and Laurelhurst.</p>
               </div>
             </div>
           </div>
@@ -294,24 +303,7 @@ const faqSchema = {
           </div>
 
 
-          <!-- Related Articles -->
-          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
-            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
-            <div class="grid sm:grid-cols-3 gap-4">
-    <a href="/blog/kitchen-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">15 Kitchen Remodel Ideas for Seattle Homes</p>
-    </a>
-    <a href="/blog/kitchen-lighting-design-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Lighting Design Guide</p>
-    </a>
-    <a href="/blog/do-you-need-permit-remodel-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Permits</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Do You Need a Permit to Remodel in Seattle?</p>
-    </a>
-            </div>
-          </div>
+          <RelatedPosts currentSlug="open-concept-kitchen-remodel" category="Kitchen" />
 
           <!-- End-of-Article CTA -->
           <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>

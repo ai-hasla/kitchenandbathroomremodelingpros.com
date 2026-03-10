@@ -7,15 +7,18 @@ import Container from '@/components/ui/Container.astro';
 <section class="relative overflow-hidden">
   <!-- Background image with Ken Burns zoom -->
   <div class="absolute inset-0 z-0">
-    <img
-      src="/images/hero-home.jpg"
-      alt="Modern white kitchen with marble countertops"
-      class="h-full w-full object-cover animate-hero-zoom"
-      width="2000"
-      height="1333"
-      loading="eager"
-      fetchpriority="high"
-    />
+    <picture>
+      <source srcset="/images/hero-home.webp" type="image/webp" />
+      <img
+        src="/images/hero-home.jpg"
+        alt="Modern white kitchen with marble countertops"
+        class="h-full w-full object-cover animate-hero-zoom"
+        width="2000"
+        height="1333"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </picture>
   </div>
 
   <!-- Dark gradient overlay -->

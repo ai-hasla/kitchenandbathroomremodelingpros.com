@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
 
 const breadcrumbs = [
   { label: 'Blog', href: '/blog/' },
@@ -28,7 +29,7 @@ const articleSchema = {
   description="Discover 15 kitchen remodel ideas perfect for Seattle homes in 2026. From waterfall islands and two-tone cabinets to PNW-inspired designs. Expert tips from local remodelers."
   canonical={`${SITE.url}/blog/kitchen-remodel-ideas-seattle/`}
   ogType="article"
-  article={{ publishedTime: '2026-02-20', modifiedTime: '2026-02-20', author: SITE.name }}
+  article={{ publishedTime: '2026-02-20', modifiedTime: '2026-02-20', author: SITE.name, section: 'Kitchen' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -44,7 +45,7 @@ const articleSchema = {
         </div>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">15 Kitchen Remodel Ideas for Seattle Homes in 2026</h1>
         <p class="text-lg text-white/80 leading-relaxed">
-          Whether you live in a classic Craftsman bungalow in Capitol Hill or a modern home in Bellevue, these kitchen remodel ideas will help you create a space that's beautiful, functional, and perfectly suited to the Pacific Northwest lifestyle.
+          Our Seattle clients fall into two camps: those with 1920s Craftsman bungalows with tiny kitchens, and those in newer Bellevue builds with builder-grade finishes ready for an upgrade. Either way, these kitchen remodel ideas will help you create a space that's beautiful, functional, and perfectly suited to the Pacific Northwest lifestyle.
         </p>
       </div>
     </Container>
@@ -55,6 +56,14 @@ const articleSchema = {
     <Container>
       <div class="grid lg:grid-cols-12 gap-12">
         <article class="lg:col-span-8">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">›</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">›</span>
+            <span class="text-dark-text">{breadcrumbs[breadcrumbs.length - 1].label}</span>
+          </nav>
 
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
@@ -266,7 +275,7 @@ const articleSchema = {
             <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Bringing Your Vision to Life</h2>
             <div class="space-y-4 text-body-text leading-relaxed">
               <p>
-                The best kitchen remodel is one that reflects how you actually live. Understanding the <a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline">ROI of your kitchen remodel</a> can also help you prioritize upgrades. Whether you're drawn to the warmth of wood accents and earthy colors or the clean lines of a contemporary waterfall island, your kitchen should feel like home. We recommend choosing 3 to 5 ideas from this list that resonate with you and sharing them with your remodeling team during the design consultation.
+                The best kitchen remodel is one that reflects how you actually live. Understanding the <a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline">ROI of your kitchen remodel</a> can also help you prioritize upgrades. If you're drawn to the warmth of wood accents and earthy colors or the clean lines of a contemporary waterfall island, your kitchen should feel like home. We recommend choosing 3 to 5 ideas from this list that resonate with you and sharing them with your remodeling team during the design consultation.
               </p>
               <p>
                 At Best Kitchen and Bathroom Remodeling, we've been helping Seattle homeowners turn their kitchen dreams into reality since 2010. Our design team stays on top of current trends while always prioritizing the timeless principles of good design — function, flow, and finish quality. Ready to explore what's possible? <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Request a free estimate</a> and let's start the conversation.
@@ -275,24 +284,7 @@ const articleSchema = {
           </div>
 
 
-          <!-- Related Articles -->
-          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
-            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
-            <div class="grid sm:grid-cols-3 gap-4">
-    <a href="/blog/kitchen-cabinet-styles-2026/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Cabinet Styles 2026</p>
-    </a>
-    <a href="/blog/kitchen-remodel-roi-seattle-2026/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Remodel ROI in Seattle 2026</p>
-    </a>
-    <a href="/blog/kitchen-lighting-design-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
-      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Lighting Design Guide</p>
-    </a>
-            </div>
-          </div>
+          <RelatedPosts currentSlug="kitchen-remodel-ideas-seattle" category="Kitchen" />
 
           <!-- End-of-Article CTA -->
           <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>

@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
@@ -133,4 +134,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+
+  <SchemaFAQ items={[
+    { question: 'How much do custom cabinets cost compared to stock?', answer: 'Custom cabinets typically cost $500-$1,200 per linear foot installed, compared to $100-$300 for stock and $200-$600 for semi-custom. For a typical Seattle kitchen with 25-30 linear feet of cabinetry, custom cabinets range from $15,000-$35,000. While the upfront cost is higher, custom cabinets offer superior construction, perfect fit, unlimited design options, and a lifespan of 30+ years compared to 10-15 years for most stock options.' },
+    { question: 'How long does it take to get custom cabinets?', answer: 'From final design approval to delivery, custom cabinets typically take 6-10 weeks to manufacture. We work with local Pacific Northwest shops, so lead times are shorter than national custom brands that may take 12-16 weeks. Installation takes 2-4 days depending on the kitchen\'s size. We recommend beginning the design process 3-4 months before your desired installation date.' },
+    { question: 'Do I need custom cabinets or will semi-custom work?', answer: 'Semi-custom cabinets work well for most standard kitchens with conventional layouts. Custom is the better choice when you have non-standard ceiling heights, unusual angles or alcoves, very specific style preferences, or when you want specialty interior configurations. During your consultation, we\'ll show you both options and help you determine which offers the best value for your specific project.' },
+    { question: 'Can you build custom cabinets for bathrooms too?', answer: 'Yes, we build custom vanities, linen cabinets, and storage towers for bathrooms. Custom bathroom cabinetry is especially valuable when dealing with non-standard plumbing locations, tight spaces, or when you want a unique furniture-style vanity that can\'t be found in retail options. All bathroom cabinetry uses moisture-resistant construction methods appropriate for the humid environment.' },
+  ]} />
 </ServiceLayout>
