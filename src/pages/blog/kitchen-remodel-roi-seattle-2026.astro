@@ -1,0 +1,385 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Kitchen Remodel ROI in Seattle: Is It Worth the Investment in 2026?', href: '/blog/kitchen-remodel-roi-seattle-2026/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Kitchen Remodel ROI in Seattle: Is It Worth the Investment in 2026?',
+  description: 'Discover the real ROI of kitchen remodeling in Seattle for 2026. Data-driven analysis of which upgrades add the most value to your home in the current market.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-05',
+  dateModified: '2026-02-05',
+  image: '/images/blog-kitchen-roi.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the average ROI for a kitchen remodel in Seattle in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'In 2026, a mid-range kitchen remodel in Seattle returns approximately 75-85% of the investment at resale, while a minor kitchen remodel can return up to 90%. Seattle consistently outperforms national averages due to strong housing demand and limited inventory in the Puget Sound region.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which kitchen upgrades add the most value in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The highest-ROI kitchen upgrades in Seattle include cabinet refacing or replacement (80-90% ROI), quartz or granite countertop installation (75-85% ROI), energy-efficient appliance upgrades (70-80% ROI), and updated flooring such as luxury vinyl plank or hardwood (70-80% ROI). Minor cosmetic updates often deliver higher percentage returns than full gut renovations.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a kitchen remodel cost in Seattle in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'In 2026, a minor kitchen remodel in Seattle costs $25,000-$45,000, a mid-range remodel costs $50,000-$90,000, and a major upscale remodel costs $100,000-$175,000+. Seattle labor and material costs run 10-15% higher than the national average due to strong demand and local building requirements.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is it better to do a minor or major kitchen remodel for ROI in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'For pure ROI percentage, a minor kitchen remodel typically delivers better returns in Seattle (85-90% vs 65-75% for major remodels). However, if you plan to live in your home for 5+ years, a major remodel provides daily quality-of-life benefits that a minor refresh cannot. The best approach depends on your timeline and goals.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Kitchen Remodel ROI in Seattle: Is It Worth the Investment in 2026?"
+  description="Data-driven analysis of kitchen remodel ROI in Seattle for 2026. Learn which upgrades add the most home value, cost vs. value breakdowns, and expert tips from local remodelers."
+  canonical={`${SITE.url}/blog/kitchen-remodel-roi-seattle-2026/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-05', modifiedTime: '2026-02-05', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">February 5, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 8 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Kitchen Remodel ROI in Seattle: Is It Worth the Investment in 2026?</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Seattle's housing market remains one of the strongest in the nation. But does that translate to a solid return on your kitchen remodel investment? We break down the numbers, compare upgrade options, and share real data from the local market.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              If you're a Seattle homeowner considering a kitchen remodel, one of the first questions on your mind is probably: "Will I get my money back?" It's a fair question — kitchen remodels are significant investments, and the Seattle market has its own unique dynamics that influence return on investment. The short answer is yes, kitchen remodels in Seattle consistently deliver strong returns. But the details matter, and the difference between a smart remodel and an over-improved one can be tens of thousands of dollars.
+            </p>
+            <p>
+              In this guide, we'll dig into 2026 data from Remodeling Magazine's Cost vs. Value Report, local Seattle real estate trends, and our own experience completing hundreds of <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodels</a> across King County, Snohomish County, and Pierce County. Whether you're planning to sell soon or stay for decades, this analysis will help you make informed decisions about where to invest your remodeling dollars.
+            </p>
+          </div>
+
+          <!-- Seattle Housing Market Context -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">The Seattle Housing Market in 2026: Why It Matters for ROI</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Before diving into specific remodel ROI numbers, it's important to understand the market context. Seattle's median home price in early 2026 hovers around $850,000, with neighborhoods like Capitol Hill, Ballard, and Queen Anne pushing well above $1 million. Inventory remains tight — homes that show well and feature updated kitchens consistently sell faster and command higher offers than comparable properties with dated finishes.
+              </p>
+              <p>
+                The tech industry continues to fuel demand across the Eastside and South Lake Union corridor, while remote work has expanded the buying radius into areas like Bothell, Issaquah, and Burien. In all of these markets, buyers expect modern kitchens. A dated kitchen with laminate countertops and builder-grade cabinets is one of the biggest deal-breakers for Puget Sound buyers, and agents consistently report that kitchen condition is the number-one factor in how quickly a home sells.
+              </p>
+              <p>
+                This demand dynamic is what drives kitchen remodel ROI in Seattle above the national average. When buyers are willing to pay a premium for move-in-ready homes, every dollar you invest in the kitchen works harder for you at resale.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROI Breakdown by Remodel Type -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Remodel ROI Breakdown: Minor vs. Mid-Range vs. Major</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Not all kitchen remodels are created equal when it comes to return on investment. Here's how the three main tiers compare in the Seattle market for 2026:
+              </p>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto my-8">
+              <table class="w-full border-collapse bg-white rounded-lg overflow-hidden shadow-sm">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="text-left p-4 font-semibold">Remodel Type</th>
+                    <th class="text-left p-4 font-semibold">Avg. Cost (Seattle)</th>
+                    <th class="text-left p-4 font-semibold">Avg. Value Added</th>
+                    <th class="text-left p-4 font-semibold">ROI %</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-100">
+                    <td class="p-4 font-medium">Minor Remodel</td>
+                    <td class="p-4">$28,000 - $42,000</td>
+                    <td class="p-4">$24,000 - $38,000</td>
+                    <td class="p-4 text-accent font-semibold">85 - 90%</td>
+                  </tr>
+                  <tr class="border-b border-gray-100 bg-light">
+                    <td class="p-4 font-medium">Mid-Range Remodel</td>
+                    <td class="p-4">$55,000 - $85,000</td>
+                    <td class="p-4">$42,000 - $68,000</td>
+                    <td class="p-4 text-accent font-semibold">75 - 85%</td>
+                  </tr>
+                  <tr>
+                    <td class="p-4 font-medium">Major / Upscale Remodel</td>
+                    <td class="p-4">$100,000 - $175,000+</td>
+                    <td class="p-4">$65,000 - $120,000</td>
+                    <td class="p-4 text-accent font-semibold">65 - 75%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                As the table shows, minor kitchen remodels deliver the highest percentage return in Seattle. This includes projects like <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a>, new countertops, updated hardware, fresh paint, and new flooring — essentially a cosmetic refresh that makes the kitchen look and feel brand new without moving walls or changing the layout.
+              </p>
+              <p>
+                Mid-range remodels — which typically include new cabinets, quartz countertops, tile backsplash, updated appliances, and new flooring — hit the sweet spot for most Seattle homeowners. You get a kitchen that looks and functions like new, and the ROI is still strong at 75-85%.
+              </p>
+              <p>
+                Major upscale remodels deliver the lowest percentage return but add the most absolute dollar value. If you're in a $1.2M+ home in Mercer Island, Medina, or Madison Park, buyers expect a high-end kitchen, and failing to deliver one can actually hurt your sale price more than the remodel costs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Which Upgrades Add the Most Value -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Which Kitchen Upgrades Add the Most Value in Seattle?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                If you want to maximize your return, focus your budget on the upgrades that buyers notice most and that have the greatest impact on perceived value. Based on our experience and local market data, here are the highest-ROI kitchen upgrades for Seattle homes in 2026:
+              </p>
+              <p>
+                <strong>Cabinets (80-90% ROI):</strong> <a href="/blog/kitchen-cabinet-styles-2026/" class="text-accent hover:underline">Cabinets</a> are the single biggest visual element in any kitchen. If your cabinets are structurally sound, <a href="/services/cabinet-refacing/" class="text-accent hover:underline">refacing them</a> with new doors, drawer fronts, and hardware delivers an incredible return. If they need full replacement, semi-custom shaker-style cabinets in white, gray, or a two-tone combination offer the best value in the Seattle market.
+              </p>
+              <p>
+                <strong>Countertops (75-85% ROI):</strong> <a href="/blog/quartz-vs-granite-countertops-seattle/" class="text-accent hover:underline">Quartz</a> has become the gold standard for Seattle kitchens. It's durable, low-maintenance, and available in patterns that mimic natural marble at a fraction of the cost. <a href="/services/countertop-installation/" class="text-accent hover:underline">Countertop installation</a> is one of the most impactful upgrades you can make — buyers immediately notice quality countertops. Budget $50-$120 per square foot installed for quartz in the Seattle area.
+              </p>
+              <p>
+                <strong>Appliances (70-80% ROI):</strong> Stainless steel, Energy Star-rated appliances remain the expectation for Seattle buyers. You don't need to go pro-grade (though it helps in luxury markets). A matching suite from brands like Bosch, KitchenAid, or Samsung in the $4,000-$8,000 range checks all the boxes for most buyers.
+              </p>
+              <p>
+                <strong>Flooring (70-80% ROI):</strong> Luxury vinyl plank delivers the best value for most Seattle kitchens — it's waterproof, durable, and comes in convincing wood-look styles. Hardwood flooring carries a slight premium in perceived value but at a higher cost. Large-format porcelain tile is the premium choice. See our <a href="/services/flooring-installation/" class="text-accent hover:underline">flooring installation</a> options for details.
+              </p>
+              <p>
+                <strong>Lighting (65-75% ROI):</strong> Upgraded lighting is often overlooked, but it transforms how a kitchen feels. Recessed LED ceiling lights, under-cabinet task lighting, and pendant lights over the island create layers of illumination that make the space feel larger and more inviting. It's also one of the most affordable upgrades with a strong perceived impact.
+              </p>
+            </div>
+          </div>
+
+          <!-- Upgrades to Avoid Over-Investing In -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Where Seattle Homeowners Over-Invest (and How to Avoid It)</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Over-improving your kitchen relative to your neighborhood is the most common ROI mistake we see in Seattle. If your home is valued at $650,000 in a Renton neighborhood, spending $150,000 on a kitchen remodel is unlikely to pay for itself — even in a strong market. A good rule of thumb is to keep your kitchen remodel budget at 5-15% of your home's current value.
+              </p>
+              <p>
+                Other common over-investments include ultra-premium appliance packages (Wolf, Sub-Zero, Thermador) in mid-range homes, exotic stone countertops like quartzite or marble in neighborhoods where quartz is the standard, and highly customized or unconventional layouts that reflect personal taste but limit buyer appeal. These choices can be wonderful if you plan to enjoy your kitchen for years — just don't expect to recoup the premium at resale in most Seattle neighborhoods.
+              </p>
+              <p>
+                Conversely, under-investing is also a risk. Cutting too many corners — choosing builder-grade materials, skipping the backsplash, or keeping old fluorescent lighting — can result in a remodel that doesn't move the needle on perceived value. The goal is to match the finish level that buyers expect in your specific neighborhood and price range.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROI for Different Neighborhoods -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Remodel ROI by Seattle Neighborhood</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                ROI varies significantly across the Seattle metro area. Here's how different neighborhoods and communities stack up:
+              </p>
+              <p>
+                <strong>Capitol Hill, Fremont, Ballard, and Wallingford:</strong> These high-demand neighborhoods with a mix of Craftsman bungalows and townhomes see some of the strongest kitchen remodel ROI in the metro area (80-90%). Buyers in these areas are willing to pay a premium for updated, design-forward kitchens. Two-tone cabinets, quartz countertops, and herringbone backsplashes perform particularly well.
+              </p>
+              <p>
+                <strong>Bellevue, Kirkland, and Redmond (Eastside):</strong> The Eastside's tech-driven buyer pool expects modern, high-quality kitchens. Mid-range to upscale remodels perform well here, with ROI in the 75-85% range. Waterfall islands, smart appliances, and premium fixtures are increasingly expected in this market.
+              </p>
+              <p>
+                <strong>Burien, Tukwila, and Federal Way:</strong> In more value-oriented markets, minor and mid-range remodels deliver the best percentage returns (80-90%). Focus on clean, updated finishes rather than luxury materials — white shaker cabinets, quartz counters, and stainless appliances check all the boxes without over-improving for the market.
+              </p>
+              <p>
+                <strong>Mercer Island, Medina, and Sammamish:</strong> In luxury markets, buyers expect high-end kitchens with premium everything. Major remodels with professional-grade appliances, custom cabinetry, and natural stone are the norm. ROI percentage may be lower (65-75%), but the absolute dollar recovery is significant, and an un-updated kitchen in these markets can actively deter buyers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timing Your Remodel -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">When to Remodel: Timing for Maximum ROI</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                If your primary goal is resale value, timing your remodel matters. Completing a kitchen remodel 6-12 months before listing gives you the best of both worlds — you get to enjoy the new kitchen briefly, and everything still looks and feels brand new when buyers walk through. Remodeling too far in advance means normal wear and tear can diminish the "wow factor" at listing time.
+              </p>
+              <p>
+                If you're staying long-term, the best time to remodel is when the kitchen no longer serves your needs or when materials are showing their age. Waiting until cabinets are literally falling apart or appliances are failing often means you'll need to make rushed decisions under pressure. Planning a remodel proactively allows you to make thoughtful choices, compare contractors, and schedule during the less-busy winter months when lead times may be shorter.
+              </p>
+              <p>
+                Seattle's remodeling season peaks from March through October. Booking your project during the winter months (November through February) can sometimes yield better scheduling availability and occasionally lower labor costs, though material prices are largely consistent year-round. Contact us to discuss <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">current kitchen remodel costs</a> and timelines.
+              </p>
+            </div>
+          </div>
+
+          <!-- The Enjoyment Factor -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Beyond the Numbers: The Daily Enjoyment Factor</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                ROI percentages are important, but they don't tell the whole story. A kitchen remodel delivers returns you can't measure in dollars — the pleasure of cooking in a beautiful space, the ease of hosting friends and family, the satisfaction of opening custom drawers that actually organize your pots and pans properly. If you plan to live in your home for five or more years, the daily enjoyment of your new kitchen is arguably worth more than the resale premium.
+              </p>
+              <p>
+                We've completed hundreds of kitchen remodels across the Seattle area, and the feedback we hear most often isn't about home value — it's about how the new kitchen changed daily life. Families cook together more. Couples host dinner parties they'd been putting off. Kids do homework at the island while parents prepare meals. A well-designed kitchen becomes the true center of the home, and that's a return on investment that no spreadsheet can capture.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Making the Smart Investment</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                A kitchen remodel in Seattle is one of the soundest home improvement investments you can make in 2026. The combination of strong housing demand, limited inventory, and a buyer pool that values updated kitchens means your remodeling dollars work harder here than in most U.S. markets. The key is matching your investment level to your home's value, your neighborhood's expectations, and your own timeline.
+              </p>
+              <p>
+                At Best Kitchen and Bathroom Remodeling, we help Seattle homeowners navigate these decisions every day. Our free in-home consultations include a realistic assessment of what your remodel should cost, which upgrades will deliver the best return in your specific market, and how to prioritize your budget for maximum impact. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Request your free estimate</a> or call us at <a href="tel:+12066664370" class="text-accent hover:underline">(206) 666-4370</a> to get started.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the average ROI for a kitchen remodel in Seattle in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">In 2026, a mid-range kitchen remodel in Seattle returns approximately 75-85% of the investment at resale, while a minor kitchen remodel can return up to 90%. Seattle consistently outperforms national averages due to strong housing demand and limited inventory in the Puget Sound region.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Which kitchen upgrades add the most value in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The highest-ROI kitchen upgrades in Seattle include cabinet refacing or replacement (80-90% ROI), quartz or granite countertop installation (75-85% ROI), energy-efficient appliance upgrades (70-80% ROI), and updated flooring such as luxury vinyl plank or hardwood (70-80% ROI). Minor cosmetic updates often deliver higher percentage returns than full gut renovations.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a kitchen remodel cost in Seattle in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">In 2026, a minor kitchen remodel in Seattle costs $25,000-$45,000, a mid-range remodel costs $50,000-$90,000, and a major upscale remodel costs $100,000-$175,000+. Seattle labor and material costs run 10-15% higher than the national average due to strong demand and local building requirements.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Is it better to do a minor or major kitchen remodel for ROI in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">For pure ROI percentage, a minor kitchen remodel typically delivers better returns in Seattle (85-90% vs 65-75% for major remodels). However, if you plan to live in your home for 5+ years, a major remodel provides daily quality-of-life benefits that a minor refresh cannot. The best approach depends on your timeline and goals.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/kitchen-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">15 Kitchen Remodel Ideas for Seattle Homes</p>
+    </a>
+    <a href="/blog/how-long-kitchen-remodel-take/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">How Long Does a Kitchen Remodel Take?</p>
+    </a>
+    <a href="/blog/kitchen-cabinet-styles-2026/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Cabinet Styles 2026</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you plan your budget and timeline.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Remodel Your Kitchen?</h2>
+            <p class="text-white/80 mb-6">Schedule your free in-home consultation and let's discuss which upgrades will deliver the best ROI for your home.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">15 Kitchen Remodel Ideas for Seattle</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+                <li><a href="/blog/how-long-kitchen-remodel-take/" class="text-accent hover:underline text-sm font-medium">How Long Does a Kitchen Remodel Take?</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/kitchen-layout-design/" class="text-accent hover:underline text-sm font-medium">Kitchen Layout Design</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

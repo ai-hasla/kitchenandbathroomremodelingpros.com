@@ -1,0 +1,374 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Aging-in-Place Bathroom Remodel: A Complete Guide for Seattle Homeowners', href: '/blog/aging-in-place-bathroom-remodel/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Aging-in-Place Bathroom Remodel: A Complete Guide for Seattle Homeowners',
+  description: 'Complete guide to aging-in-place bathroom remodeling in Seattle. Learn about ADA compliance, grab bars, curbless showers, non-slip flooring, and universal design principles.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2025-12-10',
+  dateModified: '2025-12-10',
+  image: '/images/blog-aging-in-place.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does an aging-in-place bathroom remodel cost in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'An aging-in-place bathroom remodel in Seattle typically costs $15,000-$35,000 for a comprehensive upgrade including a curbless shower, grab bars, comfort-height toilet, wider doorway, non-slip flooring, and accessible vanity. Basic safety modifications (grab bars, non-slip surfaces, lever faucets) can be completed for $2,000-$5,000. Full ADA-compliant renovations with roll-in showers and wheelchair-accessible layouts range from $25,000-$50,000+.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is a curbless shower and why is it important for aging in place?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A curbless shower has no raised threshold at the entry, creating a flush transition from the bathroom floor to the shower floor. This eliminates the tripping hazard of stepping over a curb, allows wheelchair and walker access, and makes the shower usable for people of all mobility levels. Curbless showers also look modern and stylish, adding to home value while providing essential accessibility.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where should grab bars be placed in a bathroom?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Grab bars should be placed at 33-36 inches high on the wall beside the toilet, inside the shower at 33-36 inches for standing support and at 8-10 inches above the tub rim for tub entry/exit, and near the vanity for balance support. A vertical bar at the shower entry and a horizontal or angled bar on the shower wall opposite the controls are also recommended. All grab bars must be anchored into wall studs or blocking for safety.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can an aging-in-place bathroom still look stylish?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Absolutely. Modern aging-in-place design has evolved far beyond the institutional look of the past. Designer grab bars come in brushed nickel, matte black, and brass finishes that match other bathroom hardware. Curbless showers with frameless glass look sleek and contemporary. Comfort-height toilets, lever faucets, and wider doorways are standard in modern design. The best aging-in-place bathrooms are beautiful spaces that happen to also be safe and accessible.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'At what age should I consider an aging-in-place bathroom remodel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The best time to remodel for aging in place is before you need the modifications — ideally in your 50s or early 60s, or whenever you are already planning a bathroom renovation. Incorporating universal design features during a planned remodel costs far less than retrofitting later, and you benefit from the improved safety and comfort immediately. Many Seattle homeowners also make these modifications for the benefit of aging parents or visiting guests.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Aging-in-Place Bathroom Remodel: A Complete Guide for Seattle Homeowners"
+  description="Complete guide to aging-in-place bathroom remodeling in Seattle. ADA compliance, grab bars, curbless showers, non-slip flooring, wider doorways, and universal design from local experts."
+  canonical={`${SITE.url}/blog/aging-in-place-bathroom-remodel/`}
+  ogType="article"
+  article={{ publishedTime: '2025-12-10', modifiedTime: '2025-12-10', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">December 10, 2025</span>
+          <span class="text-white/60 text-sm">&middot; 9 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Aging-in-Place Bathroom Remodel: A Complete Guide for Seattle Homeowners</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          The bathroom is the most dangerous room in the house for falls and injuries. With thoughtful design, it can also be the safest and most comfortable. Here's everything Seattle homeowners need to know about creating a bathroom that supports independence for decades to come.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Most Seattle homeowners love their homes and want to stay in them as long as possible. The city's established neighborhoods — from Ravenna and Wedgwood to West Seattle and Magnolia — are filled with longtime residents who've raised families, built community ties, and put down deep roots. But as we age, the bathroom often becomes the first room in the house that presents safety challenges. Slippery surfaces, high tub walls, low toilets, and narrow doorways can transform a routine trip to the bathroom into a fall risk.
+            </p>
+            <p>
+              An aging-in-place <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodel</a> addresses these challenges proactively — before an accident forces emergency modifications. The goal is to create a bathroom that's safe, comfortable, and accessible for people of all ages and abilities, while looking beautiful rather than institutional. Modern universal design has come a long way, and today's aging-in-place bathrooms are indistinguishable from high-end spa bathrooms. They just happen to also be incredibly safe.
+            </p>
+          </div>
+
+          <!-- Why Now -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Why Seattle Homeowners Are Investing in Aging-in-Place Bathrooms</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The numbers tell a compelling story. According to the CDC, one in four Americans aged 65 and older falls each year, and the bathroom is the most common location for fall injuries in the home. In Washington State, fall-related hospitalizations for older adults have been increasing steadily, driven partly by an aging population and partly by older housing stock that wasn't designed with accessibility in mind.
+              </p>
+              <p>
+                Seattle's housing stock presents unique challenges. Many of the city's most desirable homes — Craftsman bungalows, Tudor cottages, mid-century ranchers — were built with small bathrooms, narrow doorways, high-sided bathtubs, and no grab bars. These homes were designed for young families in eras when accessibility wasn't a design consideration. Retrofitting these bathrooms for safety and accessibility is now one of the most requested remodeling projects across King County.
+              </p>
+              <p>
+                There's also a strong financial incentive. The cost of an aging-in-place bathroom remodel ($15,000-$35,000) is a fraction of the cost of assisted living or nursing care, which in the Seattle area averages $5,000-$9,000 per month. Every year you can safely remain in your home saves tens of thousands of dollars. It's one of the smartest investments a homeowner can make.
+              </p>
+            </div>
+          </div>
+
+          <!-- Curbless Showers -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Curbless Showers: The Foundation of Accessible Design</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The curbless (zero-threshold) shower is the single most important feature in an aging-in-place bathroom. See our <a href="/blog/walk-in-shower-ideas/" class="text-accent hover:underline">walk-in shower ideas</a> for design inspiration that combines style with accessibility. By eliminating the raised curb that you'd normally step over to enter the shower, you remove the primary tripping hazard and create an entry that's accessible by wheelchair, walker, or anyone with limited mobility. But curbless showers aren't just functional — they're one of the most sought-after design features in modern bathrooms, period.
+              </p>
+              <p>
+                A properly designed curbless shower requires careful waterproofing and a gently sloped floor that directs water toward a linear drain positioned along one wall. The slope is subtle — typically 1/4 inch per foot — so it doesn't create a balance challenge. The entire bathroom floor and shower floor should be a continuous, non-slip surface with no transitions to trip over.
+              </p>
+              <p>
+                We recommend a minimum shower size of 36x60 inches for accessibility, though 42x60 or larger is more comfortable and allows room for a shower seat and caregiver assistance if needed. A handheld showerhead on a slide bar (adjustable from 48 to 72 inches) accommodates seated or standing use. See our <a href="/services/shower-installation/" class="text-accent hover:underline">shower installation</a> page for more details on curbless shower options.
+              </p>
+            </div>
+          </div>
+
+          <!-- Grab Bars -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Grab Bars: Essential Safety, Beautiful Design</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Grab bars are non-negotiable in an aging-in-place bathroom. They provide the stability and support needed to safely enter and exit the shower, rise from the toilet, and maintain balance on wet surfaces. But today's grab bars look nothing like the institutional stainless steel bars of the past. Manufacturers like Moen, Delta, and Kohler offer grab bars in brushed nickel, matte black, champagne bronze, and polished chrome — finishes that match towel bars, showerheads, and faucets for a cohesive, designer look.
+              </p>
+              <p>
+                Proper placement is critical. We recommend grab bars in the following locations: beside the toilet (horizontal bar at 33-36 inches, plus an optional vertical bar for assistance rising), inside the shower (vertical bar at the entry point, horizontal bar at 33-36 inches on the wall with the showerhead, and an angled bar on the opposite wall), and beside the vanity if space allows. All grab bars must be anchored into wall studs or solid blocking — surface-mounted bars that rely only on drywall anchors can fail under load.
+              </p>
+              <p>
+                The best time to install proper grab bar blocking is during a remodel when walls are open. We install 2x6 or 3/4-inch plywood blocking behind the drywall at all potential grab bar locations, even if the homeowner doesn't want the bars installed immediately. This way, bars can be added later in minutes without opening up walls. It's a small additional cost during construction ($200-$400) that pays for itself many times over.
+              </p>
+            </div>
+          </div>
+
+          <!-- Non-Slip Flooring -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Non-Slip Flooring: Safety Underfoot</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Slippery floors are a leading cause of bathroom falls, and in Seattle's damp climate, bathroom floors can stay moist for extended periods. Choosing flooring with adequate slip resistance is essential for an aging-in-place bathroom. Our <a href="/blog/seattle-bathroom-tile-trends/" class="text-accent hover:underline">bathroom tile trends guide</a> covers the best non-slip tile options. The industry standard measurement is the Dynamic Coefficient of Friction (DCOF) — look for tiles rated 0.42 or higher for wet areas, though 0.50 or higher is recommended for maximum safety.
+              </p>
+              <p>
+                Textured porcelain tile is the most popular non-slip flooring choice for Seattle aging-in-place bathrooms. Small-format tiles (2x2 or hexagonal mosaics) with more grout lines also provide additional traction compared to large smooth tiles. Matte finishes outperform glossy surfaces for slip resistance. Natural stone with a honed (matte) finish — like limestone or slate — provides excellent traction and a beautiful, organic look that suits Pacific Northwest aesthetics.
+              </p>
+              <p>
+                Luxury vinyl tile (LVT) is another excellent option — it's inherently slip-resistant, warmer underfoot than ceramic or stone, and more forgiving in a fall than hard tile. It's also less expensive and easier to install, making it a practical choice for budget-conscious projects. We recommend LVT in the bathroom proper and porcelain tile in the shower for the best combination of safety, durability, and aesthetics.
+              </p>
+            </div>
+          </div>
+
+          <!-- Wider Doorways -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Wider Doorways and Clear Floor Space</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Standard bathroom doorways in Seattle's older homes are typically 24-28 inches wide — far too narrow for a wheelchair or even a walker. ADA guidelines recommend a minimum clear opening of 32 inches, though 36 inches is preferred for comfortable wheelchair access. Widening a bathroom doorway during a remodel is a relatively straightforward modification that typically costs $500-$1,500, depending on whether the framing needs to be restructured.
+              </p>
+              <p>
+                Pocket doors or barn-style sliding doors are excellent space-saving alternatives to traditional swing doors. They eliminate the door swing that can block access or require extra floor space in small bathrooms — a common issue in Seattle's compact vintage homes. A pocket door slides completely into the wall, providing the full doorway width without any obstruction.
+              </p>
+              <p>
+                Inside the bathroom, ADA guidelines call for a clear floor space of at least 60 inches in diameter for a wheelchair to turn. While full ADA compliance may not be necessary for a residential bathroom, having generous clear floor space makes the room more comfortable and accessible for everyone. Relocating the vanity, choosing a wall-mounted toilet, or removing a tub to create a curbless shower can all contribute to opening up floor space.
+              </p>
+            </div>
+          </div>
+
+          <!-- Comfort-Height Toilets -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Comfort-Height Toilets and Accessible Fixtures</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Standard toilets sit 15 inches from the floor to the seat — a height that becomes increasingly difficult to use as knee and hip joints stiffen with age. Comfort-height (or "right height") toilets sit 17-19 inches high, roughly the same height as a standard chair. This simple change makes sitting down and standing up dramatically easier and puts less stress on joints. Most major brands (Kohler, TOTO, American Standard) now offer comfort-height models in a variety of styles.
+              </p>
+              <p>
+                Wall-mounted toilets deserve special mention for aging-in-place bathrooms. They can be installed at any custom height, and the floor beneath them remains clear — making cleaning easier and providing unobstructed floor space for wheelchair access. They also have a modern, streamlined appearance that works well in contemporary Seattle bathroom designs.
+              </p>
+              <p>
+                Other fixture considerations include lever-handled faucets (easier to operate than knobs for arthritic hands), touchless faucets (no grip required at all), hand-held showerheads on adjustable slide bars, and anti-scald thermostatic mixing valves that prevent accidental burns. These features improve the bathroom experience for everyone, not just older adults — which is the fundamental principle of universal design.
+              </p>
+            </div>
+          </div>
+
+          <!-- Lighting and Visibility -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Lighting: The Often-Overlooked Safety Feature</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Adequate lighting is one of the simplest and most impactful safety improvements in an aging-in-place bathroom. As we age, our eyes need more light to see clearly — a 60-year-old typically needs three times more light than a 20-year-old to perform the same visual tasks. In Seattle, where natural light is limited for much of the year, excellent artificial lighting is essential.
+              </p>
+              <p>
+                We recommend layered lighting: bright, even overhead lighting (recessed LEDs or a flush-mount fixture), task lighting at the vanity (wall-mounted sconces at eye level on either side of the mirror), and a nightlight or motion-activated LED strip along the floor for safe navigation at night. The nighttime lighting is particularly important — getting up to use the bathroom in the dark is a major fall risk.
+              </p>
+              <p>
+                Illuminated switches, rocker-style or paddle switches (easier to operate than small toggle switches), and dimmers that allow you to gradually increase light without being blinded when you enter the bathroom at night are all worthwhile upgrades. Smart lighting controlled by voice commands or motion sensors eliminates the need to fumble for a switch entirely.
+              </p>
+            </div>
+          </div>
+
+          <!-- Heated Floors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Heated Floors: Comfort and Safety Combined</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Radiant floor heating in the bathroom serves double duty in an aging-in-place remodel. First, warm floors are simply more comfortable — stepping onto a heated tile floor on a cold Seattle morning is a daily pleasure. Second, heated floors help dry the bathroom surface faster after showers, reducing the window of time when the floor is wet and slippery. In our damp Pacific Northwest climate, this moisture management benefit is particularly valuable.
+              </p>
+              <p>
+                Electric radiant heating mats from brands like Schluter-DITRA-HEAT and Nuheat are installed directly under the tile during the remodel. They add minimal height to the floor, are controlled by a programmable thermostat (which can be set to warm up before your alarm goes off), and cost only a few dollars per month to operate. Budget $800-$1,500 to add heated floors to a typical Seattle bathroom remodel — one of the most loved upgrades our clients report after moving in.
+              </p>
+            </div>
+          </div>
+
+          <!-- Universal Design Philosophy -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Universal Design: Beautiful for Everyone</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The concept behind aging-in-place design is universal design — creating spaces that are usable by all people, to the greatest extent possible, without the need for adaptation. A curbless shower isn't just for wheelchair users — it looks stunning and is easier to clean for everyone. Lever faucets aren't just for arthritic hands — they're convenient when your hands are full or soapy. Comfort-height toilets aren't just for seniors — most adults find them more comfortable than standard height.
+              </p>
+              <p>
+                This is the beauty of universal design: the features that make a bathroom safe and accessible for older adults also make it more comfortable and luxurious for everyone. A well-designed aging-in-place bathroom increases your home's appeal to the broadest possible range of buyers, including young families (safer for small children), people recovering from injuries, and anyone who simply appreciates good design.
+              </p>
+              <p>
+                When we design aging-in-place bathrooms for Seattle homeowners, we focus on integrating accessibility seamlessly into beautiful design. The grab bars match the faucet finish. The curbless shower features premium tile and frameless glass. The wider doorway has an elegant barn door. Nothing looks like a medical modification — everything looks like a thoughtfully designed, high-end bathroom.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Planning Your Aging-in-Place Bathroom Remodel</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The best time to plan an aging-in-place bathroom is before you need one. Incorporating universal design features during a planned remodel costs far less than retrofitting after a fall or health event, and you get to enjoy the improved comfort and safety immediately. Whether you're remodeling for yourself, for aging parents, or simply to future-proof your home, these modifications are a wise investment in both quality of life and home value.
+              </p>
+              <p>
+                At Best Kitchen and Bathroom Remodeling, we have extensive experience designing and building aging-in-place bathrooms across the Seattle area. We understand the technical requirements (waterproofing, blocking, ADA clearances), the product options (which grab bars, tiles, fixtures work best), and the design principles that make these bathrooms beautiful rather than institutional. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Schedule your free consultation</a> or call <a href="tel:+12066664370" class="text-accent hover:underline">(206) 666-4370</a> to start planning a bathroom that will serve you safely and beautifully for decades.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does an aging-in-place bathroom remodel cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">An aging-in-place bathroom remodel in Seattle typically costs $15,000-$35,000 for a comprehensive upgrade including a curbless shower, grab bars, comfort-height toilet, wider doorway, non-slip flooring, and accessible vanity. Basic safety modifications (grab bars, non-slip surfaces, lever faucets) can be completed for $2,000-$5,000. Full ADA-compliant renovations range from $25,000-$50,000+.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What is a curbless shower and why is it important for aging in place?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A curbless shower has no raised threshold at the entry, creating a flush transition from the bathroom floor to the shower floor. This eliminates the tripping hazard of stepping over a curb, allows wheelchair and walker access, and makes the shower usable for people of all mobility levels. Curbless showers also look modern and stylish, adding to home value while providing essential accessibility.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Where should grab bars be placed in a bathroom?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Grab bars should be placed at 33-36 inches high beside the toilet, inside the shower at 33-36 inches for standing support, and near the vanity for balance support. A vertical bar at the shower entry and a horizontal or angled bar on the opposite shower wall are also recommended. All grab bars must be anchored into wall studs or blocking for safety.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Can an aging-in-place bathroom still look stylish?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Absolutely. Modern aging-in-place design has evolved far beyond the institutional look of the past. Designer grab bars come in brushed nickel, matte black, and brass finishes that match other hardware. Curbless showers with frameless glass look sleek and contemporary. The best aging-in-place bathrooms are beautiful spaces that happen to also be safe and accessible.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">At what age should I consider an aging-in-place bathroom remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The best time is before you need the modifications — ideally in your 50s or early 60s, or whenever you are already planning a bathroom renovation. Incorporating universal design features during a planned remodel costs far less than retrofitting later, and you benefit from the improved safety and comfort immediately.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/master-bathroom-remodel-checklist/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Master Bathroom Remodel Checklist</p>
+    </a>
+    <a href="/blog/walk-in-shower-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">12 Walk-In Shower Ideas</p>
+    </a>
+    <a href="/blog/bathroom-vanity-buying-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Bathroom Vanity Buying Guide</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you plan a safe, beautiful bathroom.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Create a Safer Bathroom?</h2>
+            <p class="text-white/80 mb-6">Schedule your free in-home consultation and let's design a bathroom that's beautiful, safe, and built for the future.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/walk-in-shower-ideas/" class="text-accent hover:underline text-sm font-medium">12 Walk-In Shower Ideas</a></li>
+                <li><a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">10 Bathroom Remodel Ideas for Seattle</a></li>
+                <li><a href="/blog/seattle-bathroom-tile-trends/" class="text-accent hover:underline text-sm font-medium">Seattle Bathroom Tile Trends 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-installation/" class="text-accent hover:underline text-sm font-medium">Shower Installation</a></li>
+                <li><a href="/services/tub-to-shower-conversion/" class="text-accent hover:underline text-sm font-medium">Tub-to-Shower Conversion</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

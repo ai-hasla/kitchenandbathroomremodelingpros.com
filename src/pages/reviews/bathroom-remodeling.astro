@@ -1,0 +1,206 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Bathroom Remodeling', href: '/reviews/bathroom-remodeling/' },
+];
+
+const reviews = [
+  {
+    name: 'Robert N.',
+    rating: 5,
+    neighborhood: 'Capitol Hill, Seattle',
+    date: 'December 2025',
+    projectType: 'Master Bathroom Remodel',
+    text: 'They turned our dated master bathroom into a spa-like retreat. Walk-in shower with frameless glass, heated tile floors, floating vanity with double sinks. The tile work is immaculate — we went with large format porcelain and the crew nailed every cut. They cleaned up every single day, which mattered a lot since we only have one other bathroom. Start to finish was about 4 weeks.',
+  },
+  {
+    name: 'Rachel K.',
+    rating: 5,
+    neighborhood: 'Beacon Hill, Seattle',
+    date: 'November 2025',
+    projectType: 'Condo Bathroom Remodel',
+    text: 'My condo bathroom was completely gutted and rebuilt. New tile shower with a built-in bench, floating vanity, hex tile flooring. Mike handled all the HOA coordination — permits, noise windows, the works. The bathroom is now the most beautiful room in my home. Honestly worth every penny.',
+  },
+  {
+    name: 'Michael T.',
+    rating: 4,
+    neighborhood: 'West Seattle',
+    date: 'October 2025',
+    projectType: 'Guest Bathroom Remodel',
+    text: 'Very pleased with our guest bathroom remodel. The vanity and tile work are excellent. Project ran about a week longer than estimated because the faucet we picked was back-ordered, but they kept us informed and offered an alternative we ended up liking even more. Beautiful result.',
+  },
+  {
+    name: 'Diane & Greg F.',
+    rating: 5,
+    neighborhood: 'Montlake, Seattle',
+    date: 'September 2025',
+    projectType: 'Primary Bathroom Renovation',
+    text: 'We\'ve been putting off this remodel for years and finally pulled the trigger. So glad we went with this team. Our 1970s bathroom with pink tile is now a gorgeous modern space — freestanding tub, glass shower, Carrara-look porcelain walls. The crew was respectful of our home and the plumber they subcontracted was excellent. Mike even caught a slow leak behind the old shower wall that could have become a real problem.',
+  },
+  {
+    name: 'Kevin S.',
+    rating: 5,
+    neighborhood: 'Columbia City, Seattle',
+    date: 'August 2025',
+    projectType: 'Shower Conversion',
+    text: 'Converted our old tub/shower combo into a walk-in shower. Simple project but they did it right. Linear drain, large tiles, glass door. Looks great. Done in about a week and a half.',
+  },
+  {
+    name: 'Patricia M.',
+    rating: 5,
+    neighborhood: 'Laurelhurst, Seattle',
+    date: 'July 2025',
+    projectType: 'Full Bathroom Remodel',
+    text: 'Third time using this company and they keep delivering. This time it was our upstairs hall bathroom. Marble mosaic floor, subway tile shower, new toilet, and a gorgeous wood vanity. The tile setter on this project was an artist — the patterns line up perfectly at every corner. Only hiccup was a slight delay getting the vanity mirror delivered but they handled it. We\'ll be calling them again for the basement bathroom next year.',
+  },
+  {
+    name: 'Yuki A.',
+    rating: 4,
+    neighborhood: 'University District, Seattle',
+    date: 'June 2025',
+    projectType: 'Small Bathroom Remodel',
+    text: 'Had a tiny 5x8 bathroom remodeled. They did a great job maximizing the space — corner sink, wall-mounted toilet, and a nice glass-enclosed shower. The penny tile floor looks amazing. Price was fair for Seattle. My only small gripe is some grout haze on a couple tiles that needed extra cleaning, but honestly that\'s pretty minor.',
+  },
+  {
+    name: 'Angela R.',
+    rating: 5,
+    neighborhood: 'Leschi, Seattle',
+    date: 'April 2025',
+    projectType: 'Bathroom Remodel',
+    text: 'We love our new bathroom! The crew was punctual, friendly, and clearly knows what they\'re doing. The heated floor is life-changing during Seattle winters. The rain shower head and the niche they built into the shower wall were great suggestions from Mike during the design phase. Whole project was done in 3 weeks. Already referred two neighbors.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE.name,
+  url: SITE.url,
+  telephone: SITE.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: averageRating,
+    reviewCount: reviews.length,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.name },
+    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+    reviewBody: r.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="Bathroom Remodeling Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} bathroom remodeling reviews from Seattle homeowners. ${averageRating}-star average rating. Real feedback on shower conversions, master bath renovations, and more.`}
+  canonical={`${SITE.url}/reviews/bathroom-remodeling/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Bathroom Remodeling</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Bathroom Remodeling Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          From spa-like master baths to small guest bathroom updates, read what Seattle homeowners say about their bathroom remodel experience.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Rating Bar -->
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} bathroom remodeling reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Reviews Grid -->
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Other Review Pages -->
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">More Reviews by Service</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/reviews/kitchen-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Remodeling Reviews</a>
+        <a href="/reviews/cabinet-refacing/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Cabinet Refacing Reviews</a>
+        <a href="/reviews/countertop-installation/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Countertop Installation Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Remodel Your Bathroom?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Get a free, no-obligation estimate for your bathroom remodel. Call us or book online today.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

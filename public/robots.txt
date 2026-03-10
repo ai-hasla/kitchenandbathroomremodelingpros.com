@@ -1,5 +1,40 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /privacy/
+Disallow: /terms/
+
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# AI Crawlers Welcome
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Host: https://kitchenandbathroomremodelingpros.com
 
 Sitemap: https://kitchenandbathroomremodelingpros.com/sitemap-index.xml

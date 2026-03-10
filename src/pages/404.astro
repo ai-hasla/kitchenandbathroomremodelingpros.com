@@ -2,45 +2,72 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: '404 - Page Not Found', href: '/404/' }];
 ---
 
 <BaseLayout
-  title="Page Not Found | Kitchen & Bathroom Remodeling Pros"
+  title="Page Not Found | Best Kitchen and Bathroom Remodeling"
   description="The page you're looking for doesn't exist. Browse our kitchen and bathroom remodeling services in Seattle."
   noindex={true}
   showSchema={false}
 >
+  <SchemaBreadcrumb items={breadcrumbs} />
   <section class="min-h-[70vh] flex items-center justify-center bg-light pt-32 pb-20">
-    <Container class="text-center max-w-2xl">
-      <p class="text-8xl font-[family-name:var(--font-heading)] text-accent mb-4">404</p>
+    <Container class="text-center max-w-3xl">
+      <p class="text-9xl font-[family-name:var(--font-heading)] text-accent/20 mb-2 select-none">404</p>
       <h1 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-4">
-        Page Not Found
+        Oops! This Page Doesn't Exist
       </h1>
-      <p class="text-lg text-muted mb-8">
-        Sorry, the page you're looking for doesn't exist or has been moved.
-        Let us help you find what you need.
+      <p class="text-lg text-muted mb-8 max-w-xl mx-auto">
+        The page you're looking for may have been moved or removed. But we're still here to help you plan your dream remodel!
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
         <Button href="/" variant="primary" size="lg">
           Back to Home
         </Button>
-        <Button href="/services/" variant="outline" size="lg">
-          View Our Services
+        <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="outline" size="lg">
+          Get Free Estimate
         </Button>
       </div>
-      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-        <a href="/services/kitchen-remodeling/" class="p-4 bg-white rounded-xl border border-border hover:border-accent transition-colors group">
-          <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Kitchen Remodeling</h3>
-          <p class="text-sm text-muted mt-1">Transform your kitchen</p>
-        </a>
-        <a href="/services/bathroom-remodeling/" class="p-4 bg-white rounded-xl border border-border hover:border-accent transition-colors group">
-          <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Bathroom Remodeling</h3>
-          <p class="text-sm text-muted mt-1">Stunning bathroom renovations</p>
-        </a>
-        <a href="/get-a-quote/" class="p-4 bg-white rounded-xl border border-border hover:border-accent transition-colors group">
-          <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Get a Free Quote</h3>
-          <p class="text-sm text-muted mt-1">No obligation estimate</p>
-        </a>
+
+      <!-- Popular pages -->
+      <div class="text-left">
+        <h2 class="text-lg font-semibold text-dark-text mb-4 text-center">Popular Pages</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/services/kitchen-remodeling/" class="p-4 bg-white rounded-xl border border-border hover:border-accent hover:shadow-md transition-all group">
+            <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Kitchen Remodeling</h3>
+            <p class="text-sm text-muted mt-1">Complete kitchen transformations</p>
+          </a>
+          <a href="/services/bathroom-remodeling/" class="p-4 bg-white rounded-xl border border-border hover:border-accent hover:shadow-md transition-all group">
+            <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Bathroom Remodeling</h3>
+            <p class="text-sm text-muted mt-1">Stunning bathroom renovations</p>
+          </a>
+          <a href="/cost-guides/" class="p-4 bg-white rounded-xl border border-border hover:border-accent hover:shadow-md transition-all group">
+            <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Cost Guides</h3>
+            <p class="text-sm text-muted mt-1">Transparent pricing info</p>
+          </a>
+          <a href="/gallery/" class="p-4 bg-white rounded-xl border border-border hover:border-accent hover:shadow-md transition-all group">
+            <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Project Gallery</h3>
+            <p class="text-sm text-muted mt-1">See our completed projects</p>
+          </a>
+          <a href="/reviews/" class="p-4 bg-white rounded-xl border border-border hover:border-accent hover:shadow-md transition-all group">
+            <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Reviews</h3>
+            <p class="text-sm text-muted mt-1">4.9★ from 230+ homeowners</p>
+          </a>
+          <a href="/blog/" class="p-4 bg-white rounded-xl border border-border hover:border-accent hover:shadow-md transition-all group">
+            <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">Blog</h3>
+            <p class="text-sm text-muted mt-1">Tips & remodeling guides</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="mt-10 p-6 bg-primary rounded-2xl text-white">
+        <p class="text-lg font-semibold mb-2">Need help? We're available 24/7</p>
+        <a href={`tel:${SITE.phoneRaw}`} class="text-accent text-2xl font-bold hover:text-white transition-colors">{SITE.phone}</a>
       </div>
     </Container>
   </section>

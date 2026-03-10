@@ -1,0 +1,66 @@
+---
+import { SITE } from '@/lib/constants';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  alternateName: SITE.shortName,
+  url: SITE.url,
+  logo: {
+    '@type': 'ImageObject',
+    '@id': `${SITE.url}/#logo`,
+    url: `${SITE.url}/images/og-default.jpg`,
+    width: 1200,
+    height: 630,
+    caption: SITE.name,
+  },
+  image: { '@id': `${SITE.url}/#logo` },
+  description: SITE.description,
+  email: SITE.email,
+  telephone: SITE.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
+    addressCountry: 'US',
+  },
+  foundingDate: '2010',
+  foundingLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Seattle',
+      addressRegion: 'WA',
+      addressCountry: 'US',
+    },
+  },
+  sameAs: Object.values(SITE.social),
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: SITE.phone,
+      contactType: 'customer service',
+      areaServed: 'US',
+      availableLanguage: ['English'],
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: SITE.phone,
+      contactType: 'sales',
+      areaServed: 'US',
+      availableLanguage: ['English'],
+    },
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

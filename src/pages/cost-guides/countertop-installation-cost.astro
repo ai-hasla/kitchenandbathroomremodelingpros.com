@@ -3,6 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
 import { SITE } from '@/lib/constants';
 
 const breadcrumbs = [
@@ -19,7 +21,7 @@ const articleSchema = {
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-02-20',
   dateModified: '2026-03-01',
-  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+  image: '/images/service-countertop-installation.jpg',
 };
 
 const faqSchema = {
@@ -351,7 +353,33 @@ const faqSchema = {
 
               <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mt-8 mb-3">Working with a Full-Service Remodeler</h3>
               <p>
-                When you work with a full-service remodeling company like Kitchen & Bathroom Remodeling Pros, countertop selection, procurement, and installation are handled as part of your overall project. This eliminates the hassle of coordinating between suppliers, fabricators, and installers — and our trade relationships often result in better pricing than retail. <a href="/services/countertop-installation/" class="text-accent hover:underline">Learn more about our countertop installation services</a>.
+                When you work with a full-service remodeling company like Best Kitchen and Bathroom Remodeling, countertop selection, procurement, and installation are handled as part of your overall project. This eliminates the hassle of coordinating between suppliers, fabricators, and installers — and our trade relationships often result in better pricing than retail. <a href="/services/countertop-installation/" class="text-accent hover:underline">Learn more about our countertop installation services</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROI Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Countertop Upgrade ROI: What New Countertops Do for Home Value</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                New countertops are one of the most cost-effective kitchen upgrades from a resale perspective. In the Seattle market, where home buyers expect modern kitchens, upgrading from laminate to quartz or granite has a measurable impact on both sale price and time-on-market.
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">75-90%</p>
+                  <p class="text-sm text-body-text">ROI on mid-range countertop upgrades</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">#1</p>
+                  <p class="text-sm text-body-text">Most noticed kitchen feature by buyers</p>
+                </div>
+              </div>
+              <p>
+                Real estate professionals in the Puget Sound consistently rank countertops as the single most impactful visual element in a kitchen — more than cabinets, more than appliances, more than flooring. A kitchen with beautiful quartz or granite countertops photographs well for listings, creates a strong first impression during showings, and signals to buyers that the kitchen has been thoughtfully updated.
+              </p>
+              <p>
+                The sweet spot for ROI is a mid-range quartz countertop ($50-$80/sqft installed). It gives you the premium look buyers expect without overcapitalizing. For a typical 40 sqft kitchen, that's $2,000-$3,200 — a relatively modest investment that can shift how the entire kitchen is perceived. Pair new countertops with updated hardware and a fresh backsplash, and you've transformed the kitchen for under $5,000. That's hard to beat from a cost-to-impact ratio.
               </p>
             </div>
           </div>
@@ -387,7 +415,7 @@ const faqSchema = {
           <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
             <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Get an Exact Price for Your Countertops</h2>
             <p class="text-white/80 mb-6">Every kitchen is unique. Get a free, personalized countertop estimate including material, fabrication, and installation.</p>
-            <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
           </div>
         </article>
 
@@ -397,7 +425,7 @@ const faqSchema = {
             <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
               <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
               <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your countertop project.</p>
-              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
               <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
             </div>
 
@@ -419,6 +447,9 @@ const faqSchema = {
                 <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
               </ul>
             </div>
+
+            <!-- Quick Quote Widget -->
+            <QuickQuoteWidget />
 
             <div class="bg-light rounded-2xl p-6">
               <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-3">See Our Work</h3>

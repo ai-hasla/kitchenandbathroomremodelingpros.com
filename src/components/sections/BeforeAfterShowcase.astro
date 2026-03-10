@@ -3,14 +3,14 @@ import Container from '@/components/ui/Container.astro';
 
 const comparisons = [
   {
-    before: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80',
-    after: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+    before: '/images/before-kitchen-1.jpg',
+    after: '/images/after-kitchen-1.jpg',
     caption: 'Complete Kitchen Transformation',
     location: 'Capitol Hill, Seattle',
   },
   {
-    before: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
-    after: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1200&q=80',
+    before: '/images/before-bathroom-1.jpg',
+    after: '/images/after-bathroom-1.jpg',
     caption: 'Luxury Bathroom Renovation',
     location: 'Queen Anne, Seattle',
   },
@@ -34,24 +34,31 @@ const comparisons = [
       {comparisons.map((item) => (
         <div>
           <div
-            class="comparison-slider aspect-[4/3] rounded-xl overflow-hidden relative cursor-col-resize select-none"
-            style="--pos: 50%"
+            class="relative aspect-[4/3] rounded-xl overflow-hidden select-none cursor-col-resize"
+            data-compare
           >
             <!-- After Image (full background) -->
             <img
               src={item.after}
               alt={`After: ${item.caption}`}
-              class="absolute inset-0 w-full h-full object-cover"
+              class="absolute inset-0 w-full h-full object-cover pointer-events-none"
               loading="lazy"
+              draggable="false"
             />
 
-            <!-- Before Image (clipped) -->
-            <div class="comparison-before">
+            <!-- Before Image (clipped overlay) -->
+            <div
+              class="absolute inset-0 overflow-hidden"
+              style="width: 50%"
+              data-compare-overlay
+            >
               <img
                 src={item.before}
                 alt={`Before: ${item.caption}`}
-                class="absolute inset-0 w-full h-full object-cover"
+                class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                style="min-width: var(--compare-width, 100%)"
                 loading="lazy"
+                draggable="false"
               />
             </div>
 
@@ -63,27 +70,31 @@ const comparisons = [
               After
             </div>
 
-            <!-- Slider Handle (circle on the divider line) -->
+            <!-- Drag to compare hint -->
             <div
-              class="absolute top-1/2 -translate-y-1/2 z-20 pointer-events-none flex items-center justify-center"
-              style="left: var(--pos, 50%); transform: translate(-50%, -50%)"
+              class="absolute inset-0 z-30 flex items-center justify-center pointer-events-none transition-opacity duration-700"
+              data-compare-hint
             >
-              <div class="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center">
+              <span class="bg-black/60 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full font-[family-name:var(--font-body)]">
+                Drag to compare
+              </span>
+            </div>
+
+            <!-- Divider line -->
+            <div
+              class="absolute top-0 bottom-0 z-20 pointer-events-none"
+              style="left: 50%"
+              data-compare-handle
+            >
+              <!-- Vertical line -->
+              <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-white shadow-[0_0_6px_rgba(0,0,0,0.4)]"></div>
+              <!-- Circle handle -->
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3" />
                 </svg>
               </div>
             </div>
-
-            <!-- Range Input (invisible, controls the slider) -->
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              class="comparison-range absolute inset-0 w-full h-full opacity-0 cursor-col-resize z-30"
-              aria-label={`Before and after slider for ${item.caption}`}
-            />
           </div>
 
           <!-- Caption -->
@@ -102,12 +113,67 @@ const comparisons = [
 </section>
 
 <script>
-  document.querySelectorAll('.comparison-slider').forEach((slider) => {
-    const range = slider.querySelector('.comparison-range') as HTMLInputElement;
-    if (!range) return;
+  document.querySelectorAll<HTMLElement>('[data-compare]').forEach((container) => {
+    const overlay = container.querySelector<HTMLElement>('[data-compare-overlay]');
+    const handle = container.querySelector<HTMLElement>('[data-compare-handle]');
+    const hint = container.querySelector<HTMLElement>('[data-compare-hint]');
+    const beforeImg = overlay?.querySelector<HTMLImageElement>('img');
+    if (!overlay || !handle || !beforeImg) return;
 
-    range.addEventListener('input', () => {
-      (slider as HTMLElement).style.setProperty('--pos', range.value + '%');
+    let isDragging = false;
+
+    function setPosition(x: number) {
+      const rect = container.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
+      overlay!.style.width = pct + '%';
+      handle!.style.left = pct + '%';
+      // Make the before image span the full container width
+      beforeImg!.style.minWidth = (rect.width) + 'px';
+    }
+
+    function onStart(x: number) {
+      isDragging = true;
+      container.style.willChange = 'auto';
+      if (hint) {
+        hint.style.opacity = '0';
+        setTimeout(() => hint.remove(), 700);
+      }
+      setPosition(x);
+    }
+
+    function onMove(x: number) {
+      if (!isDragging) return;
+      requestAnimationFrame(() => setPosition(x));
+    }
+
+    function onEnd() {
+      isDragging = false;
+      container.style.willChange = '';
+    }
+
+    // Mouse events
+    container.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      onStart(e.clientX);
     });
+    window.addEventListener('mousemove', (e) => onMove(e.clientX));
+    window.addEventListener('mouseup', onEnd);
+
+    // Touch events
+    container.addEventListener('touchstart', (e) => {
+      onStart(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging) onMove(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', onEnd);
+
+    // Set initial before image width on load/resize
+    function syncWidth() {
+      beforeImg!.style.minWidth = container.getBoundingClientRect().width + 'px';
+    }
+    syncWidth();
+    window.addEventListener('resize', syncWidth);
   });
 </script>

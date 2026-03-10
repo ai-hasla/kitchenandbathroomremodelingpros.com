@@ -1,0 +1,307 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Master Bathroom Remodel Checklist', href: '/blog/master-bathroom-remodel-checklist/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Master Bathroom Remodel Checklist: 15 Things to Plan Before You Start',
+  description: 'Complete master bathroom remodel checklist for Seattle homeowners. 15 essential planning items covering budget, timeline, permits, layout, fixtures, ventilation, waterproofing, storage, and more.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2025-12-28',
+  dateModified: '2025-12-28',
+  image: '/images/blog-master-bathroom.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a master bathroom remodel cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A master bathroom remodel in Seattle costs $15,000 to $50,000 for mid-range projects and $50,000 to $100,000+ for high-end renovations. A basic refresh (fixtures, paint, hardware) costs $5,000-$10,000. The average Seattle master bath remodel runs $25,000-$40,000 and includes a new shower or tub, vanity, tile, toilet, lighting, and ventilation. Labor accounts for about 40-50% of total cost.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a master bathroom remodel take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A typical master bathroom remodel takes 4 to 8 weeks from demolition to completion. Simple updates (vanity swap, new fixtures) take 1-2 weeks. A full gut renovation with layout changes takes 6-10 weeks. Add 4-12 weeks for permit approval from Seattle SDCI if structural, plumbing, or electrical changes are involved. Total timeline from planning to completion is typically 3-5 months.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit for a bathroom remodel in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'It depends on the scope. Cosmetic updates (paint, hardware, accessories, light fixture swaps) do not require a permit. Changing plumbing locations, adding or moving electrical circuits, removing walls, or altering the bathroom footprint does require a permit from Seattle SDCI. A like-for-like fixture swap (new toilet in the same location) typically does not require a permit, but moving a toilet to a new location does.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best order for a bathroom remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The standard sequence is: 1) Demolition and removal, 2) Rough plumbing and electrical, 3) Structural changes (if any), 4) Waterproofing shower and floor areas, 5) Tile installation, 6) Vanity and countertop installation, 7) Toilet installation, 8) Fixture trim (faucets, showerhead, accessories), 9) Glass shower door, 10) Paint and final trim, 11) Final cleaning and inspection.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Should I remodel my master bathroom before selling my Seattle home?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A dated master bathroom can be a dealbreaker for Seattle buyers, especially in competitive markets. A mid-range remodel ($25,000-$40,000) typically recoups 60-70% at resale while making the home more attractive and faster to sell. Focus on clean, neutral finishes that appeal to broad tastes — white or light tile, quality vanity, modern fixtures, and good lighting. Avoid overly personalized design choices.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Master Bathroom Remodel Checklist: 15 Things to Plan Before You Start"
+  description="Master bathroom remodel checklist for Seattle homeowners. 15 essential items to plan including budget, timeline, permits, layout, fixtures, ventilation, waterproofing, and storage."
+  canonical={`${SITE.url}/blog/master-bathroom-remodel-checklist/`}
+  ogType="article"
+  article={{ publishedTime: '2025-12-28', modifiedTime: '2025-12-28', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">December 28, 2025</span>
+          <span class="text-white/60 text-sm">&middot; 9 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Master Bathroom Remodel Checklist: 15 Things to Plan Before You Start</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A comprehensive planning checklist for Seattle homeowners tackling a master bathroom remodel. Budget, timeline, permits, fixtures, waterproofing, and everything else you need to plan before demolition day.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              A master bathroom remodel is one of the most rewarding home improvement projects you can take on — and one of the most complex. Unlike painting a room or replacing hardware, a bathroom renovation involves plumbing, electrical, waterproofing, tile, fixtures, ventilation, and often structural considerations. Missing any of these elements in the planning phase can lead to costly change orders, project delays, and results that do not meet your expectations.
+            </p>
+            <p>
+              We have remodeled hundreds of master bathrooms across Seattle, from compact mid-century baths in Ballard to spacious master suites in Mercer Island and Bellevue. The projects that go smoothly have one thing in common: thorough planning before the first hammer swings. The projects that run over budget and over schedule almost always skipped critical planning steps.
+            </p>
+            <p>
+              This checklist covers the 15 most important decisions and planning items for a master <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodel</a>. Work through each one before starting your project, and you will be far ahead of most homeowners.
+            </p>
+          </div>
+
+          <!-- Checklist Items -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">The 15-Point Planning Checklist</h2>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">1. Set a Realistic Budget (and Add 15-20% Contingency)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Determine your total budget before making any design decisions. In Seattle, a mid-range master bathroom remodel costs $25,000-$40,000. A high-end remodel runs $50,000-$100,000+. Whatever your number, add 15-20% as a contingency for unexpected issues — old plumbing that needs replacing, hidden water damage behind tile, or electrical wiring that does not meet code. These surprises are common in Seattle's older homes and should be expected, not feared. Your contingency budget ensures you can handle them without compromising the finished result.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">2. Define Your Scope: Refresh, Remodel, or Gut Renovation</h3>
+                <p class="text-body-text text-sm leading-relaxed">A refresh updates surfaces and fixtures without changing the layout — new vanity, toilet, lighting, paint, and accessories ($5,000-$15,000). A remodel replaces most elements and may include a new shower or tub but keeps the plumbing in roughly the same locations ($15,000-$40,000). A gut renovation takes everything down to the studs and rebuilds, often with layout changes ($35,000-$100,000+). Knowing your scope upfront prevents scope creep — the number one cause of bathroom remodel budget overruns.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">3. Plan Your Timeline and Living Arrangements</h3>
+                <p class="text-body-text text-sm leading-relaxed">A master bathroom remodel means your primary bathroom is out of commission for 4-8 weeks (longer for gut renovations). Plan which bathroom your household will use during construction. If you only have one bathroom, discuss phased construction with your contractor to maintain partial use, or plan to use a gym or neighbor's facilities. Order materials well in advance — tile, vanities, and fixtures often have 4-8 week lead times. Custom shower glass can take 3-4 weeks after final measurement. Failing to order early is the most common cause of project delays.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">4. Check Permit Requirements</h3>
+                <p class="text-body-text text-sm leading-relaxed">Seattle's SDCI (Department of Construction and Inspections) requires permits for plumbing changes, electrical modifications, and structural alterations. A like-for-like fixture swap (new toilet in the same spot) usually does not need a permit. Moving plumbing, adding circuits, or changing the bathroom footprint does. Permit costs range from $200 to $1,500. Processing time is 4-12 weeks. Your contractor should handle the permit process, but understanding the timeline is essential for project planning.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">5. Evaluate and Plan the Layout</h3>
+                <p class="text-body-text text-sm leading-relaxed">Consider whether your current layout works or needs changes. Moving the toilet, shower, or vanity to different walls is possible but adds significant cost ($3,000-$10,000+) due to plumbing relocation. In many Seattle master bathrooms, the existing layout is functional and keeping plumbing in place saves thousands. Focus on improving what is there — a larger shower in the same footprint, a wider vanity on the same wall, or converting a tub-shower combo to a walk-in shower. Minimum clearances: 15 inches from toilet center to side walls or fixtures, 21 inches of clear space in front of the toilet, and 30 inches of width for a shower entry.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">6. Choose Your Shower Configuration</h3>
+                <p class="text-body-text text-sm leading-relaxed">The shower is the focal point of most master bathroom remodels. Key decisions include: tub-shower combo vs. standalone shower, curbed vs. curbless entry, tile vs. solid surface walls, glass door vs. glass panel vs. curtain, and showerhead configuration (fixed, rain, handheld, or multi-head). <a href="/blog/walk-in-shower-ideas/" class="text-accent hover:underline">Walk-in showers</a> with frameless glass are the most popular choice in Seattle master bath remodels. If you are removing a tub, ensure another bathroom in the home has one — families with young children need a tub, and its absence can affect resale value. See our <a href="/services/shower-remodeling/" class="text-accent hover:underline">shower remodeling</a> page for design inspiration.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">7. Select Your Vanity and Countertop</h3>
+                <p class="text-body-text text-sm leading-relaxed">Decide on single vs. double vanity, floating vs. freestanding, and the countertop material. Measure your space carefully — a vanity that is too large crowds the room, and one that is too small looks inadequate. For master bathrooms used by two people, a double <a href="/services/vanity-installation/" class="text-accent hover:underline">vanity</a> (60-72 inches) is ideal if space allows. Quartz countertops are the most popular choice in Seattle for their durability and zero-maintenance requirements. Read our <a href="/blog/bathroom-vanity-buying-guide/" class="text-accent hover:underline">vanity buying guide</a> for detailed advice.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">8. Plan Your Tile Selection</h3>
+                <p class="text-body-text text-sm leading-relaxed">Tile selection takes longer than most homeowners expect. Visit showrooms early — seeing and touching samples is important because color and texture look different in person than on screens. Choose floor tile first (it anchors the room), then shower wall tile, then accent tile. For floor tile, porcelain is the standard — it is waterproof, durable, and available in countless styles. Heated tile floors are a popular upgrade in Seattle master baths — see our <a href="/blog/seattle-bathroom-tile-trends/" class="text-accent hover:underline">bathroom tile trends guide</a> for the latest options. They are a popular upgrade in Seattle master baths ($500-$1,500 for materials in a typical master bath). Order 10-15% more tile than calculated to account for cuts, waste, and future repairs.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">9. Choose Fixtures and Hardware</h3>
+                <p class="text-body-text text-sm leading-relaxed">Select a cohesive finish for all hardware: faucets, shower trim, towel bars, hooks, toilet lever, and cabinet pulls. Matte black, brushed nickel, and brushed gold are the most popular finishes in Seattle bathrooms. Choose a finish you will love long-term — trendy finishes can feel dated quickly. For the toilet, comfort-height models (17-19 inches) are standard in master baths. Elongated bowls are more comfortable than round. Dual-flush models save water. Buy all fixtures before construction begins so your plumber can rough-in to the exact specifications.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">10. Plan Ventilation</h3>
+                <p class="text-body-text text-sm leading-relaxed">Proper ventilation is non-negotiable in a Seattle master bathroom. The combination of shower steam and Seattle's ambient humidity creates conditions for mold, mildew, and moisture damage. Install an exhaust fan rated for your bathroom's square footage (minimum 1 CFM per square foot). A 100 sq ft master bath needs at least a 100 CFM fan. We recommend fans with built-in humidity sensors that activate automatically when moisture levels rise — you never have to remember to turn it on. Quiet models rated at 1.0 sone or less are barely noticeable. Vent the fan to the outside through the roof or sidewall — never into the attic, which is a code violation and causes major moisture problems.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">11. Waterproofing: The Most Critical Step</h3>
+                <p class="text-body-text text-sm leading-relaxed">Waterproofing is invisible when done right and catastrophically expensive when done wrong. Every shower must have a complete waterproof membrane behind the tile — on the walls, floor, curb (if present), and niches. Modern systems like Schluter Kerdi or liquid-applied membranes (RedGard, HydroGard) provide reliable waterproofing when properly installed. The shower pan must slope to the drain at a minimum 1/4 inch per foot. Curbless showers require precise slope engineering across the entire bathroom floor. Do not cut corners here — a waterproofing failure behind tile means tearing out the entire shower to fix it. This is where hiring an experienced contractor pays for itself many times over.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">12. Electrical Planning</h3>
+                <p class="text-body-text text-sm leading-relaxed">Modern master bathrooms need more electrical capacity than older homes typically provide. Plan for: GFCI-protected outlets near the vanity (code requirement), dedicated circuits for heated floors, lighted mirrors, and towel warmers, and adequate lighting circuits. If your home has an older electrical panel with limited capacity (common in Seattle homes built before 1970), discuss panel capacity with your electrician before adding new circuits. All bathroom electrical work requires GFCI protection and should be done by a licensed electrician.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">13. Lighting Design</h3>
+                <p class="text-body-text text-sm leading-relaxed">Layer your bathroom lighting just like a kitchen. Recessed ceiling lights for general illumination, sconces flanking the mirror for shadow-free task lighting at the vanity, and accent lighting (LED strips under the vanity, in niches, or behind mirrors) for ambiance. In Seattle's dark winter months, good bathroom lighting makes the morning routine significantly more pleasant. Choose LEDs at 2700K-3000K with CRI 90+ for flattering, accurate light. Install dimmer switches on all circuits. A nightlight feature (dim LED in the exhaust fan or a motion-activated toe-kick light) prevents the shock of full brightness during nighttime visits.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">14. Storage Solutions</h3>
+                <p class="text-body-text text-sm leading-relaxed">Master bathrooms need storage for towels, toiletries, medications, cleaning supplies, and personal care appliances. Plan storage before finalizing the layout: a vanity with deep drawers and organizers, a recessed medicine cabinet (mirrored front saves space and serves double duty), shower niches for shampoo and soap (plan these during the tile layout, not as an afterthought), and a linen closet or built-in shelving if space allows. In Seattle's compact master baths, every inch of storage must be intentional. Over-toilet shelving, recessed wall niches, and behind-door hooks all help maximize limited space.</p>
+              </div>
+
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">15. Hire the Right Contractor</h3>
+                <p class="text-body-text text-sm leading-relaxed">A master bathroom remodel involves plumbing, electrical, tile, carpentry, waterproofing, and potentially structural work. Hiring a general contractor who specializes in bathroom remodeling ensures all trades are coordinated and the work meets code. Get 2-3 detailed bids. Check Washington State contractor licenses (verify at lni.wa.gov), insurance, and references. Ask to see completed bathroom projects similar in scope to yours. Be wary of bids significantly lower than others — they often indicate shortcuts, unlicensed subcontractors, or missing scope items that will become expensive change orders.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seattle-Specific Tips -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Seattle-Specific Considerations</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle homes present unique challenges for master bathroom remodels. Craftsman-era homes (1905-1935) often have plaster walls that require careful demolition, original cast-iron drain pipes that may need replacement, and limited electrical service. Mid-century homes (1950s-1970s) frequently have galvanized steel supply pipes that restrict water flow and should be replaced with copper or PEX during a remodel. Even newer homes (1990s-2010s) may have polybutylene piping, which is prone to failure and should be replaced.
+              </p>
+              <p>
+                Seattle's moisture climate means extra attention to ventilation and waterproofing. We see mold and water damage behind old shower tile in a significant percentage of the bathrooms we demolish. This is not a reason to avoid remodeling — it is a reason to remodel sooner rather than later, before hidden damage worsens. A properly executed remodel with modern waterproofing and ventilation protects your home for decades.
+              </p>
+              <p>
+                Scheduling matters in Seattle. Spring and summer are peak remodeling season — contractors are busiest from March through September. If your project is flexible, starting in late fall or winter may give you better contractor availability and potentially better pricing. Material availability is generally consistent year-round.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a master bathroom remodel cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Mid-range: $25,000-$40,000. High-end: $50,000-$100,000+. A basic refresh costs $5,000-$10,000. Labor accounts for about 40-50% of total cost in the Seattle market.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does a master bathroom remodel take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">4-8 weeks for construction. Add 4-12 weeks for Seattle permits if needed. Simple updates take 1-2 weeks. Total planning-to-completion timeline is typically 3-5 months.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Do I need a permit for a bathroom remodel in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Cosmetic updates (paint, hardware, accessories) do not require permits. Plumbing relocation, electrical changes, and structural modifications do require SDCI permits. Like-for-like fixture swaps usually do not.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the best order for a bathroom remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Demo, rough plumbing/electrical, structural work, waterproofing, tile, vanity/countertop, toilet, fixture trim, glass shower door, paint/trim, final cleaning and inspection.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Should I remodel my master bathroom before selling?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A dated master bath can hurt your sale. A mid-range remodel ($25,000-$40,000) typically recoups 60-70% at resale while making the home more attractive. Focus on neutral finishes that appeal broadly.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
+    </a>
+    <a href="/blog/small-bathroom-remodel-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">25 Small Bathroom Remodel Ideas</p>
+    </a>
+    <a href="/blog/aging-in-place-bathroom-remodel/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Aging-in-Place Bathroom Remodel Guide</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We will walk you through every item on this checklist.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="tel:+12066664370" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Call (206) 666-4370</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Transform Your Master Bathroom?</h2>
+            <p class="text-white/80 mb-6">We handle every step from design through final inspection. Get a free consultation and see what is possible in your space.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/small-bathroom-remodel-ideas/" class="text-accent hover:underline text-sm font-medium">25 Small Bathroom Remodel Ideas</a></li>
+                <li><a href="/blog/bathroom-vanity-buying-guide/" class="text-accent hover:underline text-sm font-medium">Bathroom Vanity Buying Guide</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+                <li><a href="/services/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+                <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

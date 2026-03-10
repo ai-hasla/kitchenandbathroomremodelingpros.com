@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaProduct from '@/components/seo/SchemaProduct.astro';
 import { SERVICES, SITE, ALL_LOCATIONS } from '@/lib/constants';
 
 interface Props {
@@ -27,10 +28,13 @@ const relatedServices = SERVICES.filter(
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${SITE.url}/services/${slug}/#service`,
   name: title,
+  serviceType: title,
   description: metaDescription,
   provider: {
     '@type': 'HomeAndConstructionBusiness',
+    '@id': `${SITE.url}/#organization`,
     name: SITE.name,
     telephone: SITE.phone,
     address: {
@@ -44,9 +48,27 @@ const serviceSchema = {
   },
   areaServed: ALL_LOCATIONS.map((loc) => ({
     '@type': 'City',
-    name: `${loc.city}, WA`,
+    name: loc.city,
   })),
   url: `${SITE.url}/services/${slug}/`,
+  providerMobility: 'dynamic',
+  termsOfService: `${SITE.url}/terms/`,
+  offers: {
+    '@type': 'Offer',
+    name: 'Free In-Home Estimate',
+    price: '0',
+    priceCurrency: 'USD',
+    description: `Free, no-obligation estimate for ${title.toLowerCase()} in Seattle`,
+    url: 'https://nexfield.pro/crm/book?u=137',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: `${title} Services`,
+    itemListElement: features.map((feature) => ({
+      '@type': 'OfferCatalog',
+      name: feature,
+    })),
+  },
 };
 
 const categoryLabel: Record<string, string> = {
@@ -56,7 +78,7 @@ const categoryLabel: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={metaTitle} description={metaDescription}>
+<BaseLayout title={metaTitle} description={metaDescription} ogImage={`/images/og/${slug}.png`}>
   <SchemaBreadcrumb
     items={[
       { label: 'Services', href: '/services/' },
@@ -66,15 +88,23 @@ const categoryLabel: Record<string, string> = {
 
   <!-- Service Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <SchemaProduct
+    productName={`${title} in Seattle`}
+    productDescription={`Professional ${title.toLowerCase()} services in Seattle, Bellevue, Kirkland, and beyond. ${SITE.reviews.rating}-star rated, ${SITE.warranty} warranty, free estimates.`}
+    pageUrl={`${SITE.url}/services/${slug}/`}
+  />
 
   <!-- Hero Section -->
   <section class="bg-primary pt-32 pb-16 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
       <img
         src={heroImage}
-        alt=""
+        alt={`${title} project in Seattle, WA`}
         class="w-full h-full object-cover"
+        width="2000"
+        height="1333"
         loading="eager"
+        fetchpriority="high"
       />
     </div>
     <Container class="relative z-10">
@@ -114,7 +144,9 @@ const categoryLabel: Record<string, string> = {
           Currently working on projects in <strong>Capitol Hill</strong>, <strong>Bellevue</strong>, and <strong>Kirkland</strong> &mdash; booking April/May 2026 now.
         </p>
         <a
-          href="/get-a-quote/"
+          href="https://nexfield.pro/crm/book?u=137"
+          target="_blank"
+          rel="noopener noreferrer"
           class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover transition-colors whitespace-nowrap flex-shrink-0"
         >
           Schedule Now

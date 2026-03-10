@@ -1,15 +1,16 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
   title="Bathroom Remodeling"
-  metaTitle="Bathroom Remodeling Seattle WA | Full Bath Renovations | KB Remodeling Pros"
+  metaTitle="Bathroom Remodeling Seattle WA | Full Bath Renovations | Best KB Remodeling"
   metaDescription="Expert bathroom remodeling in Seattle. Custom showers, vanities, tile work, and complete bath renovations. Licensed & insured with 15+ years experience. Free estimates!"
   slug="bathroom-remodeling"
   category="bathroom"
-  heroImage="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=2000&q=80"
+  heroImage="/images/service-bathroom-remodeling.jpg"
   features={[
     'Complete bathroom demolition and reconstruction',
     'Custom shower and tub installation',
@@ -83,6 +84,13 @@ import Container from '@/components/ui/Container.astro';
     </p>
   </div>
 
+  <!-- Cost Guide CTA -->
+  <div class="bg-accent/5 border border-accent/20 rounded-2xl p-8 my-12">
+    <h3 class="text-2xl font-bold text-gray-900 mb-3">How Much Does a Bathroom Remodel Cost in Seattle?</h3>
+    <p class="text-gray-700 mb-4">Get detailed pricing breakdowns, budget tiers, and money-saving tips in our comprehensive cost guide.</p>
+    <a href="/cost-guides/bathroom-remodel-cost-seattle/" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">View Bathroom Remodel Cost Guide →</a>
+  </div>
+
   <!-- FAQ Section -->
   <Fragment slot="faq">
     <section class="py-16 lg:py-24 bg-white">
@@ -152,4 +160,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+  <SchemaFAQ items={[
+    { question: "How long will I be without a working bathroom during the remodel?", answer: "For a full gut remodel, the bathroom is out of commission for 3-5 weeks. A smaller refresh (new tile over existing backer, new vanity and fixtures) can be done in 2-3 weeks. If it's your only bathroom, we prioritize getting the toilet functional as quickly as possible — usually within the first few days after demo. For homes with two bathrooms, it's much less stressful since you'll have a backup. We lay out a day-by-day schedule during the design phase so you can plan around it." },
+    { question: "What are the real costs for a bathroom remodel in the Seattle area?", answer: "Here's how it breaks down for most of our projects: a tub-to-shower conversion is $8,000-$15,000. A full guest bath remodel runs $18,000-$30,000. A master bathroom gut remodel with curbless shower, heated floors, and quality finishes typically falls between $25,000 and $55,000. The biggest variables are tile (custom tile work is labor-intensive) and whether the plumbing needs to be relocated or replaced. If we find galvanized pipes or a failing drain stack during demo, that's an additional $3,000-$6,000 — but we'll flag that risk during the initial assessment." },
+    { question: "My bathroom has mold — is that a sign I need a full remodel?", answer: "Not necessarily, but it does mean moisture is getting somewhere it shouldn't. Surface mold on grout or caulk lines can be cleaned and recaulked without a major project. But if you're seeing dark spots on the ceiling, bubbling paint, or mold on drywall, that usually means water has breached the waterproofing (or there was never proper waterproofing to begin with — common in older Seattle homes). At that point, we need to open up the walls to assess the damage. If the framing is sound, we can remediate and rebuild with proper Schluter-KERDI membrane to prevent it from happening again. If the framing has rot, we replace it. We always do a thorough moisture assessment before recommending the scope." },
+    { question: "Should I keep my tub or convert to a walk-in shower?", answer: "Our general rule: keep at least one tub in the house for resale value and for families with young kids. If you have two or more bathrooms, converting the master to a walk-in shower is almost always the right call — it opens up the space dramatically, especially in those tight 5x8 Seattle bathrooms where a tub/shower combo makes the room feel cramped. If it's your only bathroom, consider a tub/shower combo with a nice frameless glass panel instead of a curtain. A curbless walk-in shower with a linear drain is our most-requested feature right now — it's accessible, modern, and makes a small bathroom feel much larger." },
+    { question: "My home has old galvanized plumbing — should I replace it during a bathroom remodel?", answer: "If the walls are already open, absolutely — this is your cheapest opportunity to replace it. Galvanized steel supply lines have a lifespan of about 40-70 years, and most Seattle homes from the '20s through '60s are well past that. The pipes corrode from the inside, reducing water pressure and eventually causing leaks inside walls. We replace them with PEX (cross-linked polyethylene), which is flexible, corrosion-proof, and rated to last 50+ years. For drain lines, we switch from cast iron to ABS. Our licensed plumbers handle all of this in-house and pull the necessary plumbing permits from SDCI. Doing it during a remodel typically adds $3,000-$6,000 — doing it as a standalone job later can easily cost double." },
+  ]} />
 </ServiceLayout>

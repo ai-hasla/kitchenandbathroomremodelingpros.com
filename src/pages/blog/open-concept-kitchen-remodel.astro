@@ -1,0 +1,373 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Open Concept Kitchen Remodel', href: '/blog/open-concept-kitchen-remodel/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Open Concept Kitchen Remodel: Pros, Cons, and Costs in Seattle',
+  description: 'Complete guide to open concept kitchen remodeling in Seattle. Learn about load-bearing walls, permits, island additions, lighting, ventilation, and costs for removing walls in Seattle homes.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-01-05',
+  dateModified: '2026-01-05',
+  image: '/images/blog-kitchen-remodel.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does an open concept kitchen remodel cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'An open concept kitchen remodel in Seattle typically costs $35,000 to $100,000 or more depending on scope. Removing a non-load-bearing wall costs $1,500 to $5,000. Removing a load-bearing wall with a structural beam runs $5,000 to $15,000. A full open concept remodel including new kitchen finishes, island, lighting, and flooring averages $50,000 to $85,000 in the Seattle market.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I know if a wall is load-bearing?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Load-bearing walls typically run perpendicular to floor joists, are located near the center of the house, and support walls or roof structure above. However, you should never guess — always hire a licensed structural engineer to evaluate. In Seattle, a structural assessment costs $500 to $1,500 and is required before obtaining a permit for wall removal. Many Seattle Craftsman and mid-century homes have load-bearing walls where homeowners do not expect them.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit to remove a wall in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, in most cases. The Seattle Department of Construction and Inspections (SDCI) requires a building permit for removing load-bearing walls, and often for non-load-bearing walls if electrical, plumbing, or HVAC modifications are involved. Permit costs range from $300 to $2,000. Working without a permit can result in fines, difficulty selling your home, and insurance complications.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Will an open concept kitchen increase my Seattle home value?',
+      acceptedAnswer: { '@type': 'Answer', text: 'In most cases, yes. Open concept layouts are highly desirable among Seattle homebuyers, especially in neighborhoods like Ballard, Fremont, and Wallingford where older homes with closed-off kitchens are common. A well-executed open concept kitchen remodel can recoup 60-80% of its cost at resale and may help your home sell faster. However, completely removing all walls in a small home can reduce usable wall space for furniture and storage.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does an open concept kitchen remodel take in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A typical open concept kitchen remodel takes 8 to 16 weeks from demolition to completion. Permit approval from SDCI takes 4 to 12 weeks depending on complexity. The structural engineering assessment takes 1 to 2 weeks. Plan for 3 to 5 months total from initial planning through move-in, including the permit process.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Open Concept Kitchen Remodel: Pros, Cons & Costs in Seattle"
+  description="Complete guide to open concept kitchen remodeling in Seattle. Load-bearing walls, permits, island additions, lighting, ventilation, and costs for Seattle homes."
+  canonical={`${SITE.url}/blog/open-concept-kitchen-remodel/`}
+  ogType="article"
+  article={{ publishedTime: '2026-01-05', modifiedTime: '2026-01-05', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">January 5, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 8 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Open Concept Kitchen Remodel: Pros, Cons, and Costs in Seattle</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Everything Seattle homeowners need to know about opening up their kitchen — from structural considerations and city permits to island design, lighting, and realistic budgets.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              The open concept kitchen is one of the most requested remodeling projects in Seattle. Homeowners across Ballard, Queen Anne, Capitol Hill, and the Eastside are knocking down walls to create connected, light-filled living spaces that feel modern and welcoming. And for good reason — when a kitchen opens into the dining and living areas, it transforms how families cook, entertain, and spend time together.
+            </p>
+            <p>
+              But an open concept remodel is not as simple as swinging a sledgehammer. Seattle's older homes — Craftsman bungalows, Tudor revivals, and mid-century ranchers — present unique structural challenges. Load-bearing walls, outdated electrical panels, and the city's permitting process all require careful planning. Done right, an open concept kitchen adds significant value and livability. Done poorly, it can create structural problems, poor ventilation, and a layout that does not actually function well.
+            </p>
+            <p>
+              This guide covers everything you need to consider before opening up your Seattle kitchen, including structural engineering, permits, costs, design decisions, and the honest pros and cons that will help you decide if open concept is right for your home.
+            </p>
+          </div>
+
+          <!-- Load-Bearing Walls -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Understanding Load-Bearing Walls in Seattle Homes</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The first and most critical question in any open concept remodel is whether the wall you want to remove is load-bearing. A load-bearing wall carries the weight of the structure above it — the roof, upper floors, and framing — down to the foundation. Removing it without proper support will cause the structure to sag, crack, or potentially collapse.
+              </p>
+              <p>
+                In Seattle's Craftsman-style homes (built roughly 1905-1935), the wall between the kitchen and dining room is load-bearing more often than not. These homes were built with a central bearing wall running the length of the house, and the kitchen-to-dining partition frequently sits on or near this line. Mid-century homes (1950s-1970s) vary more, but many have load-bearing walls that are not obvious from the inside.
+              </p>
+              <p>
+                A licensed structural engineer will assess your walls by examining the foundation, floor joists, and roof structure. This assessment typically costs $500 to $1,500 in Seattle and results in an engineered plan showing what type of beam (LVL, steel, or glulam) needs to replace the wall. This engineering document is required for your Seattle building permit.
+              </p>
+              <p>
+                Even non-load-bearing walls often contain electrical wiring, plumbing lines, or HVAC ductwork that must be rerouted. We recommend having your contractor inspect the wall cavity before finalizing your budget to avoid surprises during demolition.
+              </p>
+            </div>
+          </div>
+
+          <!-- Permits -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Seattle Permits for Wall Removal and Kitchen Remodeling</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The Seattle Department of Construction and Inspections (SDCI) requires permits for most structural modifications, including wall removal. Our <a href="/blog/do-you-need-permit-remodel-seattle/" class="text-accent hover:underline">complete permit guide</a> explains the full process and costs. If your project involves removing a load-bearing wall, altering electrical or plumbing systems, or changing the footprint of the kitchen, you will need a building permit.
+              </p>
+              <p>
+                Permit timelines in Seattle have varied in recent years, but you should budget 4 to 12 weeks for approval on a standard residential remodel. More complex projects involving structural changes may require additional review. Permit fees range from $300 to $2,000 depending on the scope of work and the valuation of the project.
+              </p>
+              <p>
+                Working without permits is risky and surprisingly common in Seattle. Unpermitted work can result in fines, required demolition of completed work, complications when selling your home, and voided insurance coverage. When we handle open concept remodels, we manage the entire permitting process — from application through final inspection — so homeowners never have to deal with SDCI directly.
+              </p>
+              <p>
+                If your home is in a historic district (Pioneer Square, Columbia City, Harvard-Belmont, or others), additional design review may be required. Landmark-designated homes have restrictions on exterior changes, though interior modifications like wall removal are generally allowed.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pros and Cons -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Pros and Cons of Open Concept Kitchens</h2>
+
+            <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Advantages</h3>
+            <div class="space-y-6 mb-8">
+              <div class="border-l-4 border-accent pl-5">
+                <h4 class="font-semibold text-primary mb-1">Better Natural Light</h4>
+                <p class="text-body-text text-sm leading-relaxed">Removing walls allows natural light from windows in adjacent rooms to reach the kitchen. In Seattle, where overcast skies are common from October through May, this is a significant quality-of-life improvement. Kitchens that were once dim and enclosed suddenly feel bright and connected to the outdoors.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h4 class="font-semibold text-primary mb-1">Improved Traffic Flow</h4>
+                <p class="text-body-text text-sm leading-relaxed">Older Seattle homes often have narrow doorways between the kitchen and dining room that create bottlenecks. Opening the wall eliminates these choke points and allows multiple people to move through the space comfortably — essential for families and for entertaining.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h4 class="font-semibold text-primary mb-1">Social Connectivity</h4>
+                <p class="text-body-text text-sm leading-relaxed">An open kitchen allows the cook to interact with family or guests in the living and dining areas. Parents can supervise children while preparing meals. This social connectivity is the number one reason Seattle homeowners request open concept layouts.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h4 class="font-semibold text-primary mb-1">Increased Home Value</h4>
+                <p class="text-body-text text-sm leading-relaxed">Open concept layouts are consistently among the most sought-after features for Seattle homebuyers. Real estate agents in neighborhoods like Greenwood, Phinney Ridge, and West Seattle report that open kitchens are a top-three buyer priority.</p>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Disadvantages to Consider</h3>
+            <div class="space-y-6">
+              <div class="border-l-4 border-primary/30 pl-5">
+                <h4 class="font-semibold text-primary mb-1">Noise Carries</h4>
+                <p class="text-body-text text-sm leading-relaxed">Without walls to block sound, kitchen noise (dishwasher, range hood, conversation) carries into the living areas. This can be disruptive if someone is watching television, working from home, or trying to have a quiet conversation. Consider a quieter dishwasher (44 dB or less) and a range hood with variable speed settings.</p>
+              </div>
+              <div class="border-l-4 border-primary/30 pl-5">
+                <h4 class="font-semibold text-primary mb-1">Cooking Odors Spread</h4>
+                <p class="text-body-text text-sm leading-relaxed">Walls contain cooking smells. Without them, frying fish or searing steak sends odors throughout the entire main floor. A powerful range hood vented to the outside (not recirculating) is essential in an open concept kitchen. We recommend at least 400 CFM for a standard range and 600+ CFM for a gas cooktop.</p>
+              </div>
+              <div class="border-l-4 border-primary/30 pl-5">
+                <h4 class="font-semibold text-primary mb-1">Less Wall Space</h4>
+                <p class="text-body-text text-sm leading-relaxed">Removing a wall means losing upper cabinets, wall space for art or furniture in the adjacent room, and potentially electrical outlets. In smaller Seattle homes where storage is already limited, this trade-off needs careful consideration. An island with storage can offset some of this loss.</p>
+              </div>
+              <div class="border-l-4 border-primary/30 pl-5">
+                <h4 class="font-semibold text-primary mb-1">Kitchen Clutter Is Always Visible</h4>
+                <p class="text-body-text text-sm leading-relaxed">With no wall to hide behind, dirty dishes, cluttered countertops, and general kitchen mess are visible from the living area at all times. This means you need excellent storage solutions, organizational habits, and enough counter and cabinet space to keep things tidy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Island Additions -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Adding a Kitchen Island</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                When a wall comes down, a kitchen island often takes its place. The island serves as a visual divider between kitchen and living space while adding counter space, storage, and seating. It becomes the natural gathering point in an open concept home.
+              </p>
+              <p>
+                For a comfortable island, you need at least 42 inches of clearance on all sides — 48 inches is better if the island faces a cooking zone. This means your combined kitchen-living space needs to be at least 12 to 14 feet wide to accommodate an island. Many Seattle Craftsman homes meet this dimension once the wall is removed, but not all do. Measure carefully before committing to an island in your plan.
+              </p>
+              <p>
+                Island costs vary widely based on size and features. A basic 4-foot island with cabinets and a countertop runs $3,000 to $6,000. Adding a sink requires plumbing rough-in ($1,500-$3,000). A cooktop in the island needs gas or electrical lines plus a downdraft or overhead ventilation system ($2,000-$5,000). Waterfall-edge countertops, pendant lighting, and built-in appliances like a wine fridge or microwave drawer add further to the budget.
+              </p>
+              <p>
+                For seating, allow 24 inches of counter width per stool for counter-height seating (36 inches high) or 24 inches per stool for bar-height (42 inches). An overhang of 12 to 15 inches provides comfortable knee room. A 6-foot island comfortably seats three on one side.
+              </p>
+            </div>
+          </div>
+
+          <!-- Lighting -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Lighting an Open Concept Kitchen</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                When you remove walls, you change the lighting dynamics of two or three rooms at once. The old kitchen light fixtures rarely work in the new open layout, and the adjacent rooms may need adjustments too. A well-designed lighting plan is essential.
+              </p>
+              <p>
+                For an open concept kitchen, we recommend three layers of light. First, ambient lighting — recessed LED downlights (6-inch cans, spaced 4 to 5 feet apart) provide even, general illumination across the kitchen and into the living area. Second, task lighting — under-cabinet LED strips light the countertops where you prepare food, and pendant lights over the island provide focused light for cooking and eating. Third, accent lighting — in-cabinet lights, toe-kick lights, or above-cabinet lighting add warmth and depth.
+              </p>
+              <p>
+                Pendant lights over the island are both functional and decorative. See our <a href="/blog/kitchen-lighting-design-guide/" class="text-accent hover:underline">kitchen lighting design guide</a> for detailed recommendations on layered lighting. They visually define the kitchen zone within the open space. Choose pendants that hang 30 to 36 inches above the island surface, and use two pendants for a 4-foot island or three for a 6-foot or longer island.
+              </p>
+              <p>
+                In Seattle, where natural daylight is limited for much of the year, dimmable LED lighting on separate zones (kitchen, island, dining, living) lets you adjust brightness and mood throughout the day. Plan for at least two to three separate lighting circuits so you are not stuck with all-on or all-off.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ventilation -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Ventilation: The Most Overlooked Element</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Ventilation is the most commonly neglected element in open concept kitchen remodels, and it is arguably the most important. Without walls to contain cooking fumes, grease, moisture, and odors, a powerful range hood vented to the outside is non-negotiable. The recirculating hoods that come with most over-the-range microwaves are inadequate for open concept kitchens.
+              </p>
+              <p>
+                For a standard 30-inch range against a wall, we recommend a hood rated at 400 to 600 CFM (cubic feet per minute). For an island cooktop — where capture is more difficult because there are no walls to channel the air — you need 600 to 1,200 CFM depending on the cooktop's BTU output. Gas cooktops require more ventilation than electric or induction.
+              </p>
+              <p>
+                In Seattle's climate, moisture control matters. When you cook in an open concept kitchen, steam travels into the living areas, raising humidity levels. Combined with Seattle's already damp air, this can contribute to condensation on windows, musty smells, and even mold growth in poorly ventilated spaces. A properly sized, ducted range hood eliminates these concerns.
+              </p>
+              <p>
+                If your kitchen island includes a cooktop, a ceiling-mounted hood or a downdraft ventilation system are your options. Ceiling-mounted hoods are more effective but require ductwork through the ceiling and roof. Downdraft systems are less visually intrusive but less effective at capturing rising smoke and steam. We can help you evaluate which option works best for your home's structure and your cooking habits.
+              </p>
+            </div>
+          </div>
+
+          <!-- Costs -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Open Concept Kitchen Remodel Costs in Seattle</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Open concept kitchen remodels in Seattle span a wide range depending on what is involved. Here is a realistic breakdown based on projects we have completed across the Seattle metro area:
+              </p>
+            </div>
+            <div class="space-y-4 mt-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Wall Removal Only: $3,000 - $15,000</h3>
+                <p class="text-body-text text-sm leading-relaxed">Non-load-bearing wall removal costs $1,500-$5,000 including patching floors, ceilings, and walls where the old wall was. Load-bearing wall removal with a structural beam costs $5,000-$15,000 depending on the span and beam type (LVL, steel, or glulam). This includes structural engineering, permits, temporary shoring, beam installation, and finish work.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Mid-Range Open Concept Remodel: $40,000 - $65,000</h3>
+                <p class="text-body-text text-sm leading-relaxed">Wall removal plus new kitchen cabinets, countertops, backsplash, <a href="/services/flooring-installation/" class="text-accent hover:underline">flooring</a>, lighting, and a basic island. This level includes semi-custom cabinets, quartz or granite countertops, and mid-range appliances. Most popular in neighborhoods like Beacon Hill, Columbia City, and Rainier Valley.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">High-End Open Concept Remodel: $70,000 - $120,000+</h3>
+                <p class="text-body-text text-sm leading-relaxed">Full <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> with custom cabinetry, premium countertops (quartzite, marble), professional-grade appliances, a large island with plumbing and seating, hardwood or premium LVP flooring throughout the open space, and designer lighting. Common in Magnolia, Madison Park, and Laurelhurst.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does an open concept kitchen remodel cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">$35,000 to $100,000+ depending on scope. Wall removal alone costs $3,000-$15,000. A mid-range remodel with new finishes and island runs $40,000-$65,000. High-end projects with custom everything start at $70,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How do I know if a wall is load-bearing?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Hire a licensed structural engineer ($500-$1,500 in Seattle). Load-bearing walls typically run perpendicular to floor joists and sit near the center of the house. Never guess — many Seattle Craftsman homes have load-bearing walls in unexpected locations.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Do I need a permit to remove a wall in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, in most cases. SDCI requires permits for structural modifications, electrical changes, and plumbing alterations. Permit fees range from $300 to $2,000, and approval takes 4-12 weeks.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Will an open concept kitchen increase my home value?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Typically yes. Open concept layouts are highly desirable among Seattle buyers. A well-executed remodel can recoup 60-80% of its cost at resale and help your home sell faster, especially in competitive neighborhoods.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does an open concept kitchen remodel take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">8 to 16 weeks from demolition to completion. Add 4-12 weeks for permit approval. Plan for 3-5 months total including planning, permitting, and construction.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/kitchen-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">15 Kitchen Remodel Ideas for Seattle Homes</p>
+    </a>
+    <a href="/blog/kitchen-lighting-design-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Lighting Design Guide</p>
+    </a>
+    <a href="/blog/do-you-need-permit-remodel-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Permits</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Do You Need a Permit to Remodel in Seattle?</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you plan your budget and timeline.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="tel:+12066664370" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Call (206) 666-4370</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Planning an Open Concept Kitchen Remodel?</h2>
+            <p class="text-white/80 mb-6">We have opened up kitchens across Seattle for over a decade. Get a free design consultation and find out what is possible in your home.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/kitchen-lighting-design-guide/" class="text-accent hover:underline text-sm font-medium">Kitchen Lighting Design Guide</a></li>
+                <li><a href="/blog/hardwood-vs-lvp-flooring-seattle/" class="text-accent hover:underline text-sm font-medium">Hardwood vs LVP Flooring for Seattle</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-installation/" class="text-accent hover:underline text-sm font-medium">Cabinet Installation</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

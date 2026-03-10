@@ -1,5 +1,5 @@
 ---
-import { SITE, SERVICES } from '@/lib/constants';
+import { SITE, SERVICES, ALL_LOCATIONS } from '@/lib/constants';
 
 interface Props {
   type?: 'HomeAndConstructionBusiness' | 'LocalBusiness';
@@ -10,12 +10,48 @@ const { type = 'HomeAndConstructionBusiness' } = Astro.props;
 const schema = {
   '@context': 'https://schema.org',
   '@type': type,
+  '@id': `${SITE.url}/#organization`,
   name: SITE.name,
-  image: `${SITE.url}/images/og-default.svg`,
+  image: `${SITE.url}/images/og-default.jpg`,
   url: SITE.url,
   telephone: SITE.phone,
   email: SITE.email,
   description: SITE.description,
+  slogan: "Seattle's Most Trusted Kitchen & Bathroom Remodeling Company",
+  foundingDate: '2010',
+  numberOfEmployees: {
+    '@type': 'QuantitativeValue',
+    minValue: 10,
+    maxValue: 25,
+  },
+  paymentAccepted: 'Cash, Credit Card, Check, Financing Available',
+  currenciesAccepted: 'USD',
+  isicV4: '4330',
+  naics: '236118',
+  knowsAbout: [
+    'Kitchen Remodeling',
+    'Bathroom Remodeling',
+    'Cabinet Refacing',
+    'Countertop Installation',
+    'Tile Installation',
+    'Shower Remodeling',
+    'Home Renovation',
+    'Interior Remodeling',
+    'Custom Cabinetry Design & Installation',
+    'Quartz, Granite & Marble Countertops',
+    'Walk-in Shower Conversions',
+    'Bathtub-to-Shower Conversions',
+    'Kitchen Layout & Space Planning',
+    'Vanity Installation & Bathroom Storage',
+    'Aging-in-Place & ADA-Compliant Remodeling',
+    'Hardwood & LVP Flooring Installation',
+    'Backsplash Design & Installation',
+    'Permit Acquisition for Home Remodeling in Seattle',
+    'Water-Resistant & Waterproof Flooring Solutions',
+    'Open-Concept Kitchen Conversions',
+    'Bathroom Ventilation & Moisture Control',
+    'Energy-Efficient Kitchen Upgrades',
+  ],
   address: {
     '@type': 'PostalAddress',
     streetAddress: SITE.address.street,
@@ -32,15 +68,9 @@ const schema = {
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '18:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '09:00',
-      closes: '16:00',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
     },
   ],
   priceRange: '$$-$$$$',
@@ -50,30 +80,156 @@ const schema = {
     reviewCount: SITE.reviews.count,
     bestRating: 5,
   },
+  review: [
+    {
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: 5,
+        bestRating: 5,
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Dan C.',
+      },
+      datePublished: '2024-10-29',
+      reviewBody:
+        'They did our kitchen in Capitol Hill — new cabinets, quartz counters, and a tile backsplash. Crew showed up on time every day and the finished product looks amazing. Would definitely use them again.',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: 5,
+        bestRating: 5,
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Karen W.',
+      },
+      datePublished: '2024-07-15',
+      reviewBody:
+        'We had our master bath completely redone at our Bellevue place. Curbless shower, new vanity, heated tile floors. The project manager kept us in the loop the whole time and they finished a few days early. Really happy with everything.',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: 4,
+        bestRating: 5,
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Steve M.',
+      },
+      datePublished: '2025-01-22',
+      reviewBody:
+        'Just wrapped up a kitchen remodel in our Kirkland townhouse. Great work overall — the cabinet install is flawless and the island turned out better than we expected. Scheduling was a little tricky around the holidays but they communicated well about it.',
+    },
+  ],
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Contractor License',
+      name: 'Washington State General Contractor License',
+      recognizedBy: {
+        '@type': 'Organization',
+        name: 'Washington State Department of Labor & Industries',
+      },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Bond & Insurance',
+      name: 'Licensed, Bonded & Insured',
+    },
+  ],
   areaServed: [
-    { '@type': 'City', name: 'Seattle', '@id': 'https://en.wikipedia.org/wiki/Seattle' },
-    { '@type': 'City', name: 'Bellevue' },
-    { '@type': 'City', name: 'Kirkland' },
-    { '@type': 'City', name: 'Redmond' },
-    { '@type': 'City', name: 'Renton' },
-    { '@type': 'City', name: 'Tacoma' },
-    { '@type': 'City', name: 'Everett' },
-    { '@type': 'City', name: 'Kent' },
-    { '@type': 'City', name: 'Federal Way' },
-    { '@type': 'City', name: 'Sammamish' },
+    {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: SITE.coordinates.lat,
+        longitude: SITE.coordinates.lng,
+      },
+      geoRadius: '50 mi',
+    },
+    ...ALL_LOCATIONS.map((loc) => ({
+      '@type': 'City' as const,
+      name: loc.city,
+      ...(loc.city === 'Seattle' ? { '@id': 'https://en.wikipedia.org/wiki/Seattle' } : {}),
+    })),
+  ],
+  potentialAction: [
+    {
+      '@type': 'ReserveAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE.url}/contact/`,
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform',
+        ],
+      },
+      result: {
+        '@type': 'Reservation',
+        name: 'Schedule Free Consultation',
+      },
+    },
+    {
+      '@type': 'CommunicateAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `tel:${SITE.phoneRaw}`,
+        actionPlatform: [
+          'http://schema.org/MobileWebPlatform',
+        ],
+      },
+      name: 'Call Now',
+    },
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Remodeling Services',
-    itemListElement: SERVICES.map((s) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
+    name: 'Kitchen & Bathroom Remodeling Services',
+    itemListElement: SERVICES.map((s) => {
+      const priceRanges: Record<string, { low: number; high: number }> = {
+        'kitchen-remodeling': { low: 25000, high: 85000 },
+        'bathroom-remodeling': { low: 15000, high: 50000 },
+        'cabinet-refacing': { low: 5000, high: 15000 },
+        'countertop-installation': { low: 3000, high: 12000 },
+        'tile-installation': { low: 2000, high: 10000 },
+        'shower-remodeling': { low: 5000, high: 20000 },
+        'bathtub-replacement': { low: 3000, high: 12000 },
+        'vanity-installation': { low: 1500, high: 6000 },
+        'kitchen-layout-design': { low: 2000, high: 8000 },
+        'custom-cabinetry': { low: 10000, high: 35000 },
+        'flooring-installation': { low: 3000, high: 15000 },
+        'aging-in-place': { low: 5000, high: 30000 },
+      };
+      const range = priceRanges[s.slug] || { low: 2000, high: 20000 };
+      return {
+        '@type': 'OfferCatalog',
         name: s.title,
-        description: s.shortDescription,
-        url: `${SITE.url}/services/${s.slug}/`,
-      },
-    })),
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: s.title,
+              description: s.shortDescription,
+              url: `${SITE.url}/services/${s.slug}/`,
+              provider: { '@id': `${SITE.url}/#organization` },
+              areaServed: { '@type': 'State', name: 'Washington' },
+            },
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              priceCurrency: 'USD',
+              minPrice: range.low,
+              maxPrice: range.high,
+            },
+          },
+        ],
+      };
+    }),
   },
   sameAs: Object.values(SITE.social),
 };

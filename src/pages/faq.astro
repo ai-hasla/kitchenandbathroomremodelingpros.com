@@ -1,0 +1,315 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [{ label: 'FAQ', href: '/faq/' }];
+
+const faqCategories = [
+  {
+    name: 'Kitchen Remodeling',
+    id: 'kitchen',
+    faqs: [
+      {
+        q: 'How much does a kitchen remodel cost in Seattle?',
+        a: 'Kitchen remodel costs in Seattle typically range from $25,000 to $75,000 for a mid-range renovation and $75,000 to $150,000+ for a high-end remodel. Factors that influence cost include kitchen size, cabinet quality, countertop materials, appliance upgrades, and whether you are changing the layout. Our team provides detailed, transparent estimates so you know exactly what to expect before work begins.',
+      },
+      {
+        q: 'How long does a kitchen remodel take in Seattle?',
+        a: 'A typical kitchen remodel in Seattle takes 6 to 12 weeks from demolition to completion, depending on the scope. A cosmetic refresh (new countertops, backsplash, and paint) can be done in 3 to 4 weeks, while a full gut renovation with layout changes may take 12 to 16 weeks. Permit timelines in Seattle can add 2 to 6 weeks to the schedule, so we recommend starting the permit process early.',
+      },
+      {
+        q: 'Do I need a permit for a kitchen remodel in Seattle?',
+        a: 'In most cases, yes. The City of Seattle requires permits for any work that involves structural changes, electrical modifications, plumbing alterations, or gas line work. Cosmetic updates like painting, replacing countertops, or swapping cabinet hardware generally do not require permits. Our team handles the entire permit process for you, including plan submissions to the Seattle Department of Construction & Inspections (SDCI).',
+      },
+      {
+        q: 'Can I stay in my home during a kitchen remodel?',
+        a: 'Yes, most homeowners stay in their home during a kitchen remodel. We recommend setting up a temporary kitchen area with a microwave, coffee maker, and portable cooktop in another room. We use dust barriers and protective coverings to minimize disruption to the rest of your home. For full gut renovations that involve utility shutoffs, you may want to plan a few days away.',
+      },
+      {
+        q: 'What is the best countertop material for a Seattle kitchen?',
+        a: 'Quartz is the most popular countertop choice among Seattle homeowners due to its durability, low maintenance, and wide range of colors and patterns. Granite remains a strong choice for natural stone lovers, while butcher block adds warmth to Pacific Northwest-style kitchens. For luxury projects, marble and quartzite offer stunning aesthetics. We help you compare options based on your lifestyle, budget, and design goals.',
+      },
+      {
+        q: 'Should I remodel my kitchen before selling my Seattle home?',
+        a: 'A kitchen remodel is one of the best investments you can make before selling in the Seattle market. According to industry data, a mid-range kitchen remodel in the Pacific Northwest recoups 70-80% of its cost at resale, while a minor kitchen remodel can recoup even more. Updated kitchens also help homes sell faster. We offer cost-effective renovation packages specifically designed to maximize resale value.',
+      },
+      {
+        q: 'What kitchen layout is best for my home?',
+        a: 'The best layout depends on your space and how you use your kitchen. L-shaped layouts work well in open floor plans, U-shaped kitchens maximize counter space, and galley kitchens are efficient for smaller homes. Island layouts are popular in Seattle for adding prep space and casual seating. During your free consultation, we evaluate your space and recommend the layout that best fits your needs and lifestyle.',
+      },
+      {
+        q: 'Can you help me design an open-concept kitchen?',
+        a: 'Absolutely. Open-concept kitchen remodels are one of our specialties. We handle everything from structural engineering assessments (to determine if walls are load-bearing) to permit applications with the City of Seattle. We install proper support beams, update electrical and plumbing as needed, and create a seamless flow between your kitchen and living areas. Costs for wall removal typically range from $3,000 to $10,000 depending on structural requirements.',
+      },
+      {
+        q: 'What cabinet styles are trending in Seattle in 2026?',
+        a: 'Seattle homeowners are favoring shaker-style cabinets with a modern twist, flat-panel cabinets in natural wood tones, and two-tone designs that pair white uppers with darker lower cabinets. Matte black and deep navy finishes are popular accent colors. Open shelving mixed with closed storage is also trending. We work with multiple cabinet manufacturers to offer options at every price point.',
+      },
+      {
+        q: 'Do you offer financing for kitchen remodels?',
+        a: 'Yes, we work with financing partners to offer flexible payment options for your kitchen remodel. Options include home equity loans, personal loans, and contractor financing with competitive rates. We can discuss financing during your free consultation to find a plan that fits your budget. Many Seattle homeowners find that financing allows them to get the kitchen they truly want rather than compromising on materials or features.',
+      },
+    ],
+  },
+  {
+    name: 'Bathroom Remodeling',
+    id: 'bathroom',
+    faqs: [
+      {
+        q: 'How much does a bathroom remodel cost in Seattle?',
+        a: 'Bathroom remodel costs in Seattle range from $15,000 to $35,000 for a standard bathroom and $35,000 to $75,000+ for a master bathroom renovation. A basic refresh with new fixtures, tile, and vanity starts around $10,000 to $15,000. Factors that affect cost include bathroom size, tile selection, fixture quality, and whether plumbing needs to be relocated. We provide free, detailed estimates with no hidden fees.',
+      },
+      {
+        q: 'How long does a bathroom remodel take?',
+        a: 'A standard bathroom remodel in Seattle takes 3 to 6 weeks. A simple refresh (new vanity, toilet, and tile) can be completed in 2 to 3 weeks, while a full master bathroom renovation with layout changes may take 6 to 8 weeks. We provide a detailed timeline before starting and keep you updated throughout the project. Seattle permit processing can add 2 to 4 weeks, which we factor into our planning.',
+      },
+      {
+        q: 'Can you convert my bathtub to a walk-in shower?',
+        a: 'Yes, tub-to-shower conversions are one of our most requested services. We can create a spacious walk-in shower with frameless glass, built-in niches, and premium tile work. Curbless (zero-entry) showers are especially popular for their clean look and accessibility benefits. A typical tub-to-shower conversion in Seattle costs $8,000 to $20,000 depending on size and finishes. We handle all plumbing modifications and waterproofing.',
+      },
+      {
+        q: 'What tile trends are popular for Seattle bathrooms in 2026?',
+        a: 'Large-format tiles (24x48 and larger) are dominating Seattle bathroom designs for their seamless, modern look and fewer grout lines. Natural stone looks, terrazzo, and handmade zellige tiles are also popular. Patterned cement tiles are trending for floor accents. Warm neutrals, soft greens, and earthy tones reflect the Pacific Northwest aesthetic. Our design team can help you choose tiles that match your vision and budget.',
+      },
+      {
+        q: 'Do you do aging-in-place bathroom modifications?',
+        a: 'Yes, we specialize in aging-in-place bathroom remodels that combine safety with beautiful design. We install grab bars, curbless showers, comfort-height toilets, non-slip flooring, wider doorways, and accessible vanities. Our designs follow ADA guidelines while looking stylish — no institutional feel. Many Seattle homeowners invest in universal design features that benefit everyone in the household, not just those with mobility concerns.',
+      },
+      {
+        q: 'How do you handle waterproofing in a bathroom remodel?',
+        a: 'Waterproofing is critical in our damp Pacific Northwest climate. We use industry-leading waterproofing systems including Schluter KERDI membrane and RedGard liquid membrane on all shower walls and floors. We ensure proper slope to the drain, use moisture-resistant backer board (never standard drywall in wet areas), and seal all penetrations. Our waterproofing methods meet or exceed building code requirements and come with manufacturer warranties.',
+      },
+      {
+        q: 'Can you add a bathroom to my Seattle home?',
+        a: 'Yes, we handle full bathroom additions, including basement bathrooms, attic conversions, and additions built onto existing structures. Adding a bathroom requires permits from the City of Seattle and involves plumbing rough-in, electrical work, ventilation, and finishing. A bathroom addition typically costs $25,000 to $60,000 depending on location and scope. We manage the entire process from design and permitting through construction.',
+      },
+      {
+        q: 'What type of vanity is best for a small bathroom?',
+        a: 'Floating (wall-mounted) vanities are ideal for small bathrooms because they create visual space by exposing the floor beneath. A 24-inch to 30-inch single-sink vanity works well in compact spaces. We also recommend pedestal sinks for powder rooms, recessed medicine cabinets for storage without taking up wall space, and corner vanities for awkward layouts. Our design team can maximize storage and style even in the tightest bathrooms.',
+      },
+      {
+        q: 'How do I choose between a single and double vanity?',
+        a: 'The choice depends on your bathroom size and how many people use it daily. A double vanity requires at least 60 inches of wall space (72 inches is ideal). If two people regularly use the bathroom at the same time, a double vanity significantly improves the morning routine. For bathrooms under 60 square feet, a single vanity with smart storage usually works better. We help you evaluate your space during your free consultation.',
+      },
+      {
+        q: 'Do you install heated floors in bathrooms?',
+        a: 'Yes, radiant heated floors are a popular upgrade in Seattle bathrooms, especially during our cool, damp months. We install electric radiant heating mats under tile flooring with a programmable thermostat. The cost to add heated floors typically ranges from $800 to $2,500 depending on bathroom size. Heated floors can be added during any bathroom remodel and are especially enjoyable under porcelain and natural stone tile.',
+      },
+    ],
+  },
+  {
+    name: 'Cost & Financing',
+    id: 'cost',
+    faqs: [
+      {
+        q: 'How do I get a cost estimate for my remodel?',
+        a: 'Schedule a free consultation by calling us at (206) 666-4370 or booking online. We will visit your home, discuss your goals, take measurements, and provide a detailed written estimate within a few business days. Our estimates itemize materials, labor, permits, and any other costs so there are no surprises. There is no obligation and no pressure.',
+      },
+      {
+        q: 'What payment methods do you accept?',
+        a: 'We accept checks, bank transfers (ACH), and major credit cards. For most projects, we structure payments in stages: a deposit to secure your spot on our schedule, progress payments at key milestones (such as rough-in completion), and a final payment upon project completion and your satisfaction. This structure protects both you and us throughout the project.',
+      },
+      {
+        q: 'Do you offer financing options?',
+        a: 'Yes, we partner with reputable financing companies to offer options including personal loans with fixed rates, home equity lines of credit (HELOC) referrals, and contractor financing with terms up to 60 months. We can discuss financing during your consultation to find an option that fits your budget. Many Seattle homeowners use financing to invest in higher-quality materials and achieve the result they truly want.',
+      },
+      {
+        q: 'How can I reduce the cost of my remodel without sacrificing quality?',
+        a: 'There are several strategies we recommend: keep the existing layout to avoid plumbing and electrical relocation costs, choose mid-range materials that offer great value (like quartz over marble), reface cabinets instead of replacing them, and prioritize spending on items you touch and use daily (faucets, cabinet hardware). During your consultation, we can identify smart ways to maximize your budget without cutting corners on craftsmanship.',
+      },
+      {
+        q: 'Are there hidden costs in a remodel I should watch out for?',
+        a: 'Reputable contractors like us include all known costs in the initial estimate. However, remodeling older Seattle homes can sometimes reveal surprises behind walls — such as outdated wiring, water damage, or asbestos-containing materials. We recommend budgeting a 10-15% contingency for unexpected issues. We communicate immediately if we discover anything and provide options before proceeding with additional work.',
+      },
+      {
+        q: 'Does a remodel increase my property taxes in Seattle?',
+        a: 'King County may reassess your property value after a permitted remodel, which could affect property taxes. However, the increase is typically modest relative to the value added to your home. Cosmetic updates (paint, countertops, fixtures) generally do not trigger reassessment. Major structural changes and additions are more likely to be reassessed. We recommend consulting with your accountant or the King County Assessor for specifics.',
+      },
+      {
+        q: 'What is the average ROI for a kitchen or bathroom remodel in Seattle?',
+        a: 'In the Seattle metro area, a mid-range kitchen remodel typically recoups 70-80% of its cost at resale, while a mid-range bathroom remodel recoups 60-70%. Minor kitchen remodels (cosmetic updates) often recoup over 80%. Beyond direct ROI, updated kitchens and bathrooms help homes sell faster in Seattle\'s competitive market. We can help you focus on upgrades that deliver the best return.',
+      },
+    ],
+  },
+  {
+    name: 'Permits & Process',
+    id: 'permits',
+    faqs: [
+      {
+        q: 'What remodeling work requires a permit in Seattle?',
+        a: 'The City of Seattle requires permits for structural modifications (removing or altering walls), electrical work (adding circuits, moving outlets), plumbing changes (relocating pipes, adding fixtures), mechanical work (new ventilation, HVAC changes), and any work that changes the use of a space. Cosmetic updates like painting, replacing fixtures in the same location, or installing new flooring generally do not require permits.',
+      },
+      {
+        q: 'How long does it take to get a remodeling permit in Seattle?',
+        a: 'Permit timelines with the Seattle Department of Construction & Inspections (SDCI) vary by project scope. Simple over-the-counter permits can be obtained in 1 to 2 weeks. Standard residential remodel permits typically take 4 to 8 weeks for review. Complex projects involving structural changes may take 8 to 12 weeks. We submit thorough, complete applications to minimize review times and handle all communication with SDCI on your behalf.',
+      },
+      {
+        q: 'What happens if I remodel without a permit?',
+        a: 'Unpermitted work can create serious problems. The City of Seattle can issue fines, require you to obtain a retroactive permit (which costs more), or even require you to undo the work. Unpermitted remodels can also cause issues when selling your home — buyers and lenders flag discrepancies between permit records and the actual property. We always obtain proper permits to protect your investment.',
+      },
+      {
+        q: 'What is your remodeling process from start to finish?',
+        a: 'Our process has five clear phases: (1) Free consultation — we visit your home, discuss your vision, and take measurements. (2) Design and estimate — we create a detailed plan and provide a transparent quote. (3) Permits and scheduling — we handle all permit applications and order materials. (4) Construction — our crews complete the work on schedule with daily cleanup. (5) Final walkthrough — we review everything with you and ensure your complete satisfaction before the final payment.',
+      },
+      {
+        q: 'Do you handle the permit process or do I need to?',
+        a: 'We handle the entire permit process for you. This includes preparing permit-ready plans, submitting applications to the Seattle Department of Construction & Inspections, responding to reviewer comments, scheduling required inspections, and obtaining final sign-off. Permit management is included in our project scope at no additional fee. You do not need to visit any city offices or manage paperwork.',
+      },
+      {
+        q: 'How many inspections are required during a remodel?',
+        a: 'The number of inspections depends on the scope of work. A typical kitchen or bathroom remodel in Seattle requires 3 to 5 inspections: rough-in plumbing, rough-in electrical, framing (if walls were modified), insulation, and a final inspection. We schedule all inspections and ensure the work is ready before each one. Passing inspections on the first attempt keeps your project on schedule.',
+      },
+    ],
+  },
+  {
+    name: 'Materials & Products',
+    id: 'materials',
+    faqs: [
+      {
+        q: 'Do you supply materials or do I need to buy them?',
+        a: 'We supply all materials for your project, including cabinets, countertops, tile, fixtures, and hardware. We have established relationships with top suppliers and manufacturers, which means you benefit from trade pricing and access to a wider selection. You are also welcome to purchase specific items yourself (such as a specialty faucet or light fixture) — we are happy to install customer-supplied products.',
+      },
+      {
+        q: 'What cabinet brands do you work with?',
+        a: 'We work with a range of cabinet manufacturers to fit every budget and style, from value-oriented brands like Hampton Bay and Diamond NOW to mid-range options like KraftMaid and Fabuwood, to premium lines like Shiloh Cabinetry and custom local cabinet shops. We can show you samples, help you compare options, and order the perfect cabinets for your kitchen or bathroom.',
+      },
+      {
+        q: 'Quartz vs granite: which countertop should I choose?',
+        a: 'Quartz is engineered, non-porous, and requires no sealing — making it low-maintenance and stain-resistant. Granite is natural stone with unique veining and character but requires annual sealing. Both are extremely durable. Quartz typically costs $50-$120 per square foot installed, while granite ranges from $40-$100. In the Seattle market, quartz has become more popular due to its consistent appearance and easier maintenance, but granite remains a beautiful choice for homeowners who prefer natural stone.',
+      },
+      {
+        q: 'What flooring do you recommend for kitchens and bathrooms?',
+        a: 'For kitchens, we recommend luxury vinyl plank (LVP) for its durability, water resistance, and realistic wood-look options — especially practical in the Pacific Northwest climate. Porcelain tile is another excellent choice for both kitchens and bathrooms. For bathrooms, porcelain and ceramic tile remain the gold standard due to their waterproof nature. We also install natural stone, engineered hardwood, and heated floor systems.',
+      },
+      {
+        q: 'Can I see samples before choosing materials?',
+        a: 'Absolutely. We bring material samples to your home so you can see how colors and textures look in your actual space and lighting. This is especially important in Seattle, where natural light varies significantly by season. We also accompany clients to showrooms when helpful. Seeing materials in context prevents costly surprises and ensures you love the final result.',
+      },
+      {
+        q: 'Do you use eco-friendly or sustainable materials?',
+        a: 'Yes, sustainability matters to Seattle homeowners and to us. We offer low-VOC paints and adhesives, FSC-certified wood products, recycled glass countertops, water-efficient fixtures (WaterSense certified), and Energy Star-rated appliances. We can also source locally manufactured products to reduce transportation impact. Let us know if sustainability is a priority and we will tailor our material recommendations accordingly.',
+      },
+    ],
+  },
+  {
+    name: 'About Our Company',
+    id: 'about',
+    faqs: [
+      {
+        q: 'Are you licensed and insured?',
+        a: 'Yes, Best Kitchen and Bathroom Remodeling is fully licensed, bonded, and insured in the State of Washington. We carry general liability insurance and workers\' compensation coverage to protect you and our team. We are happy to provide copies of our credentials upon request.',
+      },
+      {
+        q: 'What areas do you serve?',
+        a: 'We serve Seattle and the surrounding Puget Sound region, including Bellevue, Kirkland, Redmond, Bothell, Woodinville, Issaquah, Sammamish, Mercer Island, Renton, Kent, Federal Way, Burien, Shoreline, Edmonds, Lynnwood, and Everett. If you are not sure whether we serve your area, give us a call at (206) 666-4370 and we will let you know.',
+      },
+      {
+        q: 'How do I schedule a free consultation?',
+        a: 'You can schedule a free consultation three ways: call us directly at (206) 666-4370, book online through our website, or fill out our contact form and we will reach out within one business day. During the consultation, we visit your home, discuss your goals, take measurements, and answer all your questions. There is no cost and no obligation.',
+      },
+      {
+        q: 'Do you offer a warranty on your work?',
+        a: 'Yes, we stand behind every project with a comprehensive workmanship warranty. Our labor warranty covers any defects in installation and craftsmanship. Additionally, most materials and products we install come with their own manufacturer warranties, which we register on your behalf. If any issue arises after your remodel, we respond promptly to make it right.',
+      },
+      {
+        q: 'How long have you been in business?',
+        a: 'Best Kitchen and Bathroom Remodeling has been serving Seattle-area homeowners with expert kitchen and bathroom remodeling services. Our team brings decades of combined experience in residential remodeling, design, and construction management. We have completed hundreds of successful projects across the Puget Sound region and take pride in our reputation for quality craftsmanship and reliable service.',
+      },
+    ],
+  },
+];
+
+// Flatten all FAQs for schema
+const allFaqs = faqCategories.flatMap(cat => cat.faqs);
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="FAQ | Kitchen & Bathroom Remodeling Questions | Best KB Remodeling"
+  description="Answers to frequently asked questions about kitchen and bathroom remodeling in Seattle. Costs, timelines, permits, materials, and more from Best Kitchen and Bathroom Remodeling."
+  canonical={`${SITE.url}/faq/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Frequently Asked Questions</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Remodeling FAQ</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Everything you need to know about kitchen and bathroom remodeling in Seattle — costs, timelines, permits, materials, and our process.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Quick Nav -->
+  <section class="py-6 border-b border-border bg-white sticky top-16 z-30">
+    <Container>
+      <nav class="flex flex-wrap items-center gap-3 text-sm">
+        {faqCategories.map((cat) => (
+          <a href={`#${cat.id}`} class="font-medium text-muted hover:text-accent transition-colors">{cat.name}</a>
+        ))}
+      </nav>
+    </Container>
+  </section>
+
+  <!-- FAQ Sections -->
+  <section class="py-20">
+    <Container>
+      <div class="max-w-3xl mx-auto space-y-16">
+        {faqCategories.map((cat) => (
+          <div id={cat.id}>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">{cat.name}</h2>
+            <div class="space-y-3">
+              {cat.faqs.map((faq) => (
+                <details class="group bg-white border border-border rounded-xl overflow-hidden">
+                  <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-[family-name:var(--font-heading)] text-primary text-lg hover:text-accent transition-colors select-none list-none [&::-webkit-details-marker]:hidden">
+                    <span>{faq.q}</span>
+                    <svg class="w-5 h-5 flex-shrink-0 text-muted group-open:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </summary>
+                  <div class="px-5 pb-5 text-body-text leading-relaxed">
+                    {faq.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Still Have Questions?</h2>
+        <p class="text-body-text text-lg mb-4">
+          Call us at <a href="tel:+12066664370" class="text-accent font-semibold hover:underline">(206) 666-4370</a> or schedule a free consultation. We are happy to answer any questions about your project.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Book a Free Consultation</Button>
+          <Button href="/contact/" variant="outline" size="lg">Contact Us</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

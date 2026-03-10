@@ -12,26 +12,29 @@ const plans = [
     title: 'Same-As-Cash',
     term: '12 Months',
     apr: '0% APR',
-    detail: 'No interest if paid in full within 12 months. Perfect for smaller projects like cabinet refacing, countertop installation, or bathroom updates.',
+    detail: 'No interest if paid in full within 12 months. Perfect for smaller projects like cabinet refacing, countertop installation, or bathroom updates. You get the full benefit of financing flexibility without paying a penny in interest — as long as the balance is cleared within the promotional period.',
     minProject: '$5,000',
     monthlyExample: '$417/mo on $5,000',
+    bestFor: 'Countertops, cabinet refacing, single-fixture updates',
   },
   {
     title: 'Low Monthly Payment',
     term: '60 Months',
     apr: '6.99% APR',
-    detail: 'Spread your payments over 5 years for manageable monthly costs. Ideal for mid-range kitchen or bathroom remodels.',
+    detail: 'Spread your payments over 5 years for manageable monthly costs. Ideal for mid-range kitchen or bathroom remodels where you want to keep cash flow comfortable. Fixed monthly payments mean no surprises — budget with confidence from day one.',
     minProject: '$10,000',
     monthlyExample: '$198/mo on $10,000',
+    bestFor: 'Full bathroom remodels, kitchen updates, shower remodeling',
     popular: true,
   },
   {
     title: 'Extended Term',
     term: '120 Months',
     apr: '8.99% APR',
-    detail: 'Our longest term option for premium full-scale renovations. Keep monthly payments low while investing in your home.',
+    detail: 'Our longest term option for premium full-scale renovations. Keep monthly payments low while investing in your home. Perfect for comprehensive kitchen-and-bathroom combo projects or luxury upgrades with high-end materials and custom cabinetry.',
     minProject: '$25,000',
     monthlyExample: '$316/mo on $25,000',
+    bestFor: 'Full kitchen remodels, multi-room renovations, luxury upgrades',
   },
 ];
 
@@ -67,14 +70,97 @@ const benefits = [
     icon: 'check-circle',
   },
 ];
+
+const whyFinanceReasons = [
+  {
+    title: 'Preserve Your Savings',
+    description: 'Keep your emergency fund and savings intact. Financing lets you upgrade your home without depleting the cash reserves you may need for unexpected expenses.',
+  },
+  {
+    title: 'Act Now, Pay Over Time',
+    description: 'Material and labor costs rise every year. By financing today, you lock in current prices while spreading payments over months or years — saving money in the long run.',
+  },
+  {
+    title: 'Increase Your Home Equity',
+    description: 'A remodeled kitchen adds an average of $30,000-$60,000 in home value. A bathroom remodel can add $15,000-$30,000. Your monthly payments are building real equity.',
+  },
+  {
+    title: 'Enjoy Your Home Sooner',
+    description: 'Why wait years to save up when you can enjoy a beautiful new kitchen or bathroom now? Life is short — stop living with outdated spaces.',
+  },
+  {
+    title: 'Tax Benefits May Apply',
+    description: 'Home improvement loans may offer tax-deductible interest in certain cases. Consult your tax advisor to see if your remodel qualifies for deductions.',
+  },
+  {
+    title: 'Predictable Monthly Budget',
+    description: 'Fixed-rate financing means your payment stays the same every month. No surprises, no variable rates — just a consistent payment you can plan around.',
+  },
+];
+
+const calculatorExamples = [
+  { project: '$25,000', term60: '$495', term120: '$316' },
+  { project: '$50,000', term60: '$990', term120: '$632' },
+  { project: '$75,000', term60: '$1,485', term120: '$949' },
+];
+
+const faqs = [
+  {
+    question: 'Does applying for financing affect my credit score?',
+    answer: 'The initial pre-qualification uses a soft credit pull, which does not affect your score. A hard inquiry is only performed when you formally accept a financing offer.',
+  },
+  {
+    question: 'What credit score do I need to qualify for remodeling financing?',
+    answer: 'Our trusted lending partners work with a range of credit profiles. Generally, a score of 620 or above provides access to the best rates, but options may be available for lower scores as well.',
+  },
+  {
+    question: 'Can I combine financing with promotions or discounts?',
+    answer: 'Yes, financing can typically be combined with any current promotions or seasonal discounts we may be offering. Ask your project consultant for details during your estimate.',
+  },
+  {
+    question: 'What if my remodeling project costs change after approval?',
+    answer: 'If your project scope changes after approval, we can adjust the financing amount. Increases may require a new application, while decreases simply lower your payment.',
+  },
+  {
+    question: 'How quickly can I get approved for financing?',
+    answer: 'Most applicants receive a credit decision within minutes of submitting their application. Once approved, funds are typically available to begin your project right away.',
+  },
+  {
+    question: 'Are there any hidden fees with your financing plans?',
+    answer: 'No. We believe in full transparency. There are no hidden fees, no application fees, and no prepayment penalties. The rate and terms you are quoted are exactly what you pay.',
+  },
+  {
+    question: 'Can I finance both a kitchen and bathroom remodel together?',
+    answer: 'Absolutely. Many homeowners finance multi-room projects. Bundling kitchen and bathroom remodels often provides better value and a single, convenient monthly payment.',
+  },
+  {
+    question: 'What documents do I need to apply?',
+    answer: 'You will need a valid government-issued ID, proof of income (recent pay stubs or tax returns), and your Social Security number. The application can be completed online or during your in-home consultation.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title="Financing Options | Kitchen & Bathroom Remodeling Seattle"
   description="Affordable financing for kitchen and bathroom remodeling in Seattle. 0% APR options, low monthly payments, and quick approval. Make your dream remodel a reality."
   canonical={`${SITE.url}/financing/`}
+  ogImage="/images/og/og-financing.png"
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-primary pt-32 pb-16">
@@ -82,9 +168,17 @@ const benefits = [
       <div class="max-w-3xl" data-reveal>
         <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Affordable Options</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Financing Your Remodel</h1>
-        <p class="text-lg text-white/80 leading-relaxed">
-          Don't let budget concerns hold you back from the kitchen or bathroom of your dreams. We offer flexible financing options with competitive rates and terms to fit your needs.
+        <p class="text-lg text-white/80 leading-relaxed mb-8">
+          Don't let budget concerns hold you back from the kitchen or bathroom of your dreams. Best Kitchen and Bathroom Remodeling offers flexible financing options with competitive rates and terms to fit your needs — from 0% APR same-as-cash plans to extended terms with low monthly payments.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
+            Get a Free Estimate
+          </Button>
+          <Button href="tel:2066664370" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">
+            Call (206) 666-4370
+          </Button>
+        </div>
       </div>
     </Container>
   </section>
@@ -94,7 +188,7 @@ const benefits = [
     <Container>
       <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
         <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Payment Plans</h2>
-        <p class="text-muted text-lg">Choose the financing option that best fits your project and budget. All plans are subject to credit approval.</p>
+        <p class="text-muted text-lg">Choose the financing option that best fits your project and budget. All plans are subject to credit approval through our trusted lending partners.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8" data-reveal-stagger>
         {plans.map((plan) => (
@@ -105,8 +199,9 @@ const benefits = [
             <h3 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-1">{plan.title}</h3>
             <p class="text-sm text-muted mb-4">{plan.term}</p>
             <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-accent mb-4">{plan.apr}</p>
-            <p class="text-body-text text-sm mb-6 leading-relaxed">{plan.detail}</p>
-            <div class="border-t border-border pt-4 space-y-2">
+            <p class="text-body-text text-sm mb-4 leading-relaxed">{plan.detail}</p>
+            <p class="text-xs text-muted mb-6"><strong>Best for:</strong> {plan.bestFor}</p>
+            <div class="border-t border-border pt-4 space-y-2 mb-6">
               <div class="flex justify-between text-sm">
                 <span class="text-muted">Min. project</span>
                 <span class="font-medium text-primary">{plan.minProject}</span>
@@ -116,6 +211,14 @@ const benefits = [
                 <span class="font-medium text-primary">{plan.monthlyExample}</span>
               </div>
             </div>
+            <a
+              href="https://nexfield.pro/crm/book?u=137"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full text-center bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-sm"
+            >
+              Get Started
+            </a>
           </div>
         ))}
       </div>
@@ -123,8 +226,113 @@ const benefits = [
     </Container>
   </section>
 
-  <!-- Benefits -->
+  <!-- Why Finance Your Remodel? -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Why Finance Your Remodel?</h2>
+        <p class="text-white/80 text-lg">Smart homeowners know that financing a remodel is often a better financial decision than paying cash. Here's why.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal-stagger>
+        {whyFinanceReasons.map((reason) => (
+          <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/10">
+            <h3 class="text-lg font-[family-name:var(--font-heading)] text-white mb-3">{reason.title}</h3>
+            <p class="text-white/70 text-sm leading-relaxed">{reason.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12" data-reveal>
+        <a
+          href="https://nexfield.pro/crm/book?u=137"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-lg font-semibold hover:bg-accent/90 transition-colors"
+        >
+          Schedule Your Free Consultation
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Financing Calculator -->
+  <section class="py-20">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Monthly Payment Calculator</h2>
+        <p class="text-muted text-lg">See estimated monthly payments for common project sizes. These examples use our 6.99% APR (60-month) and 8.99% APR (120-month) plans.</p>
+      </div>
+      <div class="max-w-3xl mx-auto" data-reveal>
+        <div class="bg-white rounded-2xl border-2 border-border overflow-hidden">
+          <div class="grid grid-cols-3 bg-primary text-white text-center font-semibold text-sm">
+            <div class="p-4">Project Cost</div>
+            <div class="p-4">60-Month Plan<br /><span class="font-normal text-white/70 text-xs">6.99% APR</span></div>
+            <div class="p-4">120-Month Plan<br /><span class="font-normal text-white/70 text-xs">8.99% APR</span></div>
+          </div>
+          {calculatorExamples.map((row, i) => (
+            <div class={`grid grid-cols-3 text-center ${i % 2 === 0 ? 'bg-light' : 'bg-white'}`}>
+              <div class="p-5 font-bold text-primary text-lg">{row.project}</div>
+              <div class="p-5">
+                <span class="text-xl font-bold text-accent">{row.term60}</span>
+                <span class="text-muted text-sm">/mo</span>
+              </div>
+              <div class="p-5">
+                <span class="text-xl font-bold text-accent">{row.term120}</span>
+                <span class="text-muted text-sm">/mo</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-center text-xs text-muted mt-4">* Payment estimates are for illustration purposes only. Actual payments may vary based on credit approval, loan amount, and terms. Contact us for a personalized quote.</p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Trusted Lending Partners -->
   <section class="py-20 bg-light">
+    <Container>
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-6">Our Trusted Lending Partners</h2>
+        <p class="text-muted text-lg mb-8 leading-relaxed">
+          Best Kitchen and Bathroom Remodeling works with a network of trusted, nationally recognized lending partners to bring you the best financing options available. Our partners are established financial institutions that specialize in home improvement lending, offering:
+        </p>
+        <div class="grid sm:grid-cols-2 gap-6 text-left mb-10">
+          <div class="bg-white p-6 rounded-xl border border-border">
+            <h3 class="font-semibold text-primary mb-2">Secure Applications</h3>
+            <p class="text-body-text text-sm">All applications are processed through encrypted, bank-level secure platforms. Your personal information is always protected.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border">
+            <h3 class="font-semibold text-primary mb-2">Regulated & Licensed</h3>
+            <p class="text-body-text text-sm">Our lending partners are fully licensed and regulated by state and federal agencies, ensuring compliance with all consumer protection laws.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border">
+            <h3 class="font-semibold text-primary mb-2">Competitive Rate Shopping</h3>
+            <p class="text-body-text text-sm">We work with multiple lenders to find the best rate for your credit profile — so you get the most favorable terms possible.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border">
+            <h3 class="font-semibold text-primary mb-2">Dedicated Support</h3>
+            <p class="text-body-text text-sm">Have questions about your loan? Our lending partners provide dedicated customer service representatives to help you throughout the life of your loan.</p>
+          </div>
+        </div>
+        <a
+          href="https://nexfield.pro/crm/book?u=137"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-accent font-semibold hover:underline"
+        >
+          Schedule a consultation to discuss financing options
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20">
     <Container>
       <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
         <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Benefits of Financing</h2>
@@ -145,7 +353,7 @@ const benefits = [
   </section>
 
   <!-- How It Works -->
-  <section class="py-20">
+  <section class="py-20 bg-light">
     <Container>
       <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
         <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">How to Apply</h2>
@@ -177,27 +385,17 @@ const benefits = [
   </section>
 
   <!-- FAQ -->
-  <section class="py-20 bg-light">
+  <section class="py-20">
     <Container>
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-[family-name:var(--font-heading)] text-primary mb-10 text-center" data-reveal>Financing FAQs</h2>
         <div class="space-y-6" data-reveal-stagger>
-          <div class="bg-white border border-border rounded-xl p-6">
-            <h3 class="font-semibold text-primary mb-2">Does applying affect my credit score?</h3>
-            <p class="text-body-text">The initial pre-qualification uses a soft credit pull, which does not affect your score. A hard inquiry is only performed when you formally accept a financing offer.</p>
-          </div>
-          <div class="bg-white border border-border rounded-xl p-6">
-            <h3 class="font-semibold text-primary mb-2">What credit score do I need?</h3>
-            <p class="text-body-text">Our lending partners work with a range of credit profiles. Generally, a score of 620 or above provides access to the best rates, but options may be available for lower scores as well.</p>
-          </div>
-          <div class="bg-white border border-border rounded-xl p-6">
-            <h3 class="font-semibold text-primary mb-2">Can I combine financing with other promotions?</h3>
-            <p class="text-body-text">Yes, financing can typically be combined with any current promotions or seasonal discounts we may be offering. Ask your project consultant for details during your estimate.</p>
-          </div>
-          <div class="bg-white border border-border rounded-xl p-6">
-            <h3 class="font-semibold text-primary mb-2">What if my project costs change?</h3>
-            <p class="text-body-text">If your project scope changes after approval, we can adjust the financing amount. Increases may require a new application, while decreases simply lower your payment.</p>
-          </div>
+          {faqs.map((faq) => (
+            <div class="bg-white border border-border rounded-xl p-6">
+              <h3 class="font-semibold text-primary mb-2">{faq.question}</h3>
+              <p class="text-body-text">{faq.answer}</p>
+            </div>
+          ))}
         </div>
       </div>
     </Container>
@@ -208,12 +406,15 @@ const benefits = [
     <Container>
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Get Started?</h2>
-        <p class="text-white/80 text-lg mb-8">
-          Schedule your free consultation and we'll discuss financing options that work for your budget. There's no obligation and no pressure.
+        <p class="text-white/80 text-lg mb-4">
+          Schedule your free consultation with Best Kitchen and Bathroom Remodeling and we'll discuss financing options that work for your budget. There's no obligation and no pressure.
+        </p>
+        <p class="text-white/60 text-sm mb-8">
+          Call us at <a href="tel:2066664370" class="text-accent hover:underline font-semibold">(206) 666-4370</a> or book online below.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
-          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href="tel:2066664370" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call (206) 666-4370</Button>
         </div>
       </div>
     </Container>

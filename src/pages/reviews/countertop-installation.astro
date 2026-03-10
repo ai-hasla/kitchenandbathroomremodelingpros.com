@@ -1,0 +1,182 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Countertop Installation', href: '/reviews/countertop-installation/' },
+];
+
+const reviews = [
+  {
+    name: 'Lisa G.',
+    rating: 5,
+    neighborhood: 'Wallingford, Seattle',
+    date: 'November 2025',
+    projectType: 'Granite Countertop Installation',
+    text: 'New Giallo Ornamental granite countertops installed in just two days. The templating appointment was thorough — the technician measured everything digitally and the fit was perfect. Seams are practically invisible. The crew even moved our stove and dishwasher without scratching anything. Kitchen looks incredible now.',
+  },
+  {
+    name: 'Brian & Jen W.',
+    rating: 5,
+    neighborhood: 'Fremont, Seattle',
+    date: 'September 2025',
+    projectType: 'Quartz Countertop Installation',
+    text: 'Went with Caesarstone Calacatta Nuvo for our kitchen counters and island. The waterfall edge on the island is stunning — Mike helped us pick the exact slab so the veining flows perfectly from top to side. Install day was smooth, about 5 hours total. We\'ve had the counters for 3 months now and they still look brand new. Zero staining.',
+  },
+  {
+    name: 'Helen T.',
+    rating: 4,
+    neighborhood: 'Magnolia, Seattle',
+    date: 'July 2025',
+    projectType: 'Marble Countertop Installation',
+    text: 'Beautiful Calacatta marble countertops. The crew was skilled and careful during installation. Only reason for 4 stars is I wish they had been more upfront about marble maintenance requirements — I had to do my own research on sealing. But the craftsmanship itself is flawless and the counters are gorgeous.',
+  },
+  {
+    name: 'Derek M.',
+    rating: 5,
+    neighborhood: 'Ravenna, Seattle',
+    date: 'May 2025',
+    projectType: 'Quartz Countertop Replacement',
+    text: 'Ripped out old laminate and installed Silestone quartz. Night and day difference. The undermount sink cutout was perfect and the backsplash piece they fabricated fits like a glove. Fast, clean, professional. These guys know countertops.',
+  },
+  {
+    name: 'Samantha & Rick L.',
+    rating: 5,
+    neighborhood: 'Green Lake, Seattle',
+    date: 'March 2025',
+    projectType: 'Countertop & Backsplash',
+    text: 'Had quartz countertops and a matching quartz backsplash installed. The crew was in and out in one day — we couldn\'t believe how fast it went. They were careful with our existing cabinets and the plumber reconnected the sink and disposal same day. We\'re cooking on our new counters that same evening. Highly recommend.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE.name,
+  url: SITE.url,
+  telephone: SITE.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: averageRating,
+    reviewCount: reviews.length,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.name },
+    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+    reviewBody: r.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="Countertop Installation Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} countertop installation reviews from Seattle homeowners. ${averageRating}-star average rating. Quartz, granite, and marble countertop reviews from real clients.`}
+  canonical={`${SITE.url}/reviews/countertop-installation/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Countertop Installation</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Countertop Installation Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Quartz, granite, marble — read what Seattle homeowners say about their new countertops. From templating to final installation, see how our process works.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Rating Bar -->
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} countertop installation reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Reviews Grid -->
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Other Review Pages -->
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">More Reviews by Service</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/reviews/kitchen-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Remodeling Reviews</a>
+        <a href="/reviews/bathroom-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Bathroom Remodeling Reviews</a>
+        <a href="/reviews/cabinet-refacing/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Cabinet Refacing Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready for New Countertops?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Get a free estimate on quartz, granite, or marble countertop installation. We handle everything from templating to final polish.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

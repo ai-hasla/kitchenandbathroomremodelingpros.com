@@ -1,0 +1,83 @@
+<div
+  id="exit-intent-overlay"
+  class="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  <div
+    id="exit-intent-modal"
+    class="relative bg-white rounded-2xl shadow-2xl max-w-md w-[90%] p-8 text-center scale-95 transition-transform duration-300"
+  >
+    <button
+      id="exit-intent-close"
+      class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl leading-none cursor-pointer"
+      aria-label="Close popup"
+    >&times;</button>
+
+    <div class="text-4xl mb-4">🎉</div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">Wait! Get 10% Off Your Free Estimate</h2>
+    <p class="text-gray-600 mb-6">
+      Schedule your free in-home consultation today and receive a 10% discount on your remodeling project.
+    </p>
+
+    <a
+      href="https://nexfield.pro/crm/book?u=137"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 mb-3"
+    >
+      Claim My 10% Discount
+    </a>
+
+    <p class="text-gray-500 text-sm mb-4">
+      Or call us: <a href="tel:+12066664370" class="text-green-600 font-semibold hover:underline">(206) 666-4370</a>
+    </p>
+
+    <button
+      id="exit-intent-no-thanks"
+      class="text-gray-400 hover:text-gray-600 text-xs underline cursor-pointer bg-transparent border-none"
+    >No thanks</button>
+
+    <p class="text-xs text-gray-400 mt-4">4.9★ rated · 500+ projects · 5-year warranty</p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    if (window.innerWidth <= 768) return;
+    if (sessionStorage.getItem("exitIntentShown")) return;
+
+    const overlay = document.getElementById("exit-intent-overlay");
+    const modal = document.getElementById("exit-intent-modal");
+    if (!overlay || !modal) return;
+
+    function show() {
+      sessionStorage.setItem("exitIntentShown", "1");
+      overlay.classList.remove("opacity-0", "pointer-events-none");
+      overlay.classList.add("opacity-100");
+      modal.classList.remove("scale-95");
+      modal.classList.add("scale-100");
+      document.removeEventListener("mouseleave", onMouseLeave);
+    }
+
+    function close() {
+      overlay.classList.add("opacity-0", "pointer-events-none");
+      overlay.classList.remove("opacity-100");
+      modal.classList.add("scale-95");
+      modal.classList.remove("scale-100");
+    }
+
+    function onMouseLeave(e: MouseEvent) {
+      if (e.clientY <= 0) show();
+    }
+
+    document.addEventListener("mouseleave", onMouseLeave);
+
+    document.getElementById("exit-intent-close")?.addEventListener("click", close);
+    document.getElementById("exit-intent-no-thanks")?.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") close();
+    });
+  })();
+</script>

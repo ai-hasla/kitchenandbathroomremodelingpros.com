@@ -7,102 +7,53 @@ import { SITE } from '@/lib/constants';
 
 const breadcrumbs = [{ label: 'Gallery', href: '/gallery/' }];
 
-const projects = [
-  {
-    title: 'Modern Craftsman Kitchen Remodel',
-    slug: 'modern-craftsman-kitchen-ballard',
-    location: 'Ballard, Seattle',
-    type: 'kitchen',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
-    description: 'Complete kitchen transformation featuring custom white shaker cabinets, quartz countertops, and a stunning herringbone backsplash.',
-  },
-  {
-    title: 'Luxury Spa Bathroom',
-    slug: 'luxury-spa-bathroom-bellevue',
-    location: 'Bellevue',
-    type: 'bathroom',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80',
-    description: 'Master bathroom renovation with frameless glass walk-in shower, freestanding soaking tub, and heated porcelain tile floors.',
-  },
-  {
-    title: 'Open Concept Kitchen Renovation',
-    slug: 'open-concept-kitchen-kirkland',
-    location: 'Kirkland',
-    type: 'kitchen',
-    image: 'https://images.unsplash.com/photo-1556908153-58b56f5f6a82?auto=format&fit=crop&w=800&q=80',
-    description: 'Wall removal and full kitchen remodel with waterfall quartz island, two-tone cabinetry, and pendant lighting.',
-  },
-  {
-    title: 'Accessible Bathroom Renovation',
-    slug: 'accessible-bathroom-bothell',
-    location: 'Bothell',
-    type: 'bathroom',
-    image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=80',
-    description: 'Aging-in-place bathroom with zero-threshold shower, grab bars, comfort-height fixtures, and elegant non-slip tile.',
-  },
-  {
-    title: 'Farmhouse Kitchen Makeover',
-    slug: 'farmhouse-kitchen-sammamish',
-    location: 'Sammamish',
-    type: 'kitchen',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-    description: 'Farmhouse-inspired kitchen with apron-front sink, butcher block island, open shelving, and shiplap accent wall.',
-  },
-  {
-    title: 'Contemporary Guest Bathroom',
-    slug: 'contemporary-guest-bathroom-redmond',
-    location: 'Redmond',
-    type: 'bathroom',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-    description: 'Sleek guest bathroom with floating vanity, large-format wall tile, and modern matte black fixtures.',
-  },
-  {
-    title: 'Chef\'s Kitchen with Custom Cabinetry',
-    slug: 'chefs-kitchen-mercer-island',
-    location: 'Mercer Island',
-    type: 'kitchen',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
-    description: 'Premium kitchen remodel featuring custom walnut cabinetry, professional-grade appliances, and marble countertops.',
-  },
-  {
-    title: 'Master Bath with Walk-In Shower',
-    slug: 'master-bath-walk-in-shower-renton',
-    location: 'Renton',
-    type: 'bathroom',
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80',
-    description: 'Tub-to-shower conversion with linear drain, rainfall showerhead, built-in niche, and floor-to-ceiling tile.',
-  },
-  {
-    title: 'Transitional Kitchen Update',
-    slug: 'transitional-kitchen-shoreline',
-    location: 'Shoreline',
-    type: 'kitchen',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80',
-    description: 'Mid-range kitchen update with cabinet refacing, granite countertops, new backsplash, and under-cabinet lighting.',
-  },
-  {
-    title: 'Condo Bathroom Renovation',
-    slug: 'condo-bathroom-capitol-hill',
-    location: 'Capitol Hill, Seattle',
-    type: 'bathroom',
-    image: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=800&q=80',
-    description: 'Complete condo bathroom gut-and-rebuild with hex tile floor, subway tile shower, and custom vanity.',
-  },
+const galleryImages = [
+  { src: '/images/gallery-blue-kitchen.jpg', alt: 'Navy blue and white kitchen with brass hardware — Seattle kitchen remodel', title: 'Navy Blue Kitchen', location: 'Capitol Hill, Seattle', category: 'Kitchen' },
+  { src: '/images/gallery-master-bath.jpg', alt: 'Master bathroom with freestanding tub and marble shower — Bellevue bathroom remodel', title: 'Luxury Spa Bathroom', location: 'Bellevue', category: 'Bathroom' },
+  { src: '/images/gallery-modern-kitchen.jpg', alt: 'Modern kitchen with brick wall and concrete floors — urban condo remodel', title: 'Urban Modern Kitchen', location: 'South Lake Union, Seattle', category: 'Kitchen' },
+  { src: '/images/gallery-classic-bath.jpg', alt: 'Classic bathroom with beadboard wainscoting and hex tile floor', title: 'Classic Craftsman Bath', location: 'Ballard, Seattle', category: 'Bathroom' },
+  { src: '/images/gallery-walnut-kitchen.jpg', alt: 'Walnut and dark countertop contemporary kitchen with floor-to-ceiling windows', title: "Chef's Kitchen", location: 'Mercer Island', category: 'Kitchen' },
+  { src: '/images/gallery-luxury-shower.jpg', alt: 'Calacatta marble walk-in shower with LED niche lighting', title: 'Marble Walk-In Shower', location: 'Kirkland', category: 'Bathroom' },
+  { src: '/images/gallery-white-kitchen.jpg', alt: 'All-white kitchen with herringbone marble floor and crystal chandeliers', title: 'Elegant White Kitchen', location: 'Sammamish', category: 'Kitchen' },
+  { src: '/images/gallery-green-kitchen.jpg', alt: 'Green cabinetry with butcher block island and terracotta tile floor', title: 'Farmhouse Kitchen', location: 'Woodinville', category: 'Kitchen' },
+  { src: '/images/gallery-grey-bath.jpg', alt: 'Grey bathroom with subway tile walk-in shower and framed mirror', title: 'Grey & White Bath', location: 'Renton', category: 'Bathroom' },
+  { src: '/images/gallery-cozy-kitchen.jpg', alt: 'Warm kitchen with rattan pendant lights and rustic wood island', title: 'Cozy Farmhouse Kitchen', location: 'Bothell', category: 'Kitchen' },
+  { src: '/images/gallery-bath-detail.jpg', alt: 'Bathroom vanity detail with spa towels, candle, and marble wall', title: 'Spa Bath Details', location: 'Redmond', category: 'Bathroom' },
+  { src: '/images/service-aging-in-place.jpg', alt: 'Accessible bathroom with floating vanity and glass shower enclosure', title: 'Accessible Bath Remodel', location: 'Edmonds', category: 'Bathroom' },
 ];
 
-const filters = [
-  { label: 'All Projects', value: 'all' },
-  { label: 'Kitchen', value: 'kitchen' },
-  { label: 'Bathroom', value: 'bathroom' },
+const beforeAfterProjects = [
+  { before: '/images/before-kitchen-1.jpg', after: '/images/after-kitchen-1.jpg', title: 'Complete Kitchen Transformation', location: 'Queen Anne, Seattle', desc: 'Dated oak cabinets and granite transformed into a stunning white and navy blue kitchen with marble countertops.' },
+  { before: '/images/before-kitchen-2.jpg', after: '/images/after-kitchen-2.jpg', title: 'Open Concept Kitchen', location: 'Wallingford, Seattle', desc: 'Dark, dated kitchen opened up with new island, marble backsplash, and teal cabinetry.' },
+  { before: '/images/before-kitchen-3.jpg', after: '/images/after-kitchen-3.jpg', title: 'Modern Family Kitchen', location: 'Kirkland', desc: 'Cluttered kitchen with mixed materials remodeled into a clean, modern space with patterned tile backsplash.' },
+  { before: '/images/before-kitchen-4.jpg', after: '/images/after-kitchen-4.jpg', title: 'Blue Island Kitchen Remodel', location: 'Sammamish', desc: 'Cramped family kitchen expanded with large blue island, herringbone backsplash, and pendant lights.' },
+  { before: '/images/before-bathroom-1.jpg', after: '/images/after-bathroom-1.jpg', title: 'Master Bathroom Renovation', location: 'Bellevue', desc: 'Outdated master bath with freestanding tub transformed into a luxurious marble spa with glass shower.' },
+  { before: '/images/before-bathroom-2.jpg', after: '/images/after-bathroom-2.jpg', title: 'Small Bathroom Makeover', location: 'Capitol Hill, Seattle', desc: 'Dated pink tile bathroom completely modernized with sleek grey tones and modern lighting.' },
+  { before: '/images/before-bathroom-3.jpg', after: '/images/after-bathroom-3.jpg', title: 'Attic Bathroom Conversion', location: 'Ballard, Seattle', desc: 'Basic powder room transformed into a stunning shower with skylight, marble bench, and brass hardware.' },
+  { before: '/images/before-bathroom-4.jpg', after: '/images/after-bathroom-4.jpg', title: 'Double Vanity Renovation', location: 'Redmond', desc: 'Outdated corner vanity replaced with modern walnut floating double vanity and porcelain tile.' },
 ];
+
+const gallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Kitchen & Bathroom Remodeling Gallery — Seattle Projects',
+  description: 'Portfolio of kitchen and bathroom remodeling projects completed across the greater Seattle area by Best KB Remodeling.',
+  url: `${SITE.url}/gallery/`,
+  publisher: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: SITE.name,
+  },
+};
 ---
 
 <BaseLayout
-  title="Project Gallery | Kitchen & Bathroom Remodeling Seattle"
-  description="Browse our kitchen and bathroom remodeling gallery. See real before-and-after photos from projects in Seattle, Bellevue, Kirkland, and beyond."
+  title="Kitchen & Bathroom Remodeling Gallery | Seattle Projects"
+  description="Browse our portfolio of kitchen and bathroom remodeling projects in Seattle, Bellevue, Kirkland, and beyond. See our craftsmanship across kitchens, bathrooms, cabinetry, countertops, and more."
   canonical={`${SITE.url}/gallery/`}
+  ogImage="/images/og/og-gallery.png"
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(gallerySchema)} />
 
   <!-- Hero -->
   <section class="bg-primary pt-32 pb-16">
@@ -111,55 +62,64 @@ const filters = [
         <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Our Work</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Project Gallery</h1>
         <p class="text-lg text-white/80 leading-relaxed">
-          Explore our portfolio of completed kitchen and bathroom remodeling projects across the greater Seattle area. Each project showcases our commitment to quality craftsmanship.
+          Explore our portfolio of completed kitchen and bathroom remodeling projects across the greater Seattle area. From Ballard Craftsman kitchens to Bellevue spa bathrooms, each project showcases our commitment to quality craftsmanship.
         </p>
       </div>
     </Container>
   </section>
 
-  <!-- Filter + Gallery Grid -->
+  <!-- Project Gallery Grid -->
   <section class="py-20">
     <Container>
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap gap-3 mb-12 justify-center" data-reveal>
-        {filters.map((filter) => (
-          <button
-            class="gallery-filter px-6 py-2.5 rounded-full border-2 border-border font-medium text-sm transition-all hover:border-accent hover:text-accent data-[active]:bg-accent data-[active]:text-white data-[active]:border-accent"
-            data-filter={filter.value}
-            data-active={filter.value === 'all' ? '' : undefined}
-          >
-            {filter.label}
-          </button>
-        ))}
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Our Completed Projects</h2>
+        <p class="text-muted text-lg">Browse kitchen and bathroom remodels across Seattle, Bellevue, Kirkland, and beyond.</p>
       </div>
 
-      <!-- Project Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid" data-reveal-stagger>
-        {projects.map((project) => (
-          <a
-            href="/gallery/"
-            class="gallery-item group block rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
-            data-type={project.type}
-          >
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                width="800"
-                height="600"
-                loading="lazy"
-              />
-              <span class={`absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${project.type === 'kitchen' ? 'bg-accent text-white' : 'bg-primary text-white'}`}>
-                {project.type}
-              </span>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
+        {galleryImages.map((img) => (
+          <div class="rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 group">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src={img.src} alt={img.alt} width="1200" height="800" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
-            <div class="p-6">
-              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-1 group-hover:text-accent transition-colors">{project.title}</h3>
-              <p class="text-sm text-muted mb-3">{project.location}</p>
-              <p class="text-body-text text-sm leading-relaxed">{project.description}</p>
+            <div class="p-5">
+              <span class="text-xs font-semibold text-accent uppercase tracking-wider">{img.category}</span>
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mt-1">{img.title}</h3>
+              <p class="text-sm text-muted">{img.location}</p>
             </div>
-          </a>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Before & After Section -->
+  <section class="py-20 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-4">Before & After Transformations</h2>
+        <p class="text-muted text-lg">See the dramatic difference our craftsmanship makes. Real projects, real results.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {beforeAfterProjects.map((project) => (
+          <div class="rounded-2xl overflow-hidden border border-border bg-white">
+            <div class="grid grid-cols-2">
+              <div class="relative">
+                <img src={project.before} alt={`Before: ${project.title}`} width="600" height="400" loading="lazy" class="w-full h-48 sm:h-56 object-cover" />
+                <span class="absolute top-3 left-3 bg-dark-text/80 text-white text-xs font-semibold px-2.5 py-1 rounded-full">Before</span>
+              </div>
+              <div class="relative">
+                <img src={project.after} alt={`After: ${project.title}`} width="600" height="400" loading="lazy" class="w-full h-48 sm:h-56 object-cover" />
+                <span class="absolute top-3 left-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full">After</span>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary">{project.title}</h3>
+              <p class="text-sm text-muted mb-2">{project.location}</p>
+              <p class="text-sm text-body-text leading-relaxed">{project.desc}</p>
+            </div>
+          </div>
         ))}
       </div>
     </Container>
@@ -171,34 +131,13 @@ const filters = [
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Love What You See?</h2>
         <p class="text-white/80 text-lg mb-8">
-          Let's create something beautiful together. Schedule your free consultation and show us your vision.
+          Let's create something beautiful together. Schedule your free in-home consultation and get a no-obligation estimate for your kitchen or bathroom remodel.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
           <Button href="/contact/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Contact Us</Button>
         </div>
       </div>
     </Container>
   </section>
-
-  <!-- Gallery Filter Script -->
-  <script>
-    document.querySelectorAll('.gallery-filter').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        // Update active state
-        document.querySelectorAll('.gallery-filter').forEach((b) => b.removeAttribute('data-active'));
-        btn.setAttribute('data-active', '');
-
-        const filter = btn.getAttribute('data-filter');
-        document.querySelectorAll('.gallery-item').forEach((item) => {
-          const type = item.getAttribute('data-type');
-          if (filter === 'all' || type === filter) {
-            (item as HTMLElement).style.display = '';
-          } else {
-            (item as HTMLElement).style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
 </BaseLayout>

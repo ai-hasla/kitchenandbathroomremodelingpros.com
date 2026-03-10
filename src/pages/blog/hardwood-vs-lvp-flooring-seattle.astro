@@ -1,0 +1,322 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Hardwood vs LVP Flooring Seattle', href: '/blog/hardwood-vs-lvp-flooring-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Hardwood vs LVP Flooring: Which Is Best for Seattle Homes?',
+  description: 'In-depth comparison of hardwood and luxury vinyl plank (LVP) flooring for Seattle homes. Covers Pacific NW humidity, durability, cost, pet-friendliness, and which rooms suit each flooring type.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-15',
+  dateModified: '2026-02-15',
+  image: '/images/blog-flooring-comparison.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is LVP flooring good for Seattle homes?',
+      acceptedAnswer: { '@type': 'Answer', text: 'LVP (luxury vinyl plank) is excellent for Seattle homes. It is 100% waterproof, handles the Pacific Northwest humidity without expanding or warping, resists scratches from pets, and performs well in kitchens and bathrooms where moisture is common. Quality LVP costs $4-$8 per square foot installed and is one of the most popular flooring choices in Seattle remodels.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does hardwood flooring hold up in Seattle climate?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Hardwood can perform well in Seattle with proper care. Engineered hardwood is the better choice for the Pacific Northwest because its plywood core resists moisture-driven expansion better than solid hardwood. Maintain indoor humidity between 35-55% using a dehumidifier in summer and a humidifier in winter. Avoid hardwood in bathrooms and laundry rooms. Seattle homes with hardwood floors do need seasonal attention to humidity levels.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does LVP flooring cost compared to hardwood in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'LVP flooring in Seattle costs $4-$8 per square foot installed for quality products. Engineered hardwood costs $8-$15 per square foot installed. Solid hardwood costs $10-$18 per square foot installed. For a typical 1,000 sq ft installation, LVP saves $4,000-$10,000 compared to hardwood. LVP also has lower lifetime maintenance costs since it never needs refinishing.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which flooring is better for pets — hardwood or LVP?',
+      acceptedAnswer: { '@type': 'Answer', text: 'LVP is significantly better for homes with pets. It resists scratches from pet nails far better than hardwood, is 100% waterproof (no damage from accidents), and is easier to clean. Hardwood floors with dogs show visible scratch marks within months, especially softer species like pine or walnut. If you prefer hardwood and have pets, choose a harder species like hickory or white oak with a matte finish that hides scratches.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does LVP flooring increase home value like hardwood?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Hardwood floors still command a premium in the Seattle real estate market, particularly in higher-end neighborhoods like Madison Park, Laurelhurst, and Queen Anne. However, quality LVP is increasingly accepted by buyers and does not hurt resale value. In entry-level and mid-range homes, LVP is a neutral or positive feature. In homes valued over $1 million, hardwood is generally the stronger investment for resale.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Hardwood vs LVP Flooring: Which Is Best for Seattle Homes?"
+  description="Hardwood vs LVP flooring comparison for Seattle homes. Pacific NW humidity, durability, cost, pet-friendliness, and which rooms suit each type. Expert advice from local remodelers."
+  canonical={`${SITE.url}/blog/hardwood-vs-lvp-flooring-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-15', modifiedTime: '2026-02-15', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Tips</span>
+          <span class="text-white/60 text-sm">February 15, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 8 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Hardwood vs LVP Flooring: Which Is Best for Seattle Homes?</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          An honest comparison of hardwood and luxury vinyl plank flooring for the Pacific Northwest climate. Durability, moisture performance, costs, and which is right for your home.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Choosing between hardwood and luxury vinyl plank (LVP) flooring is one of the most common decisions Seattle homeowners face during a remodel. Like the <a href="/blog/quartz-vs-granite-countertops-seattle/" class="text-accent hover:underline">quartz vs. granite countertop decision</a>, it comes down to your priorities and lifestyle. Both options look beautiful, perform well in most rooms, and are available in a wide range of colors and styles. But the Pacific Northwest climate, with its rain, humidity, and seasonal shifts, creates specific conditions that affect how each flooring type performs over time.
+            </p>
+            <p>
+              We install both hardwood and LVP flooring across Seattle, from Capitol Hill condos to Magnolia single-family homes. The right flooring choice also matters when planning a <a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline">kitchen remodel</a> or <a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline">bathroom remodel</a>. We have seen how each product holds up after years of real-world use in this climate. This guide gives you the honest comparison you need — no sales pitch, just facts — so you can choose the flooring that is right for your home, your lifestyle, and your budget.
+            </p>
+          </div>
+
+          <!-- Seattle Climate -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">The Pacific Northwest Climate Factor</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle receives approximately 37 inches of rain annually, spread across 150 or more rainy days. Outdoor humidity averages 70-80% in winter and 50-60% in summer. Indoor humidity in Seattle homes typically ranges from 40-60% depending on the season, ventilation, and heating system.
+              </p>
+              <p>
+                This matters because wood is hygroscopic — it absorbs and releases moisture as humidity changes. When indoor humidity rises, hardwood floors absorb moisture and expand. When the heat comes on in winter and indoor air dries out, the wood contracts and gaps can appear between boards. This seasonal movement is normal and manageable, but it is more pronounced in the Pacific Northwest than in drier climates like Arizona or Colorado.
+              </p>
+              <p>
+                LVP is made from synthetic materials (PVC core with a printed vinyl surface) and does not absorb moisture at all. It does not expand, contract, or warp from humidity changes. This makes it inherently more stable in Seattle's variable moisture environment. However, LVP can expand slightly with temperature changes, which is why a proper expansion gap around the room perimeter is important during installation.
+              </p>
+              <p>
+                Muddy boots, wet dog paws, and rain-soaked jackets dripping on the floor are daily realities in Seattle. LVP handles all of these without concern. Hardwood can handle occasional water exposure if it is wiped up promptly, but standing water will damage it.
+              </p>
+            </div>
+          </div>
+
+          <!-- Durability -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Durability Comparison</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Scratch Resistance</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP wins decisively. Quality LVP has a commercial-grade wear layer (20 mil or thicker) that resists scratches from furniture, shoes, pet nails, and dropped objects. Hardwood scratches more easily, especially softer species like pine, walnut, and cherry. Harder species like white oak and hickory hold up better but still show wear over time. Matte and wire-brushed hardwood finishes hide scratches better than high-gloss finishes.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Water Resistance</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP is 100% waterproof — you can submerge it and it will not be damaged. Hardwood is damaged by standing water, which causes warping, cupping, staining, and potential mold growth. Engineered hardwood handles brief moisture exposure better than solid hardwood, but neither should be used in bathrooms, laundry rooms, or basements without careful consideration. For Seattle kitchens and entryways where water exposure is frequent, LVP is the safer choice.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Dent Resistance</h3>
+                <p class="text-body-text text-sm leading-relaxed">Hardwood dents from heavy impacts (dropped pots, high heels, furniture legs) but the dents are solid and do not affect the floor's integrity. LVP resists small dents well but heavy point loads (furniture legs, appliances) can create permanent impressions in the vinyl. Use furniture pads under heavy items on LVP floors. Neither material is immune to damage, but the types of damage differ.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Longevity</h3>
+                <p class="text-body-text text-sm leading-relaxed">Solid hardwood can last 100+ years with periodic refinishing (every 7-10 years). Engineered hardwood lasts 30-50 years and can be refinished 1-3 times depending on the veneer thickness. Quality LVP lasts 15-25 years before it needs replacement — it cannot be refinished. From a pure longevity standpoint, hardwood wins, especially when you factor in the ability to refinish and change the color without replacing the entire floor.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost Comparison -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Cost Comparison for Seattle Homes</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Flooring costs include materials, underlayment, installation labor, and transitions or trim. Here are realistic Seattle-area prices based on recent projects:
+              </p>
+            </div>
+            <div class="space-y-6 mt-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">LVP Flooring: $4 - $8 per sq ft installed</h3>
+                <p class="text-body-text text-sm leading-relaxed">Budget LVP ($2-$3/sq ft material) is thin and looks artificial. Mid-range LVP ($3-$5/sq ft material) from brands like COREtec, Mohawk, and Shaw offers realistic wood visuals with a rigid SPC core. Premium LVP ($5-$7/sq ft material) features thicker wear layers, deeper embossing, and longer warranty coverage. Installation adds $2-$3/sq ft. For a 1,000 sq ft <a href="/services/flooring-installation/" class="text-accent hover:underline">installation</a>, total cost ranges from $4,000 to $8,000.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Engineered Hardwood: $8 - $15 per sq ft installed</h3>
+                <p class="text-body-text text-sm leading-relaxed">Engineered hardwood combines a real wood veneer (2-6mm thick) with a plywood or HDF core. The real wood surface provides the authentic look, feel, and sound of hardwood. Wider planks (7 inches+) are more popular but cost more. White oak is the dominant species in Seattle remodels — its warm tone and prominent grain work with virtually every design style. A 1,000 sq ft installation runs $8,000 to $15,000.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Solid Hardwood: $10 - $18 per sq ft installed</h3>
+                <p class="text-body-text text-sm leading-relaxed">Solid 3/4-inch hardwood is the premium option. It offers the most authentic feel, can be refinished many times, and lasts generations. Site-finished hardwood (sanded and finished in place) provides the most seamless look but takes longer and requires the house to be unoccupied during finishing. Pre-finished hardwood is more convenient but has micro-beveled edges between planks. A 1,000 sq ft installation costs $10,000 to $18,000.</p>
+              </div>
+            </div>
+            <div class="space-y-4 text-body-text leading-relaxed mt-6">
+              <p>
+                <strong>Lifetime cost</strong> changes the equation. LVP never needs refinishing but must be replaced after 15-25 years ($4,000-$8,000 again). Hardwood needs refinishing every 7-10 years ($2-$4/sq ft, or $2,000-$4,000 for 1,000 sq ft) but the floor itself lasts 50-100 years. Over a 50-year period, the total cost of ownership is often similar — hardwood costs more upfront but lasts longer, while LVP costs less upfront but needs periodic replacement.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pet-Friendly -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Pet-Friendly Flooring in Seattle</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle is one of the most dog-friendly cities in the country, and pet owners need flooring that can handle the reality of life with animals. Mud tracked in from rainy walks, water bowls, occasional accidents, and constant nail traffic are all factors.
+              </p>
+              <p>
+                <strong>LVP is the clear winner for pet owners.</strong> Its waterproof surface handles accidents without staining or odor absorption. The tough wear layer resists scratching from dog and cat nails. It is easy to sweep, vacuum, and mop. And if a plank is damaged, individual planks can be replaced without redoing the entire floor.
+              </p>
+              <p>
+                <strong>Hardwood with pets requires more commitment.</strong> Dog nails will scratch hardwood, period. Softer species like pine show damage almost immediately. Harder species like hickory, maple, and white oak resist scratches better but still show them over time. A matte or satin finish hides scratches far better than a glossy finish. Wire-brushed or hand-scraped textures also camouflage wear. Keeping pets' nails trimmed, using area rugs in high-traffic zones, and accepting some character marking are all part of the package.
+              </p>
+              <p>
+                If you love the look of hardwood but have large dogs, consider engineered hardwood with a thick wear layer in a harder species. You will need to refinish sooner than a pet-free household, but the floor will still look great between refinishing cycles. Alternatively, many Seattle homeowners use LVP in main-floor living areas (where pets spend most of their time) and hardwood in bedrooms and upstairs hallways (less pet traffic).
+              </p>
+            </div>
+          </div>
+
+          <!-- Room-by-Room -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Room-by-Room Recommendations</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Kitchen</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP is the safer choice due to frequent water exposure from the sink, dishwasher, and cooking. Hardwood can work in kitchens with careful habits (wiping spills immediately, using mats near the sink), but a dishwasher leak on hardwood causes thousands of dollars in damage. LVP in the <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen</a> is worry-free.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Bathroom</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP only. We do not recommend hardwood in bathrooms. The moisture exposure from showers, baths, and sinks is too constant and too heavy for any wood product. Waterproof LVP or <a href="/services/tile-installation/" class="text-accent hover:underline">tile</a> are the appropriate choices for <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom floors</a>.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Living Room and Bedrooms</h3>
+                <p class="text-body-text text-sm leading-relaxed">Either option works well. Hardwood provides warmth, character, and a premium feel underfoot. LVP offers lower cost and easier maintenance. For main living areas visible from the front door, hardwood makes a stronger impression. For bedrooms, either choice is excellent.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Entryway and Mudroom</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP is the practical choice. Seattle entryways take a beating from rain, mud, and wet shoes. LVP handles it all without concern. If the entryway connects to hardwood in the living areas, use a transition strip between the two materials — this is common in Seattle homes and looks clean when done properly.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Basement</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP exclusively. Basements in Seattle are prone to moisture intrusion, condensation, and occasional flooding. Even homes that have never had water issues can develop them. Hardwood in a basement is a gamble that rarely pays off. LVP over a moisture barrier is the standard recommendation for below-grade installations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is LVP flooring good for Seattle homes?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Excellent. LVP is 100% waterproof, handles Pacific NW humidity without warping, resists pet scratches, and performs well in kitchens and bathrooms. Quality LVP costs $4-$8/sq ft installed.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Does hardwood flooring hold up in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, with proper care. Engineered hardwood is the better choice for the Pacific Northwest due to its moisture-resistant core. Maintain indoor humidity at 35-55% and avoid hardwood in bathrooms and basements.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does LVP cost compared to hardwood in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP: $4-$8/sq ft installed. Engineered hardwood: $8-$15/sq ft installed. Solid hardwood: $10-$18/sq ft installed. For 1,000 sq ft, LVP saves $4,000-$10,000 compared to hardwood.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Which flooring is better for pets?</h3>
+                <p class="text-body-text text-sm leading-relaxed">LVP is significantly better. It resists scratches from pet nails, is 100% waterproof for accidents, and is easy to clean. If you prefer hardwood with pets, choose harder species like hickory or white oak with a matte finish.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Does LVP increase home value like hardwood?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Hardwood commands a premium in higher-end Seattle neighborhoods. Quality LVP is a neutral or positive feature in entry-level and mid-range homes. In homes over $1 million, hardwood is generally the stronger resale investment.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/quartz-vs-granite-countertops-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Quartz vs Granite Countertops for Seattle</p>
+    </a>
+    <a href="/blog/kitchen-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">15 Kitchen Remodel Ideas for Seattle Homes</p>
+    </a>
+    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation flooring estimate from Seattle's most trusted remodeling team. We install both hardwood and LVP throughout the Puget Sound area.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="tel:+12066664370" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Call (206) 666-4370</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Need Help Choosing Flooring?</h2>
+            <p class="text-white/80 mb-6">We will bring samples to your home so you can see how each option looks in your space and lighting. Free consultation, no obligation.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/open-concept-kitchen-remodel/" class="text-accent hover:underline text-sm font-medium">Open Concept Kitchen Remodel Guide</a></li>
+                <li><a href="/blog/kitchen-lighting-design-guide/" class="text-accent hover:underline text-sm font-medium">Kitchen Lighting Design Guide</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Our Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation</a></li>
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

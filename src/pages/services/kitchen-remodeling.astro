@@ -1,15 +1,16 @@
 ---
 import ServiceLayout from '@/layouts/ServiceLayout.astro';
 import Container from '@/components/ui/Container.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
 ---
 
 <ServiceLayout
   title="Kitchen Remodeling"
-  metaTitle="Kitchen Remodeling Seattle WA | Complete Kitchen Renovations | KB Remodeling Pros"
+  metaTitle="Kitchen Remodeling Seattle WA | Complete Kitchen Renovations | Best KB Remodeling"
   metaDescription="Transform your kitchen with Seattle's top-rated remodeling team. Custom designs, premium materials, and expert craftsmanship. From layout redesign to finishing touches. Free estimates!"
   slug="kitchen-remodeling"
   category="kitchen"
-  heroImage="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=2000&q=80"
+  heroImage="/images/service-kitchen-remodeling.jpg"
   features={[
     'Complete kitchen demolition and rebuild',
     'Custom cabinet design, selection, and installation',
@@ -78,6 +79,13 @@ import Container from '@/components/ui/Container.astro';
     <p>
       We offer free in-home consultations across Seattle, the Eastside, and the greater Puget Sound area. We'll walk through your kitchen, talk about what's bothering you, discuss your budget honestly, and give you a ballpark before you commit to anything. No sales pitch, no pressure — just a straight conversation with someone who's done this hundreds of times. Give us a call or fill out the form below, and let's figure out what your kitchen could be.
     </p>
+  </div>
+
+  <!-- Cost Guide CTA -->
+  <div class="bg-accent/5 border border-accent/20 rounded-2xl p-8 my-12">
+    <h3 class="text-2xl font-bold text-gray-900 mb-3">How Much Does a Kitchen Remodel Cost in Seattle?</h3>
+    <p class="text-gray-700 mb-4">Get detailed pricing breakdowns, budget tiers, and money-saving tips in our comprehensive cost guide.</p>
+    <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">View Kitchen Remodel Cost Guide →</a>
   </div>
 
   <!-- FAQ Section -->
@@ -149,4 +157,11 @@ import Container from '@/components/ui/Container.astro';
       </Container>
     </section>
   </Fragment>
+  <SchemaFAQ items={[
+    { question: "How long does a kitchen remodel actually take start to finish?", answer: "From demo day to final walkthrough, most of our kitchen remodels run 8-12 weeks. A cosmetic refresh (counters, backsplash, paint) can be done in 3-4 weeks. The wild card is the permit process — SDCI typically takes 2-4 weeks to approve, and that happens before any work begins. If you're ordering custom cabinets, expect an additional 4-6 week lead time for fabrication. We map all of this out during your design phase so you have a realistic calendar before we start." },
+    { question: "What's driving the cost of a kitchen remodel in Seattle right now?", answer: "Cabinets are consistently the biggest line item — typically 30-40% of the total project cost. After that, countertops (10-15%), labor, plumbing, and electrical make up the bulk. A cosmetic refresh runs $15,000-$25,000; a full remodel with new layout, cabinets, and countertops falls in the $45,000-$85,000 range; and a high-end gut renovation with custom everything can exceed $100,000. Seattle labor rates are higher than the national average, and pre-1978 homes often add $2,000-$5,000 in lead/asbestos abatement. We give you a line-item proposal upfront so nothing is a surprise." },
+    { question: "When do I actually need a permit from SDCI for a kitchen remodel?", answer: "If you're touching plumbing, electrical, gas lines, or structure — which covers most kitchen remodels beyond a surface-level refresh — you need a permit from SDCI. Swapping countertops, painting, and replacing an appliance in the same footprint? No permit needed. But the moment you move a sink, add a circuit for an island outlet, or open up a wall, you're in permit territory. We handle the full submission and inspection process. A word of advice: never skip permits in Seattle. SDCI has gotten more aggressive about enforcement, and unpermitted work can kill a home sale." },
+    { question: "What's it really like living in your house during a kitchen remodel?", answer: "Honestly? Weeks 2 and 3 are the hardest — that's usually demo and rough-in, so there's dust, noise, and no functioning kitchen. We set up ZipWall dust barriers with HEPA filtration to contain it, and we clean up every evening. Most of our clients set up a temporary kitchen station in the dining room or garage — microwave, coffee maker, Instant Pot, and a lot of takeout from whatever your neighborhood spot is. By week 5 or 6, cabinets and counters are going in and you can see the finish line. The vast majority of our clients stay in their homes the whole time and say it was manageable." },
+    { question: "Quartz vs. granite vs. marble — what do you actually install most in Seattle?", answer: "About 70% of our kitchens get quartz — Cambria and Caesarstone are our most-used brands. It's non-porous, never needs sealing, and handles coffee and red wine without staining, which matters in this town. Granite is still a solid choice and costs a bit less, but you'll need to seal it once a year. Marble is gorgeous but high-maintenance — we install it when clients understand the trade-off and want the look. For the island specifically, a lot of our clients do a butcher block waterfall end or a contrasting quartz color to break things up. We'll walk you through slabs at our supplier's yard so you can see them in person before committing." },
+  ]} />
 </ServiceLayout>

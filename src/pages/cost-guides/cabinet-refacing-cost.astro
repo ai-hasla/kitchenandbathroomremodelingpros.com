@@ -3,6 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
 import { SITE } from '@/lib/constants';
 
 const breadcrumbs = [
@@ -19,7 +21,7 @@ const articleSchema = {
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-02-15',
   dateModified: '2026-03-01',
-  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+  image: '/images/service-cabinet-refacing.jpg',
 };
 
 const faqSchema = {
@@ -323,6 +325,32 @@ const faqSchema = {
             </div>
           </div>
 
+          <!-- ROI Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Cabinet Refacing ROI: How It Affects Home Value</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Cabinet refacing offers one of the best ROI profiles of any kitchen improvement because the cost is relatively low while the visual impact is enormous. Cabinets dominate 40-50% of the visible surface area in most kitchens, so changing their appearance transforms the entire room.
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">75-85%</p>
+                  <p class="text-sm text-body-text">ROI on cabinet refacing projects</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">40-60%</p>
+                  <p class="text-sm text-body-text">Savings vs. full cabinet replacement</p>
+                </div>
+              </div>
+              <p>
+                In the Seattle market, buyers expect kitchens to look current. Dark, dated oak cabinets from the 1990s or worn laminate doors from the 2000s make the entire kitchen feel old, regardless of what else has been updated. Refacing those same cabinets with white shaker or modern flat-panel doors instantly brings the kitchen into 2026 — and the cost-to-impact ratio is hard to beat.
+              </p>
+              <p>
+                From a pure investment perspective, spending $7,000-$10,000 on cabinet refacing in a $650,000 Seattle home is a proportional, smart improvement. Pair it with new <a href="/cost-guides/countertop-installation-cost/" class="text-accent hover:underline">countertops</a> and hardware, and you've modernized the kitchen for under $15,000 — a fraction of the $45,000-$72,000 a full <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">mid-range kitchen remodel</a> would cost. For homeowners planning to sell within 2-3 years, refacing is often the smartest move.
+              </p>
+            </div>
+          </div>
+
           <!-- FAQ Section -->
           <div class="mb-12" data-reveal>
             <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
@@ -354,7 +382,7 @@ const faqSchema = {
           <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
             <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Get a Free Cabinet Refacing Estimate</h2>
             <p class="text-white/80 mb-6">See how much you can save with cabinet refacing versus full replacement. Get a personalized, line-item quote for your kitchen.</p>
-            <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
           </div>
         </article>
 
@@ -365,7 +393,7 @@ const faqSchema = {
             <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
               <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
               <p class="text-body-text text-sm mb-4">Get a free, detailed quote for cabinet refacing.</p>
-              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
               <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
             </div>
 
@@ -389,6 +417,9 @@ const faqSchema = {
                 <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
               </ul>
             </div>
+
+            <!-- Quick Quote Widget -->
+            <QuickQuoteWidget />
 
             <!-- Gallery Link -->
             <div class="bg-light rounded-2xl p-6">

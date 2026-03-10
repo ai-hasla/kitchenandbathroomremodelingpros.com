@@ -1,0 +1,62 @@
+---
+interface Step {
+  name: string;
+  text: string;
+  image?: string;
+  url?: string;
+}
+
+interface Props {
+  name: string;
+  description: string;
+  steps: Step[];
+  totalTime?: string;
+  estimatedCost?: {
+    currency?: string;
+    value?: number;
+    minValue?: number;
+    maxValue?: number;
+  };
+  image?: string;
+}
+
+const { name, description, steps, totalTime, estimatedCost, image } = Astro.props;
+
+const schema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name,
+  description,
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+    ...(step.image ? { image: step.image } : {}),
+    ...(step.url ? { url: step.url } : {}),
+  })),
+};
+
+if (totalTime) {
+  schema.totalTime = totalTime;
+}
+
+if (estimatedCost) {
+  schema.estimatedCost = {
+    '@type': 'MonetaryAmount',
+    currency: estimatedCost.currency || 'USD',
+    ...(estimatedCost.value != null
+      ? { value: estimatedCost.value }
+      : {
+          minValue: estimatedCost.minValue,
+          maxValue: estimatedCost.maxValue,
+        }),
+  };
+}
+
+if (image) {
+  schema.image = image;
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

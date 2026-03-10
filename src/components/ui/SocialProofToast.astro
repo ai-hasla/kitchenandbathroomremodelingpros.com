@@ -1,0 +1,80 @@
+<div
+  id="social-proof-toast"
+  class="fixed bottom-6 left-6 z-50 max-w-[300px] translate-x-[-120%] opacity-0 transition-all duration-500 ease-out pointer-events-none"
+>
+  <div class="relative bg-white shadow-lg rounded-xl border-l-4 border-green-500 p-4 pr-8">
+    <button
+      id="social-proof-close"
+      class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-sm leading-none cursor-pointer"
+      aria-label="Close notification"
+    >&times;</button>
+    <div class="flex items-start gap-3">
+      <span class="mt-1 flex h-2.5 w-2.5 shrink-0">
+        <span class="absolute inline-flex h-2.5 w-2.5 animate-ping rounded-full bg-green-400 opacity-75"></span>
+        <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
+      </span>
+      <div>
+        <p id="social-proof-text" class="text-sm text-gray-800 font-medium leading-snug"></p>
+        <p class="text-xs text-gray-400 mt-1">Verified activity</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const messages = [
+      "Sarah from Ballard just requested a free estimate",
+      "Mike from Capitol Hill booked a kitchen consultation",
+      "Lisa from Queen Anne scheduled a bathroom design visit",
+      "David from Wallingford requested a countertop quote",
+      "Jennifer from Fremont just called about cabinet refacing",
+      "Tom from Green Lake booked a free consultation",
+      "Amanda from West Seattle requested a remodel estimate",
+      "Chris from Ravenna scheduled a kitchen design visit",
+    ];
+
+    const toast = document.getElementById("social-proof-toast");
+    const text = document.getElementById("social-proof-text");
+    const closeBtn = document.getElementById("social-proof-close");
+    if (!toast || !text || !closeBtn) return;
+
+    let showCount = 0;
+    const MAX_SHOWS = 3;
+    let hideTimeout: ReturnType<typeof setTimeout>;
+    let used: number[] = [];
+
+    function pickMessage() {
+      if (used.length >= messages.length) used = [];
+      let idx: number;
+      do { idx = Math.floor(Math.random() * messages.length); } while (used.includes(idx));
+      used.push(idx);
+      return messages[idx];
+    }
+
+    function show() {
+      if (showCount >= MAX_SHOWS) return;
+      showCount++;
+      text.textContent = pickMessage();
+      toast.style.transform = "translateX(0)";
+      toast.style.opacity = "1";
+      toast.classList.remove("pointer-events-none");
+      hideTimeout = setTimeout(hide, 5000);
+    }
+
+    function hide() {
+      clearTimeout(hideTimeout);
+      toast.style.transform = "translateX(-120%)";
+      toast.style.opacity = "0";
+      toast.classList.add("pointer-events-none");
+      if (showCount < MAX_SHOWS) {
+        const delay = 30000 + Math.random() * 15000;
+        setTimeout(show, delay);
+      }
+    }
+
+    closeBtn.addEventListener("click", hide);
+
+    setTimeout(show, 15000);
+  })();
+</script>

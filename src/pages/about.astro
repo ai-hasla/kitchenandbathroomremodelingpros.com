@@ -11,31 +11,31 @@ const team = [
   {
     name: 'David Chen',
     role: 'Founder & Lead Designer',
-    bio: 'With over 20 years of experience in residential remodeling, David founded KB Remodeling Pros to bring honest craftsmanship and transparent pricing to every Seattle homeowner.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80',
+    bio: 'With over 20 years of experience in residential remodeling, David founded Best KB Remodeling to bring honest craftsmanship and transparent pricing to every Seattle homeowner.',
+    image: '/images/team-owner.jpg',
   },
   {
     name: 'Sarah Martinez',
     role: 'Project Manager',
     bio: 'Sarah ensures every project stays on schedule and within budget. Her attention to detail and clear communication keep homeowners informed at every stage.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80',
+    image: '/images/team-designer.jpg',
   },
   {
     name: 'James Okafor',
     role: 'Master Carpenter',
     bio: 'James brings 15 years of fine woodworking expertise to our custom cabinetry and trim work. His precision craftsmanship is visible in every project he touches.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80',
+    image: '/images/team-carpenter.jpg',
   },
   {
     name: 'Emily Nguyen',
     role: 'Interior Design Consultant',
     bio: 'Emily helps clients transform their vision into reality. Her background in interior design and knowledge of current trends ensures every remodel feels both timeless and modern.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80',
+    image: '/images/team-coordinator.jpg',
   },
 ];
 
 const certifications = [
-  { name: 'Licensed & Bonded', detail: 'Washington State Contractor License #KITCHBR012AB' },
+  { name: 'Licensed & Bonded', detail: 'Washington State General Contractor' },
   { name: 'EPA Lead-Safe Certified', detail: 'Certified for renovations in pre-1978 homes' },
   { name: 'NKBA Member', detail: 'National Kitchen & Bath Association' },
   { name: 'BBB A+ Rating', detail: 'Better Business Bureau accredited since 2012' },
@@ -45,9 +45,10 @@ const certifications = [
 ---
 
 <BaseLayout
-  title="About Kitchen & Bathroom Remodeling Pros | Seattle's Trusted Team"
-  description="Learn about Kitchen & Bathroom Remodeling Pros — Seattle's trusted remodeling team since 2010. Licensed, insured, and committed to exceptional craftsmanship."
+  title="About Best Kitchen and Bathroom Remodeling | Seattle's Trusted Team"
+  description="Learn about Best Kitchen and Bathroom Remodeling — Seattle's trusted remodeling team since 2010. Licensed, insured, and committed to exceptional craftsmanship."
   canonical={`${SITE.url}/about/`}
+  ogImage="/images/og/og-about.png"
 >
   <SchemaBreadcrumb items={breadcrumbs} />
 
@@ -72,7 +73,7 @@ const certifications = [
           <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-primary mb-6">Built on a Foundation of Trust</h2>
           <div class="space-y-4 text-body-text leading-relaxed">
             <p>
-              Kitchen & Bathroom Remodeling Pros was founded in 2010 by David Chen, a lifelong craftsman who grew up watching his father build homes across the Pacific Northwest. After spending over a decade working for large remodeling companies in Seattle, David noticed a troubling pattern: homeowners were consistently overcharged, underinformed, and left dealing with unreliable timelines. He knew there had to be a better way.
+              Best Kitchen and Bathroom Remodeling was founded in 2010 by David Chen, a lifelong craftsman who grew up watching his father build homes across the Pacific Northwest. After spending over a decade working for large remodeling companies in Seattle, David noticed a troubling pattern: homeowners were consistently overcharged, underinformed, and left dealing with unreliable timelines. He knew there had to be a better way.
             </p>
             <p>
               What started as a one-man operation working out of a garage in Ballard has grown into one of the most respected remodeling companies in the greater Seattle area. Today, our team of skilled designers, project managers, and craftspeople has completed over 500 kitchen and bathroom remodeling projects across King, Snohomish, and Pierce counties.
@@ -81,13 +82,13 @@ const certifications = [
               Our mission is simple: deliver exceptional remodeling results through transparent communication, fair pricing, and craftsmanship that stands the test of time. We believe every homeowner deserves to understand exactly what their project will cost, how long it will take, and what to expect at every stage of the process. No surprises, no hidden fees, no corners cut.
             </p>
             <p>
-              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 53 reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
+              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 230+ reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
             </p>
           </div>
         </div>
         <div class="relative" data-reveal="right">
           <img
-            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
+            src="/images/process-measuring.jpg"
             alt="Our remodeling team at work in a Seattle kitchen"
             class="rounded-2xl shadow-xl w-full"
             width="800"
@@ -194,7 +195,7 @@ const certifications = [
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1" data-reveal="left">
           <img
-            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+            src="/images/showroom.jpg"
             alt="Community involvement in Seattle"
             class="rounded-2xl shadow-xl w-full"
             width="800"
@@ -212,7 +213,7 @@ const certifications = [
               We're also proud sponsors of the Ballard Little League and active participants in the West Seattle Junction neighborhood cleanup program. Several members of our team volunteer as mentors through the Seattle Apprenticeship Program, helping train the next generation of skilled tradespeople.
             </p>
             <p>
-              Our commitment to sustainability extends beyond our community work. We prioritize eco-friendly materials, recycle construction waste whenever possible, and partner with local suppliers to reduce our carbon footprint. When you choose KB Remodeling Pros, you're supporting a company that invests in Seattle's future.
+              Our commitment to sustainability extends beyond our community work. We prioritize eco-friendly materials, recycle construction waste whenever possible, and partner with local suppliers to reduce our carbon footprint. When you choose Best KB Remodeling, you're supporting a company that invests in Seattle's future.
             </p>
           </div>
         </div>
@@ -229,7 +230,7 @@ const certifications = [
           Schedule a free in-home consultation and see why hundreds of Seattle homeowners trust us with their remodeling projects.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
           <Button href="/contact/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Contact Us</Button>
         </div>
       </div>

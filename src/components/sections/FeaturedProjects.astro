@@ -6,42 +6,42 @@ const projects = [
     title: 'Modern Kitchen Remodel',
     location: 'Capitol Hill, Seattle',
     type: 'Kitchen',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
+    image: '/images/gallery-blue-kitchen.jpg',
     alt: 'Modern white kitchen with sleek cabinetry and quartz countertops',
   },
   {
     title: 'Spa-Inspired Bathroom',
     location: 'Bellevue',
     type: 'Bathroom',
-    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80',
+    image: '/images/gallery-master-bath.jpg',
     alt: 'Luxurious spa-style bathroom with freestanding soaking tub',
   },
   {
     title: 'Open-Concept Kitchen',
     location: 'Kirkland',
     type: 'Kitchen',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/gallery-cozy-kitchen.jpg',
     alt: 'Bright open-concept kitchen with island and pendant lighting',
   },
   {
     title: 'Luxury Master Bath',
     location: 'Sammamish',
     type: 'Bathroom',
-    image: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=800&q=80',
+    image: '/images/gallery-walnut-kitchen.jpg',
     alt: 'Elegant master bathroom with double vanity and marble tile',
   },
   {
     title: 'Farmhouse Kitchen',
     location: 'Redmond',
     type: 'Kitchen',
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80',
+    image: '/images/gallery-classic-bath.jpg',
     alt: 'Farmhouse-style kitchen with shaker cabinets and apron sink',
   },
   {
     title: 'Contemporary Bathroom',
     location: 'Mercer Island',
     type: 'Bathroom',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/gallery-green-kitchen.jpg',
     alt: 'Contemporary bathroom with walk-in shower and floating vanity',
   },
 ];
@@ -60,38 +60,30 @@ const projects = [
     </div>
   </Container>
 
-  <!-- Scrolling Gallery -->
-  <div class="projects-scroll-container overflow-x-auto pb-6 px-4 sm:px-6 lg:px-8" data-reveal>
-    <div class="flex gap-6 max-w-7xl mx-auto" style="scroll-snap-type: x mandatory;">
+  <!-- Projects Grid -->
+  <Container>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
       {projects.map((project) => (
-        <a
-          href="/gallery/"
-          class="group flex-shrink-0 min-w-[300px] md:min-w-[380px]"
-          style="scroll-snap-align: start;"
-        >
-          <!-- Image -->
+        <a href="/gallery/" class="group">
           <div class="aspect-[4/3] rounded-xl overflow-hidden relative mb-4">
             <img
               src={project.image}
               alt={project.alt}
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              width="800"
+              height="600"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
-            <!-- Hover Overlay -->
-            <div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div class="text-center text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div class="absolute inset-0 bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white">
                 <p class="text-lg font-semibold font-[family-name:var(--font-heading)]">{project.title}</p>
                 <p class="text-sm text-white/80">{project.location}</p>
               </div>
             </div>
           </div>
-
-          <!-- Card Info -->
           <div class="flex items-start justify-between gap-3">
             <div>
-              <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">
-                {project.title}
-              </h3>
+              <h3 class="font-semibold text-dark-text group-hover:text-accent transition-colors">{project.title}</h3>
               <p class="text-sm text-muted">{project.location}</p>
             </div>
             <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${
@@ -105,7 +97,7 @@ const projects = [
         </a>
       ))}
     </div>
-  </div>
+  </Container>
 
   <!-- View Full Gallery Link -->
   <div class="text-center mt-10" data-reveal>
@@ -121,35 +113,3 @@ const projects = [
   </div>
 </section>
 
-<style>
-  /* Hide scrollbar on mobile, thin scrollbar on desktop */
-  .projects-scroll-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .projects-scroll-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .projects-scroll-container {
-      scrollbar-width: thin;
-      scrollbar-color: var(--color-accent, #b8860b) transparent;
-    }
-
-    .projects-scroll-container::-webkit-scrollbar {
-      display: block;
-      height: 6px;
-    }
-
-    .projects-scroll-container::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .projects-scroll-container::-webkit-scrollbar-thumb {
-      background-color: var(--color-accent, #b8860b);
-      border-radius: 3px;
-    }
-  }
-</style>

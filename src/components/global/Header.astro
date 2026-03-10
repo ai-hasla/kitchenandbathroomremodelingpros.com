@@ -41,13 +41,17 @@ const currentPath = Astro.url.pathname;
   <nav class="bg-white/95 backdrop-blur-md border-b border-border/50 shadow-sm" aria-label="Main navigation">
     <Container class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 shrink-0">
-        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-lg flex items-center justify-center">
-          <span class="text-white font-bold text-lg lg:text-xl font-[family-name:var(--font-heading)]">KB</span>
-        </div>
+      <a href="/" class="flex items-center gap-2.5 shrink-0">
+        <img
+          src="/images/logo.png"
+          alt="Best KB Remodeling"
+          width="144"
+          height="144"
+          class="w-14 h-14 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain"
+        />
         <div class="hidden sm:block">
-          <div class="text-sm lg:text-base font-bold text-dark-text leading-tight">Kitchen & Bathroom</div>
-          <div class="text-xs lg:text-sm text-accent font-semibold leading-tight">Remodeling Pros</div>
+          <div class="text-sm lg:text-base font-bold text-dark-text leading-tight">Best Kitchen &</div>
+          <div class="text-xs lg:text-sm text-accent font-semibold leading-tight">Bathroom Remodeling</div>
         </div>
       </a>
 
@@ -61,13 +65,13 @@ const currentPath = Astro.url.pathname;
             aria-haspopup="true"
           >
             Services
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
 
           <!-- Mega Menu -->
-          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200">
             <div class="bg-white rounded-xl shadow-2xl border border-border/50 p-6 w-[600px] grid grid-cols-2 gap-6">
               <div>
                 <h3 class="text-xs font-bold text-accent uppercase tracking-wider mb-3">Kitchen</h3>
@@ -128,6 +132,9 @@ const currentPath = Astro.url.pathname;
         <a href="/blog/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath.startsWith('/blog') ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
           Blog
         </a>
+        <a href="/reviews/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath.startsWith('/reviews') ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          Reviews
+        </a>
         <a href="/about/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath === '/about/' ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
           About
         </a>
@@ -144,7 +151,7 @@ const currentPath = Astro.url.pathname;
           </svg>
           {SITE.phone}
         </a>
-        <Button href="/get-a-quote/" variant="primary" size="sm" magnetic>
+        <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="sm" magnetic>
           Free Estimate
         </Button>
       </div>
@@ -187,6 +194,7 @@ const currentPath = Astro.url.pathname;
       <a href="/gallery/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Gallery</a>
       <a href="/cost-guides/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Cost Guides</a>
       <a href="/blog/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Blog</a>
+      <a href="/reviews/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Reviews</a>
       <a href="/about/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">About</a>
       <a href="/contact/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Contact</a>
       <div class="border-t border-border my-2"></div>
@@ -197,7 +205,7 @@ const currentPath = Astro.url.pathname;
         {SITE.phone}
       </a>
       <div class="px-4 pt-2">
-        <Button href="/get-a-quote/" variant="primary" size="lg" class="w-full justify-center">
+        <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg" class="w-full justify-center">
           Get Free Estimate
         </Button>
       </div>
@@ -218,7 +226,9 @@ const currentPath = Astro.url.pathname;
       Call Now
     </a>
     <a
-      href="/get-a-quote/"
+      href="https://nexfield.pro/crm/book?u=137"
+      target="_blank"
+      rel="noopener noreferrer"
       class="flex items-center justify-center gap-2 py-3.5 text-sm font-bold text-white bg-accent active:bg-accent-hover"
     >
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -244,6 +254,37 @@ const currentPath = Astro.url.pathname;
     closeIcon?.classList.toggle('hidden', !!isOpen);
     document.body.classList.toggle('overflow-hidden', !isOpen);
     menuBtn?.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+      mobileMenu?.classList.remove('translate-x-0');
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Services mega menu keyboard accessibility
+  const servicesDropdown = document.querySelector('.relative.group') as HTMLElement | null;
+  const servicesBtn = servicesDropdown?.querySelector('button[aria-expanded]') as HTMLElement | null;
+
+  servicesDropdown?.addEventListener('mouseenter', () => {
+    servicesBtn?.setAttribute('aria-expanded', 'true');
+  });
+  servicesDropdown?.addEventListener('mouseleave', () => {
+    servicesBtn?.setAttribute('aria-expanded', 'false');
+  });
+  servicesDropdown?.addEventListener('focusin', () => {
+    servicesBtn?.setAttribute('aria-expanded', 'true');
+  });
+  servicesDropdown?.addEventListener('focusout', (e) => {
+    if (!servicesDropdown.contains((e as FocusEvent).relatedTarget as Node)) {
+      servicesBtn?.setAttribute('aria-expanded', 'false');
+    }
   });
 
   // Header scroll behavior - shrink on scroll

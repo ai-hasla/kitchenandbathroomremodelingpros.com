@@ -1,23 +1,23 @@
 export const SITE = {
-  name: 'Kitchen & Bathroom Remodeling Pros',
-  shortName: 'KB Remodeling Pros',
+  name: 'Best Kitchen and Bathroom Remodeling',
+  shortName: 'Best KB Remodeling',
   domain: 'kitchenandbathroomremodelingpros.com',
   url: 'https://kitchenandbathroomremodelingpros.com',
-  phone: '(206) 555-0123',
-  phoneRaw: '+12065550123',
+  phone: '(206) 666-4370',
+  phoneRaw: '+12066664370',
   email: 'info@kitchenandbathroomremodelingpros.com',
   address: {
-    street: '123 Main Street',
+    street: '701 5th Ave 42nd Floor, Suite 4272',
     city: 'Seattle',
     state: 'WA',
-    zip: '98101',
-    full: '123 Main Street, Seattle, WA 98101',
+    zip: '98104',
+    full: '701 5th Ave 42nd Floor, Suite 4272, Seattle, WA 98104',
   },
   coordinates: {
-    lat: 47.6062,
-    lng: -122.3321,
+    lat: 47.6050,
+    lng: -122.3308,
   },
-  hours: 'Mon-Fri 8:00 AM - 6:00 PM, Sat 9:00 AM - 4:00 PM',
+  hours: 'Available 24/7 — Call Anytime',
   yearFounded: 2010,
   description:
     "Seattle's top-rated kitchen and bathroom remodeling company. Award-winning craftsmanship, transparent pricing, and free estimates. Serving Seattle, Bellevue, Kirkland, and the greater Puget Sound area.",
@@ -28,8 +28,10 @@ export const SITE = {
     houzz: 'https://houzz.com/pro/kbremodelpros',
     yelp: 'https://yelp.com/biz/kitchen-bathroom-remodeling-pros-seattle',
   },
+  warranty: '5-Year',
+  projects: 500,
   reviews: {
-    count: 53,
+    count: 230,
     rating: 4.9,
   },
 } as const;
@@ -66,7 +68,9 @@ export const NAV_LINKS = {
   gallery: { label: 'Gallery', href: '/gallery/' },
   costGuides: { label: 'Cost Guides', href: '/cost-guides/' },
   blog: { label: 'Blog', href: '/blog/' },
+  reviews: { label: 'Reviews', href: '/reviews/' },
   about: { label: 'About', href: '/about/' },
+  faq: { label: 'FAQ', href: '/faq/' },
   contact: { label: 'Contact', href: '/contact/' },
 } as const;
 

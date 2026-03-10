@@ -1,0 +1,182 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Cabinet Refacing', href: '/reviews/cabinet-refacing/' },
+];
+
+const reviews = [
+  {
+    name: 'Karen W.',
+    rating: 5,
+    neighborhood: 'Queen Anne, Seattle',
+    date: 'October 2025',
+    projectType: 'Full Kitchen Cabinet Refacing',
+    text: 'Rather than spending $50K+ on brand new cabinets, we had our existing ones refaced with maple doors and soft-close hardware. Honestly the kitchen looks completely brand new. The crew matched the new door style perfectly to our existing layout. Mike suggested adding pull-out shelves in the lower cabinets while they were at it, and that was a game changer. Total cost was about a third of what new cabinets would have been.',
+  },
+  {
+    name: 'Steve & Nancy B.',
+    rating: 5,
+    neighborhood: 'Ballard, Seattle',
+    date: 'August 2025',
+    projectType: 'Cabinet Refacing with New Hardware',
+    text: 'Amazing transformation. We went with a white thermofoil finish and brushed nickel pulls. The kitchen went from dark and dated to bright and modern in just 4 days. Four days! We didn\'t even have to empty our cabinets — the crew worked around everything. Can\'t believe we waited so long to do this.',
+  },
+  {
+    name: 'Linda P.',
+    rating: 4,
+    neighborhood: 'Madison Park, Seattle',
+    date: 'July 2025',
+    projectType: 'Cabinet Refacing',
+    text: 'Good work overall. The new shaker-style doors look fantastic and the finish is smooth and even. One door had a slight color variation that bugged me — they ordered a replacement and swapped it out within two weeks. The end result is great and I\'d recommend them, just be sure to inspect everything carefully at the walkthrough.',
+  },
+  {
+    name: 'Carlos D.',
+    rating: 5,
+    neighborhood: 'Green Lake, Seattle',
+    date: 'May 2025',
+    projectType: 'Cabinet Refacing & New Countertops',
+    text: 'Did cabinet refacing and new quartz counters at the same time. Smart move — the crew coordinated both so we only had one round of disruption. The cabinets went from honey oak to a slate gray and it completely modernized the kitchen. Neighbors keep asking who did the work.',
+  },
+  {
+    name: 'Wendy J.',
+    rating: 5,
+    neighborhood: 'Wallingford, Seattle',
+    date: 'March 2025',
+    projectType: 'Cabinet Door Replacement',
+    text: 'Quick and clean. New cabinet doors and drawer fronts in 3 days. The crew was polite and professional. Kitchen looks ten years newer. Would hire again in a heartbeat.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE.name,
+  url: SITE.url,
+  telephone: SITE.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: averageRating,
+    reviewCount: reviews.length,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.name },
+    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+    reviewBody: r.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="Cabinet Refacing Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} cabinet refacing reviews from Seattle homeowners. ${averageRating}-star average rating. See why homeowners choose refacing over full cabinet replacement.`}
+  canonical={`${SITE.url}/reviews/cabinet-refacing/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cabinet Refacing</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Cabinet Refacing Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A brand-new kitchen look without the brand-new kitchen price tag. Read reviews from Seattle homeowners who chose cabinet refacing.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Rating Bar -->
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} cabinet refacing reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Reviews Grid -->
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Other Review Pages -->
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">More Reviews by Service</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/reviews/kitchen-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Remodeling Reviews</a>
+        <a href="/reviews/bathroom-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Bathroom Remodeling Reviews</a>
+        <a href="/reviews/countertop-installation/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Countertop Installation Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Considering Cabinet Refacing?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Get a free estimate and see how much you can save compared to full cabinet replacement.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

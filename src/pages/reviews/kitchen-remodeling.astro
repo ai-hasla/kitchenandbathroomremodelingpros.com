@@ -1,0 +1,206 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Kitchen Remodeling', href: '/reviews/kitchen-remodeling/' },
+];
+
+const reviews = [
+  {
+    name: 'Jennifer T.',
+    rating: 5,
+    neighborhood: 'Ballard, Seattle',
+    date: 'November 2025',
+    projectType: 'Full Kitchen Remodel',
+    text: 'Our 1940s Craftsman kitchen was completely transformed. Mike and the crew installed custom shaker cabinets from KraftMaid, quartz countertops, and a herringbone backsplash. The whole project took about 6 weeks — right on schedule. They even moved our gas line to accommodate the new island layout. Could not be happier with how it turned out.',
+  },
+  {
+    name: 'Amanda P.',
+    rating: 5,
+    neighborhood: 'Capitol Hill, Seattle',
+    date: 'October 2025',
+    projectType: 'Condo Kitchen Renovation',
+    text: 'As a first-time homeowner in a 1920s condo, I was nervous about a major remodel. Mike walked me through every option and the crew was incredibly respectful of shared spaces in the building. My new kitchen has two-tone cabinets, a waterfall quartz island, and pendant lighting. Friends cannot believe it\'s the same apartment. Took about 5 weeks including a small delay waiting on the range hood.',
+  },
+  {
+    name: 'David & Sarah M.',
+    rating: 4,
+    neighborhood: 'Wallingford, Seattle',
+    date: 'September 2025',
+    projectType: 'Kitchen Remodel',
+    text: 'Really happy with our new kitchen overall. Beautiful Caesarstone countertops and the soft-close cabinets are amazing. Only reason for 4 stars is the project ran about 10 days over the original estimate — partly because of a permit delay with the city. But the crew communicated well and the end result is gorgeous. Would still recommend.',
+  },
+  {
+    name: 'Priya K.',
+    rating: 5,
+    neighborhood: 'Ravenna, Seattle',
+    date: 'August 2025',
+    projectType: 'Kitchen Gut Renovation',
+    text: 'We gutted our entire kitchen down to the studs. New layout, new everything. The crew found some knob-and-tube wiring behind the walls and handled the electrician coordination without us having to worry about it. Went with Cambria quartz counters and custom cherry cabinets. It honestly looks like something out of a magazine now.',
+  },
+  {
+    name: 'Tom R.',
+    rating: 5,
+    neighborhood: 'Green Lake, Seattle',
+    date: 'July 2025',
+    projectType: 'Kitchen Remodel',
+    text: 'Great work! Kitchen looks fantastic. Mike and his team are the real deal.',
+  },
+  {
+    name: 'Susan & Mark H.',
+    rating: 5,
+    neighborhood: 'Queen Anne, Seattle',
+    date: 'June 2025',
+    projectType: 'Kitchen & Dining Remodel',
+    text: 'We knocked out a wall between our kitchen and dining room to create an open concept layout. The structural beam they installed is beautiful — you\'d never know it wasn\'t original to the house. New white shaker cabinets, subway tile backsplash, butcher block island top. The crew cleaned up every night, which was huge since we were living in the house during the remodel. One cabinet door arrived with a small chip and they replaced it within a week without any fuss.',
+  },
+  {
+    name: 'James L.',
+    rating: 4,
+    neighborhood: 'Fremont, Seattle',
+    date: 'May 2025',
+    projectType: 'Galley Kitchen Remodel',
+    text: 'Solid work on our small galley kitchen. New cabinets, counters, and backsplash. The Silestone countertops look great. I\'ll say the initial quote came in a bit higher than I expected, but the quality is definitely there. The under-cabinet lighting they suggested was a great addition I hadn\'t thought of. Minor paint touch-ups needed on one wall after they finished but they came back and handled it.',
+  },
+  {
+    name: 'Maria C.',
+    rating: 5,
+    neighborhood: 'Magnolia, Seattle',
+    date: 'March 2025',
+    projectType: 'Kitchen Remodel',
+    text: 'Absolutely love our new kitchen. We went with a farmhouse style — apron sink, open shelving on one wall, Carrara marble-look quartz countertops, and unlacquered brass hardware. The attention to detail from the crew was incredible. Even the plumber they brought in for the new sink was professional and tidy. Our kitchen went from the worst room in the house to the best. Highly recommend calling Mike if you\'re thinking about a remodel.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE.name,
+  url: SITE.url,
+  telephone: SITE.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: averageRating,
+    reviewCount: reviews.length,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.name },
+    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+    reviewBody: r.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="Kitchen Remodeling Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} kitchen remodeling reviews from Seattle homeowners. ${averageRating}-star average rating. See real feedback on our kitchen renovation projects across Capitol Hill, Ballard, Queen Anne, and more.`}
+  canonical={`${SITE.url}/reviews/kitchen-remodeling/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Kitchen Remodeling</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Kitchen Remodeling Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Real reviews from Seattle homeowners who trusted us with their kitchen remodel. From Craftsman updates to full gut renovations, see what our clients have to say.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Rating Bar -->
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} kitchen remodeling reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Reviews Grid -->
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <!-- Other Review Pages -->
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">More Reviews by Service</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/reviews/bathroom-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Bathroom Remodeling Reviews</a>
+        <a href="/reviews/cabinet-refacing/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Cabinet Refacing Reviews</a>
+        <a href="/reviews/countertop-installation/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Countertop Installation Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Remodel Your Kitchen?</h2>
+        <p class="text-white/80 text-lg mb-8">
+          Get a free, no-obligation estimate for your kitchen remodel. Call us or book online today.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

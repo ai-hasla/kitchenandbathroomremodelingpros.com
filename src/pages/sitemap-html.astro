@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
-import { SITE, SERVICES, LOCATIONS_TIER1, LOCATIONS_TIER2 } from '@/lib/constants';
+import { SITE, SERVICES, LOCATIONS_TIER1 } from '@/lib/constants';
 
 const breadcrumbs = [{ label: 'Sitemap', href: '/sitemap-html/' }];
 
@@ -10,11 +10,12 @@ const mainPages = [
   { title: 'Home', href: '/' },
   { title: 'About Us', href: '/about/' },
   { title: 'Contact', href: '/contact/' },
-  { title: 'Get a Quote', href: '/get-a-quote/' },
-  { title: 'Gallery', href: '/gallery/' },
-  { title: 'Reviews', href: '/reviews/' },
-  { title: 'Financing', href: '/financing/' },
+  { title: 'Get a Quote', href: 'https://nexfield.pro/crm/book?u=137' },
   { title: 'Our Process', href: '/our-process/' },
+  { title: 'Gallery', href: '/gallery/' },
+  { title: 'Financing', href: '/financing/' },
+  { title: 'FAQ', href: '/faq/' },
+  { title: 'Reviews', href: '/reviews/' },
 ];
 
 const costGuides = [
@@ -28,18 +29,42 @@ const costGuides = [
 const blogPosts = [
   { title: '15 Kitchen Remodel Ideas for Seattle Homes in 2026', slug: 'kitchen-remodel-ideas-seattle' },
   { title: '10 Bathroom Remodel Ideas That Add Value to Your Seattle Home', slug: 'bathroom-remodel-ideas-seattle' },
-  { title: 'How to Choose the Right Countertop Material for Your Kitchen', slug: 'quartz-vs-granite-countertops-seattle' },
-  { title: 'The Complete Guide to Aging-in-Place Bathroom Design', slug: 'bathroom-remodel-ideas-seattle' },
+  { title: 'Quartz vs Granite Countertops', slug: 'quartz-vs-granite-countertops-seattle' },
   { title: 'Seattle Remodeling Permits: What Homeowners Need to Know', slug: 'do-you-need-permit-remodel-seattle' },
-  { title: '2026 Kitchen Color Trends for Pacific Northwest Homes', slug: 'kitchen-remodel-ideas-seattle' },
+  { title: 'How Long Does a Kitchen Remodel Take?', slug: 'how-long-kitchen-remodel-take' },
+  { title: 'Small Bathroom Remodel Ideas', slug: 'small-bathroom-remodel-ideas' },
+  { title: 'Kitchen Remodel ROI in Seattle 2026', slug: 'kitchen-remodel-roi-seattle-2026' },
+  { title: 'Kitchen Cabinet Styles 2026', slug: 'kitchen-cabinet-styles-2026' },
+  { title: 'Kitchen Lighting Design Guide', slug: 'kitchen-lighting-design-guide' },
+  { title: 'Open Concept Kitchen Remodel', slug: 'open-concept-kitchen-remodel' },
+  { title: 'Hardwood vs LVP Flooring in Seattle', slug: 'hardwood-vs-lvp-flooring-seattle' },
+  { title: 'Walk-In Shower Ideas', slug: 'walk-in-shower-ideas' },
+  { title: 'Seattle Bathroom Tile Trends', slug: 'seattle-bathroom-tile-trends' },
+  { title: 'Master Bathroom Remodel Checklist', slug: 'master-bathroom-remodel-checklist' },
+  { title: 'Bathroom Vanity Buying Guide', slug: 'bathroom-vanity-buying-guide' },
+  { title: 'Aging in Place Bathroom Remodel', slug: 'aging-in-place-bathroom-remodel' },
 ];
 
-const allLocations = [...LOCATIONS_TIER1, ...LOCATIONS_TIER2];
+const blogCategories = [
+  { title: 'Kitchen', href: '/blog/category/kitchen/' },
+  { title: 'Bathroom', href: '/blog/category/bathroom/' },
+  { title: 'Tips', href: '/blog/category/tips/' },
+];
+
+const reviewCategories = [
+  { title: 'Kitchen Remodeling Reviews', href: '/reviews/kitchen-remodeling/' },
+  { title: 'Bathroom Remodeling Reviews', href: '/reviews/bathroom-remodeling/' },
+  { title: 'Cabinet Refacing Reviews', href: '/reviews/cabinet-refacing/' },
+  { title: 'Countertop Installation Reviews', href: '/reviews/countertop-installation/' },
+];
+
+const topCities = LOCATIONS_TIER1.map((loc) => ({ title: `${loc.city}, WA`, slug: loc.slug }));
+
 ---
 
 <BaseLayout
-  title="Sitemap | Kitchen & Bathroom Remodeling Pros"
-  description="Complete sitemap for Kitchen & Bathroom Remodeling Pros. Find all our pages including services, areas served, cost guides, and blog posts."
+  title="Sitemap | Best Kitchen and Bathroom Remodeling"
+  description="Complete sitemap for Best Kitchen and Bathroom Remodeling. Find all our pages including services, areas served, cost guides, and blog posts."
   canonical={`${SITE.url}/sitemap-html/`}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
@@ -95,25 +120,6 @@ const allLocations = [...LOCATIONS_TIER1, ...LOCATIONS_TIER2];
           </ul>
         </div>
 
-        <!-- Areas Served -->
-        <div>
-          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Areas Served</h2>
-          <ul class="space-y-2.5">
-            <li>
-              <a href="/areas-served/" class="text-muted hover:text-accent transition-colors font-medium">
-                All Areas
-              </a>
-            </li>
-            {allLocations.map((loc) => (
-              <li>
-                <a href={`/areas-served/${loc.slug}/`} class="text-muted hover:text-accent transition-colors">
-                  {loc.city}, WA
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <!-- Cost Guides -->
         <div>
           <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Cost Guides</h2>
@@ -134,7 +140,7 @@ const allLocations = [...LOCATIONS_TIER1, ...LOCATIONS_TIER2];
         </div>
 
         <!-- Blog -->
-        <div>
+        <div class="md:col-span-2 lg:col-span-1">
           <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Blog</h2>
           <ul class="space-y-2.5">
             <li>
@@ -150,11 +156,59 @@ const allLocations = [...LOCATIONS_TIER1, ...LOCATIONS_TIER2];
               </li>
             ))}
           </ul>
+          <h3 class="text-lg font-semibold font-[family-name:var(--font-heading)] text-dark-text mt-6 mb-3">Blog Categories</h3>
+          <ul class="space-y-2.5">
+            {blogCategories.map((cat) => (
+              <li>
+                <a href={cat.href} class="text-muted hover:text-accent transition-colors">
+                  {cat.title}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <!-- Legal & Other -->
+        <!-- Reviews by Service -->
         <div>
-          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Legal & Other</h2>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Reviews by Service</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/reviews/" class="text-muted hover:text-accent transition-colors font-medium">
+                All Reviews
+              </a>
+            </li>
+            {reviewCategories.map((cat) => (
+              <li>
+                <a href={cat.href} class="text-muted hover:text-accent transition-colors">
+                  {cat.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Areas Served -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Areas Served</h2>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="/areas-served/" class="text-muted hover:text-accent transition-colors font-medium">
+                All Areas
+              </a>
+            </li>
+            {topCities.map((city) => (
+              <li>
+                <a href={`/areas-served/${city.slug}/`} class="text-muted hover:text-accent transition-colors">
+                  {city.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h2 class="text-xl font-bold font-[family-name:var(--font-heading)] text-dark-text mb-4 pb-2 border-b-2 border-accent">Legal</h2>
           <ul class="space-y-2.5">
             <li>
               <a href="/privacy/" class="text-muted hover:text-accent transition-colors">

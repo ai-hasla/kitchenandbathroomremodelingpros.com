@@ -1,0 +1,306 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Kitchen Lighting Design Guide', href: '/blog/kitchen-lighting-design-guide/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Kitchen Lighting Design: Layered Lighting Ideas for Seattle Homes',
+  description: 'Complete kitchen lighting design guide for Seattle homes. Learn about task, ambient, and accent lighting layers, under-cabinet LEDs, pendant islands, recessed lighting, and maximizing natural light in the Pacific Northwest.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-01-12',
+  dateModified: '2026-01-12',
+  image: '/images/blog-kitchen-lighting.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How many recessed lights do I need in my kitchen?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A general rule is one 6-inch recessed light per 4-5 square feet of kitchen space, placed about 3 feet from walls and 4-5 feet apart. A typical 150 sq ft Seattle kitchen needs 8-12 recessed lights. However, this depends on ceiling height, other light sources (pendants, under-cabinet), and personal preference. Always use dimmable LEDs so you can adjust brightness.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best lighting for a kitchen island?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Pendant lights are the most popular choice for kitchen islands. Hang them 30-36 inches above the island surface, spaced evenly across the island length. Use 2 pendants for a 4-foot island, 3 for a 6-foot island, or a single linear fixture for a streamlined look. Choose pendants that provide downward-directed light for task work while adding style to the space.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is under-cabinet lighting worth it?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Absolutely. Under-cabinet lighting is one of the most impactful and affordable kitchen upgrades. It eliminates shadows on countertops where you prep food, adds ambient warmth to the kitchen, and makes the space feel larger. LED strip lights or puck lights cost $200-$600 installed and use minimal electricity. In Seattle kitchens with limited natural light, under-cabinet lighting is essentially a necessity.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What color temperature is best for kitchen lighting?',
+      acceptedAnswer: { '@type': 'Answer', text: 'For kitchens, 2700K to 3000K (warm white) is the most popular choice. 2700K creates a warm, cozy atmosphere similar to incandescent bulbs. 3000K is slightly brighter and crisper while still feeling warm. Avoid 4000K and above in residential kitchens — it creates a cold, commercial feel. Use the same color temperature throughout the kitchen for visual consistency.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Kitchen Lighting Design: Layered Lighting Ideas for Seattle Homes"
+  description="Kitchen lighting design guide for Seattle homes. Task, ambient, accent lighting, under-cabinet LEDs, pendant islands, recessed lighting, and natural light tips for the Pacific Northwest."
+  canonical={`${SITE.url}/blog/kitchen-lighting-design-guide/`}
+  ogType="article"
+  article={{ publishedTime: '2026-01-12', modifiedTime: '2026-01-12', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">January 12, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 7 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Kitchen Lighting Design: Layered Lighting Ideas for Seattle Homes</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          How to design a kitchen lighting plan that works for cooking, entertaining, and everyday life — especially important in the Pacific Northwest where natural daylight is limited for months.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Kitchen lighting is one of the most overlooked elements in a remodel, and it is one of the most important. The right lighting makes food prep easier, sets the mood for dinner parties, and can make your kitchen feel twice as large. The wrong lighting — or not enough of it — creates shadows over work surfaces, makes the kitchen feel gloomy, and undoes all the beautiful finishes you invested in.
+            </p>
+            <p>
+              In Seattle, kitchen lighting matters even more than in most cities. From October through March, Seattle averages just 2-3 hours of weak daylight on many days. Even south-facing kitchens feel dim under thick cloud cover. During the long summer days, kitchens flood with gorgeous natural light — but you need a lighting plan that works for both extremes.
+            </p>
+            <p>
+              The key is layered lighting: multiple types of light at different levels, on separate controls, working together to create a kitchen that functions beautifully for chopping vegetables at 6 AM and feels warm and inviting for a dinner party at 8 PM. This guide explains each layer, what to choose, and how to plan your kitchen lighting for Seattle conditions.
+            </p>
+          </div>
+
+          <!-- Layered Lighting Concept -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">The Three Layers of Kitchen Lighting</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Professional lighting designers use three layers that work together: ambient (general), task (functional), and accent (decorative). Each serves a different purpose, and a well-lit kitchen includes all three. Think of it as a team — ambient light sets the baseline brightness, task light illuminates work areas, and accent light adds depth and visual interest.
+              </p>
+              <p>
+                The mistake most homeowners make is relying on a single ceiling fixture for everything. One central light creates harsh shadows over countertops (your body blocks the light when you stand at the counter), provides no focused light where you need it, and offers zero ambiance control. Layered lighting solves all of these problems.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ambient Lighting -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Ambient Lighting: The Foundation</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Recessed Downlights (Can Lights)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Recessed LED downlights are the workhorse of kitchen ambient lighting. They sit flush with the ceiling, provide even illumination, and work with any kitchen style. Use 4-inch or 6-inch cans with LED retrofit trims. Space them 4-5 feet apart and 2.5-3 feet from walls. For a typical 12x12 Seattle kitchen, plan for 9-12 recessed lights. Always install on a dimmer — at full brightness they light the kitchen for cooking; dimmed to 30% they create warm ambient glow for evening. Budget $100-$150 per light installed, or $900-$1,800 for a full kitchen. New construction or gut remodels make recessed light installation straightforward. In remodels where ceiling access is limited, slim retrofit LED panels (also called canless recessed lights) install without housing and fit between existing joists.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Flush-Mount and Semi-Flush Fixtures</h3>
+                <p class="text-body-text text-sm leading-relaxed">For kitchens with low ceilings (common in Seattle's older single-story homes and basement kitchens), a large flush-mount or semi-flush fixture provides ambient light without the complexity of recessed wiring. Modern flush-mount fixtures come in sleek designs that suit contemporary kitchens. They work well in galley kitchens and eat-in kitchen areas where recessed lights would feel too institutional. Budget $200-$800 per fixture.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task Lighting -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Task Lighting: Where You Work</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Under-Cabinet Lighting</h3>
+                <p class="text-body-text text-sm leading-relaxed">Under-cabinet lights are the single most impactful lighting upgrade in any kitchen. They pair especially well with the <a href="/blog/kitchen-cabinet-styles-2026/" class="text-accent hover:underline">trending cabinet styles for 2026</a>. They illuminate the countertop directly — eliminating the shadows that overhead lights cast when you stand at the counter. LED strip lights (tape lights) mounted to the underside of upper cabinets provide continuous, even illumination across the entire counter surface. Puck lights are an alternative that creates pools of directed light. LED strips produce a more uniform wash and are our recommendation for most kitchens. Install them toward the front edge of the cabinet (not against the wall) to light the work surface rather than the backsplash. Use warm white LEDs (2700K-3000K) to match your other kitchen lighting. Hardwired installations look cleaner than plug-in options — no visible cords or outlets. Budget $200-$600 for a full kitchen of under-cabinet LED strips, hardwired with a dimmer switch.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Pendant Lights Over the Island</h3>
+                <p class="text-body-text text-sm leading-relaxed">Pendant lights serve as both task lighting for the island work surface and a major design element. They visually define the kitchen island and add personality to the space. For proper task lighting, pendants should hang 30-36 inches above the island countertop (measure from the bottom of the pendant shade). Space pendants evenly, leaving 6-8 inches of clearance from each end of the island. Two pendants work for a 4-foot island, three for a 6-foot island, and a single linear multi-light fixture is a clean option for any island length. Choose pendants with downward-directed light (translucent or open-bottom shades) for effective task lighting. Fully opaque shades look beautiful but cast most of their light upward, reducing task illumination. Budget $150-$500 per pendant installed, or $300-$1,500 for a set.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Over-Sink Lighting</h3>
+                <p class="text-body-text text-sm leading-relaxed">The sink is a major work area that benefits from dedicated lighting. If the sink is under a window, a recessed light directly above provides task light for evening dishwashing. If there is no window, a small pendant, a recessed downlight, or a wall sconce on either side of a mirror or window frame works well. Avoid placing the light behind where you stand — it will cast your shadow directly into the sink.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accent Lighting -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Accent Lighting: Adding Depth and Character</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">In-Cabinet and Glass-Front Cabinet Lighting</h3>
+                <p class="text-body-text text-sm leading-relaxed">Small LED puck lights or strip lights inside glass-front cabinets showcase dishware, glassware, or decorative items. This creates depth and visual interest, especially during evening hours. The soft glow from lit cabinets makes the kitchen feel warm and layered rather than flat. Battery-operated options with motion sensors are an affordable retrofit; hardwired options are cleaner for new installs. Budget $50-$200 per cabinet.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Above-Cabinet Lighting</h3>
+                <p class="text-body-text text-sm leading-relaxed">If your upper cabinets do not reach the ceiling (as is common in Seattle's older homes with 9-foot or higher ceilings), LED strip lights placed on top of the cabinets wash the ceiling with a soft upward glow. This makes the ceiling feel higher, adds warmth to the room, and fills in the dark gap between cabinet tops and ceiling. A subtle but effective accent that costs $100-$300 for the full kitchen.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Toe-Kick Lighting</h3>
+                <p class="text-body-text text-sm leading-relaxed">LED strip lights installed in the toe-kick space at the base of cabinets create a floating effect and provide low-level nighttime navigation light. This is a popular feature in modern Seattle kitchens — the soft glow at floor level is practical (no more fumbling for light switches for a glass of water) and visually striking. Motion-sensor activation makes it hands-free. Budget $150-$400 for a full kitchen.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Natural Light in PNW -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Maximizing Natural Light in Pacific Northwest Kitchens</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Seattle's latitude (47.6 degrees north) means dramatic seasonal light variation. Summer days stretch past 9 PM with abundant, beautiful light pouring through kitchen windows. Winter days bring dim, gray light from about 8 AM to 4:30 PM. Your kitchen needs to work in both conditions.
+              </p>
+              <p>
+                <strong>Window placement and size</strong> are the biggest factors in natural kitchen light. If your <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> includes any wall changes, consider enlarging or adding windows. An <a href="/blog/open-concept-kitchen-remodel/" class="text-accent hover:underline">open concept kitchen remodel</a> can dramatically improve natural light by removing walls. South-facing windows provide the most consistent daylight year-round. East-facing windows deliver bright morning light. North-facing windows give soft, even light without direct sun glare — excellent for kitchens. West-facing windows bring intense afternoon sun in summer (consider blinds or window film to manage heat and glare).
+              </p>
+              <p>
+                <strong>Skylights and solar tubes</strong> bring daylight into kitchens that lack good window access. Skylights cost $1,500-$4,000 installed and flood the kitchen with overhead light. Solar tubes (sun tunnels) cost $500-$1,500 installed and fit between roof rafters, channeling daylight through a reflective tube into the room below. Both are popular in Seattle kitchen remodels, especially in single-story homes and top-floor kitchens.
+              </p>
+              <p>
+                <strong>Reflective surfaces</strong> amplify whatever natural light is available. Light-colored countertops, white or light-gray cabinets, glossy backsplash tiles, and light-toned flooring all bounce light around the room. In Seattle's gray winter months, a kitchen with reflective surfaces feels significantly brighter than one with dark finishes, even with the same windows.
+              </p>
+              <p>
+                <strong>Tunable white LED lighting</strong> is an emerging option that automatically adjusts color temperature throughout the day — cooler and brighter in the morning, warmer in the evening — mimicking natural daylight patterns. This is particularly appealing in Seattle where natural light quality varies dramatically by season and time of day.
+              </p>
+            </div>
+          </div>
+
+          <!-- Planning Tips -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Planning Your Kitchen Lighting Layout</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Use Separate Circuits and Dimmers</h3>
+                <p class="text-body-text text-sm leading-relaxed">Put each lighting layer on its own switch and dimmer. Recessed lights on one circuit, under-cabinet lights on another, pendant lights on a third, and accent lights on a fourth. This gives you full control — bright task lighting for cooking, dimmed ambient for dinner, accent-only for late-night ambiance. Smart dimmers let you create and save preset scenes from your phone.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Consistent Color Temperature</h3>
+                <p class="text-body-text text-sm leading-relaxed">Use the same Kelvin rating (color temperature) across all fixtures in the kitchen. Mixing 2700K and 4000K bulbs creates a jarring, inconsistent look. We recommend 2700K for a warm, traditional feel or 3000K for a bright but warm modern kitchen. Check the Kelvin rating on every LED bulb and strip before installing.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">CRI Matters</h3>
+                <p class="text-body-text text-sm leading-relaxed">CRI (Color Rendering Index) measures how accurately a light source reveals colors. In a kitchen, where you need to see the true color of food, finishes, and skin tones, choose LEDs with CRI 90 or higher. Cheap LEDs with CRI below 80 make everything look slightly gray or washed out. The difference is subtle but meaningful in a room where you spend hours each day.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How many recessed lights do I need in my kitchen?</h3>
+                <p class="text-body-text text-sm leading-relaxed">About one 6-inch recessed light per 4-5 sq ft. A typical 150 sq ft Seattle kitchen needs 8-12. Space them 4-5 feet apart and 3 feet from walls. Always use dimmable LEDs.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the best lighting for a kitchen island?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Pendant lights hung 30-36 inches above the surface. Use 2 pendants for a 4-foot island, 3 for a 6-foot island. Choose pendants with downward-directed light for effective task illumination.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is under-cabinet lighting worth it?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes — it is one of the most impactful kitchen upgrades. LED strips cost $200-$600 installed, eliminate counter shadows, and add warmth. In Seattle kitchens with limited natural light, it is practically essential.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What color temperature is best for kitchen lighting?</h3>
+                <p class="text-body-text text-sm leading-relaxed">2700K-3000K (warm white). 2700K is cozier; 3000K is brighter while still warm. Avoid 4000K+ in residential kitchens — it feels cold and commercial. Use the same temperature throughout for consistency.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/kitchen-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">15 Kitchen Remodel Ideas for Seattle Homes</p>
+    </a>
+    <a href="/blog/kitchen-cabinet-styles-2026/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Cabinet Styles 2026</p>
+    </a>
+    <a href="/blog/open-concept-kitchen-remodel/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Open Concept Kitchen Remodel Guide</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We design and install complete kitchen lighting systems.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="tel:+12066664370" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Call (206) 666-4370</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Brighten Up Your Seattle Kitchen</h2>
+            <p class="text-white/80 mb-6">From recessed lighting to under-cabinet LEDs, we design and install layered lighting systems that transform Seattle kitchens.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/open-concept-kitchen-remodel/" class="text-accent hover:underline text-sm font-medium">Open Concept Kitchen Remodel Guide</a></li>
+                <li><a href="/blog/hardwood-vs-lvp-flooring-seattle/" class="text-accent hover:underline text-sm font-medium">Hardwood vs LVP Flooring for Seattle</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/cabinet-installation/" class="text-accent hover:underline text-sm font-medium">Cabinet Installation</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,379 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Seattle Bathroom Tile Trends 2026: Expert Design Guide', href: '/blog/seattle-bathroom-tile-trends/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Seattle Bathroom Tile Trends 2026: Expert Design Guide',
+  description: 'Explore the top bathroom tile trends for Seattle homes in 2026. Large format tiles, subway variations, natural stone, terrazzo, patterned cement tiles, and expert design tips.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-28',
+  dateModified: '2026-02-28',
+  image: '/images/blog-tile-trends.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What bathroom tile is most popular in Seattle in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Large format porcelain tiles (12x24 and 24x24) are the most popular bathroom tile choice in Seattle for 2026, followed by zellige (handmade Moroccan) tiles, matte subway tile variations, and natural stone like marble and travertine. Earthy tones, organic textures, and matte finishes dominate the Seattle market, reflecting the Pacific Northwest connection to nature.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does bathroom tile installation cost in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Bathroom tile installation in Seattle costs $8-$25 per square foot for labor, depending on tile size, pattern complexity, and surface preparation. Material costs range from $2-$8/sq ft for porcelain, $5-$15/sq ft for natural stone, $10-$25/sq ft for zellige, and $8-$20/sq ft for cement tiles. A typical Seattle bathroom tile project (floors and shower) runs $3,000-$10,000 total for materials and installation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is subway tile still in style for bathrooms in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, subway tile remains a timeless choice, but the trend has shifted from standard 3x6 white glossy subway tile to more interesting variations. Elongated formats (4x12, 2x10), handmade and zellige textures, vertical stacking patterns, and muted colors like sage, taupe, and soft blue are the current subway tile trends in Seattle bathrooms.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What tile is best for bathroom floors in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Porcelain tile with a matte or textured finish is the best choice for bathroom floors in Seattle due to its low water absorption, slip resistance, and durability. Look for tiles with a DCOF rating of 0.42 or higher for wet areas. Large format porcelain (12x24 or 24x24) minimizes grout lines and creates a clean, modern look. Natural stone with a honed finish is a premium alternative.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Should I use the same tile on bathroom floors and shower walls?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Using the same tile on bathroom floors and shower walls creates a seamless, cohesive look that makes the space feel larger — a technique especially effective in <a href="/blog/small-bathroom-remodel-ideas/" class="text-accent hover:underline">smaller Seattle bathrooms</a> — a technique especially effective in smaller Seattle bathrooms. However, mixing complementary tiles (such as large format on walls and mosaic on the shower floor) adds visual interest. The key is maintaining a consistent color palette while varying size or texture for dimension.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Seattle Bathroom Tile Trends 2026: Expert Design Guide"
+  description="Discover the top bathroom tile trends for 2026 in Seattle. Large format, zellige, natural stone, terrazzo, patterned cement tiles, and expert design tips from local remodelers."
+  canonical={`${SITE.url}/blog/seattle-bathroom-tile-trends/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-28', modifiedTime: '2026-02-28', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">February 28, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 7 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Seattle Bathroom Tile Trends 2026: Expert Design Guide</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Tile is the defining material in any bathroom remodel. From the shower walls to the floor, the tiles you choose set the tone for the entire space. Here's what's trending in Seattle bathrooms for 2026 — and how to choose tiles that will look stunning for years to come.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              If the kitchen is defined by its cabinets, the bathroom is defined by its tile. It's the material you see on the walls, step on every morning, and feel under your hands in the shower. Tile choices in a <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodel</a> determine whether the space feels like a spa retreat, a classic sanctuary, or a bold design statement. And in Seattle — where we spend more time indoors than most cities — the bathroom matters more than you might think.
+            </p>
+            <p>
+              After completing hundreds of <a href="/services/tile-installation/" class="text-accent hover:underline">tile installations</a> across the Seattle metro area, our team has a clear view of what's trending, what's timeless, and what works best in Pacific Northwest homes. Here's your complete guide to bathroom tile trends for 2026.
+            </p>
+          </div>
+
+          <!-- Large Format Tiles -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Large Format Tiles: The Clean, Modern Standard</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Large format tiles — 12x24, 24x24, and even 24x48 inches — have become the dominant choice for Seattle bathroom walls and floors. The appeal is straightforward: fewer grout lines create a cleaner, more expansive look that makes bathrooms feel larger. In Seattle's many compact vintage bathrooms, this visual expansion is a significant benefit. Large tiles also mean less grout to clean and maintain, which matters in our humid climate where grout can develop mildew without regular attention.
+              </p>
+              <p>
+                Porcelain tiles in marble-look, concrete-look, and stone-look finishes are the most popular large format options. The manufacturing technology has advanced dramatically — today's porcelain convincingly replicates the veining of Calacatta marble, the texture of limestone, or the warmth of travertine, without the maintenance requirements of natural stone. Matte and soft-matte finishes are outselling glossy finishes by a wide margin in Seattle, reflecting the local preference for understated, nature-inspired aesthetics.
+              </p>
+              <p>
+                For shower walls, large format tiles (12x24 or larger) installed in a stacked vertical pattern create a contemporary look with clean, unbroken lines from floor to ceiling. Using the same tile on the bathroom floor and shower walls — with a contrasting mosaic on the shower floor — is one of the most popular tile layouts in Seattle bathrooms right now. It creates visual continuity that makes the entire space feel cohesive and intentional.
+              </p>
+            </div>
+          </div>
+
+          <!-- Subway Tile Variations -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Subway Tile Reimagined: Beyond the Classic 3x6</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The classic 3x6 white glossy subway tile had an incredible run, but Seattle homeowners are ready for something more interesting. Subway tile isn't going anywhere — the rectangular format is endlessly versatile — but the proportions, finishes, and installation patterns are evolving in exciting ways.
+              </p>
+              <p>
+                Elongated subway tiles in 4x12 and 2x10 formats create a more modern, horizontal line than the traditional 3x6. Stacked vertically rather than in the classic brick pattern, they look entirely different — clean, contemporary, and almost Scandinavian in feel. This vertical stack pattern has become one of the most requested tile layouts in Seattle, particularly in modern and transitional bathrooms.
+              </p>
+              <p>
+                Handmade and zellige subway tiles are the most exciting development in this category. Zellige tiles — handcrafted Moroccan tiles with an irregular surface, uneven edges, and subtle color variations — bring warmth, character, and artisanal charm that machine-made tiles can't replicate. Every tile is slightly different, creating a surface that catches light beautifully and adds depth and texture to the bathroom. Colors like soft white, sage, terracotta, and ocean blue are trending in Seattle zellige installations. Budget $15-$25 per square foot for zellige tiles — more than standard subway tile, but the visual impact is transformative.
+              </p>
+            </div>
+          </div>
+
+          <!-- Natural Stone -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Natural Stone: Timeless Luxury</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Natural stone remains the gold standard for luxury bathrooms in Seattle. Marble, travertine, limestone, and slate bring organic beauty, unique character, and a sense of permanence that manufactured materials can't fully replicate. In a city that values authenticity and connection to the natural world, stone resonates deeply with homeowners who want their bathroom to feel genuine and grounded.
+              </p>
+              <p>
+                Marble continues to dominate luxury Seattle bathrooms. Calacatta (with its bold, dramatic veining) and Carrara (with softer, more delicate veining) are the most popular varieties. Full marble shower walls with bookmatched slabs — where adjacent slabs are opened like a book to create a mirror-image pattern — are the pinnacle of bathroom tile design. This technique creates a stunning, symmetrical feature wall that serves as the focal point of the entire bathroom.
+              </p>
+              <p>
+                For homeowners who love the look of natural stone but want a more practical option, honed (matte) limestone and travertine offer a warm, earthy aesthetic with less veining than marble. These stones connect beautifully to the Pacific Northwest landscape — their warm grays, taupes, and creams echo the colors of the region's beaches, river stones, and overcast skies. All natural stone in wet areas must be properly sealed and resealed periodically (every 1-2 years), but with proper care, it will last a lifetime and develop a beautiful patina over time.
+              </p>
+            </div>
+          </div>
+
+          <!-- Terrazzo -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Terrazzo: The Playful Classic Returns</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Terrazzo — the composite material made of chips of marble, granite, glass, or other materials set in a cement or resin base — has made a dramatic comeback in bathroom design. Originally popular in mid-century architecture, terrazzo has been reimagined for 2026 with softer color palettes, larger chip sizes, and both tile and slab formats that make it accessible for residential bathrooms.
+              </p>
+              <p>
+                In Seattle, terrazzo works particularly well in mid-century modern homes (of which there are many in neighborhoods like Shoreline, Burien, and Renton) as an authentic nod to the home's original era. But it's equally at home in contemporary settings — a terrazzo shower floor or bathroom floor adds visual interest and playful texture that complements minimalist fixtures and clean-lined vanities.
+              </p>
+              <p>
+                Porcelain tiles that mimic terrazzo offer the look at a lower price point and without the maintenance requirements of genuine terrazzo. Large format terrazzo-look tiles (24x24) with minimal grout lines create a particularly polished effect. For a more authentic application, poured-in-place terrazzo or terrazzo tiles from Italian manufacturers deliver the real thing. Budget $10-$30 per square foot for quality terrazzo tile, or $25-$50+ for poured-in-place installations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Patterned Cement Tiles -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Patterned Cement Tiles: Bold and Personal</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Patterned cement tiles (also called encaustic tiles) are handmade tiles with pigmented patterns that go all the way through the tile body, not just printed on the surface. They come in an incredible range of geometric, floral, and abstract patterns and add a layer of personality and artistry that's impossible to achieve with plain tiles. In Seattle's design-forward neighborhoods — Capitol Hill, Fremont, Georgetown, Columbia City — patterned cement tile floors and shower accents have become a signature design move.
+              </p>
+              <p>
+                The most popular approach in Seattle bathrooms is using patterned cement tiles on the floor while keeping the walls in a complementary solid tile — white or light gray large format tiles on the walls with a bold geometric cement tile on the floor, for example. This creates a "rug" effect that anchors the space with pattern and color without overwhelming the room. Patterned tiles also work beautifully as a feature strip or accent band in the shower.
+              </p>
+              <p>
+                Cement tiles require sealing before and after grouting (they're porous), and they benefit from periodic resealing every 1-2 years. They're not as hard or water-resistant as porcelain, so they're best suited for bathroom floors and low-splash wall areas rather than inside the shower enclosure. Porcelain tiles that replicate cement tile patterns offer a maintenance-free alternative, though they lack the handmade depth and character of genuine cement tiles. Budget $8-$20 per square foot for authentic cement tiles from brands like Cement Tile Shop, Cle, and Granada Tile.
+              </p>
+            </div>
+          </div>
+
+          <!-- Color Trends -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Tile Color Trends for Seattle in 2026</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The color palette for Seattle bathroom tiles in 2026 is rooted in nature, warmth, and calm. Here's what we're seeing most often in our projects:
+              </p>
+              <p>
+                <strong>Warm Whites and Creams:</strong> The era of stark, cold white tile is fading. Seattle homeowners are choosing warmer whites, bone, and cream tones that create a softer, more inviting atmosphere. These warm neutrals pair beautifully with wood vanities, brass fixtures, and natural stone accents that are trending in local bathrooms.
+              </p>
+              <p>
+                <strong>Sage and Olive Greens:</strong> Green tile is the breakout color in Seattle bathrooms, just as it is in kitchens. Sage, olive, hunter, and eucalyptus greens connect to the lush Pacific Northwest landscape and create bathrooms that feel like natural retreats. Green zellige tiles in the shower are one of the most requested tile installations in our Seattle projects right now.
+              </p>
+              <p>
+                <strong>Warm Grays and Greiges:</strong> Cool blue-toned grays are giving way to warmer gray-beige (greige) tones. These neutral-warm colors create a spa-like atmosphere that's calming without feeling cold — particularly important in a city where overcast skies already provide enough gray. Greige large format tiles on bathroom floors and shower walls are a reliable, timeless choice.
+              </p>
+              <p>
+                <strong>Terracotta and Clay:</strong> Earthy terracotta and clay-colored tiles bring warmth and a Mediterranean-meets-PNW vibe to Seattle bathrooms. They work especially well as floor tiles paired with white or cream walls, creating a grounded, organic feel. Terracotta-colored zellige tiles are a particularly beautiful option that's gaining traction in the local market.
+              </p>
+              <p>
+                <strong>Deep Blues and Teals:</strong> For homeowners who want more color drama, deep navy, midnight blue, and teal tiles create moody, sophisticated bathrooms that feel like a departure from the everyday. These colors work best as feature walls or shower accents paired with lighter tiles and warm metallic fixtures. They evoke the deep waters of Puget Sound and the stormy PNW skies.
+              </p>
+            </div>
+          </div>
+
+          <!-- Installation Patterns -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Tile Installation Patterns That Are Trending</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The same tile can look completely different depending on the installation pattern. Here are the patterns Seattle designers and homeowners are choosing most in 2026:
+              </p>
+              <p>
+                <strong>Vertical Stack Bond:</strong> Rectangular tiles stacked directly on top of each other (no offset) create clean, contemporary vertical lines. This pattern has become the most popular alternative to traditional brick lay in Seattle bathrooms, especially with elongated subway tiles (4x12 or 2x10).
+              </p>
+              <p>
+                <strong>Herringbone:</strong> Tiles laid in a V-shaped zigzag pattern add movement and elegance. Herringbone works beautifully as a <a href="/blog/walk-in-shower-ideas/" class="text-accent hover:underline">shower</a> feature wall or on bathroom floors. It's more labor-intensive than standard patterns (add $3-$5 per square foot for installation), but the visual impact is significant.
+              </p>
+              <p>
+                <strong>Chevron:</strong> Similar to herringbone but with tiles cut at an angle to form a true V shape rather than a zigzag. Chevron creates a more dynamic, directional look that draws the eye. It's particularly striking as a floor pattern or behind a freestanding bathtub.
+              </p>
+              <p>
+                <strong>Stacked Horizontal (Large Format):</strong> Large format tiles (12x24 or 24x24) installed in a stacked pattern with minimal grout lines create a seamless, modern look. When the grout color matches the tile, the surface appears almost monolithic. This is the most popular pattern for contemporary Seattle bathrooms.
+              </p>
+              <p>
+                <strong>Mixed Formats:</strong> Combining different tile sizes within the same space — such as large format on the walls with mosaic on the shower floor and a feature strip of zellige — adds depth and sophistication. The key is maintaining a cohesive color palette while varying the scale and texture.
+              </p>
+            </div>
+          </div>
+
+          <!-- Grout Trends -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Don't Forget the Grout: Color and Joint Size Matter</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Grout is the unsung hero (or villain) of any tile installation. The grout color and joint size dramatically affect the finished look. In Seattle, the dominant grout trend is matching grout to tile color for a seamless, continuous surface. White tile with white grout, gray tile with gray grout — this approach minimizes the visual impact of grout lines and lets the tile itself take center stage.
+              </p>
+              <p>
+                Contrasting grout (dark grout with light tile) is still used intentionally as a design feature — it highlights individual tiles and the installation pattern, creating a more graphic, geometric look. This approach works well with subway tiles and geometric patterns where you want to emphasize the shape and layout.
+              </p>
+              <p>
+                For joint size, the trend is toward minimal grout lines — 1/16 inch for rectified (precision-cut) tiles and 1/8 inch for standard tiles. Larger grout joints (1/4 inch or more) are reserved for handmade tiles like zellige, where the irregular edges require wider spacing and the visible grout becomes part of the tile's artisanal character. Epoxy grout is worth the additional cost in wet areas — it's virtually waterproof, stain-resistant, and doesn't require sealing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Choosing the Perfect Tile for Your Seattle Bathroom</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The best bathroom tile choices balance aesthetics, durability, maintenance, and budget. For most Seattle homeowners, a combination of large format porcelain on the walls, a complementary mosaic on the shower floor, and a feature tile (zellige, patterned cement, or natural stone accent) creates a bathroom that's both practical and beautiful. The key is choosing a palette that works with your vanity, fixtures, and lighting — and that you'll love looking at every single day.
+              </p>
+              <p>
+                At Best Kitchen and Bathroom Remodeling, our designers bring tile samples to your home so you can see colors and textures in your actual lighting — something that's especially important in Seattle, where our unique natural light can make tiles look very different than they do in a showroom. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Schedule your free consultation</a> or call <a href="tel:+12066664370" class="text-accent hover:underline">(206) 666-4370</a> to start exploring tile options for your bathroom remodel.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What bathroom tile is most popular in Seattle in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Large format porcelain tiles (12x24 and 24x24) are the most popular choice, followed by zellige tiles, matte subway tile variations, and natural stone like marble and travertine. Earthy tones, organic textures, and matte finishes dominate the Seattle market, reflecting the Pacific Northwest connection to nature.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does bathroom tile installation cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Bathroom tile installation in Seattle costs $8-$25 per square foot for labor, depending on tile size, pattern complexity, and surface preparation. Material costs range from $2-$8/sq ft for porcelain, $5-$15/sq ft for natural stone, $10-$25/sq ft for zellige, and $8-$20/sq ft for cement tiles. A typical project runs $3,000-$10,000 total.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Is subway tile still in style for bathrooms in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, subway tile remains a timeless choice, but the trend has shifted to more interesting variations. Elongated formats (4x12, 2x10), handmade and zellige textures, vertical stacking patterns, and muted colors like sage, taupe, and soft blue are the current subway tile trends in Seattle bathrooms.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What tile is best for bathroom floors in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Porcelain tile with a matte or textured finish is the best choice due to its low water absorption, slip resistance, and durability. Look for tiles with a DCOF rating of 0.42 or higher for wet areas. Large format porcelain minimizes grout lines and creates a clean, modern look. Natural stone with a honed finish is a premium alternative.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Should I use the same tile on bathroom floors and shower walls?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Using the same tile on floors and shower walls creates a seamless, cohesive look that makes the space feel larger — especially effective in smaller Seattle bathrooms. However, mixing complementary tiles (large format on walls with mosaic on the shower floor) adds visual interest. The key is maintaining a consistent color palette while varying size or texture.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
+    </a>
+    <a href="/blog/walk-in-shower-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">12 Walk-In Shower Ideas</p>
+    </a>
+    <a href="/blog/small-bathroom-remodel-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">25 Small Bathroom Remodel Ideas</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you choose the perfect tiles for your bathroom.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Transform Your Bathroom?</h2>
+            <p class="text-white/80 mb-6">Schedule your free in-home consultation and explore tile options with our design team.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/walk-in-shower-ideas/" class="text-accent hover:underline text-sm font-medium">12 Walk-In Shower Ideas</a></li>
+                <li><a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">10 Bathroom Remodel Ideas for Seattle</a></li>
+                <li><a href="/blog/aging-in-place-bathroom-remodel/" class="text-accent hover:underline text-sm font-medium">Aging-in-Place Bathroom Remodel Guide</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+                <li><a href="/services/shower-installation/" class="text-accent hover:underline text-sm font-medium">Shower Installation</a></li>
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

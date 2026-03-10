@@ -1,0 +1,336 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Bathroom Vanity Buying Guide', href: '/blog/bathroom-vanity-buying-guide/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Bathroom Vanity Buying Guide: Sizes, Styles & Installation Tips',
+  description: 'Complete bathroom vanity buying guide covering sizes, single vs double vanities, floating vs freestanding, materials, storage options, and professional installation tips for Seattle homeowners.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2025-11-28',
+  dateModified: '2025-11-28',
+  image: '/images/blog-bathroom-vanity.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the most popular bathroom vanity size?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The most popular vanity sizes are 30 inches and 36 inches wide for single vanities, and 60 inches and 72 inches wide for double vanities. For small Seattle bathrooms, 24-inch vanities are common and effective. The standard depth is 21-22 inches, though narrow-depth vanities (18 inches) are available for tight spaces like powder rooms.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is a floating vanity or freestanding vanity better?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Floating (wall-mounted) vanities make small bathrooms look larger by exposing floor space, are easier to clean around, and create a modern aesthetic. Freestanding vanities offer more storage, are easier to install, and come in more traditional styles. For Seattle homes with small bathrooms, floating vanities are often the better choice for the visual space they create.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does it cost to install a bathroom vanity in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Professional vanity installation in Seattle costs $300 to $800 for labor, not including the vanity itself. A basic vanity with countertop costs $400 to $1,500. Mid-range options run $1,500 to $3,500. High-end custom vanities cost $3,500 to $8,000 or more. Total installed cost including plumbing connections ranges from $800 to $9,000 depending on quality and complexity.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What vanity material is most durable for bathrooms?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Solid wood with a waterproof finish (marine-grade polyurethane or catalyzed lacquer) is the most durable option. Plywood construction is more moisture-resistant than MDF or particleboard, which can swell and deteriorate in humid bathroom environments. For countertops, quartz is the most durable and low-maintenance option, followed by granite and solid surface materials.' },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Bathroom Vanity Buying Guide: Sizes, Styles & Installation Tips"
+  description="Complete bathroom vanity buying guide for Seattle homeowners. Compare single vs double, floating vs freestanding, materials, sizes, storage options, and installation costs."
+  canonical={`${SITE.url}/blog/bathroom-vanity-buying-guide/`}
+  ogType="article"
+  article={{ publishedTime: '2025-11-28', modifiedTime: '2025-11-28', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">November 28, 2025</span>
+          <span class="text-white/60 text-sm">&middot; 7 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Bathroom Vanity Buying Guide: Sizes, Styles & Installation Tips</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Everything you need to know to choose the right vanity for your Seattle bathroom — sizing, styles, materials, storage, and what to expect from professional installation.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              The vanity is the centerpiece of any bathroom. It is the first thing you see when you walk in, the fixture you use most often, and the primary source of bathroom storage. Choosing the right vanity affects how your bathroom looks, how it functions, and how much storage you have for daily essentials. Getting it wrong means living with frustration every morning.
+            </p>
+            <p>
+              Seattle bathrooms present specific challenges when it comes to vanity selection. Many of the city's older Craftsman and mid-century homes have compact bathrooms where a standard 48-inch vanity simply will not fit. The Pacific Northwest's damp climate means moisture resistance is more important here than in drier regions. And Seattle homeowners tend to value both modern aesthetics and practical functionality — they want a vanity that looks beautiful and works hard.
+            </p>
+            <p>
+              This guide walks you through every decision point: size, style, configuration, materials, countertop options, storage features, and installation considerations. Whether you are replacing an outdated vanity or planning a full <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodel</a>, this guide will help you make the right choice. For ideas on maximizing compact spaces, see our <a href="/blog/small-bathroom-remodel-ideas/" class="text-accent hover:underline">small bathroom remodel ideas</a>.
+            </p>
+          </div>
+
+          <!-- Sizing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Vanity Sizes: Finding the Right Fit</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Vanity sizes are measured by width, and standard options range from 18 inches to 72 inches. Choosing the right width depends on your bathroom dimensions, how many people use the bathroom, and how much counter and storage space you need.
+              </p>
+            </div>
+            <div class="space-y-6 mt-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">18-24 Inch Vanities — Powder Rooms and Half Baths</h3>
+                <p class="text-body-text text-sm leading-relaxed">Perfect for Seattle's small powder rooms and half baths where space is at a premium. An 18-inch vanity provides a sink and minimal storage. A 24-inch vanity adds a small cabinet or drawers beneath the sink. These compact vanities are ideal for guest bathrooms in Craftsman homes where the original pedestal sink offered zero storage. Expect to pay $300-$1,200 for quality options in this size range.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">30-36 Inch Vanities — Standard Single Bathrooms</h3>
+                <p class="text-body-text text-sm leading-relaxed">The most popular sizes for single-user bathrooms and the sweet spot for many Seattle homes. A 30-inch vanity fits comfortably in bathrooms as small as 35 square feet. A 36-inch vanity provides more counter space and storage while still fitting most standard bathrooms. These sizes typically include a combination of drawers and a cabinet door, providing enough storage for one person's daily essentials. Budget $500-$2,500 for mid-range quality.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">48 Inch Vanities — Generous Single or Compact Double</h3>
+                <p class="text-body-text text-sm leading-relaxed">A 48-inch vanity offers ample counter space for a single sink with room to spread out, or a tight double-sink configuration. For a double sink at this width, each sink is small and counter space between them is minimal — workable but snug. This size works well in Seattle's mid-century homes that have slightly larger bathrooms than the older Craftsman era. Price range: $800-$3,500.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">60-72 Inch Vanities — Double Sink Master Baths</h3>
+                <p class="text-body-text text-sm leading-relaxed">The standard for master bathrooms with double sinks. A 60-inch double vanity provides comfortable spacing between two sinks. A 72-inch vanity offers generous counter space between sinks and more storage. These larger vanities require a bathroom that is at least 8 feet wide to allow adequate clearance. Common in newer Seattle homes and in master bathroom additions. Budget $1,200-$6,000 or more for quality double vanities.</p>
+              </div>
+            </div>
+            <div class="space-y-4 text-body-text leading-relaxed mt-6">
+              <p>
+                <strong>Depth matters too.</strong> Standard vanity depth is 21-22 inches (front to back). Narrow-depth vanities at 18 inches save 3-4 inches of floor space — significant in a small bathroom. Some compact models go as shallow as 14-16 inches with vessel sinks. In tight Seattle bathrooms, a narrow-depth vanity can mean the difference between a comfortable room and one where you bump into the vanity every time you use the toilet.
+              </p>
+            </div>
+          </div>
+
+          <!-- Single vs Double -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Single vs. Double Vanity: Which Do You Need?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The decision between a single and double vanity depends on three factors: bathroom size, how many people share the bathroom, and whether you value counter space or sink access more.
+              </p>
+              <p>
+                <strong>Choose a single vanity</strong> if your bathroom is under 60 square feet, only one person uses the bathroom regularly, or you prefer maximum counter and storage space over a second sink. A well-appointed single vanity with a large countertop is often more functional for daily use than a cramped double vanity.
+              </p>
+              <p>
+                <strong>Choose a double vanity</strong> if two people use the bathroom simultaneously (especially during morning routines), your bathroom is at least 8 feet wide, and resale value matters — double vanities in master baths are a strong selling point in the Seattle real estate market. Couples in neighborhoods like Green Lake, Ravenna, and Wedgwood often tell us a double vanity is their number one priority in a master bath remodel.
+              </p>
+              <p>
+                A practical compromise is a single vanity with a wide countertop (48-60 inches) that could be converted to a double sink in the future. Install the plumbing rough-in for a second sink during your remodel so the option is there without opening walls later.
+              </p>
+            </div>
+          </div>
+
+          <!-- Floating vs Freestanding -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Floating vs. Freestanding Vanities</h2>
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Floating (Wall-Mounted) Vanities</h3>
+                <p class="text-body-text text-sm leading-relaxed">Mounted to the wall with no legs touching the floor. Floating vanities expose the floor beneath, making small bathrooms look significantly larger. They are easier to clean around — you can mop or vacuum under them without obstacle. The modern, clean aesthetic works particularly well in contemporary and transitional bathroom designs. Installation requires a sturdy wall — the vanity hangs from a mounting bracket secured to wall studs, and it must support the weight of the vanity, countertop, sink, and water. In Seattle's older homes with plaster walls, this sometimes requires reinforcing the wall with blocking between studs. Installation costs slightly more than freestanding ($400-$800 for labor). The trade-off is slightly less storage since the cabinet is typically shallower to accommodate the wall-mount bracket.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Freestanding Vanities</h3>
+                <p class="text-body-text text-sm leading-relaxed">Sit on the floor like a piece of furniture. Freestanding vanities are simpler to install (no wall reinforcement needed), generally more affordable, and available in a wider range of traditional and transitional styles. They offer maximum storage depth since the cabinet extends to the floor. The downside is that the floor-to-cabinet junction can trap moisture and make cleaning harder. In Seattle's moisture-prone environment, the bottom edges of freestanding vanities can deteriorate over time if not properly sealed. Furniture-style vanities with legs (rather than a solid base) offer a compromise — they look traditional but expose some floor space and allow air circulation underneath.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Materials -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Vanity Materials: What Holds Up Best</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                In Seattle's humid bathroom environment, material quality directly determines how long your vanity lasts. The cheapest vanities use particleboard or MDF (medium-density fiberboard) boxes, which absorb moisture, swell, and deteriorate within a few years. We see this constantly in Seattle bathrooms — the vanity bottom is warped and crumbling from moisture exposure.
+              </p>
+            </div>
+            <div class="space-y-6 mt-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Solid Wood ($1,500 - $5,000+)</h3>
+                <p class="text-body-text text-sm leading-relaxed">The most durable option when properly sealed. Hardwoods like oak, maple, and birch resist moisture better than softwoods. A quality polyurethane or catalyzed lacquer finish provides a waterproof barrier. Solid wood vanities can last decades with proper care. They can also be refinished when the style feels dated, extending their life even further.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Plywood Construction ($800 - $3,000)</h3>
+                <p class="text-body-text text-sm leading-relaxed">High-quality plywood (birch or maple) is an excellent vanity material. It is more moisture-resistant than MDF, more dimensionally stable than solid wood (less expansion and contraction), and strong. Many premium vanity brands use plywood boxes with solid wood doors and drawer fronts — a smart combination of durability and aesthetics.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">MDF and Particleboard ($300 - $1,200)</h3>
+                <p class="text-body-text text-sm leading-relaxed">Budget vanities typically use these engineered materials. MDF holds paint well and provides a smooth finish, but it swells irreversibly when exposed to water. Particleboard is the weakest option and should be avoided in bathrooms entirely. If budget requires MDF, ensure all edges and surfaces are fully sealed and that the vanity sits on legs or feet (not directly on the floor) to prevent water wicking from the bottom.</p>
+              </div>
+            </div>
+            <div class="space-y-4 text-body-text leading-relaxed mt-6">
+              <p>
+                <strong>Countertop materials</strong> also matter. <a href="/blog/quartz-vs-granite-countertops-seattle/" class="text-accent hover:underline">Quartz</a> engineered stone is the most popular choice for bathroom vanities in Seattle — it is non-porous, stain-resistant, and requires zero sealing. Granite is beautiful but requires periodic sealing. Marble looks stunning but stains and etches easily from acidic products (toothpaste, skincare). Solid surface (Corian) is affordable and seamlessly integrates with undermount sinks. Laminate is the most budget-friendly option and modern laminates look surprisingly convincing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Storage -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Storage Features to Look For</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The vanity is your bathroom's primary storage. In Seattle's compact bathrooms, maximizing vanity storage is essential because there is rarely a separate linen closet. Here are the features that make the biggest difference:
+              </p>
+            </div>
+            <div class="space-y-6 mt-6">
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Drawers Over Doors</h3>
+                <p class="text-body-text text-sm leading-relaxed">Drawers are significantly more functional than cabinet doors. Items in drawers are visible and accessible without bending down and reaching into the back of a dark cabinet. Look for vanities with full-extension, soft-close drawer slides. A U-shaped drawer that wraps around the plumbing maximizes the space under the sink that would otherwise be wasted with a door-style cabinet.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Internal Organizers</h3>
+                <p class="text-body-text text-sm leading-relaxed">Drawer dividers, tiered inserts, and built-in electrical outlets inside drawers (for hair dryers and electric toothbrushes) transform a vanity from a storage box into an organized system. Some premium vanities include these features; for others, aftermarket organizers from brands like Rev-A-Shelf add functionality for $30-$100 per drawer.</p>
+              </div>
+              <div class="border-l-4 border-accent pl-5">
+                <h3 class="font-semibold text-primary mb-1">Open Shelving</h3>
+                <p class="text-body-text text-sm leading-relaxed">Some vanity designs include a combination of closed cabinets and open shelves. Open shelves are convenient for frequently used items (towels, decorative baskets) but require keeping them neat. In Seattle bathrooms, open shelving below a floating vanity creates a spa-like aesthetic that is popular in modern remodels.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Installation -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Professional Installation vs. DIY</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                A basic vanity swap — removing an old vanity and installing a new one in the same location with the same plumbing configuration — is a manageable DIY project for handy homeowners. The plumbing connections (supply lines and drain) stay in the same place, and the work is straightforward.
+              </p>
+              <p>
+                Professional <a href="/services/vanity-installation/" class="text-accent hover:underline">vanity installation</a> becomes important when you are changing the vanity size (requiring wall patching and potentially moving plumbing), switching from freestanding to floating (wall reinforcement needed), changing the plumbing location, or installing a heavy stone countertop. A professional installation in Seattle runs $300 to $800 for labor, which includes disconnecting old plumbing, removing the old vanity, installing the new vanity and countertop, reconnecting plumbing, and caulking.
+              </p>
+              <p>
+                If plumbing needs to be moved — even a few inches — add $500 to $1,500 for a licensed plumber. Moving a drain line is more expensive than moving supply lines. In Seattle, any plumbing work beyond basic fixture connections requires a licensed plumber, and significant plumbing changes require a permit from SDCI.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the most popular bathroom vanity size?</h3>
+                <p class="text-body-text text-sm leading-relaxed">30 and 36 inches for single vanities, 60 and 72 inches for doubles. In small Seattle bathrooms, 24-inch vanities are common. Standard depth is 21-22 inches, with narrow options at 18 inches for tight spaces.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is a floating vanity or freestanding vanity better?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Floating vanities make small bathrooms look larger and are easier to clean around. Freestanding vanities offer more storage and are easier to install. For compact Seattle bathrooms, floating vanities are often the better choice.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does vanity installation cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Labor runs $300-$800. A basic vanity with countertop costs $400-$1,500. Mid-range: $1,500-$3,500. High-end custom: $3,500-$8,000+. Total installed cost including plumbing: $800-$9,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What vanity material is most durable for bathrooms?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Solid wood with a waterproof finish is most durable. Plywood construction is excellent and more moisture-resistant than MDF. Avoid particleboard in bathrooms — it deteriorates quickly from moisture exposure, especially in Seattle's humid climate.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/small-bathroom-remodel-ideas/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">25 Small Bathroom Remodel Ideas</p>
+    </a>
+    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
+    </a>
+    <a href="/blog/seattle-bathroom-tile-trends/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Seattle Bathroom Tile Trends 2026</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you choose and install the perfect vanity.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="tel:+12066664370" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Call (206) 666-4370</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Need Help Choosing a Vanity?</h2>
+            <p class="text-white/80 mb-6">Our design team helps Seattle homeowners select and install vanities that fit their space, style, and budget perfectly.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/small-bathroom-remodel-ideas/" class="text-accent hover:underline text-sm font-medium">25 Small Bathroom Remodel Ideas</a></li>
+                <li><a href="/blog/master-bathroom-remodel-checklist/" class="text-accent hover:underline text-sm font-medium">Master Bathroom Remodel Checklist</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+                <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

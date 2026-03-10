@@ -1,0 +1,348 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: "Kitchen Cabinet Styles 2026: What's Trending in Seattle", href: '/blog/kitchen-cabinet-styles-2026/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: "Kitchen Cabinet Styles 2026: What's Trending in Seattle",
+  description: "Explore the top kitchen cabinet styles trending in Seattle for 2026. From shaker to flat-panel, two-tone to open shelving, discover what local designers recommend.",
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-03-01',
+  dateModified: '2026-03-01',
+  image: '/images/blog-cabinet-styles.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the most popular kitchen cabinet style in Seattle in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Shaker-style cabinets remain the most popular choice in Seattle kitchens in 2026, accounting for roughly 45-50% of cabinet installations. Their clean lines and versatile design work equally well in Craftsman bungalows, modern homes, and transitional kitchens. Flat-panel (slab) cabinets are the second most popular, especially in contemporary new construction and condo remodels.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are white kitchen cabinets still in style in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'White cabinets remain popular in Seattle but have shifted from bright whites to warmer tones like Swiss Coffee, Simply White, and Alabaster. The bigger trend in 2026 is two-tone cabinetry — white or light upper cabinets paired with colored lowers in navy, sage green, or charcoal. All-white kitchens are giving way to kitchens with more warmth, color, and personality.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much do new kitchen cabinets cost in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Kitchen cabinet costs in Seattle range from $8,000-$15,000 for stock cabinets, $15,000-$30,000 for semi-custom cabinets, and $30,000-$60,000+ for fully custom cabinetry. Cabinet refacing (keeping existing boxes and replacing doors and drawer fronts) is a more affordable option at $5,000-$12,000 for a typical Seattle kitchen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Should I choose shaker or flat-panel cabinets for my Seattle kitchen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Shaker cabinets are the safest choice for resale value and work in virtually every home style common in Seattle, from Craftsman to modern farmhouse. Flat-panel cabinets are the better choice for contemporary and minimalist aesthetics, and they pair well with modern condo and new construction interiors. Both styles are considered timeless and will not date your kitchen.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Kitchen Cabinet Styles 2026: What's Trending in Seattle"
+  description="Discover the top kitchen cabinet styles for 2026 in Seattle. Shaker, flat-panel, two-tone, open shelving, and color trends from local remodeling experts."
+  canonical={`${SITE.url}/blog/kitchen-cabinet-styles-2026/`}
+  ogType="article"
+  article={{ publishedTime: '2026-03-01', modifiedTime: '2026-03-01', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">March 1, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 8 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Kitchen Cabinet Styles 2026: What's Trending in Seattle</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Cabinets define the look and feel of your kitchen more than any other single element. Here's what Seattle homeowners and designers are choosing in 2026 — and why these styles work so well in Pacific Northwest homes.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Kitchen cabinets account for roughly 40-50% of your remodeling budget and dominate the visual impact of the space. Choosing the right cabinet style isn't just an aesthetic decision — it sets the tone for your entire kitchen and influences how well the design holds up over time. In Seattle's diverse housing stock — from turn-of-the-century Craftsman bungalows in Phinney Ridge to sleek new-construction townhomes in Columbia City — the right cabinet style can make a kitchen feel perfectly at home or awkwardly out of place.
+            </p>
+            <p>
+              After installing thousands of cabinets across the greater Seattle area, our team at Best Kitchen and Bathroom Remodeling has a clear picture of what's trending, what's timeless, and what works best for different home styles. Here's your complete guide to <a href="/services/custom-cabinetry/" class="text-accent hover:underline">kitchen cabinet styles</a> in 2026.
+            </p>
+          </div>
+
+          <!-- Shaker Cabinets -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Shaker Cabinets: The Undisputed Favorite</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Shaker-style cabinets continue to dominate the Seattle market in 2026, and for good reason. Their five-piece door construction with a flat center panel and simple, recessed profile strikes the ideal balance between traditional charm and contemporary cleanness. Shaker cabinets look at home in a 1920s Tudor in Mount Baker, a mid-century split-level in Shoreline, and a brand-new townhome in Beacon Hill. That versatility is unmatched.
+              </p>
+              <p>
+                What makes shakers so enduring is their simplicity. They don't compete with other design elements — they complement them. Pair shaker cabinets with brass hardware and a marble-look <a href="/blog/quartz-vs-granite-countertops-seattle/" class="text-accent hover:underline">quartz countertop</a> for a classic feel. Swap the hardware for matte black pulls and add a concrete-look countertop for a more industrial vibe. The same cabinet works in both scenarios because the profile is neutral enough to adapt.
+              </p>
+              <p>
+                In 2026, we're seeing a subtle evolution: thinner rail profiles on shaker doors create a slightly more modern look, and some manufacturers offer shaker doors with a small bead or groove detail on the inner edge for added dimension. These refinements keep the shaker style feeling fresh without straying from its core identity. For Seattle homeowners who want a safe, timeless choice that maximizes resale appeal, shaker cabinets remain the gold standard.
+              </p>
+            </div>
+          </div>
+
+          <!-- Flat-Panel / Slab -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Flat-Panel (Slab) Cabinets: Clean and Contemporary</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Flat-panel cabinets — also called slab doors — feature a completely smooth, unadorned front surface. There's no frame, no profile, no ornamentation. The result is a sleek, minimalist aesthetic that's become the go-to choice for modern and contemporary Seattle kitchens, particularly in new construction and condo remodels along the waterfront and in South Lake Union.
+              </p>
+              <p>
+                The beauty of flat-panel cabinets lies in the material and finish. A slab door in rich walnut veneer brings warmth and grain pattern to a modern kitchen. High-gloss lacquer in white or gray creates a European-inspired look. Matte finishes in sage, mushroom, or charcoal are trending heavily in 2026 Seattle kitchens — they absorb light rather than reflecting it, creating a calm, sophisticated atmosphere that suits our frequently overcast skies.
+              </p>
+              <p>
+                Flat-panel cabinets often use integrated or recessed pulls rather than traditional hardware, maintaining the clean lines. Push-to-open (tip-on) mechanisms eliminate the need for visible hardware entirely. For fingerprint resistance, opt for matte or textured finishes rather than high-gloss, especially on lower cabinets that get heavy daily use. Budget about 10-20% more than comparable shaker cabinets for quality flat-panel options, as the smooth surfaces demand higher manufacturing precision.
+              </p>
+            </div>
+          </div>
+
+          <!-- Open Shelving -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Open Shelving: Strategic and Curated</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The open shelving trend has matured considerably in Seattle. The all-open-shelving kitchen that trended on Instagram a few years ago has largely been replaced by a more practical approach: strategically placing a section of open floating shelves alongside traditional closed cabinets. This hybrid approach provides the airy, curated look of open shelving while maintaining plenty of concealed storage for the items you don't want on display.
+              </p>
+              <p>
+                The most common approach in Seattle kitchens is replacing one section of upper cabinets — typically flanking the range hood or beside a window — with two or three floating shelves. Walnut, white oak, and reclaimed Douglas fir are the most popular shelf materials, connecting to the Pacific Northwest's timber heritage. They're perfect for displaying handmade pottery from Pike Place Market, a collection of cookbooks, or seasonal greenery.
+              </p>
+              <p>
+                One practical consideration for Seattle homeowners: open shelves in earthquake-prone areas should be anchored securely, and fragile items should be placed thoughtfully. We also recommend using shelf brackets rated for the weight you plan to store. From a dust and grease standpoint, shelves near the cooktop will require more frequent cleaning than those positioned elsewhere in the kitchen. Plan the placement accordingly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Two-Tone -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Two-Tone Cabinetry: The Design-Forward Choice</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Two-tone cabinetry is arguably the biggest cabinet trend in Seattle kitchens right now. The concept is simple: upper and lower cabinets in two different colors or finishes. The contrast creates visual depth, breaks up large expanses of cabinetry, and allows homeowners to incorporate color without the commitment of an entirely colored kitchen. It's a design-forward approach that adds personality while maintaining broad appeal.
+              </p>
+              <p>
+                The most popular two-tone combinations in the Seattle market for 2026 include white uppers with navy blue lowers, warm white uppers with sage or olive green lowers, light gray uppers with charcoal or black lowers, and white uppers with natural walnut or white oak lowers. The island is another opportunity for a contrasting color — a white perimeter kitchen with a deep green or navy island creates a stunning focal point.
+              </p>
+              <p>
+                Two-tone works especially well in Seattle's Craftsman homes, where the warm wood tones and earthy colors complement original architectural details. In more modern settings, a combination of flat-panel white uppers and textured wood-grain lowers bridges warmth and minimalism. The key is maintaining contrast without creating visual chaos — typically, the darker or bolder color goes on the bottom where it feels grounded, and the lighter color on top keeps the space feeling open.
+              </p>
+            </div>
+          </div>
+
+          <!-- Color Trends -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Cabinet Color Trends for Seattle in 2026</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The color palette for Seattle kitchen cabinets has shifted dramatically in recent years. Here's what's in, what's out, and what's timeless:
+              </p>
+              <p>
+                <strong>Greens:</strong> Sage, olive, hunter, and forest green are the breakout cabinet colors of the past two years, and they're still gaining momentum in 2026. These tones connect directly to the lush Pacific Northwest landscape and create kitchens that feel natural and calming. Benjamin Moore's Cushing Green, Sherwin-Williams' Pewter Green, and Farrow & Ball's Treron are popular paint choices for cabinet painters in the Seattle area.
+              </p>
+              <p>
+                <strong>Warm Whites and Creams:</strong> Bright, blue-undertone whites are giving way to warmer, creamier whites. Colors like Benjamin Moore's White Dove, Simply White, and Chantilly Lace (a cleaner white that still reads warm) are the new neutrals. These warmer whites prevent kitchens from feeling sterile and pair beautifully with natural wood, brass hardware, and stone countertops.
+              </p>
+              <p>
+                <strong>Navy and Deep Blues:</strong> Navy has been a Seattle favorite for years and shows no sign of fading. It works as a full-kitchen color, an island color, or the lower-cabinet shade in a two-tone scheme. It's sophisticated, versatile, and pairs well with brass, chrome, and stainless hardware. Benjamin Moore's Hale Navy and Sherwin-Williams' Naval remain the standards.
+              </p>
+              <p>
+                <strong>Natural Wood Tones:</strong> Rift-cut white oak and walnut cabinets — stained or natural — are surging in popularity for Seattle kitchens that want warmth without paint. The grain pattern adds texture and visual interest, and natural wood connects beautifully to the PNW aesthetic. These work as full kitchens or as an accent on an island or lower cabinets in a two-tone design.
+              </p>
+              <p>
+                <strong>Charcoal and Black:</strong> Dark, moody kitchens are gaining traction in Seattle's design-conscious neighborhoods. Black or charcoal cabinets paired with brass hardware, marble-look countertops, and warm wood accents create a dramatic, sophisticated space. This look requires thoughtful lighting — under-cabinet lights, pendant lights, and ambient fixtures are essential to prevent the space from feeling cave-like, especially during Seattle's darker months.
+              </p>
+            </div>
+          </div>
+
+          <!-- Cabinet Construction -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Stock vs. Semi-Custom vs. Custom: What Seattle Homeowners Should Know</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Beyond style, the construction tier of your cabinets significantly impacts quality, customization options, and budget:
+              </p>
+              <p>
+                <strong>Stock Cabinets ($8,000-$15,000):</strong> Pre-manufactured in standard sizes, stock cabinets offer limited style and color options but deliver solid quality at the lowest price point. Brands like Hampton Bay (Home Depot) and Diamond NOW (Lowe's) are common stock choices. They work well for straightforward kitchen layouts where standard sizes fit without issue.
+              </p>
+              <p>
+                <strong>Semi-Custom Cabinets ($15,000-$30,000):</strong> Built to order with more size options, finish choices, and interior organizational features than stock. Semi-custom cabinets from brands like KraftMaid, Waypoint, and Medallion hit the sweet spot for most Seattle kitchen remodels. They offer the look and feel of custom cabinetry at a more accessible price, with lead times of 4-8 weeks.
+              </p>
+              <p>
+                <strong>Custom Cabinets ($30,000-$60,000+):</strong> Built from scratch to your exact specifications by a local cabinet shop. <a href="/services/custom-cabinetry/" class="text-accent hover:underline">Custom cabinetry</a> is the best choice for kitchens with unusual dimensions, specific material requests, or highly personalized storage solutions. Lead times are typically 8-14 weeks. The result is furniture-quality cabinetry that fits your kitchen like a glove.
+              </p>
+              <p>
+                <strong>Cabinet Refacing ($5,000-$12,000):</strong> If your existing cabinet boxes are in good structural condition, <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a> replaces just the doors, drawer fronts, and veneer while keeping the original boxes. It's the most affordable way to completely change your kitchen's look, and it can be completed in about a week — far less disruption than a full cabinet replacement.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hardware Trends -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Cabinet Hardware Trends in Seattle</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Hardware is the jewelry of the kitchen — a small detail that makes a big impact. In 2026, the top hardware trends in Seattle include brushed brass and champagne bronze pulls (the dominant trend, adding warmth and richness), matte black bar pulls (a strong second choice, especially in contemporary kitchens), mixed metals (combining two finishes intentionally, such as brass pulls with a matte black faucet), and integrated or finger-pull designs for flat-panel cabinets.
+              </p>
+              <p>
+                Bar pulls (also called European pulls) are more popular than knobs in Seattle right now — they're easier to grip, work well on both drawers and doors, and create a clean horizontal line. Standard lengths are 5 to 8 inches for drawers and 3 to 5 inches for doors. Oversized pulls (12 to 18 inches) on tall pantry and appliance panel doors make a bold statement.
+              </p>
+              <p>
+                Budget $3-$15 per pull for quality hardware. Brands like Amerock, Top Knobs, and Emtek offer extensive selections at various price points. Since a typical kitchen has 30-50 pulls, this line item adds up to $100-$750 — a relatively small investment that has an outsized impact on the kitchen's finished look.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Choosing the Right Cabinets for Your Seattle Kitchen</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The best cabinet style for your kitchen depends on your home's architecture, your personal taste, your budget, and how you plan to use the space. A Craftsman bungalow in Greenwood feels most authentic with shaker cabinets in a warm white or sage green. A modern condo in Belltown calls for sleek flat-panel cabinets in matte finishes. And a mid-century rancher in Renton can go either way — that's the beauty of Seattle's diverse housing stock.
+              </p>
+              <p>
+                At Best Kitchen and Bathroom Remodeling, we help homeowners navigate these choices with confidence. Our designers bring cabinet door samples, color swatches, and hardware options directly to your home, so you can see how different styles look in your actual lighting and alongside your existing finishes. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Schedule a free consultation</a> or call <a href="tel:+12066664370" class="text-accent hover:underline">(206) 666-4370</a> to start exploring your options.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the most popular kitchen cabinet style in Seattle in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Shaker-style cabinets remain the most popular choice in Seattle kitchens in 2026, accounting for roughly 45-50% of cabinet installations. Their clean lines and versatile design work equally well in Craftsman bungalows, modern homes, and transitional kitchens. Flat-panel (slab) cabinets are the second most popular, especially in contemporary new construction and condo remodels.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Are white kitchen cabinets still in style in 2026?</h3>
+                <p class="text-body-text text-sm leading-relaxed">White cabinets remain popular in Seattle but have shifted from bright whites to warmer tones like Swiss Coffee, Simply White, and Alabaster. The bigger trend in 2026 is two-tone cabinetry — white or light upper cabinets paired with colored lowers in navy, sage green, or charcoal. All-white kitchens are giving way to kitchens with more warmth, color, and personality.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">How much do new kitchen cabinets cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Kitchen cabinet costs in Seattle range from $8,000-$15,000 for stock cabinets, $15,000-$30,000 for semi-custom cabinets, and $30,000-$60,000+ for fully custom cabinetry. Cabinet refacing (keeping existing boxes and replacing doors and drawer fronts) is a more affordable option at $5,000-$12,000 for a typical Seattle kitchen.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Should I choose shaker or flat-panel cabinets for my Seattle kitchen?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Shaker cabinets are the safest choice for resale value and work in virtually every home style common in Seattle, from Craftsman to modern farmhouse. Flat-panel cabinets are the better choice for contemporary and minimalist aesthetics, and they pair well with modern condo and new construction interiors. Both styles are considered timeless and will not date your kitchen.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/kitchen-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">15 Kitchen Remodel Ideas for Seattle Homes</p>
+    </a>
+    <a href="/blog/kitchen-lighting-design-guide/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Lighting Design Guide</p>
+    </a>
+    <a href="/blog/kitchen-remodel-roi-seattle-2026/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Kitchen</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Kitchen Remodel ROI in Seattle 2026</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you plan your budget and timeline.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Update Your Cabinets?</h2>
+            <p class="text-white/80 mb-6">Schedule your free in-home consultation and explore cabinet styles with our design team.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">15 Kitchen Remodel Ideas for Seattle</a></li>
+                <li><a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel ROI in Seattle 2026</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

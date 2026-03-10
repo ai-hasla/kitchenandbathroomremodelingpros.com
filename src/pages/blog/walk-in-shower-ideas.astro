@@ -1,0 +1,389 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: '12 Walk-In Shower Ideas That Transform Your Bathroom', href: '/blog/walk-in-shower-ideas/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: '12 Walk-In Shower Ideas That Transform Your Bathroom',
+  description: 'Discover 12 stunning walk-in shower ideas for your bathroom remodel. From frameless glass enclosures to curbless designs, find the perfect shower upgrade for your Seattle home.',
+  author: { '@type': 'Organization', name: SITE.name },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-01-20',
+  dateModified: '2026-01-20',
+  image: '/images/blog-walk-in-shower.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a walk-in shower cost in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A walk-in shower installation in Seattle typically costs $4,000-$8,000 for a basic design, $8,000-$15,000 for a mid-range custom shower with frameless glass, and $15,000-$25,000+ for a luxury walk-in shower with premium tile, multiple showerheads, and built-in features. Curbless designs add approximately $1,000-$3,000 due to the additional waterproofing and floor modifications required.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you convert a bathtub to a walk-in shower?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, converting a bathtub to a walk-in shower is one of the most popular bathroom remodeling projects in Seattle. The conversion typically takes 5-10 days and involves removing the tub, reworking plumbing and waterproofing, installing new walls and flooring, and adding a glass enclosure. We recommend keeping at least one bathtub in the home for resale value.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best tile for a walk-in shower?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Porcelain tile is the best overall choice for walk-in showers due to its low water absorption rate (less than 0.5%), durability, and wide range of styles. Natural stone like marble and travertine offers a luxury look but requires sealing. For shower floors, smaller mosaic tiles (2x2 inch or penny rounds) with more grout lines provide better traction and slip resistance.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do walk-in showers increase home value?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, walk-in showers are highly desirable features that increase home value in the Seattle market. A well-designed walk-in shower with frameless glass and quality tile can add $5,000-$15,000 in perceived value to a home. They are especially valued in primary bathrooms and appeal to a wide range of buyers, including aging-in-place homeowners.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the minimum size for a walk-in shower?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The minimum recommended size for a walk-in shower is 36x36 inches, though 48x36 inches or larger is much more comfortable and practical. For curbless or doorless walk-in showers, we recommend at least 60 inches in one dimension to prevent water from splashing outside the shower area. Many Seattle homeowners opt for 60x36 or 60x48 inch walk-in showers when space allows.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="12 Walk-In Shower Ideas That Transform Your Bathroom"
+  description="Explore 12 stunning walk-in shower ideas perfect for Seattle bathroom remodels. Frameless glass, curbless designs, dual showerheads, built-in benches, and more from local experts."
+  canonical={`${SITE.url}/blog/walk-in-shower-ideas/`}
+  ogType="article"
+  article={{ publishedTime: '2026-01-20', modifiedTime: '2026-01-20', author: SITE.name }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Bathroom</span>
+          <span class="text-white/60 text-sm">January 20, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 7 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">12 Walk-In Shower Ideas That Transform Your Bathroom</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A walk-in shower is more than a functional upgrade — it's a design statement that can transform your entire bathroom. Whether you're working with a compact Seattle condo or a spacious Eastside primary suite, these ideas will inspire your next remodel.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Walk-in showers have become the centerpiece of modern <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodels</a> across Seattle. They're spacious, accessible, easier to clean than traditional tub-shower combos, and they instantly elevate the look and feel of any bathroom. Whether you're converting an old bathtub alcove or designing a primary bathroom from scratch, the walk-in shower offers endless design possibilities.
+            </p>
+            <p>
+              After completing hundreds of shower installations across King County and the greater Puget Sound area, we've curated our 12 favorite walk-in shower ideas — the designs that deliver the most impact, best functionality, and strongest resale value in the Seattle market.
+            </p>
+          </div>
+
+          <!-- Idea 1 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">1. Frameless Glass Enclosure</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The frameless glass shower enclosure is the gold standard for modern walk-in showers. Without bulky metal frames, the glass panels create a clean, seamless look that makes the bathroom feel larger and more open. In Seattle's many smaller vintage bathrooms — Craftsman bungalows, Tudor cottages, mid-century ranchers — this visual openness is especially valuable.
+              </p>
+              <p>
+                Frameless enclosures use thicker tempered glass (typically 3/8" to 1/2") that's strong enough to stand without a frame. They pair beautifully with virtually any tile style and hardware finish. Brushed nickel and matte black hardware are the most popular choices in Seattle right now. Budget $1,200-$3,500 for the glass enclosure itself, depending on size and configuration. The investment is well worth it — frameless glass is one of the single most impactful upgrades in a <a href="/services/shower-installation/" class="text-accent hover:underline">shower installation</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 2 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">2. Curbless (Zero-Threshold) Shower</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Curbless showers eliminate the raised threshold at the shower entry, creating a seamless transition from bathroom floor to shower floor. They are also a key feature for <a href="/blog/aging-in-place-bathroom-remodel/" class="text-accent hover:underline">aging-in-place bathroom design</a>. The result is a sleek, spa-like aesthetic that's also highly practical — curbless designs are wheelchair accessible, easier for older adults, and simpler to clean. They're increasingly popular in Seattle as homeowners think about aging in place and universal design.
+              </p>
+              <p>
+                The key to a successful curbless shower is waterproofing. The bathroom floor must be sloped toward the drain (typically a linear drain along one wall), and the entire wet area needs a continuous waterproof membrane. This requires a skilled installer who understands the technical requirements — improper waterproofing can lead to costly moisture damage in Seattle's damp climate. Our team uses Schluter-KERDI or LATICRETE HydroBan systems for reliable, long-lasting results.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 3 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">3. Dual Showerhead Configuration</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Why settle for one showerhead when two creates a dramatically better experience? A dual showerhead setup typically combines a wall-mounted rain showerhead overhead with a handheld wand on a slide bar. The rain head delivers that luxurious, full-coverage sensation, while the handheld provides targeted rinsing, makes cleaning the shower easier, and is essential for bathing children or pets.
+              </p>
+              <p>
+                For the ultimate spa experience, some Seattle homeowners opt for a ceiling-mounted rain head paired with body jets installed in the shower wall. This configuration requires additional plumbing during the rough-in phase, so it's most cost-effective when planned from the start of the remodel. A thermostatic mixing valve with separate volume controls lets you operate each showerhead independently. Budget $800-$2,500 for a quality dual showerhead system plus installation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 4 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">4. Built-In Shower Bench</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                A built-in shower bench transforms your walk-in shower from a purely functional space into a place to relax. Tiled benches integrated into the shower wall provide a seat for shaving, a shelf for products, or simply a spot to sit and enjoy the warm water on a dark Seattle morning. They also serve an important accessibility function for older adults and anyone with mobility challenges.
+              </p>
+              <p>
+                Floating benches (cantilevered from the wall without legs) create a clean, modern look and make the shower floor easier to clean. Corner benches maximize space in smaller showers. The bench should be tiled to match the shower walls and waterproofed as part of the overall shower system. A comfortable height is 17-19 inches from the shower floor, with a depth of at least 15 inches. Adding a bench during initial construction adds roughly $500-$1,200 to the project cost.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 5 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">5. Recessed Shower Niches</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Recessed niches built into the shower wall eliminate the need for hanging caddies and shelves that collect soap scum and rust. A well-placed niche keeps shampoo, conditioner, body wash, and a razor within easy reach while maintaining the clean lines of the shower. They're a small detail that makes a big difference in both aesthetics and daily function.
+              </p>
+              <p>
+                We recommend at least one niche per shower user — so a primary shower for two people should have two niches, ideally at different heights. Standard niche sizes are 12x24 or 12x36 inches, positioned between the studs. Accent tile in the niche — a contrasting color, metallic mosaic, or natural stone — adds a design moment that elevates the entire shower. Horizontal niches spanning the full width of the shower wall are a trending look in Seattle that provides generous storage space.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 6 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">6. Statement Tile Patterns</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The walk-in shower is the perfect canvas for a statement tile installation. While simple subway or large format tiles work beautifully for full walls, adding a feature wall — behind the showerhead or on the back wall — with a bold pattern or contrasting tile creates a focal point that anchors the entire bathroom design. Herringbone, chevron, vertical stack, and basket-weave patterns are all popular choices in Seattle bathrooms.
+              </p>
+              <p>
+                Zellige tiles (handmade Moroccan tiles with an irregular, artisanal surface) have surged in popularity across the Pacific Northwest. Our <a href="/blog/seattle-bathroom-tile-trends/" class="text-accent hover:underline">Seattle bathroom tile trends guide</a> covers this and other trending tile options. Their subtle color variations and organic imperfections create warmth and texture that pair beautifully with the matte and natural finishes Seattle homeowners favor. For a more contemporary look, large format porcelain panels (like Neolith or Dekton) create a dramatic, grout-minimal surface that's easy to maintain and visually striking.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 7 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">7. Linear Drain Design</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Linear drains are the modern alternative to traditional center-point drains. Installed along one wall of the shower (typically the wall opposite the entry or along the glass panel), they create a sleek, streamlined look and allow the shower floor to slope in a single direction rather than toward a center point. This simpler slope makes it possible to use larger floor tiles without excessive cuts.
+              </p>
+              <p>
+                Linear drains are essential for curbless shower designs, where they capture water at the shower's edge to prevent it from flowing into the bathroom. Quality linear drains from brands like Infinity Drain, Schluter-KERDI-LINE, and QuARTz by ACO come in various finishes (brushed nickel, matte black, stainless) and tile-insert styles that make the drain nearly invisible. Budget $300-$800 for the drain hardware plus installation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 8 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">8. Open (Doorless) Walk-In Shower</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                For bathrooms with sufficient space, a doorless walk-in shower makes a dramatic architectural statement. Without a glass door or curtain, the shower feels integrated into the room rather than separate from it. A half-wall or glass partition at the entry prevents water spray from reaching the bathroom while maintaining the open, airy feel.
+              </p>
+              <p>
+                Doorless designs require a minimum shower width of about 60 inches to contain water splashing. The showerhead should be positioned to direct water away from the opening. Heated floors in and around the shower area are a popular pairing — they keep the bathroom warm and help dry any moisture that reaches the floor. In Seattle's cool climate, this combination of open design and radiant heat creates a luxurious, spa-like experience that our clients consistently rave about.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 9 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">9. Natural Stone Accents</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Incorporating natural stone into a walk-in shower brings organic beauty that connects to the Pacific Northwest's natural landscape. Marble feature walls, pebble stone shower floors, or a travertine accent strip add texture and visual warmth that porcelain alone can't replicate. The key is using stone strategically — a full marble shower requires significant maintenance, but a marble accent wall paired with porcelain body tiles delivers the look with far less upkeep.
+              </p>
+              <p>
+                River rock pebble tile on the shower floor is a timeless choice that provides excellent traction and a spa-like feel underfoot. Honed marble in Calacatta or Carrara patterns creates an elegant feature wall. All natural stone in wet environments needs to be sealed properly and re-sealed periodically — our team can advise on the specific maintenance requirements for any stone you're considering.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 10 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">10. Steam Shower Upgrade</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                A steam shower turns your walk-in shower into a personal wellness retreat. A compact steam generator (installed in a closet, vanity cabinet, or attic space near the bathroom) produces steam that fills the enclosed shower in minutes. It's the ultimate luxury for Seattle's cool, damp months — which, let's be honest, is most of the year. Steam bathing promotes relaxation, opens pores, eases muscle tension, and can even help with respiratory congestion during cold and flu season.
+              </p>
+              <p>
+                Steam showers require a fully enclosed ceiling (sloped slightly to prevent dripping), waterproof construction throughout, and a glass enclosure that seals completely. Adding a steam generator to an existing walk-in shower remodel adds $2,500-$5,000 to the project cost, depending on the size of the shower and the generator capacity. Brands like Mr. Steam and ThermaSol offer reliable residential systems with digital controls and aromatherapy options.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 11 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">11. Window in the Shower</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Natural light in the shower completely changes the bathing experience. If your shower wall backs up to an exterior wall, adding a window (or retaining an existing one) floods the space with daylight and connects you to the outdoors. In Seattle, where morning light is precious, a shower with a window overlooking evergreen trees or a private garden feels incredibly restorative.
+              </p>
+              <p>
+                The window must be moisture-rated for wet environments — vinyl or fiberglass frames with tempered, obscured glass are the standard choices. Proper flashing and waterproofing around the window opening are critical in our rainy climate. Frosted or textured glass provides privacy while still admitting light. For showers without access to an exterior wall, a skylight or solar tube achieves a similar effect and can be installed through most roof configurations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Idea 12 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">12. Heated Shower Floors</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Stepping onto a warm tile floor on a cold Seattle morning is a small luxury that makes a big impact on your daily routine. Electric radiant floor heating mats installed beneath the shower tile (and extending into the bathroom floor) keep the surface warm and comfortable year-round. They also help dry the shower floor after use, reducing mildew growth — a real benefit in the Pacific Northwest's humid environment.
+              </p>
+              <p>
+                In-floor heating systems like Schluter-DITRA-HEAT or Nuheat are thin, electric mats that add minimal height to the floor assembly. They're controlled by a programmable thermostat, so you can set them to warm up before your morning alarm. Adding heated floors to a shower remodel costs approximately $800-$1,500 for a typical bathroom, and the energy cost to operate is minimal — usually just a few dollars per month. It's one of the most popular add-ons in our Seattle <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodeling</a> projects.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Designing Your Dream Walk-In Shower</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The best walk-in shower combines several of these ideas into a cohesive design that fits your space, your budget, and how you actually use your bathroom. A frameless glass enclosure with a curbless entry, dual showerheads, a built-in bench, and recessed niches is the full package — but even selecting just two or three of these features creates a shower that feels dramatically better than a standard tub-shower combo.
+              </p>
+              <p>
+                At Best Kitchen and Bathroom Remodeling, we specialize in creating custom walk-in showers for Seattle homeowners. From compact condo bathrooms in South Lake Union to expansive primary suites in Sammamish, we design and build showers that are beautiful, functional, and built to last in the Pacific Northwest climate. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Schedule your free consultation</a> or call <a href="tel:+12066664370" class="text-accent hover:underline">(206) 666-4370</a> to get started.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a walk-in shower cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A walk-in shower installation in Seattle typically costs $4,000-$8,000 for a basic design, $8,000-$15,000 for a mid-range custom shower with frameless glass, and $15,000-$25,000+ for a luxury walk-in shower with premium tile, multiple showerheads, and built-in features. Curbless designs add approximately $1,000-$3,000 due to additional waterproofing and floor modifications.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Can you convert a bathtub to a walk-in shower?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, converting a bathtub to a walk-in shower is one of the most popular bathroom remodeling projects in Seattle. The conversion typically takes 5-10 days and involves removing the tub, reworking plumbing and waterproofing, installing new walls and flooring, and adding a glass enclosure. We recommend keeping at least one bathtub in the home for resale value.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the best tile for a walk-in shower?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Porcelain tile is the best overall choice for walk-in showers due to its low water absorption rate (less than 0.5%), durability, and wide range of styles. Natural stone like marble and travertine offers a luxury look but requires sealing. For shower floors, smaller mosaic tiles (2x2 inch or penny rounds) with more grout lines provide better traction and slip resistance.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">Do walk-in showers increase home value?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, walk-in showers are highly desirable features that increase home value in the Seattle market. A well-designed walk-in shower with frameless glass and quality tile can add $5,000-$15,000 in perceived value to a home. They are especially valued in primary bathrooms and appeal to a wide range of buyers, including aging-in-place homeowners.</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the minimum size for a walk-in shower?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The minimum recommended size for a walk-in shower is 36x36 inches, though 48x36 inches or larger is much more comfortable and practical. For curbless or doorless walk-in showers, we recommend at least 60 inches in one dimension to prevent water from splashing outside the shower area. Many Seattle homeowners opt for 60x36 or 60x48 inch walk-in showers when space allows.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Related Articles -->
+          <div class="mt-12 pt-8 border-t border-gray-200" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Related Articles</h3>
+            <div class="grid sm:grid-cols-3 gap-4">
+    <a href="/blog/bathroom-remodel-ideas-seattle/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">10 Bathroom Remodel Ideas That Add Value</p>
+    </a>
+    <a href="/blog/seattle-bathroom-tile-trends/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Seattle Bathroom Tile Trends 2026</p>
+    </a>
+    <a href="/blog/aging-in-place-bathroom-remodel/" class="group p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Bathroom</span>
+      <p class="text-primary font-semibold mt-1 group-hover:text-accent transition-colors leading-snug">Aging-in-Place Bathroom Remodel Guide</p>
+    </a>
+            </div>
+          </div>
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Start Your Project?</h3>
+            <p class="text-white/80 mb-6">Get a free, no-obligation estimate from Seattle's most trusted remodeling team. We'll help you plan your budget and timeline.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Ready to Transform Your Shower?</h2>
+            <p class="text-white/80 mb-6">Schedule your free in-home consultation and let's design the walk-in shower of your dreams.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+              <Button href="/gallery/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">View Our Gallery</Button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9★ · 230 Reviews · 5-Year Warranty</p>
+            
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/bathroom-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">10 Bathroom Remodel Ideas for Seattle</a></li>
+                <li><a href="/blog/aging-in-place-bathroom-remodel/" class="text-accent hover:underline text-sm font-medium">Aging-in-Place Bathroom Remodel Guide</a></li>
+                <li><a href="/blog/seattle-bathroom-tile-trends/" class="text-accent hover:underline text-sm font-medium">Seattle Bathroom Tile Trends 2026</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/shower-installation/" class="text-accent hover:underline text-sm font-medium">Shower Installation</a></li>
+                <li><a href="/services/tub-to-shower-conversion/" class="text-accent hover:underline text-sm font-medium">Tub-to-Shower Conversion</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

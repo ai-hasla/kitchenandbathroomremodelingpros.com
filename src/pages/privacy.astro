@@ -6,49 +6,96 @@ import { SITE } from '@/lib/constants';
 ---
 
 <BaseLayout
-  title="Privacy Policy | Kitchen & Bathroom Remodeling Pros"
-  description="Privacy policy for Kitchen & Bathroom Remodeling Pros. Learn how we collect, use, and protect your personal information."
+  title={`Privacy Policy | ${SITE.shortName}`}
+  description={`Privacy policy for ${SITE.name}. Learn how we collect, use, and protect your personal information.`}
+  canonical={`${SITE.url}/privacy/`}
+  noindex={true}
   showSchema={false}
 >
   <SchemaBreadcrumb items={[{ label: 'Privacy Policy', href: '/privacy/' }]} />
 
   <section class="bg-primary pt-32 pb-16">
     <Container>
-      <h1 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white">Privacy Policy</h1>
-      <p class="text-white/70 mt-2">Last updated: March 2026</p>
+      <div class="max-w-3xl" data-reveal>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-4">Privacy Policy</h1>
+        <p class="text-white/70 mt-2">Last updated: March 9, 2026</p>
+      </div>
     </Container>
   </section>
 
   <section class="py-16">
     <Container class="max-w-3xl">
-      <div class="prose prose-lg max-w-none text-body-text">
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Information We Collect</h2>
-        <p>When you use our website or request a quote, we may collect personal information including your name, email address, phone number, home address, and project details. This information is collected when you voluntarily submit it through our contact forms, quote request forms, or when you call us directly.</p>
+      <div class="prose prose-lg max-w-none text-body-text space-y-8" data-reveal>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">How We Use Your Information</h2>
-        <p>We use your personal information to:</p>
-        <ul>
-          <li>Respond to your inquiries and provide estimates</li>
-          <li>Schedule and manage remodeling projects</li>
-          <li>Send you relevant updates about your project</li>
-          <li>Improve our services and website experience</li>
-          <li>Comply with legal obligations</li>
-        </ul>
+        <p>
+          {SITE.name} ("we," "us," or "our") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website or engage our remodeling services.
+        </p>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Information Sharing</h2>
-        <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with trusted partners who assist us in operating our website and conducting our business, provided they agree to keep your information confidential.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Information We Collect</h2>
+          <p>We may collect the following types of information:</p>
+          <ul>
+            <li><strong>Contact information:</strong> Name, email address, phone number, and mailing address when you request an estimate, fill out a contact form, or communicate with us.</li>
+            <li><strong>Project details:</strong> Information about your home, remodeling preferences, budget, and project scope that you provide during consultations.</li>
+            <li><strong>Website usage data:</strong> IP address, browser type, pages visited, time spent on site, and referring URLs collected automatically through cookies and analytics tools.</li>
+            <li><strong>Communications:</strong> Records of emails, phone calls, and messages exchanged with our team.</li>
+          </ul>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Cookies and Analytics</h2>
-        <p>Our website uses Google Analytics to help us understand how visitors use our site. This tool uses cookies to collect anonymous usage data. You can opt out of Google Analytics by installing the Google Analytics Opt-out Browser Add-on.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">How We Use Your Information</h2>
+          <p>We use your personal information to:</p>
+          <ul>
+            <li>Respond to your inquiries and provide project estimates</li>
+            <li>Schedule and manage remodeling projects</li>
+            <li>Communicate project updates, schedules, and related information</li>
+            <li>Improve our website, services, and customer experience</li>
+            <li>Send occasional promotional communications (you may opt out at any time)</li>
+            <li>Comply with legal obligations and protect our rights</li>
+          </ul>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Data Security</h2>
-        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Cookies and Analytics</h2>
+          <p>Our website uses cookies and similar technologies to enhance your browsing experience and analyze site traffic. These include essential cookies for site functionality and analytics cookies (such as Google Analytics) to help us understand how visitors use our site. You can control cookie preferences through your browser settings. Disabling cookies may affect certain site features. You can also opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" class="text-accent hover:underline" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Your Rights</h2>
-        <p>You have the right to access, correct, or delete your personal information at any time. To exercise these rights, please contact us at <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a> or call <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a>.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Third-Party Sharing</h2>
+          <p>We do not sell or rent your personal information to third parties. We may share information with trusted service providers who assist us in operating our website, conducting business, or servicing you (such as payment processors, scheduling tools, and analytics providers), provided those parties agree to keep this information confidential. We may also disclose information when required by law or to protect our rights.</p>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Contact Us</h2>
-        <p>{SITE.name}<br />{SITE.address.full}<br />{SITE.phone}<br />{SITE.email}</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Data Retention</h2>
+          <p>We retain your personal information only for as long as necessary to fulfill the purposes outlined in this policy, including maintaining records for completed projects, warranties, and legal compliance. Project records are typically retained for seven years after project completion. You may request deletion of your personal data by contacting us.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Data Security</h2>
+          <p>We implement reasonable administrative, technical, and physical safeguards to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Your Rights</h2>
+          <p>Depending on your location, you may have the right to access, correct, or delete your personal information, as well as the right to opt out of marketing communications. To exercise any of these rights, please contact us at <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a> or call <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Contact Us</h2>
+          <p>If you have questions about this Privacy Policy or wish to exercise your data rights, please contact us:</p>
+          <div class="not-prose mt-4 bg-light p-6 rounded-xl border border-border text-body-text space-y-1">
+            <p><strong>{SITE.name}</strong></p>
+            <p>{SITE.address.full}</p>
+            <p>Phone: <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a></p>
+            <p>Email: <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a></p>
+          </div>
+        </div>
+
       </div>
     </Container>
   </section>

@@ -6,42 +6,98 @@ import { SITE } from '@/lib/constants';
 ---
 
 <BaseLayout
-  title="Terms of Service | Kitchen & Bathroom Remodeling Pros"
-  description="Terms of service for Kitchen & Bathroom Remodeling Pros website. Read our terms and conditions."
+  title={`Terms of Service | ${SITE.shortName}`}
+  description={`Terms of service for ${SITE.name}. Review the terms and conditions governing our remodeling services.`}
+  canonical={`${SITE.url}/terms/`}
+  noindex={true}
   showSchema={false}
 >
   <SchemaBreadcrumb items={[{ label: 'Terms of Service', href: '/terms/' }]} />
 
   <section class="bg-primary pt-32 pb-16">
     <Container>
-      <h1 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white">Terms of Service</h1>
-      <p class="text-white/70 mt-2">Last updated: March 2026</p>
+      <div class="max-w-3xl" data-reveal>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-4">Terms of Service</h1>
+        <p class="text-white/70 mt-2">Last updated: March 9, 2026</p>
+      </div>
     </Container>
   </section>
 
   <section class="py-16">
     <Container class="max-w-3xl">
-      <div class="prose prose-lg max-w-none text-body-text">
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Acceptance of Terms</h2>
-        <p>By accessing and using the {SITE.name} website, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website.</p>
+      <div class="prose prose-lg max-w-none text-body-text space-y-8" data-reveal>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Services</h2>
-        <p>We provide kitchen and bathroom remodeling services in the greater Seattle, Washington area. All estimates, timelines, and project scopes are subject to on-site evaluation and may vary based on actual conditions discovered during the project.</p>
+        <p>
+          These Terms of Service ("Terms") govern your use of the {SITE.name} website and our remodeling services. By using our website or engaging our services, you agree to these Terms. Please read them carefully.
+        </p>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Estimates and Pricing</h2>
-        <p>All estimates provided through our website or in person are non-binding until a formal contract is signed. Cost ranges and guides published on this website are for informational purposes only and reflect general market conditions. Actual project costs depend on specific requirements, materials chosen, and site conditions.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Our Services</h2>
+          <p>{SITE.name} provides kitchen remodeling, bathroom remodeling, and related home improvement services in the greater Seattle, Washington area. All work is performed by licensed, bonded, and insured professionals in accordance with applicable Washington State building codes and regulations. The specific scope of work for each project is defined in a separate written contract agreed upon by both parties before work begins.</p>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Intellectual Property</h2>
-        <p>All content on this website — including text, images, graphics, logos, and project photography — is the property of {SITE.name} and is protected by copyright law. You may not reproduce, distribute, or use any content without our written permission.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Estimates & Proposals</h2>
+          <p>Estimates provided during consultations are based on the information available at the time of assessment and are subject to change. A detailed written proposal will be provided before any work begins. The proposal becomes binding only when signed by both the homeowner and a company representative. Estimates are valid for 30 days from the date issued unless otherwise stated. Material prices are subject to market fluctuations, and any significant cost changes will be communicated before proceeding.</p>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Limitation of Liability</h2>
-        <p>The information provided on this website is for general informational purposes only. While we strive to keep the information accurate and up to date, we make no representations or warranties about the completeness, accuracy, or reliability of the information.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Payment Terms</h2>
+          <p>Payment schedules are outlined in each project contract. Our standard payment structure is as follows:</p>
+          <ul>
+            <li>A deposit is required upon contract signing to secure your project date and order materials.</li>
+            <li>Progress payments are due at defined project milestones as outlined in the contract.</li>
+            <li>Final payment is due upon project completion and your walkthrough approval.</li>
+          </ul>
+          <p>We accept checks, credit cards, and bank transfers. Late payments may be subject to interest charges as permitted by Washington State law.</p>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Governing Law</h2>
-        <p>These terms shall be governed by and construed in accordance with the laws of the State of Washington, without regard to its conflict of law provisions.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Change Orders</h2>
+          <p>Any changes to the agreed scope of work must be documented in a written change order signed by both parties. Change orders may affect the project timeline and total cost. We will provide a cost and schedule impact assessment before any change order work begins. Verbal requests for changes are not binding until formalized in writing.</p>
+        </div>
 
-        <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Contact</h2>
-        <p>Questions about these terms? Contact us at <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a> or call <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a>.</p>
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Warranty</h2>
+          <p>We stand behind our work with a comprehensive warranty. Labor and installation are warranted for a period specified in your project contract from the date of completion. Manufacturer warranties on materials and fixtures are passed through to the homeowner. Our warranty does not cover damage resulting from misuse, neglect, normal wear and tear, unauthorized modifications, or acts of nature. Warranty claims must be submitted in writing.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Project Timelines</h2>
+          <p>We make every effort to complete projects on schedule. However, timelines may be affected by factors beyond our control, including material supply delays, permit processing times, weather conditions, or unforeseen structural issues discovered during construction. We will communicate any schedule changes promptly and work to minimize delays.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Limitation of Liability</h2>
+          <p>To the fullest extent permitted by Washington State law, {SITE.name} shall not be liable for any indirect, incidental, consequential, or punitive damages arising from our services or your use of this website. Our total liability for any claim shall not exceed the total amount paid under the applicable project contract. Nothing in these Terms limits liability for death, personal injury, or fraud.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Dispute Resolution</h2>
+          <p>We are committed to resolving any concerns directly with our clients. If a dispute arises, both parties agree to first attempt resolution through good-faith negotiation. If negotiation is unsuccessful, disputes shall be resolved through mediation in King County, Washington, before pursuing any legal action. These Terms are governed by the laws of the State of Washington.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Intellectual Property</h2>
+          <p>All content on this website -- including text, images, graphics, logos, and project photography -- is the property of {SITE.name} and is protected by copyright law. You may not reproduce, distribute, or use any content without our written permission. The information on this website is for general informational purposes and does not constitute a contractual offer.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Changes to These Terms</h2>
+          <p>We reserve the right to update these Terms at any time. Changes take effect when posted on this page. Continued use of our website or services after changes are posted constitutes acceptance of the updated Terms.</p>
+        </div>
+
+        <div>
+          <h2 class="font-[family-name:var(--font-heading)] text-dark-text">Contact Us</h2>
+          <p>If you have questions about these Terms of Service, please contact us:</p>
+          <div class="not-prose mt-4 bg-light p-6 rounded-xl border border-border text-body-text space-y-1">
+            <p><strong>{SITE.name}</strong></p>
+            <p>{SITE.address.full}</p>
+            <p>Phone: <a href={`tel:${SITE.phoneRaw}`} class="text-accent hover:underline">{SITE.phone}</a></p>
+            <p>Email: <a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a></p>
+          </div>
+        </div>
+
       </div>
     </Container>
   </section>

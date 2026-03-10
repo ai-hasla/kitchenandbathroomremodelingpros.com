@@ -3,6 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
 import { SITE } from '@/lib/constants';
 
 const breadcrumbs = [
@@ -19,7 +21,7 @@ const articleSchema = {
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-01-10',
   dateModified: '2026-03-01',
-  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
+  image: '/images/service-kitchen-remodeling.jpg',
 };
 
 const faqSchema = {
@@ -399,7 +401,7 @@ const faqSchema = {
           <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
             <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Want to Know Exactly What Your Kitchen Will Cost?</h2>
             <p class="text-white/80 mb-6">Guides are helpful, but every kitchen is different. We'll come to your home, measure the space, discuss your goals, and give you a detailed line-item estimate — no charge, no pressure, no vague "ballpark" numbers.</p>
-            <Button href="/get-a-quote/" variant="primary" size="lg">Get a Free Estimate</Button>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
           </div>
         </article>
 
@@ -410,7 +412,7 @@ const faqSchema = {
             <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
               <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
               <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your kitchen remodel.</p>
-              <Button href="/get-a-quote/" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
               <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
             </div>
 
@@ -435,6 +437,9 @@ const faqSchema = {
                 <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
               </ul>
             </div>
+
+            <!-- Quick Quote Widget -->
+            <QuickQuoteWidget />
 
             <!-- Gallery Link -->
             <div class="bg-light rounded-2xl p-6">

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
-import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import { SITE } from '@/lib/constants';
 
@@ -10,7 +9,7 @@ const breadcrumbs = [{ label: 'Contact Us', href: '/contact/' }];
 const contactSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Contact Kitchen & Bathroom Remodeling Pros',
+  name: 'Contact Best Kitchen and Bathroom Remodeling',
   description: 'Get in touch with Seattle\'s top-rated kitchen and bathroom remodeling company. Call, email, or fill out our contact form for a free consultation.',
   url: `${SITE.url}/contact/`,
   mainEntity: {
@@ -31,8 +30,9 @@ const contactSchema = {
 
 <BaseLayout
   title="Contact Us | Kitchen & Bathroom Remodeling Seattle"
-  description="Contact Kitchen & Bathroom Remodeling Pros in Seattle. Call (206) 555-0123, email us, or fill out our form for a free consultation. Mon-Fri 8AM-6PM, Sat 9AM-4PM."
+  description="Contact Best Kitchen and Bathroom Remodeling in Seattle. Call (206) 666-4370 or email us for a free consultation. Available 24/7."
   canonical={`${SITE.url}/contact/`}
+  ogImage="/images/og/og-contact.png"
 >
   <SchemaBreadcrumb items={breadcrumbs} />
   <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
@@ -57,103 +57,13 @@ const contactSchema = {
 
         <!-- Contact Form -->
         <div class="lg:col-span-3" data-reveal>
-          <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-6">Send Us a Message</h2>
-          <!--
-            FORM ENDPOINT: This form currently uses client-side handling only.
-            To receive submissions, replace with one of these services:
-            - Formspree: <form action="https://formspree.io/f/YOUR_ID" method="POST">
-            - Netlify Forms: <form name="contact" method="POST" data-netlify="true">
-            - Basin: <form action="https://usebasin.com/f/YOUR_ID" method="POST">
-          -->
-          <form id="contact-form" class="space-y-6">
-            <!-- Honeypot field for spam protection (hidden from real users) -->
-            <div class="hidden" aria-hidden="true">
-              <label for="website">Website</label>
-              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-            </div>
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-primary mb-2">Full Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="John Smith"
-                  class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-primary mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="john@example.com"
-                  class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
-                />
-              </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="phone" class="block text-sm font-medium text-primary mb-2">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="(206) 555-0000"
-                  class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
-                />
-              </div>
-              <div>
-                <label for="project-type" class="block text-sm font-medium text-primary mb-2">Project Type *</label>
-                <select
-                  id="project-type"
-                  name="project_type"
-                  required
-                  class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
-                >
-                  <option value="">Select a project type</option>
-                  <option value="kitchen">Kitchen Remodel</option>
-                  <option value="bathroom">Bathroom Remodel</option>
-                  <option value="both">Kitchen & Bathroom</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="timeline" class="block text-sm font-medium text-primary mb-2">When are you looking to start?</label>
-              <select
-                id="timeline"
-                name="timeline"
-                class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
-              >
-                <option value="">Select a timeline</option>
-                <option value="asap">As soon as possible</option>
-                <option value="1-3months">1-3 months</option>
-                <option value="3-6months">3-6 months</option>
-                <option value="6-12months">6-12 months</option>
-                <option value="just-exploring">Just exploring options</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="message" class="block text-sm font-medium text-primary mb-2">Message *</label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows="5"
-                placeholder="Tell us about your project — what you're looking to change, any ideas you have, or questions you'd like answered."
-                class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-y"
-              ></textarea>
-            </div>
-
-            <Button type="submit" variant="primary" size="lg" class="w-full sm:w-auto">Send Message</Button>
-          </form>
+          <div class="bg-white rounded-2xl shadow-lg p-8 lg:p-10 text-center">
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Send Us a Message</h2>
+            <p class="text-body-text mb-6">We'd love to hear about your project. Our team typically responds within 24 hours.</p>
+            <p class="text-muted text-sm mb-4">Online contact form coming soon. In the meantime, reach us directly:</p>
+            <p class="text-body-text text-sm">Phone: <a href={`tel:${SITE.phoneRaw}`} class="text-accent font-semibold hover:underline">{SITE.phone}</a></p>
+            <p class="text-body-text text-sm">Email: <a href={`mailto:${SITE.email}`} class="text-accent font-semibold hover:underline">{SITE.email}</a></p>
+          </div>
         </div>
 
         <!-- Contact Info Sidebar -->
@@ -194,18 +104,10 @@ const contactSchema = {
 
             <div>
               <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-3">Business Hours</h3>
-              <div class="space-y-2 text-sm">
+              <div class="text-sm">
                 <div class="flex justify-between">
-                  <span class="text-body-text">Monday - Friday</span>
-                  <span class="font-medium text-primary">8:00 AM - 6:00 PM</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-body-text">Saturday</span>
-                  <span class="font-medium text-primary">9:00 AM - 4:00 PM</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-body-text">Sunday</span>
-                  <span class="font-medium text-primary">Closed</span>
+                  <span class="text-body-text">Phone Lines</span>
+                  <span class="font-medium text-primary">Available 24/7</span>
                 </div>
               </div>
             </div>
@@ -239,7 +141,7 @@ const contactSchema = {
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Kitchen & Bathroom Remodeling Pros location on Google Maps"
+              title="Best Kitchen and Bathroom Remodeling location on Google Maps"
             ></iframe>
           </div>
         </div>
@@ -247,52 +149,4 @@ const contactSchema = {
     </Container>
   </section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('contact-form') as HTMLFormElement | null;
-      if (!form) return;
-
-      form.addEventListener('submit', (e: Event) => {
-        e.preventDefault();
-
-        // Honeypot check — if filled, silently reject (bot submission)
-        const honeypot = (form.querySelector('[name="website"]') as HTMLInputElement)?.value;
-        if (honeypot) return;
-
-        // Validate required fields
-        const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value.trim();
-        const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value.trim();
-        const projectType = (form.querySelector('[name="project_type"]') as HTMLSelectElement)?.value;
-        const message = (form.querySelector('[name="message"]') as HTMLTextAreaElement)?.value.trim();
-
-        if (!name || !email || !projectType || !message) {
-          alert('Please fill in all required fields.');
-          return;
-        }
-
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          alert('Please enter a valid email address.');
-          return;
-        }
-
-        // Replace form with success message
-        const formContainer = form.parentElement;
-        if (formContainer) {
-          formContainer.innerHTML = `
-            <div class="text-center py-12">
-              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 class="text-2xl font-bold text-primary mb-3">Thank you!</h2>
-              <p class="text-lg text-body-text">We'll contact you within 24 hours.</p>
-            </div>
-          `;
-        }
-      });
-    });
-  </script>
 </BaseLayout>

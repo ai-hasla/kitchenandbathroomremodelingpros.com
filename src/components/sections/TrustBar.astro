@@ -1,5 +1,6 @@
 ---
 import Container from '@/components/ui/Container.astro';
+import { SITE } from '@/lib/constants';
 ---
 
 <section class="bg-light py-10 lg:py-14">
@@ -13,7 +14,7 @@ import Container from '@/components/ui/Container.astro';
           </svg>
         </div>
         <div class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary">
-          <span class="counter-animate" style="--counter-target: 15"></span>+
+          {new Date().getFullYear() - SITE.yearFounded}+
         </div>
         <p class="text-sm text-muted mt-1 font-[family-name:var(--font-body)]">Years of Experience</p>
       </div>
@@ -26,7 +27,7 @@ import Container from '@/components/ui/Container.astro';
           </svg>
         </div>
         <div class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary">
-          <span class="counter-animate" style="--counter-target: 500"></span>+
+          {SITE.projects}+
         </div>
         <p class="text-sm text-muted mt-1 font-[family-name:var(--font-body)]">Projects Completed</p>
       </div>
@@ -39,7 +40,7 @@ import Container from '@/components/ui/Container.astro';
           </svg>
         </div>
         <div class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary">
-          4.9
+          {SITE.reviews.rating}
         </div>
         <p class="text-sm text-muted mt-1 font-[family-name:var(--font-body)]">Star Google Rating</p>
       </div>
@@ -52,7 +53,7 @@ import Container from '@/components/ui/Container.astro';
           </svg>
         </div>
         <div class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-primary">
-          <span class="counter-animate" style="--counter-target: 100"></span>%
+          100%
         </div>
         <p class="text-sm text-muted mt-1 font-[family-name:var(--font-body)]">Satisfaction Guarantee</p>
       </div>
