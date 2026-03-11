@@ -72,9 +72,10 @@ const schema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: SITE.reviews.rating,
-    reviewCount: SITE.reviews.count,
-    bestRating: 5,
+    ratingValue: String(SITE.reviews.rating),
+    reviewCount: String(SITE.reviews.count),
+    bestRating: '5',
+    worstRating: '1',
   },
   priceRange: '$$-$$$$',
 };

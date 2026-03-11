@@ -76,57 +76,11 @@ const schema = {
   priceRange: '$$-$$$$',
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: SITE.reviews.rating,
-    reviewCount: SITE.reviews.count,
-    bestRating: 5,
+    ratingValue: String(SITE.reviews.rating),
+    reviewCount: String(SITE.reviews.count),
+    bestRating: '5',
+    worstRating: '1',
   },
-  review: [
-    {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: 5,
-        bestRating: 5,
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Dan C.',
-      },
-      datePublished: '2024-10-29',
-      reviewBody:
-        'They did our kitchen in Capitol Hill — new cabinets, quartz counters, and a tile backsplash. Crew showed up on time every day and the finished product looks amazing. Would definitely use them again.',
-    },
-    {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: 5,
-        bestRating: 5,
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Karen W.',
-      },
-      datePublished: '2024-07-15',
-      reviewBody:
-        'We had our master bath completely redone at our Bellevue place. Curbless shower, new vanity, heated tile floors. The project manager kept us in the loop the whole time and they finished a few days early. Really happy with everything.',
-    },
-    {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: 4,
-        bestRating: 5,
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Steve M.',
-      },
-      datePublished: '2025-01-22',
-      reviewBody:
-        'Just wrapped up a kitchen remodel in our Kirkland townhouse. Great work overall — the cabinet install is flawless and the island turned out better than we expected. Scheduling was a little tricky around the holidays but they communicated well about it.',
-    },
-  ],
   hasCredential: [
     {
       '@type': 'EducationalOccupationalCredential',

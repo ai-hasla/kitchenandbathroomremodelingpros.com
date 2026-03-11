@@ -79,32 +79,44 @@ const reviews = [
 
 const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
 
+const productId = `${SITE.url}/reviews/bathroom-remodeling/#product`;
+
 const aggregateSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: SITE.name,
-  url: SITE.url,
-  telephone: SITE.phone,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: SITE.address.street,
-    addressLocality: SITE.address.city,
-    addressRegion: SITE.address.state,
-    postalCode: SITE.address.zip,
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: averageRating,
-    reviewCount: reviews.length,
-    bestRating: 5,
-    worstRating: 1,
-  },
-  review: reviews.map((r) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: r.name },
-    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
-    reviewBody: r.text,
-  })),
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': productId,
+      name: 'Bathroom Remodeling Service in Seattle, WA',
+      description: `Professional bathroom remodeling in Seattle. ${averageRating}-star rated across ${reviews.length} reviews. Walk-in showers, vanities, tile work, and full bathroom renovations.`,
+      brand: {
+        '@type': 'Brand',
+        name: SITE.name,
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating,
+        reviewCount: String(reviews.length),
+        bestRating: '5',
+        worstRating: '1',
+      },
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'USD',
+        lowPrice: '15000',
+        highPrice: '50000',
+        offerCount: '8',
+      },
+    },
+    ...reviews.map((r, i) => ({
+      '@type': 'Review',
+      '@id': `${productId}-review-${i}`,
+      author: { '@type': 'Person', name: r.name },
+      reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+      reviewBody: r.text,
+      itemReviewed: { '@id': productId },
+    })),
+  ],
 };
 ---
 
