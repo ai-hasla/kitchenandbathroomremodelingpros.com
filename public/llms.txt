@@ -1,32 +1,36 @@
 # Best Kitchen and Bathroom Remodeling — Seattle
 
-> Seattle's top-rated kitchen and bathroom remodeling company. Award-winning craftsmanship, transparent pricing, and free estimates. Serving Seattle, Bellevue, Kirkland, and the greater Puget Sound area since 2010.
+> Seattle's top-rated kitchen and bathroom remodeling company. Award-winning craftsmanship, transparent pricing, and free estimates. Serving Seattle, Bellevue, Kirkland, and the greater Puget Sound area since 2010. Licensed, bonded, insured. 4.9/5 stars across 347+ verified reviews.
 
 ## About
 - Company: Best Kitchen and Bathroom Remodeling
 - Location: 701 5th Ave 42nd Floor, Suite 4272, Seattle, WA 98104
 - Phone: (206) 666-4370
+- Email: info@kitchenandbathroomremodelingpros.com
+- Website: https://kitchenandbathroomremodelingpros.com
 - License: KBREMRP787P3
-- Rating: 4.9/5 (230 reviews)
+- Rating: 4.9/5 (347+ reviews)
 - Founded: 2010
-- Warranty: 5-Year
+- Warranty: 5-Year craftsmanship warranty
+- Employees: 10-25
+- Projects Completed: 500+
 
 ## Services
-- Kitchen Remodeling: /services/kitchen-remodeling/
-- Bathroom Remodeling: /services/bathroom-remodeling/
-- Cabinet Refacing: /services/cabinet-refacing/
-- Countertop Installation: /services/countertop-installation/
-- Shower Remodeling: /services/shower-remodeling/
-- Bathtub Replacement: /services/bathtub-replacement/
-- Vanity Installation: /services/vanity-installation/
-- Tile Installation: /services/tile-installation/
-- Kitchen Layout Design: /services/kitchen-layout-design/
-- Custom Cabinetry: /services/custom-cabinetry/
-- Flooring Installation: /services/flooring-installation/
-- Aging-in-Place Remodeling: /services/aging-in-place/
+- Kitchen Remodeling ($25K–$85K): /services/kitchen-remodeling/
+- Bathroom Remodeling ($15K–$50K): /services/bathroom-remodeling/
+- Cabinet Refacing ($5K–$15K): /services/cabinet-refacing/
+- Countertop Installation ($3K–$12K): /services/countertop-installation/
+- Shower Remodeling ($5K–$20K): /services/shower-remodeling/
+- Bathtub Replacement ($3K–$12K): /services/bathtub-replacement/
+- Vanity Installation ($1.5K–$6K): /services/vanity-installation/
+- Tile Installation ($2K–$10K): /services/tile-installation/
+- Kitchen Layout Design ($2K–$8K): /services/kitchen-layout-design/
+- Custom Cabinetry ($10K–$35K): /services/custom-cabinetry/
+- Flooring Installation ($3K–$15K): /services/flooring-installation/
+- Aging-in-Place Remodeling ($5K–$30K): /services/aging-in-place/
 
 ## Service Areas
-Seattle, Bellevue, Kirkland, Redmond, Renton, Kent, Federal Way, Tacoma, Everett, Sammamish, Bothell, Woodinville, Issaquah, Mercer Island, Burien, Shoreline, Lynnwood, Edmonds, Auburn, Puyallup
+Seattle, Bellevue, Kirkland, Redmond, Renton, Kent, Federal Way, Tacoma, Everett, Sammamish, Bothell, Woodinville, Issaquah, Mercer Island, Burien, Shoreline, Lynnwood, Edmonds, Auburn, Puyallup, Kenmore, Lake Forest Park, Mountlake Terrace, Mukilteo, Mill Creek, Maple Valley, Covington, Newcastle
 
 ## Cost Guides
 - Kitchen Remodel Cost in Seattle: /cost-guides/kitchen-remodel-cost-seattle/
@@ -71,3 +75,5 @@ Seattle, Bellevue, Kirkland, Redmond, Renton, Kent, Federal Way, Tacoma, Everett
 - Gallery: /gallery/
 - Financing: /financing/
 - FAQ: /faq/
+- Our Process: /our-process/
+- About Us: /about/

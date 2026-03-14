@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://kitchenandbathroomremodelingpros.com',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/api/') && !page.includes('/privacy/') && !page.includes('/terms/'),
+      filter: (page) => !page.includes('/api/'),
       serialize(item) {
         item.lastmod = new Date().toISOString();
 
@@ -16,6 +16,9 @@ export default defineConfig({
         } else if (item.url.includes('/services/')) {
           item.priority = 0.9;
           item.changefreq = 'monthly';
+        } else if (item.url.includes('/reviews/')) {
+          item.priority = 0.85;
+          item.changefreq = 'weekly';
         } else if (item.url.includes('/cost-guides/')) {
           item.priority = 0.8;
           item.changefreq = 'monthly';

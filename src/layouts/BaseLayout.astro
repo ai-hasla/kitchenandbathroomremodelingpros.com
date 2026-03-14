@@ -45,7 +45,6 @@ const { showSchema = true, ...seoProps } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#1a2744" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
     <!-- Preconnect to external services -->
     <link rel="preconnect" href="https://nexfield.pro" />
@@ -62,6 +61,7 @@ const { showSchema = true, ...seoProps } = Astro.props;
 
     <!-- LLMs.txt for AI discoverability -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site information" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-readable full site information" />
 
     <SEOHead {...seoProps} />
     {showSchema && <SchemaLocalBusiness />}

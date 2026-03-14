@@ -106,18 +106,17 @@ const ogImageUrl = ogImage.startsWith('http')
   }
 })} />
 
-<!-- WebSite Schema with SearchAction -->
+<!-- WebSite Schema -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": SITE.name,
+  "alternateName": SITE.shortName,
   "url": SITE.url,
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": SITE.url + "/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
+  "description": SITE.description,
+  "publisher": {
+    "@type": "Organization",
+    "@id": SITE.url + "/#organization",
+    "name": SITE.name
   }
 })} />

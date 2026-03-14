@@ -4,7 +4,6 @@ import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
-import SchemaProduct from '@/components/seo/SchemaProduct.astro';
 import SchemaService from '@/components/seo/SchemaService.astro';
 import { SERVICES, SITE, ALL_LOCATIONS } from '@/lib/constants';
 
@@ -105,11 +104,6 @@ const categoryLabel: Record<string, string> = {
 
   <!-- Service Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-  <SchemaProduct
-    productName={`${title} in Seattle`}
-    productDescription={`Professional ${title.toLowerCase()} services in Seattle, Bellevue, Kirkland, and beyond. ${SITE.reviews.rating}-star rated, ${SITE.warranty} warranty, free estimates.`}
-    pageUrl={`${SITE.url}/services/${slug}/`}
-  />
   <SchemaService
     serviceName={title}
     serviceDescription={metaDescription}

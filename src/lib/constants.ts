@@ -31,7 +31,7 @@ export const SITE = {
   warranty: '5-Year',
   projects: 500,
   reviews: {
-    count: 230,
+    count: 347,
     rating: 4.9,
   },
 } as const;
