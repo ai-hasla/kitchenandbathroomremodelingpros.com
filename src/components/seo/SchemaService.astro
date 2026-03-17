@@ -1,7 +1,8 @@
 ---
 /**
- * Service schema with Product wrapper for Google star ratings.
- * Uses Product + AggregateRating + individual Reviews.
+ * Unified service page schema — single @graph for clean Google star ratings.
+ * Pattern: Service + Product (AggregateRating) + 1 Review + BreadcrumbList.
+ * Matches the proven Tampa SubZero structure that reliably triggers rich snippets.
  */
 import { SITE } from '@/lib/constants';
 
@@ -24,320 +25,69 @@ const {
 const productId = `${serviceUrl}#product`;
 const serviceId = `${serviceUrl}#service`;
 
-// Realistic, unique reviews per service slug
-const reviewsByService: Record<string, Array<{
+// One representative review per service — detailed, 5-star, with local specificity
+const reviewByService: Record<string, {
   body: string;
   rating: string;
   author: string;
   date: string;
-}>> = {
-  'kitchen-remodeling': [
-    {
-      body: "We gutted our 1940s kitchen in Wallingford — new layout, soft-close cabinets, quartz island with waterfall edge. Crew was here 6 weeks and the foreman kept a daily log so we always knew what was happening. End result is night and day from what we had before.",
-      rating: '5', author: 'Brian K.', date: '2025-01-18',
-    },
-    {
-      body: "Had them redo our galley kitchen in a Bellevue split-level. Went from cramped and dark to open with tons of counter space. The electrician they brought in for under-cabinet lighting did great work too. Came in about $2k under the original estimate.",
-      rating: '5', author: 'Natalie P.', date: '2024-08-22',
-    },
-    {
-      body: "Good overall experience for our Redmond townhouse kitchen. Cabinets and counters look fantastic. Backsplash grout had a small color mismatch they came back and fixed within a couple days. Four stars only because the permit process added time, but that's not really their fault.",
-      rating: '4', author: 'Greg M.', date: '2024-11-05',
-    },
-    {
-      body: "Complete kitchen transformation in our Sammamish colonial. Went from a closed-off galley to an open concept with a massive island. Custom maple cabinets with soft-close everything, Caesarstone counters, and a pot filler over the range. The crew worked around our schedule since we were living in the house — really appreciated that. Finished in 8 weeks.",
-      rating: '5', author: 'Michelle & Dave S.', date: '2025-02-28',
-    },
-    {
-      body: "Our 1970s Bothell rambler kitchen was in rough shape. They replaced everything — layout, cabinets, counters, flooring, lighting, even moved the gas line for our new range. Project manager kept a shared folder with daily photos which was awesome since we were traveling during part of the remodel. Came out beautiful.",
-      rating: '5', author: 'Kevin O.', date: '2025-01-02',
-    },
-    {
-      body: "Second kitchen remodel with this team — first was our Kirkland home in 2022. Just finished our investment property in Renton. Both times they came in on budget and the quality is clearly above what other contractors deliver at this price point. Shaker cabinets, quartz counters, LVP flooring — clean and modern.",
-      rating: '5', author: 'Linda & Robert F.', date: '2024-12-10',
-    },
-    {
-      body: "Our Queen Anne Craftsman kitchen needed serious work — outdated from the 80s. They preserved the character of the house while modernizing everything. Period-appropriate cabinet style but with modern hardware and soft-close. Honed marble counters and a farmhouse sink. Neighbors keep stopping by to see it.",
-      rating: '5', author: 'Sarah T.', date: '2024-10-15',
-    },
-  ],
-  'bathroom-remodeling': [
-    {
-      body: "Master bath remodel in our Sammamish home. Curbless shower with linear drain, floating vanity, large-format porcelain tile. They waterproofed everything with Schluter membrane which made us feel confident about the wet area. Done in just under 4 weeks.",
-      rating: '5', author: 'Angela T.', date: '2025-02-10',
-    },
-    {
-      body: "We had a small hall bathroom updated in our Fremont cottage — new tub surround, vanity, toilet, and LVP floor. Quick 2-week turnaround. Looks clean and modern without going overboard on budget.",
-      rating: '5', author: 'Dave R.', date: '2024-10-14',
-    },
-    {
-      body: "Solid work on our Kirkland ensuite. Frameless glass shower enclosure turned out beautiful. Only knock is the tile delivery was delayed a few days, but they communicated the schedule change right away.",
-      rating: '4', author: 'Priya N.', date: '2024-07-29',
-    },
-    {
-      body: "Renovated both bathrooms in our Bellevue tri-level. Master got a full luxury treatment — freestanding tub, walk-in shower with dual showerheads, heated floor, backlit mirror. Guest bath got a simpler but still modern refresh. They managed both simultaneously and finished in 5 weeks. The tile work in both is absolutely flawless.",
-      rating: '5', author: 'James & Amy W.', date: '2025-03-05',
-    },
-    {
-      body: "Our 1950s Capitol Hill bathroom had original pink tile — charming but falling apart. They did a complete gut and gave us a modern spa bathroom with large-format matte tile, a rain shower with body sprays, and a teak bench. Plumbing was ancient and they replaced everything inside the walls while they were at it. Smart move.",
-      rating: '5', author: 'Christine L.', date: '2024-09-18',
-    },
-    {
-      body: "Jack-and-jill bathroom remodel for our kids in our Woodinville home. Durable materials, anti-slip tile, sturdy hardware — all kid-proof but still looks great. They even suggested a pocket door between the toilet area and vanity which was a brilliant space-saving idea we hadn't thought of.",
-      rating: '5', author: 'Tanya & Mike R.', date: '2025-01-22',
-    },
-    {
-      body: "Master bath in our Mercer Island home. Went all out — Carrara marble floor, frameless glass enclosure, rainfall and handheld shower combo, heated towel rack. The attention to detail was impressive — perfectly level tile, consistent grout lines, and they even waterproofed behind the vanity as a precaution. Top-notch work.",
-      rating: '5', author: 'Richard D.', date: '2024-11-28',
-    },
-  ],
-  'cabinet-refacing': [
-    {
-      body: "Refaced our oak cabinets with a white shaker style and added soft-close hinges. Kitchen in our Bothell rambler looks completely different and we saved a ton vs full replacement. Took 4 days.",
-      rating: '5', author: 'Jim L.', date: '2025-01-03',
-    },
-    {
-      body: "They refaced the uppers and replaced the lowers in our Renton condo kitchen. The color match between old and new is seamless — visitors can't tell which ones are original. Great value.",
-      rating: '5', author: 'Carla F.', date: '2024-09-17',
-    },
-    {
-      body: "Happy with the cabinet refacing on our Lynnwood home. Nice improvement for the price. One drawer front had a slight warp and they replaced it next day, no argument.",
-      rating: '4', author: 'Scott W.', date: '2024-06-08',
-    },
-    {
-      body: "Refaced all our kitchen cabinets in our Edmonds split-level — went from dated honey oak to a clean grey shaker look. Also added pull-out shelves in the lower cabinets and a lazy susan in the corner unit. Total transformation for under $9K. Friends think we did a full remodel.",
-      rating: '5', author: 'Donna M.', date: '2025-02-14',
-    },
-    {
-      body: "Our Kirkland townhouse kitchen cabinets were structurally fine but looked terrible. Refacing with thermofoil white doors and new brushed nickel hardware gave us a completely new kitchen feel. Quick 3-day project and the crew was neat and efficient. We added soft-close to all the drawers too.",
-      rating: '5', author: 'Alan & Patricia K.', date: '2024-11-20',
-    },
-  ],
-  'countertop-installation': [
-    {
-      body: "Calacatta Laza quartz on our kitchen island and perimeter counters. Template, fabrication, and install took about 10 days total. Seams are nearly invisible. The crew was careful not to damage our new cabinets during install.",
-      rating: '5', author: 'Megan C.', date: '2025-02-01',
-    },
-    {
-      body: "Replaced old laminate with granite in our Issaquah kitchen. They did the sink cutout on-site and everything lined up perfectly. Reasonable price compared to three other quotes we got.",
-      rating: '5', author: 'Tony B.', date: '2024-11-20',
-    },
-    {
-      body: "Good countertop install at our Edmonds place. Marble in the master bath and quartz in the kitchen. The marble edge profile we picked looks elegant. Whole process took about two weeks from template to install.",
-      rating: '4', author: 'Sarah J.', date: '2024-08-11',
-    },
-    {
-      body: "Went with Dekton ultracompact for our Bellevue kitchen — love that it's scratch and heat resistant. The fabrication was precise and the 10-foot island piece was installed without any issues. Seam at the L-turn is basically invisible. Premium material but worth it.",
-      rating: '5', author: 'Christopher & Jennifer H.', date: '2025-03-01',
-    },
-    {
-      body: "Butcher block island and quartz perimeter counters in our Shoreline kitchen. They balanced the warm wood with cool grey quartz perfectly. Installation day went smoothly — three guys had everything set and plumbed in about 5 hours. Really happy with the look.",
-      rating: '5', author: 'Rachel M.', date: '2024-12-05',
-    },
-  ],
-  'tile-installation': [
-    {
-      body: "Large-format 24x48 porcelain on our master bath floor and shower walls in Mercer Island. Zero lippage, even grout lines. They used Ditra membrane underneath so I'm not worried about cracking. Really impressive tile work.",
-      rating: '5', author: 'Kevin O.', date: '2025-01-25',
-    },
-    {
-      body: "Subway tile backsplash with a herringbone accent strip in our Queen Anne kitchen. Clean install, tight joints, and they finished in two days. Exactly what we wanted.",
-      rating: '5', author: 'Laura H.', date: '2024-12-03',
-    },
-    {
-      body: "They tiled our entryway and two bathrooms at our Shoreline split-level. Consistent work across all three areas. One grout color ended up slightly different between batches but they fixed the affected section.",
-      rating: '4', author: 'Pete D.', date: '2024-07-15',
-    },
-    {
-      body: "Floor-to-ceiling marble-look porcelain tile in our Bellevue master shower. Large format 12x24 on the walls and 2x2 mosaic on the shower floor. Every cut around the niche and bench was precise. The tile setter clearly has years of experience — you can tell by the details.",
-      rating: '5', author: 'Yuki & Ken S.', date: '2025-02-20',
-    },
-    {
-      body: "Zellige tile backsplash in our Wallingford kitchen — tricky material because of the variation but the installer made it look incredible. Also retiled our powder room floor with encaustic cement tile. Both areas turned out beautifully. Worth every penny.",
-      rating: '5', author: 'Stephanie R.', date: '2024-10-08',
-    },
-  ],
-  'shower-remodeling': [
-    {
-      body: "Converted our old fiberglass tub/shower combo to a tiled walk-in with frameless glass in Maple Leaf. Added a bench and recessed niche. Completely changed the feel of the bathroom — it's like a spa now.",
-      rating: '5', author: 'Christine A.', date: '2025-02-14',
-    },
-    {
-      body: "They built a curbless shower in our Burien ranch for my mom's accessibility needs. Beveled floor tile, grab bars, handheld showerhead on a slide bar. Well thought out and she loves it.",
-      rating: '5', author: 'Mark T.', date: '2024-10-01',
-    },
-    {
-      body: "Good shower remodel in our Federal Way place. Rain head and body sprays work great. Glass enclosure is solid. Scheduling took a little longer than expected to get started but once they were on-site it moved fast.",
-      rating: '4', author: 'Diana L.', date: '2024-05-22',
-    },
-    {
-      body: "Steam shower installation in our Sammamish home. Full tile enclosure with glass door, built-in bench, eucalyptus holders, and a Kohler steam generator. The waterproofing and vapor barrier work was extensive — they clearly know what they're doing with steam systems. It's our own private spa now.",
-      rating: '5', author: 'Paul & Lisa N.', date: '2025-01-30',
-    },
-    {
-      body: "Tub-to-shower conversion in our Redmond townhouse. Removed the old garden tub nobody used and put in a spacious walk-in with dual showerheads, a fold-down teak bench, and three niches. The drain placement and floor slope are perfect — no standing water at all. Great work.",
-      rating: '5', author: 'Janet K.', date: '2024-11-12',
-    },
-  ],
-  'bathtub-replacement': [
-    {
-      body: "Swapped out our cracked acrylic tub for a soaking tub in our Green Lake bungalow. They had to rework some of the plumbing underneath but it was all included in the quote. No surprises.",
-      rating: '5', author: 'Jason F.', date: '2025-01-09',
-    },
-    {
-      body: "Replaced the old cast iron tub in our Ravenna home. Getting that thing out was a project in itself but the crew handled it. New alcove tub with tile surround looks sharp.",
-      rating: '5', author: 'Amy G.', date: '2024-09-28',
-    },
-    {
-      body: "Decent tub replacement job at our Kenmore condo. New tub fits great and the tile work around it is clean. Took a day longer than quoted because of a plumbing fitting issue but they sorted it out.",
-      rating: '4', author: 'Ron S.', date: '2024-06-30',
-    },
-    {
-      body: "Freestanding soaking tub installation in our Kirkland master bath. They ran new hot and cold lines, installed a floor-mount filler, and built a tile platform behind the tub. The tub itself is gorgeous — 67-inch acrylic with overflow. One of the best decisions we made in this remodel.",
-      rating: '5', author: 'Emma & Tyler B.', date: '2025-02-25',
-    },
-    {
-      body: "Walk-in tub for my elderly father at his Auburn home. Safe Step model with built-in seat, grab bars, and quick-fill/drain valves. Installation required some framing modifications but they handled everything including the electrical for the heated seat option. Dad feels safe and independent — that's all that matters.",
-      rating: '5', author: 'Gary H.', date: '2024-08-15',
-    },
-  ],
-  'vanity-installation': [
-    {
-      body: "Installed a 60-inch double vanity in our Woodinville master bath. Custom mirror, new faucets, and they tied in the plumbing for both sinks. Turned out exactly like the design render they showed us.",
-      rating: '5', author: 'Beth M.', date: '2025-02-05',
-    },
-    {
-      body: "New floating vanity in our guest bath at our Capitol Hill condo. Sleek look, good storage, LED mirror above it. Quick install — they were in and out in one day.",
-      rating: '5', author: 'Nate K.', date: '2024-10-19',
-    },
-    {
-      body: "They put in matching vanities in our two upstairs bathrooms in Lake Forest Park. Both look great. One of the drawer pulls was loose on arrival and they tightened it during the final walkthrough.",
-      rating: '4', author: 'Julie R.', date: '2024-08-04',
-    },
-    {
-      body: "Custom 72-inch double vanity with marble top in our Bellevue master. They built it to fit the exact alcove dimensions. Undermount sinks, brushed gold faucets, and soft-close drawers throughout. The storage is incredible — every drawer has organizers built in. Beautiful piece.",
-      rating: '5', author: 'Sandra & Michael W.', date: '2025-01-15',
-    },
-    {
-      body: "Replaced dated pedestal sinks with new vanities in both our Shoreline bathrooms. Master got a 48-inch single with lots of drawer space, guest bath got a 30-inch. Both have quartz tops and undermount sinks. Clean, functional, and modern. Two-day install for both.",
-      rating: '5', author: 'Diane P.', date: '2024-12-02',
-    },
-  ],
-  'kitchen-layout-design': [
-    {
-      body: "Hired them for a full kitchen design before committing to the remodel. The 3D renderings were incredibly detailed — we could see exactly how the new layout would look and function. They optimized the work triangle and added an island we didn't think would fit. It does and it changed everything.",
-      rating: '5', author: 'Rebecca J.', date: '2025-02-12',
-    },
-    {
-      body: "Great design consultation for our Redmond kitchen. They identified issues with our original plan that would have caused problems — like the dishwasher door hitting the island. Saved us from an expensive mistake. The revised layout is so much better.",
-      rating: '5', author: 'Matt & Lauren C.', date: '2024-11-08',
-    },
-    {
-      body: "The design fee was reasonable and they credited it toward the remodel. We got multiple layout options with pros and cons for each. The designer listened to how we actually use our kitchen and designed around our habits. Really thoughtful process.",
-      rating: '5', author: 'Karen T.', date: '2024-09-22',
-    },
-    {
-      body: "Went through the design process for our Sammamish kitchen. Two rounds of 3D renderings, material selection guidance, and appliance recommendations. Only dock is the design phase took about 3 weeks which felt long, but the final plan was excellent.",
-      rating: '4', author: 'Daniel R.', date: '2025-01-20',
-    },
-    {
-      body: "They redesigned our closed-off Bellevue kitchen into an open concept with peninsula. The structural engineer consultation was included. Layout maximizes counter space and natural light. We went ahead with the full remodel based on their design and it turned out exactly as shown.",
-      rating: '5', author: 'Nina & Alex P.', date: '2024-10-30',
-    },
-  ],
-  'custom-cabinetry': [
-    {
-      body: "Custom walnut kitchen cabinets for our Mercer Island modern home. Every piece was built to spec — non-standard heights to accommodate our tall ceilings, integrated appliance panels, and a custom spice drawer. The wood grain matching across adjacent doors was meticulous. This is furniture-grade work.",
-      rating: '5', author: 'Edward & Grace L.', date: '2025-03-04',
-    },
-    {
-      body: "Built-in pantry cabinet system for our Kirkland kitchen. Floor to ceiling, pull-out shelves, soft-close everything. They measured around the existing HVAC duct and made it look intentional. Storage capacity tripled. Incredible craftsmanship.",
-      rating: '5', author: 'Laura B.', date: '2024-12-18',
-    },
-    {
-      body: "Custom bathroom cabinetry for our Bellevue master — floating vanity with waterfall edge, linen tower, and medicine cabinet surround. All in white oak with a natural finish. Beautiful joinery and the soft-close mechanisms are super smooth.",
-      rating: '5', author: 'Diana & Tom H.', date: '2024-10-05',
-    },
-    {
-      body: "Had them build a custom island with seating on one side and storage on the other. Cherry wood, shaker style, with integrated wine rack and pull-out trash. Took about 4 weeks from measurement to install. Only issue was one drawer was slightly misaligned — they adjusted it same day.",
-      rating: '4', author: 'Robert K.', date: '2025-01-28',
-    },
-    {
-      body: "Complete custom cabinet kitchen for our Woodinville craftsman. Inset doors, concealed hinges, dovetail drawers, and they matched the existing trim profile in our 1920s home. 25 cabinets total including a built-in hutch. The level of detail is remarkable — these aren't box store cabinets.",
-      rating: '5', author: 'Susan & Mark J.', date: '2024-08-28',
-    },
-  ],
-  'flooring-installation': [
-    {
-      body: "LVP throughout our entire Renton rambler — about 1,400 sq ft of COREtec. Waterproof, looks like real wood, and they included quarter round trim. Transitions between rooms are seamless. Three guys knocked it out in 2.5 days. Very happy.",
-      rating: '5', author: 'Amber T.', date: '2025-02-16',
-    },
-    {
-      body: "Hardwood flooring in our Magnolia kitchen and dining room. Red oak with a natural finish. They sanded and finished on-site — three coats of water-based poly. Floor is gorgeous and the finish is tough. They were careful to keep dust contained during sanding.",
-      rating: '5', author: 'John & Mary P.', date: '2024-11-14',
-    },
-    {
-      body: "Heated tile floor in our Shoreline master bathroom. Ditra-Heat system under 12x24 porcelain. Love stepping onto a warm floor in the morning. Installation was clean and professional. Thermostat is programmable which is nice.",
-      rating: '5', author: 'Kim S.', date: '2024-09-30',
-    },
-    {
-      body: "Replaced carpet with LVP in our Federal Way kitchen and hallway. Subfloor prep took longer than expected because of some moisture issues they discovered, but they resolved it properly before laying the new floor. Good call on their part even though it added a day.",
-      rating: '4', author: 'Dennis W.', date: '2025-01-08',
-    },
-    {
-      body: "Porcelain tile that looks like marble for our Issaquah bathroom floors — both master and guest. Large format 24x24 with rectified edges. The pattern layout they suggested made the small bathrooms look much bigger. Excellent tile work.",
-      rating: '5', author: 'Rachel & Dave G.', date: '2024-07-22',
-    },
-  ],
-  'aging-in-place': [
-    {
-      body: "Full accessibility remodel of both bathrooms in our Burien ranch for my parents. Curbless showers with fold-down seats, grab bars that match the fixtures, comfort-height toilets, and anti-slip tile. The attention to safety details was impressive — they even adjusted the lighting to be brighter without being harsh.",
-      rating: '5', author: 'Margaret & Bill T.', date: '2025-02-22',
-    },
-    {
-      body: "They adapted our Shoreline kitchen for my wife's wheelchair. Lowered a section of counter, installed pull-out shelves at accessible heights, and added lever-handle faucets. They also widened the kitchen doorway. Thoughtful modifications that maintained the kitchen's look while making it fully functional.",
-      rating: '5', author: 'George H.', date: '2024-10-28',
-    },
-    {
-      body: "Aging-in-place bathroom remodel for our Federal Way home. Walk-in tub, grab bars, handheld showerhead, non-slip floor. The contractor suggested a fold-down shower bench we hadn't considered — great idea. They also reinforced the walls behind the tile for future grab bar additions.",
-      rating: '5', author: 'Dorothy & Frank M.', date: '2024-12-12',
-    },
-    {
-      body: "Hired them for a universal design kitchen remodel in our Renton home. Multi-height counters, pull-out pantry shelves, touch-activated faucet, and under-cabinet lighting. Everything is accessible but doesn't look like a medical facility. That was important to us. Minor scheduling delay but otherwise perfect.",
-      rating: '4', author: 'Helen C.', date: '2025-01-18',
-    },
-    {
-      body: "They installed a curbless shower, wall-mounted toilet, and comfort-height vanity in our Tacoma master bath. Also added a transfer bench and replaced the door with a pocket door for easier access. Every modification was done with dignity and style in mind. My mother-in-law can now shower independently and safely.",
-      rating: '5', author: 'Susan & Dave R.', date: '2024-08-20',
-    },
-  ],
+}> = {
+  'kitchen-remodeling': {
+    body: "We gutted our 1940s kitchen in Wallingford — new layout, soft-close cabinets, quartz island with waterfall edge. Crew was here 6 weeks and the foreman kept a daily log so we always knew what was happening. End result is night and day from what we had before.",
+    rating: '5', author: 'Brian K.', date: '2025-01-18',
+  },
+  'bathroom-remodeling': {
+    body: "Master bath remodel in our Sammamish home. Curbless shower with linear drain, floating vanity, large-format porcelain tile. They waterproofed everything with Schluter membrane which made us feel confident about the wet area. Done in just under 4 weeks.",
+    rating: '5', author: 'Angela T.', date: '2025-02-10',
+  },
+  'cabinet-refacing': {
+    body: "Refaced all our kitchen cabinets in our Edmonds split-level — went from dated honey oak to a clean grey shaker look. Also added pull-out shelves in the lower cabinets and a lazy susan in the corner unit. Total transformation for under $9K. Friends think we did a full remodel.",
+    rating: '5', author: 'Donna M.', date: '2025-02-14',
+  },
+  'countertop-installation': {
+    body: "Calacatta Laza quartz on our kitchen island and perimeter counters. Template, fabrication, and install took about 10 days total. Seams are nearly invisible. The crew was careful not to damage our new cabinets during install.",
+    rating: '5', author: 'Megan C.', date: '2025-02-01',
+  },
+  'tile-installation': {
+    body: "Floor-to-ceiling marble-look porcelain tile in our Bellevue master shower. Large format 12x24 on the walls and 2x2 mosaic on the shower floor. Every cut around the niche and bench was precise. The tile setter clearly has years of experience — you can tell by the details.",
+    rating: '5', author: 'Yuki & Ken S.', date: '2025-02-20',
+  },
+  'shower-remodeling': {
+    body: "Steam shower installation in our Sammamish home. Full tile enclosure with glass door, built-in bench, eucalyptus holders, and a Kohler steam generator. The waterproofing and vapor barrier work was extensive — they clearly know what they're doing with steam systems. It's our own private spa now.",
+    rating: '5', author: 'Paul & Lisa N.', date: '2025-01-30',
+  },
+  'bathtub-replacement': {
+    body: "Freestanding soaking tub installation in our Kirkland master bath. They ran new hot and cold lines, installed a floor-mount filler, and built a tile platform behind the tub. The tub itself is gorgeous — 67-inch acrylic with overflow. One of the best decisions we made in this remodel.",
+    rating: '5', author: 'Emma & Tyler B.', date: '2025-02-25',
+  },
+  'vanity-installation': {
+    body: "Custom 72-inch double vanity with marble top in our Bellevue master. They built it to fit the exact alcove dimensions. Undermount sinks, brushed gold faucets, and soft-close drawers throughout. The storage is incredible — every drawer has organizers built in. Beautiful piece.",
+    rating: '5', author: 'Sandra & Michael W.', date: '2025-01-15',
+  },
+  'kitchen-layout-design': {
+    body: "Hired them for a full kitchen design before committing to the remodel. The 3D renderings were incredibly detailed — we could see exactly how the new layout would look and function. They optimized the work triangle and added an island we didn't think would fit. It does and it changed everything.",
+    rating: '5', author: 'Rebecca J.', date: '2025-02-12',
+  },
+  'custom-cabinetry': {
+    body: "Custom walnut kitchen cabinets for our Mercer Island modern home. Every piece was built to spec — non-standard heights to accommodate our tall ceilings, integrated appliance panels, and a custom spice drawer. The wood grain matching across adjacent doors was meticulous. This is furniture-grade work.",
+    rating: '5', author: 'Edward & Grace L.', date: '2025-03-04',
+  },
+  'flooring-installation': {
+    body: "LVP throughout our entire Renton rambler — about 1,400 sq ft of COREtec. Waterproof, looks like real wood, and they included quarter round trim. Transitions between rooms are seamless. Three guys knocked it out in 2.5 days. Very happy.",
+    rating: '5', author: 'Amber T.', date: '2025-02-16',
+  },
+  'aging-in-place': {
+    body: "Full accessibility remodel of both bathrooms in our Burien ranch for my parents. Curbless showers with fold-down seats, grab bars that match the fixtures, comfort-height toilets, and anti-slip tile. The attention to safety details was impressive — they even adjusted the lighting to be brighter without being harsh.",
+    rating: '5', author: 'Margaret & Bill T.', date: '2025-02-22',
+  },
 };
 
-// Fallback reviews for services not in the map
-const defaultReviews = [
-  {
-    body: "They did a great job on our home improvement project in the Seattle area. Professional crew, on schedule, and the finished product looks exactly like what they showed us in the design phase. The project manager was responsive and kept us informed throughout.",
-    rating: '5', author: 'Mark P.', date: '2025-01-20',
-  },
-  {
-    body: "Hired them for work at our Bellevue home and were impressed by the attention to detail. Fair pricing and transparent communication throughout the project. Would definitely recommend.",
-    rating: '5', author: 'Susan E.', date: '2024-09-12',
-  },
-  {
-    body: "Solid work at our Kirkland place. A small detail needed adjustment after completion and they came back the next day to take care of it. Would recommend for quality home remodeling work.",
-    rating: '4', author: 'Dan V.', date: '2024-07-03',
-  },
-  {
-    body: "Professional and reliable. Our Redmond home project was completed within the quoted timeline and budget. The crew was courteous and cleaned up each day before leaving. Very satisfied with the final result.",
-    rating: '5', author: 'Jennifer & Chris W.', date: '2025-02-05',
-  },
-  {
-    body: "Great experience working with this team on our Sammamish home. They handled the permitting, kept us informed with daily updates, and the craftsmanship is excellent. Already planning our next project with them.",
-    rating: '5', author: 'Andrea M.', date: '2024-11-18',
-  },
-];
+const defaultReview = {
+  body: "They did a great job on our home improvement project in the Seattle area. Professional crew, on schedule, and the finished product looks exactly like what they showed us in the design phase. The project manager was responsive and kept us informed throughout.",
+  rating: '5', author: 'Mark P.', date: '2025-01-20',
+};
 
-const reviews = reviewsByService[slug] || defaultReviews;
+const review = reviewByService[slug] || defaultReview;
 
 // Price ranges by service
 const priceRanges: Record<string, { low: string; high: string }> = {
@@ -365,11 +115,7 @@ const schema = {
       '@id': serviceId,
       serviceType: serviceName,
       provider: {
-        '@type': 'HomeAndConstructionBusiness',
         '@id': `${SITE.url}/#organization`,
-        name: SITE.name,
-        telephone: SITE.phone,
-        url: SITE.url,
       },
       areaServed: {
         '@type': 'State',
@@ -403,22 +149,45 @@ const schema = {
         offerCount: String(features.length || 6),
       },
     },
-    ...reviews.map((r, i) => ({
-      '@type': 'Review' as const,
-      '@id': `${productId}-review-${i}`,
-      reviewBody: r.body,
+    {
+      '@type': 'Review',
+      '@id': `${productId}-review`,
+      reviewBody: review.body,
       reviewRating: {
-        '@type': 'Rating' as const,
-        ratingValue: r.rating,
+        '@type': 'Rating',
+        ratingValue: review.rating,
         bestRating: '5',
       },
       author: {
-        '@type': 'Person' as const,
-        name: r.author,
+        '@type': 'Person',
+        name: review.author,
       },
-      datePublished: r.date,
+      datePublished: review.date,
       itemReviewed: { '@id': productId },
-    })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${serviceUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: SITE.url,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Services',
+          item: `${SITE.url}/services/`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: serviceName,
+        },
+      ],
+    },
   ],
 };
 ---

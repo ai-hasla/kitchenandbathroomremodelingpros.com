@@ -2,10 +2,10 @@
 import { SITE, SERVICES, ALL_LOCATIONS } from '@/lib/constants';
 
 interface Props {
-  type?: 'HomeAndConstructionBusiness' | 'LocalBusiness';
+  type?: 'LocalBusiness' | 'HomeAndConstructionBusiness';
 }
 
-const { type = 'HomeAndConstructionBusiness' } = Astro.props;
+const { type = 'LocalBusiness' } = Astro.props;
 
 const schema = {
   '@context': 'https://schema.org',

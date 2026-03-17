@@ -3,7 +3,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
-import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
 import SchemaService from '@/components/seo/SchemaService.astro';
 import { SERVICES, SITE, ALL_LOCATIONS } from '@/lib/constants';
 
@@ -40,53 +39,6 @@ const costGuideMap: Record<string, string> = {
 };
 const costGuideUrl = costGuideMap[slug] || (category === 'kitchen' ? '/cost-guides/kitchen-remodel-cost-seattle/' : category === 'bathroom' ? '/cost-guides/bathroom-remodel-cost-seattle/' : '/cost-guides/');
 
-// Build schema
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  '@id': `${SITE.url}/services/${slug}/#service`,
-  name: title,
-  serviceType: title,
-  description: metaDescription,
-  provider: {
-    '@type': 'HomeAndConstructionBusiness',
-    '@id': `${SITE.url}/#organization`,
-    name: SITE.name,
-    telephone: SITE.phone,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: SITE.address.street,
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.state,
-      postalCode: SITE.address.zip,
-    },
-    url: SITE.url,
-  },
-  areaServed: ALL_LOCATIONS.map((loc) => ({
-    '@type': 'City',
-    name: loc.city,
-  })),
-  url: `${SITE.url}/services/${slug}/`,
-  providerMobility: 'dynamic',
-  termsOfService: `${SITE.url}/terms/`,
-  offers: {
-    '@type': 'Offer',
-    name: 'Free In-Home Estimate',
-    price: '0',
-    priceCurrency: 'USD',
-    description: `Free, no-obligation estimate for ${title.toLowerCase()} in Seattle`,
-    url: 'https://nexfield.pro/crm/book?u=137',
-  },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: `${title} Services`,
-    itemListElement: features.map((feature) => ({
-      '@type': 'OfferCatalog',
-      name: feature,
-    })),
-  },
-};
-
 const categoryLabel: Record<string, string> = {
   kitchen: 'Kitchen Services',
   bathroom: 'Bathroom Services',
@@ -94,16 +46,7 @@ const categoryLabel: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={metaTitle} description={metaDescription} ogImage={`/images/og/${slug}.png`}>
-  <SchemaBreadcrumb
-    items={[
-      { label: 'Services', href: '/services/' },
-      { label: title, href: `/services/${slug}/` },
-    ]}
-  />
-
-  <!-- Service Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<BaseLayout title={metaTitle} description={metaDescription} ogImage={`/images/og/${slug}.png`} showSchema={false}>
   <SchemaService
     serviceName={title}
     serviceDescription={metaDescription}
