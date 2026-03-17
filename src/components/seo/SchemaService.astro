@@ -107,51 +107,35 @@ const priceRanges: Record<string, { low: string; high: string }> = {
 
 const range = priceRanges[slug] || { low: '5000', high: '30000' };
 
-// Product schema with review + rating nested INSIDE (required for Google Rich Results)
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: `${serviceName} in Seattle, WA`,
-  description: serviceDescription,
-  image: `${SITE.url}/images/og-default.jpg`,
-  brand: {
-    '@type': 'Brand',
-    name: SITE.name,
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: String(SITE.reviews.rating),
-    reviewCount: String(SITE.reviews.count),
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: {
-    '@type': 'Review',
-    reviewBody: review.body,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: review.rating,
-      bestRating: '5',
-    },
-    author: {
-      '@type': 'Person',
-      name: review.author,
-    },
-    datePublished: review.date,
-  },
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'USD',
-    lowPrice: range.low,
-    highPrice: range.high,
-    offerCount: String(features.length || 6),
-  },
-};
-
-// Service + Breadcrumb in @graph (supplementary, non-star)
-const serviceSchema = {
+// Single @graph — exact Tampa pattern that triggers Rich Results
+const schema = {
   '@context': 'https://schema.org',
   '@graph': [
+    {
+      '@type': 'Product',
+      '@id': productId,
+      name: `${serviceName} in Seattle, WA`,
+      description: serviceDescription,
+      image: `${SITE.url}/images/og-default.jpg`,
+      brand: {
+        '@type': 'Brand',
+        name: SITE.name,
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: String(SITE.reviews.rating),
+        reviewCount: String(SITE.reviews.count),
+        bestRating: '5',
+        worstRating: '1',
+      },
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'USD',
+        lowPrice: range.low,
+        highPrice: range.high,
+        offerCount: String(features.length || 6),
+      },
+    },
     {
       '@type': 'Service',
       '@id': serviceId,
@@ -193,5 +177,4 @@ const serviceSchema = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
