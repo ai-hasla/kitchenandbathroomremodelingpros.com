@@ -1,0 +1,453 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'How to Choose the Right Remodeling Contractor in Seattle', href: '/blog/how-to-choose-remodeling-contractor-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How to Choose the Right Remodeling Contractor in Seattle (2026 Checklist)',
+  description: 'A practical checklist for choosing a kitchen and bathroom remodeling contractor in Seattle. Licensing, insurance, red flags, and what to ask before signing a contract.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-04-01',
+  dateModified: '2026-04-05',
+  image: '/images/blog-remodel-process.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do I verify a contractor license in Washington State?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Visit the Washington State Department of Labor & Industries (L&I) website at verify.lni.wa.gov and search by contractor name or license number. The record shows license status, bond amount, insurance coverage, and any violations or complaints. Every contractor working in Washington must have an active, bonded, and insured license. Hiring an unlicensed contractor voids your legal protections under the state Construction Registration Act.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How many estimates should I get for a kitchen remodel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Get 3 estimates for a kitchen remodel. This gives you enough data to compare pricing, approach, and communication style without overwhelming yourself. Make sure each contractor is bidding on the same scope — apples-to-apples comparison requires detailed specifications. Be wary of any estimate that is dramatically lower than the others, as this often indicates cut corners or hidden change orders.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What insurance should a remodeling contractor carry?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A remodeling contractor in Washington State should carry general liability insurance ($1M minimum recommended), workers compensation insurance for all employees, and a surety bond (minimum $12,000 required by state law). Ask for certificates of insurance and verify they are current. For condo remodels, your building may require the contractor to add the HOA as additional insured.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are red flags when hiring a remodeling contractor?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Red flags include: requesting more than 10-15% deposit upfront, no written contract or vague scope of work, unwillingness to provide references or show past work, no physical business address, pressure to sign immediately, significantly lower price than competitors, and not pulling required permits. Any contractor who suggests skipping permits to save money or time should be avoided entirely.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Should I pay a deposit for a remodeling project?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A deposit of 10-15% of the project total is standard practice and helps the contractor order materials and reserve your project on the schedule. Never pay more than 33% upfront for any residential project in Washington State — it violates state law. Payments should be tied to milestones (demolition complete, cabinets installed, countertops installed, final walkthrough). Never make the final payment until all work is complete and you are satisfied.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far in advance should I book a remodeling contractor in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'In Seattle, book a remodeling contractor 4-8 weeks in advance during the busy season (April-September) and 2-4 weeks during the slower season (October-March). High-end contractors and those with strong reputations may have longer wait times. Starting the design and estimation process 2-3 months before your desired start date gives you time to compare contractors without rushing.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="How to Choose a Remodeling Contractor | Seattle"
+  description="A 2026 checklist for choosing the right kitchen and bathroom remodeling contractor in Seattle. Licensing, insurance, references, red flags, and questions to ask before signing."
+  canonical={`${SITE.url}/blog/how-to-choose-remodeling-contractor-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-04-01', modifiedTime: '2026-04-05', author: SITE.name, section: 'Tips' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Tips</span>
+          <span class="text-white/60 text-sm">April 1, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 10 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">How to Choose the Right Remodeling Contractor in Seattle (2026 Checklist)</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Hiring the wrong contractor is the single most expensive mistake you can make during a remodel. The right contractor keeps your project on time, on budget, and built to last. The wrong one causes delays, cost overruns, and unfinished work. Here is a practical checklist for finding a trustworthy remodeling contractor in Seattle.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">&rsaquo;</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Choosing a Remodeling Contractor</span>
+          </nav>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Seattle has hundreds of remodeling contractors. Some are excellent craftspeople who will transform your home. Others will leave you with an unfinished kitchen and a maxed-out credit card. Telling them apart before you sign a contract is critical — and it is easier than you think if you know what to look for.
+            </p>
+            <p>
+              This guide walks through every step of the vetting process, from initial research to final contract signing. We have organized it as a checklist you can print and follow. It is based on 16 years of experience running a remodeling company in Seattle and hearing from homeowners who came to us after bad experiences with other contractors.
+            </p>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Step 1: How Do You Verify a Contractor's License in Washington?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                This is the non-negotiable first step. Washington State requires all contractors to hold a current registration with the Department of Labor & Industries (L&I). No exceptions.
+              </p>
+              <p>
+                <strong>How to check:</strong> Go to <strong>verify.lni.wa.gov</strong> and search by the contractor's business name or registration number. The database shows:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>License status (active, suspended, or expired)</li>
+                <li>Bond amount (minimum $12,000 required by law)</li>
+                <li>Insurance status and coverage dates</li>
+                <li>Any complaints, infractions, or violations on file</li>
+                <li>Business address and UBI number</li>
+              </ul>
+              <p>
+                <strong>Why this matters:</strong> Hiring an unlicensed contractor in Washington voids your protections under the state's Construction Registration Act. If something goes wrong — incomplete work, property damage, contractor disappears — you have no legal recourse through the state's contractor bond or recovery fund. You are entirely on your own.
+              </p>
+              <p>
+                <strong>What to watch for:</strong> A "current" status with recent complaints or infractions is a yellow flag. Read the details. A single resolved complaint from 5 years ago is different from a pattern of recent violations. Also verify that the license type covers the work you need — general contractors can do full remodels, but specialty contractors (electrical, plumbing) should hold appropriate specialty licenses.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Step 2: What Insurance Should a Contractor Carry?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Insurance protects you if something goes wrong during construction. A contractor without adequate insurance transfers financial risk to you — the homeowner.
+              </p>
+              <p>
+                <strong>Required insurance in Washington:</strong>
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>General liability insurance:</strong> Covers property damage and injuries that occur on your property during construction. We recommend $1M minimum, $2M preferred. At Best KB Remodeling, we carry $2M in general liability coverage.</li>
+                <li><strong>Workers' compensation:</strong> Required by Washington L&I for all contractors with employees. Covers medical costs and lost wages if a worker is injured on your property. Without workers' comp, you could be held liable for injuries.</li>
+                <li><strong>Surety bond:</strong> Minimum $12,000 required by state law. This bond provides a fund that homeowners can claim against if the contractor fails to complete work or violates the contract.</li>
+              </ul>
+              <p>
+                <strong>How to verify:</strong> Ask the contractor for a Certificate of Insurance (COI). Call the insurance company listed on the certificate to confirm it is active. Do not just accept a photocopy — certificates can be forged or expired. For condo remodels, your building will require the contractor to add the HOA as an additional insured on their policy.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Step 3: How Do You Evaluate a Contractor's Past Work?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                A portfolio tells you what a contractor can do. References tell you what the experience of working with them is actually like. You need both.
+              </p>
+              <p>
+                <strong>Portfolio review:</strong> Ask to see photos of completed projects similar to yours. If you want a <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a>, look at their kitchen portfolio. If you want a <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom renovation</a>, ask for bathroom photos specifically. Generic "before and after" slideshows are less useful than detailed project documentation showing the process and final result.
+              </p>
+              <p>
+                <strong>Reference calls:</strong> Ask for 3 references from the past 12 months. When you call, ask these specific questions:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Was the project completed on time? If not, why?</li>
+                <li>Was the final cost within the original estimate? Were there change orders?</li>
+                <li>How did the contractor handle problems or unexpected issues?</li>
+                <li>Were the workers respectful of your home (cleanliness, noise, schedule)?</li>
+                <li>Would you hire this contractor again?</li>
+              </ul>
+              <p>
+                <strong>Online reviews:</strong> Check Google, Yelp, Houzz, and the Better Business Bureau. Look for patterns in the reviews rather than focusing on individual outliers. Every contractor has a negative review or two — what matters is how they responded and whether the complaints reveal systemic issues (missed timelines, cost overruns, poor communication).
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Step 4: What Should a Good Estimate Include?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                A quality estimate is detailed, specific, and leaves nothing to interpretation. Compare these two approaches:
+              </p>
+              <p>
+                <strong>Bad estimate:</strong> "Kitchen remodel — $45,000." That is a number, not an estimate. You have no idea what is included, what materials will be used, or what happens if something changes.
+              </p>
+              <p>
+                <strong>Good estimate:</strong> A line-item breakdown that includes:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Demolition and disposal costs</li>
+                <li>Cabinet brand, style, finish, and count</li>
+                <li>Countertop material, color, square footage, and edge profile</li>
+                <li>Backsplash material, pattern, and square footage</li>
+                <li>Flooring material and square footage</li>
+                <li>Plumbing scope (what is being moved, replaced, or added)</li>
+                <li>Electrical scope (new circuits, outlets, lighting fixtures)</li>
+                <li>Appliance installation (are appliances included or owner-supplied?)</li>
+                <li>Permit fees</li>
+                <li>Labor cost breakdown by trade</li>
+                <li>Project timeline with milestone dates</li>
+                <li>Payment schedule tied to milestones</li>
+                <li>Warranty terms</li>
+              </ul>
+              <p>
+                <strong>Get 3 estimates</strong> on the same scope so you can compare apples to apples. If one estimate is 40% lower than the other two, that is a red flag — the contractor is either cutting corners on materials, underbidding to win the job (with planned change orders later), or inexperienced at pricing. For detailed pricing context, check our <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">kitchen remodel cost guide</a> or <a href="/blog/seattle-neighborhood-remodeling-costs-2026/" class="text-accent hover:underline">neighborhood cost breakdown</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Step 5: What Communication Style Should You Expect?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Communication is the leading cause of homeowner dissatisfaction with contractors — even more than cost overruns or timeline delays. Pay attention to how the contractor communicates during the estimation process, because it will only get worse once they are juggling multiple active projects.
+              </p>
+              <p>
+                <strong>Signs of good communication:</strong>
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Returns calls and emails within 24 hours</li>
+                <li>Arrives on time for the estimate appointment</li>
+                <li>Asks questions about your goals, priorities, and budget before proposing solutions</li>
+                <li>Explains things clearly without being condescending</li>
+                <li>Proactively identifies potential challenges and discusses how they would handle them</li>
+                <li>Provides a written estimate within the timeframe they promised</li>
+              </ul>
+              <p>
+                <strong>Signs of poor communication:</strong>
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Takes more than 48 hours to respond to messages</li>
+                <li>Cancels or reschedules the estimate appointment</li>
+                <li>Is vague about timeline, cost, or scope when asked directly</li>
+                <li>Seems rushed or dismissive of your questions</li>
+                <li>Provides a verbal estimate but stalls on putting it in writing</li>
+              </ul>
+              <p>
+                The estimation phase is when the contractor is trying to win your business — they are on their best behavior. If communication is poor now, it will not improve once they have your deposit.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Red Flags Should Make You Walk Away?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                After 16 years in the business, we have heard every horror story. Here are the warning signs that consistently predict bad outcomes:
+              </p>
+              <p>
+                <strong>Demands a large upfront payment.</strong> Washington State law prohibits contractors from collecting more than 33% of the project cost upfront. A standard deposit is 10-15%. If a contractor asks for 50% or more before starting, walk away.
+              </p>
+              <p>
+                <strong>No written contract.</strong> Every project, no matter how small, should have a written contract that spells out scope, price, timeline, payment schedule, warranty, and dispute resolution process. "Handshake deals" leave you completely unprotected.
+              </p>
+              <p>
+                <strong>Suggests skipping permits.</strong> "We can save you a few thousand by not pulling permits" is a line that should end the conversation. Unpermitted work creates legal liability, insurance problems, and headaches when you sell your home. The permit process exists to protect you.
+              </p>
+              <p>
+                <strong>Price is dramatically lower than competitors.</strong> If you get three estimates at $45,000, $48,000, and $28,000 — the $28,000 bid is not a bargain. It is either an inexperienced contractor who will hit you with change orders, or someone cutting corners on materials, labor, or insurance.
+              </p>
+              <p>
+                <strong>Pressure to sign immediately.</strong> "This price is only good today" is a high-pressure sales tactic, not a legitimate business practice. A reputable contractor gives you time to review the estimate, compare options, and make a confident decision.
+              </p>
+              <p>
+                <strong>No physical business address.</strong> A legitimate remodeling company has a real office, showroom, or at minimum a commercial mailing address. A P.O. Box alone or no address at all makes it difficult to find the contractor if issues arise after the project.
+              </p>
+              <p>
+                <strong>Won't provide references.</strong> Every established contractor has satisfied clients willing to speak on their behalf. Refusal to provide references suggests there are no satisfied clients to call.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Questions Should You Ask During the Estimate Visit?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                When the contractor visits your home for the estimate, use the opportunity to gather information beyond just pricing. Here are the questions that reveal the most about a contractor's professionalism and approach:
+              </p>
+              <ol class="list-decimal pl-6 space-y-3">
+                <li><strong>"Who will be the day-to-day project manager?"</strong> You want to know the name and contact information of the person who will be on-site managing your project. In some companies, the salesperson does the estimate but a different person runs the project — meet that person before you sign.</li>
+                <li><strong>"Who does the actual work — your employees or subcontractors?"</strong> Both models work, but you should know the answer. Companies using subcontractors should have long-standing relationships with their subs, not hiring whoever is available on Craigslist.</li>
+                <li><strong>"How do you handle change orders?"</strong> Changes happen during every remodel. A good contractor has a formal change order process: written scope change, price adjustment, and signed approval before any additional work begins.</li>
+                <li><strong>"What warranty do you offer?"</strong> Industry standard is 1-2 years on labor. Better contractors offer 3-5 years. At Best KB Remodeling, we provide a 5-year warranty on all workmanship. Make sure the warranty is in writing as part of the contract.</li>
+                <li><strong>"What permits will this project require?"</strong> A knowledgeable contractor can immediately tell you which permits are needed for your project. Vague answers suggest inexperience with the local permitting process.</li>
+                <li><strong>"What is your current lead time?"</strong> This tells you how busy they are and when your project can realistically start. A contractor who says they can start tomorrow either is not busy (possible red flag) or is overpromising.</li>
+                <li><strong>"Can I visit a current job site?"</strong> Seeing active work in progress reveals more about a contractor's quality and professionalism than any portfolio photo. Is the site clean and organized? Are workers wearing safety equipment? Does it look like a professional operation?</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Contract -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Should the Contract Cover?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Before signing, make sure the contract includes every critical element. Washington State's Construction Registration Act has specific requirements for residential construction contracts:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Full scope of work</strong> — detailed description of every element being installed, removed, or modified</li>
+                <li><strong>Material specifications</strong> — brands, models, colors, grades for all materials</li>
+                <li><strong>Total price</strong> — fixed-price contracts are strongly preferred over time-and-materials</li>
+                <li><strong>Payment schedule</strong> — tied to milestones, not calendar dates (10-15% deposit, progress payments at completion of defined stages, 10% retained until final walkthrough)</li>
+                <li><strong>Start and completion dates</strong> — with provisions for weather or material delays</li>
+                <li><strong>Permit responsibility</strong> — contractor handles permits in most cases</li>
+                <li><strong>Change order process</strong> — written approval required for any scope or price changes</li>
+                <li><strong>Warranty terms</strong> — duration, what is covered, how to file a claim</li>
+                <li><strong>Insurance certificates</strong> — attached to or referenced in the contract</li>
+                <li><strong>Dispute resolution</strong> — mediation or arbitration clause</li>
+                <li><strong>Right to cancel</strong> — Washington law gives you 3 business days to cancel a home solicitation contract</li>
+              </ul>
+              <p>
+                Read the entire contract before signing. If anything is unclear, ask. A reputable contractor welcomes questions about their contract because they stand behind what is written in it.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Why Seattle Homeowners Choose Best KB Remodeling</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                We wrote this guide because we want every Seattle homeowner to have a great remodeling experience — whether they hire us or not. An informed homeowner makes better decisions and gets better results.
+              </p>
+              <p>
+                That said, if you are looking for a contractor who checks every box on this list, we would welcome the chance to earn your business. Here is what Best KB Remodeling brings to the table:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Active WA State license</strong> — bonded and insured, verified on L&I's website</li>
+                <li><strong>$2M general liability coverage</strong> — exceeding the industry standard</li>
+                <li><strong>500+ completed projects</strong> across Seattle, Bellevue, Kirkland, Redmond, Sammamish, and beyond</li>
+                <li><strong>4.9-star rating</strong> across 347 reviews on Google, Yelp, and Houzz</li>
+                <li><strong>5-year workmanship warranty</strong> — one of the longest in the market</li>
+                <li><strong>Transparent, line-item estimates</strong> — you see exactly where every dollar goes</li>
+                <li><strong>In business since 2010</strong> — 16 years serving the Puget Sound area</li>
+                <li><strong>Available 24/7</strong> — call anytime at <a href="tel:+12066664370" class="text-accent hover:underline font-semibold">(206) 666-4370</a></li>
+              </ul>
+              <p>
+                Ready to get started? <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Book a free in-home estimate</a>. We will visit your home, listen to your vision, and provide a detailed proposal within 3-5 business days. No pressure, no obligation — just honest advice and transparent pricing from a team that takes pride in every project.
+              </p>
+            </div>
+          </div>
+
+          <RelatedPosts currentSlug="how-to-choose-remodeling-contractor-seattle" category="Tips" />
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Ready to Get Your Free Estimate?</h3>
+            <p class="text-white/80 mb-6">Compare us against any contractor on this checklist. We are confident we will earn your trust.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/reviews/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Read Our Reviews</a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate from a licensed, insured contractor.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9&#9733; &middot; 347 Reviews &middot; 5-Year Warranty</p>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/seattle-neighborhood-remodeling-costs-2026/" class="text-accent hover:underline text-sm font-medium">Remodeling Costs by Neighborhood</a></li>
+                <li><a href="/blog/do-you-need-permit-remodel-seattle/" class="text-accent hover:underline text-sm font-medium">Seattle Remodeling Permits Guide</a></li>
+                <li><a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel ROI in Seattle</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Our Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation</a></li>
+              </ul>
+            </div>
+
+            <!-- Checklist quick reference -->
+            <div class="bg-primary/5 border border-primary/10 rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Quick Checklist</h3>
+              <ul class="space-y-2 text-sm text-body-text">
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Verify WA State license on L&I</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Confirm insurance + bond</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Review portfolio of similar projects</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Call 3 references</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Get 3 detailed estimates</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Read the full contract</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> Check online reviews</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold mt-0.5">&#10003;</span> No more than 15% deposit</li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Remodeling by City</h3>
+              <ul class="space-y-3">
+                <li><a href="/areas-served/seattle/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Seattle</a></li>
+                <li><a href="/areas-served/seattle/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Seattle</a></li>
+                <li><a href="/areas-served/bellevue/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/bellevue/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/kirkland/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Kirkland</a></li>
+              </ul>
+              <a href="/areas-served/" class="text-accent font-semibold text-xs hover:underline mt-3 inline-block">All 28 service areas &rarr;</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

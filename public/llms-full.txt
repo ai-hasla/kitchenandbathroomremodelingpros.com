@@ -1,6 +1,9 @@
 # Best Kitchen and Bathroom Remodeling — Seattle (Full Details)
 
-> Seattle's top-rated kitchen and bathroom remodeling company. Award-winning craftsmanship, transparent pricing, and free estimates. Serving Seattle, Bellevue, Kirkland, and the greater Puget Sound area since 2010. Licensed (KBREMRP787P3), bonded, and insured. 4.9/5 stars across 347+ verified reviews from Google, Yelp, and Houzz.
+> Last updated: April 2026
+> For a summary, see https://kitchenandbathroomremodelingpros.com/llms.txt
+
+> Seattle's top-rated kitchen and bathroom remodeling company. Award-winning craftsmanship, transparent pricing, and free estimates. Serving Seattle, Bellevue, Kirkland, and the greater Puget Sound area since 2010. 4.9/5 stars across 347+ verified reviews from Google, Yelp, and Houzz.
 
 ## About
 - Company: Best Kitchen and Bathroom Remodeling
@@ -8,131 +11,193 @@
 - Phone: (206) 666-4370
 - Email: info@kitchenandbathroomremodelingpros.com
 - Website: https://kitchenandbathroomremodelingpros.com
-- License: KBREMRP787P3 (Washington State General Contractor)
 - Rating: 4.9/5 (347+ verified reviews)
 - Founded: 2010
 - Warranty: 5-Year craftsmanship warranty on all projects
 - Employees: 10-25 skilled professionals
 - Projects Completed: 500+
-- Hours: Mon–Fri 7am–7pm, Sat 8am–5pm, Sun 9am–3pm
+- Hours: Mon-Fri 7am-7pm, Sat 8am-5pm, Sun 9am-3pm
 - Payment: Cash, Credit Card, Check, Financing Available
 - Credentials: Licensed, Bonded & Insured
 
-## Services (Detailed)
+## Services
 
-### Kitchen Remodeling — /services/kitchen-remodeling/
-Full-service kitchen remodeling including layout redesign, cabinetry, countertops, flooring, lighting, plumbing, and electrical. We handle everything from minor refreshes to complete gut renovations. Specializing in open-concept conversions, custom islands, and modern Seattle Craftsman-style kitchens. Typical cost in Seattle ranges from $25,000 to $85,000 depending on scope, materials, and kitchen size.
+### Kitchen Remodeling (from $25K) — https://kitchenandbathroomremodelingpros.com/services/kitchen-remodeling/
+Full-service kitchen remodeling: layout redesign, cabinetry, countertops, flooring, lighting, plumbing, electrical. Minor refreshes to complete gut renovations. Open-concept conversions, custom islands, Seattle Craftsman-style kitchens.
 
-### Bathroom Remodeling — /services/bathroom-remodeling/
-Complete bathroom renovations including tile work, vanity installation, shower and tub upgrades, plumbing, lighting, and accessibility features. We specialize in both primary bathrooms and guest bath updates, with expertise in curbless showers, heated floors, and luxury finishes. Typical cost in Seattle ranges from $15,000 to $50,000 depending on bathroom size and finish selections.
+### Bathroom Remodeling (from $15K) — https://kitchenandbathroomremodelingpros.com/services/bathroom-remodeling/
+Complete bathroom renovations: tile, vanity, shower/tub upgrades, plumbing, lighting, accessibility. Curbless showers, heated floors, luxury finishes.
 
-### Cabinet Refacing — /services/cabinet-refacing/
-Transform the look of your kitchen without a full remodel by replacing cabinet doors, drawer fronts, and hardware while keeping existing cabinet boxes. This is an affordable alternative that typically takes 3-5 days to complete. Options include shaker, flat-panel, raised-panel, and thermofoil styles. Typical cost in Seattle ranges from $5,000 to $15,000.
+### Cabinet Refacing (from $5K) — https://kitchenandbathroomremodelingpros.com/services/cabinet-refacing/
+Replace cabinet doors, drawer fronts, hardware while keeping existing boxes. 3-5 day completion. Shaker, flat-panel, raised-panel, thermofoil styles.
 
-### Countertop Installation — /services/countertop-installation/
-Professional installation of quartz, granite, marble, butcher block, Dekton, and solid surface countertops for kitchens and bathrooms. We handle templating, fabrication coordination, and precise installation with seamless seams. Popular brands include Caesarstone, Silestone, and Cambria. Typical cost in Seattle ranges from $3,000 to $12,000 depending on material and square footage.
+### Countertop Installation (from $3K) — https://kitchenandbathroomremodelingpros.com/services/countertop-installation/
+Quartz, granite, marble, butcher block, Dekton, solid surface. Templating, fabrication, seamless installation. Caesarstone, Silestone, Cambria.
 
-### Shower Remodeling — /services/shower-remodeling/
-Custom shower remodels including walk-in showers, frameless glass enclosures, tile surrounds, rain showerheads, bench seating, niche storage, and steam shower systems. We also offer tub-to-shower conversions. Full waterproofing with Schluter or Laticrete systems. Typical cost in Seattle ranges from $5,000 to $20,000.
+### Shower Remodeling (from $5K) — https://kitchenandbathroomremodelingpros.com/services/shower-remodeling/
+Walk-in showers, frameless glass, tile surrounds, rain showerheads, bench seating, steam systems. Tub-to-shower conversions. Schluter/Laticrete waterproofing.
 
-### Bathtub Replacement — /services/bathtub-replacement/
-Professional bathtub removal and replacement including soaking tubs, freestanding tubs, alcove tubs, and walk-in tubs for accessibility. Includes plumbing modifications, surround finishing, and tile work. Typical cost in Seattle ranges from $3,000 to $12,000.
+### Bathtub Replacement (from $3K) — https://kitchenandbathroomremodelingpros.com/services/bathtub-replacement/
+Soaking, freestanding, alcove, and walk-in tubs. Plumbing modifications, surround finishing, tile work included.
 
-### Vanity Installation — /services/vanity-installation/
-Custom and pre-fabricated vanity installation including single and double vanities, floating vanities, and vessel sink setups. Includes countertop, sink, faucet, mirror, and plumbing connections. Custom builds available for non-standard dimensions. Typical cost in Seattle ranges from $1,500 to $6,000.
+### Vanity Installation (from $1.5K) — https://kitchenandbathroomremodelingpros.com/services/vanity-installation/
+Single, double, floating vanities, vessel sinks. Countertop, sink, faucet, mirror, plumbing. Custom builds for non-standard dimensions.
 
-### Tile Installation — /services/tile-installation/
-Expert tile installation for floors, walls, backsplashes, and shower surrounds using ceramic, porcelain, natural stone, glass mosaic, and specialty tiles (zellige, encaustic). We handle waterproofing, backer board, heated floor systems, and precise layout patterns. Typical cost in Seattle ranges from $2,000 to $10,000 depending on area and tile selection.
+### Tile Installation (from $2K) — https://kitchenandbathroomremodelingpros.com/services/tile-installation/
+Floors, walls, backsplashes, shower surrounds. Ceramic, porcelain, natural stone, glass mosaic, zellige. Waterproofing, heated floors.
 
-### Kitchen Layout Design — /services/kitchen-layout-design/
-Professional kitchen space planning and layout design including work triangle optimization, storage solutions, island placement, and traffic flow analysis. We use 3D renderings so you can visualize your new kitchen before construction begins. Multiple design rounds included. Typical cost is included with full kitchen remodel projects or $500-$2,000 as a standalone service.
+### Kitchen Layout Design (from $500) — https://kitchenandbathroomremodelingpros.com/services/kitchen-layout-design/
+Space planning, work triangle optimization, storage solutions, island placement, 3D renderings. Included with full remodel or standalone.
 
-### Custom Cabinetry — /services/custom-cabinetry/
-Fully custom-built cabinetry designed and built to your exact specifications, including unique sizes, specialty storage solutions, premium wood species (walnut, cherry, white oak, maple), and furniture-grade joinery. Ideal for kitchens with non-standard dimensions or homeowners wanting one-of-a-kind design. Typical cost in Seattle ranges from $10,000 to $35,000.
+### Custom Cabinetry (from $10K) — https://kitchenandbathroomremodelingpros.com/services/custom-cabinetry/
+Built to exact specifications. Walnut, cherry, white oak, maple. Furniture-grade joinery, specialty storage, non-standard dimensions.
 
-### Flooring Installation — /services/flooring-installation/
-Kitchen and bathroom flooring installation including luxury vinyl plank (LVP), hardwood, tile, and heated floor systems. We handle subfloor preparation, moisture barriers, and transitions between rooms. Waterproof options available. Typical cost in Seattle ranges from $3,000 to $15,000 depending on material and square footage.
+### Flooring Installation (from $3K) — https://kitchenandbathroomremodelingpros.com/services/flooring-installation/
+LVP, hardwood, tile, heated floors. Subfloor prep, moisture barriers, room transitions. Waterproof options available.
 
-### Aging-in-Place Remodeling — /services/aging-in-place/
-ADA-compliant and universal design remodeling for kitchens and bathrooms, including grab bars, walk-in tubs, curbless showers, comfort-height toilets, lever-handle faucets, anti-slip flooring, wider doorways, and adjustable-height counters. We help homeowners stay safely in their homes as they age with dignity and style. Typical cost in Seattle ranges from $5,000 to $30,000.
+### Aging-in-Place Remodeling (from $5K) — https://kitchenandbathroomremodelingpros.com/services/aging-in-place/
+ADA-compliant: grab bars, walk-in tubs, curbless showers, comfort-height toilets, lever faucets, anti-slip flooring, wider doorways.
 
 ## Service Areas (28 Cities)
 Seattle, Bellevue, Kirkland, Redmond, Renton, Kent, Federal Way, Tacoma, Everett, Sammamish, Bothell, Woodinville, Issaquah, Mercer Island, Burien, Shoreline, Lynnwood, Edmonds, Auburn, Puyallup, Kenmore, Lake Forest Park, Mountlake Terrace, Mukilteo, Mill Creek, Maple Valley, Covington, Newcastle
 
-## Cost Guides
-- Kitchen Remodel Cost in Seattle: /cost-guides/kitchen-remodel-cost-seattle/
-- Bathroom Remodel Cost in Seattle: /cost-guides/bathroom-remodel-cost-seattle/
-- Cabinet Refacing Cost: /cost-guides/cabinet-refacing-cost/
-- Countertop Installation Cost: /cost-guides/countertop-installation-cost/
-- Shower Remodel Cost: /cost-guides/shower-remodel-cost/
+## Cost Guides (11)
+- Kitchen Remodel Cost: https://kitchenandbathroomremodelingpros.com/cost-guides/kitchen-remodel-cost-seattle/
+- Bathroom Remodel Cost: https://kitchenandbathroomremodelingpros.com/cost-guides/bathroom-remodel-cost-seattle/
+- Cabinet Refacing Cost: https://kitchenandbathroomremodelingpros.com/cost-guides/cabinet-refacing-cost/
+- Countertop Installation Cost: https://kitchenandbathroomremodelingpros.com/cost-guides/countertop-installation-cost/
+- Shower Remodel Cost: https://kitchenandbathroomremodelingpros.com/cost-guides/shower-remodel-cost/
+- Bathtub Replacement Cost Seattle: https://kitchenandbathroomremodelingpros.com/cost-guides/bathtub-replacement-cost/
+- Custom Cabinetry Cost Seattle: https://kitchenandbathroomremodelingpros.com/cost-guides/custom-cabinetry-cost-seattle/
+- Flooring Installation Cost Seattle: https://kitchenandbathroomremodelingpros.com/cost-guides/flooring-installation-cost-seattle/
+- Tile Installation Cost Seattle: https://kitchenandbathroomremodelingpros.com/cost-guides/tile-installation-cost-seattle/
+- Tub-to-Shower Conversion Cost Seattle: https://kitchenandbathroomremodelingpros.com/cost-guides/tub-to-shower-conversion-cost/
+- Vanity Installation Cost Seattle: https://kitchenandbathroomremodelingpros.com/cost-guides/vanity-installation-cost/
 
-## Frequently Asked Questions
+## Comparisons (5)
+- Cabinet Refacing vs Replacement: https://kitchenandbathroomremodelingpros.com/comparisons/cabinet-refacing-vs-replacement/
+- Custom vs Semi-Custom Cabinets: https://kitchenandbathroomremodelingpros.com/comparisons/custom-vs-semi-custom-cabinets/
+- Hardwood vs LVP Flooring Seattle: https://kitchenandbathroomremodelingpros.com/comparisons/hardwood-vs-lvp-flooring-seattle/
+- Quartz vs Granite Countertops Seattle: https://kitchenandbathroomremodelingpros.com/comparisons/quartz-vs-granite-countertops-seattle/
+- Walk-In Shower vs Bathtub: https://kitchenandbathroomremodelingpros.com/comparisons/walk-in-shower-vs-bathtub/
+
+## Blog (20 Articles)
+- The Complete Sammamish Home Remodeling Guide for 2026: https://kitchenandbathroomremodelingpros.com/blog/sammamish-home-remodeling-guide/
+- Kitchen & Bathroom Remodeling in South Lake Union: https://kitchenandbathroomremodelingpros.com/blog/south-lake-union-bathroom-kitchen-remodel/
+- What Does Remodeling Cost in Every Seattle Neighborhood? 2026: https://kitchenandbathroomremodelingpros.com/blog/seattle-neighborhood-remodeling-costs-2026/
+- How to Choose the Right Remodeling Contractor in Seattle: https://kitchenandbathroomremodelingpros.com/blog/how-to-choose-remodeling-contractor-seattle/
+- 15 Kitchen Remodel Ideas for Seattle Homes in 2026: https://kitchenandbathroomremodelingpros.com/blog/kitchen-remodel-ideas-seattle/
+- 10 Bathroom Remodel Ideas That Add Value to Your Seattle Home: https://kitchenandbathroomremodelingpros.com/blog/bathroom-remodel-ideas-seattle/
+- How to Choose the Right Countertop Material for Your Kitchen: https://kitchenandbathroomremodelingpros.com/blog/quartz-vs-granite-countertops-seattle/
+- 25 Small Bathroom Remodel Ideas That Maximize Space: https://kitchenandbathroomremodelingpros.com/blog/small-bathroom-remodel-ideas/
+- Seattle Remodeling Permits: What Homeowners Need to Know: https://kitchenandbathroomremodelingpros.com/blog/do-you-need-permit-remodel-seattle/
+- How Long Does a Kitchen Remodel Take? Timeline Guide 2026: https://kitchenandbathroomremodelingpros.com/blog/how-long-kitchen-remodel-take/
+- How Long Does a Bathroom Remodel Take? Timeline Guide: https://kitchenandbathroomremodelingpros.com/blog/how-long-does-bathroom-remodel-take/
+- Budget Bathroom Remodel Ideas Seattle 2026: https://kitchenandbathroomremodelingpros.com/blog/budget-bathroom-remodel-ideas-seattle/
+- Kitchen Cabinet Styles 2026: What's Trending in Seattle: https://kitchenandbathroomremodelingpros.com/blog/kitchen-cabinet-styles-2026/
+- Seattle Bathroom Tile Trends 2026: Expert Design Guide: https://kitchenandbathroomremodelingpros.com/blog/seattle-bathroom-tile-trends/
+- Hardwood vs LVP Flooring: Which Is Best for Seattle Homes?: https://kitchenandbathroomremodelingpros.com/blog/hardwood-vs-lvp-flooring-seattle/
+- Kitchen Remodel ROI in Seattle 2026: https://kitchenandbathroomremodelingpros.com/blog/kitchen-remodel-roi-seattle-2026/
+- 12 Walk-In Shower Ideas That Transform Your Bathroom: https://kitchenandbathroomremodelingpros.com/blog/walk-in-shower-ideas/
+- Kitchen Lighting Design: Layered Lighting Ideas for Seattle Homes: https://kitchenandbathroomremodelingpros.com/blog/kitchen-lighting-design-guide/
+- Open Concept Kitchen Remodel: Pros, Cons, and Costs in Seattle: https://kitchenandbathroomremodelingpros.com/blog/open-concept-kitchen-remodel/
+- Master Bathroom Remodel Checklist: 15 Things to Plan: https://kitchenandbathroomremodelingpros.com/blog/master-bathroom-remodel-checklist/
+- Aging-in-Place Bathroom Remodel Guide: https://kitchenandbathroomremodelingpros.com/blog/aging-in-place-bathroom-remodel/
+- Bathroom Vanity Buying Guide: Sizes, Styles & Tips: https://kitchenandbathroomremodelingpros.com/blog/bathroom-vanity-buying-guide/
+
+## Reviews by Service (12)
+- All Reviews: https://kitchenandbathroomremodelingpros.com/reviews/
+- Kitchen Remodeling Reviews: https://kitchenandbathroomremodelingpros.com/reviews/kitchen-remodeling/
+- Bathroom Remodeling Reviews: https://kitchenandbathroomremodelingpros.com/reviews/bathroom-remodeling/
+- Cabinet Refacing Reviews: https://kitchenandbathroomremodelingpros.com/reviews/cabinet-refacing/
+- Countertop Installation Reviews: https://kitchenandbathroomremodelingpros.com/reviews/countertop-installation/
+- Shower Remodeling Reviews: https://kitchenandbathroomremodelingpros.com/reviews/shower-remodeling/
+- Bathtub Replacement Reviews: https://kitchenandbathroomremodelingpros.com/reviews/bathtub-replacement/
+- Vanity Installation Reviews: https://kitchenandbathroomremodelingpros.com/reviews/vanity-installation/
+- Tile Installation Reviews: https://kitchenandbathroomremodelingpros.com/reviews/tile-installation/
+- Kitchen Layout Design Reviews: https://kitchenandbathroomremodelingpros.com/reviews/kitchen-layout-design/
+- Custom Cabinetry Reviews: https://kitchenandbathroomremodelingpros.com/reviews/custom-cabinetry/
+- Flooring Installation Reviews: https://kitchenandbathroomremodelingpros.com/reviews/flooring-installation/
+- Aging-in-Place Reviews: https://kitchenandbathroomremodelingpros.com/reviews/aging-in-place/
+
+## FAQ
 
 ### How much does a kitchen remodel cost in Seattle?
-A kitchen remodel in Seattle typically costs between $25,000 and $85,000. A minor refresh with cosmetic updates runs $25,000-$40,000, a mid-range remodel with new cabinets and countertops costs $40,000-$65,000, and a high-end renovation with custom cabinetry and premium finishes ranges from $65,000-$85,000+.
+From $25,000 for minor refreshes to $85,000+ for high-end renovations with custom cabinetry and premium finishes.
 
 ### How much does a bathroom remodel cost in Seattle?
-A bathroom remodel in Seattle typically costs between $15,000 and $50,000. A basic update with new fixtures and paint runs $15,000-$22,000, a mid-range remodel with new tile and vanity costs $22,000-$35,000, and a luxury renovation with heated floors and custom tilework ranges from $35,000-$50,000+.
+From $15,000 for basic updates to $50,000+ for luxury renovations with heated floors and custom tilework.
 
 ### How long does a kitchen remodel take?
-Most kitchen remodels in Seattle take 6-12 weeks from demolition to completion. A minor cosmetic update may take 3-4 weeks, while a full gut renovation with layout changes can take 10-14 weeks. Permitting can add 2-4 weeks to the timeline.
+6-12 weeks typically. Minor updates 3-4 weeks, full gut renovations 10-14 weeks. Permitting adds 2-4 weeks.
 
-### Do I need a permit to remodel my kitchen or bathroom in Seattle?
-Yes, most remodeling projects in Seattle require permits from the Seattle Department of Construction and Inspections (SDCI). Electrical, plumbing, and structural work always require permits. Cosmetic-only updates like painting or replacing fixtures typically do not. We handle all permit applications and inspections for our clients.
+### Do I need a permit to remodel in Seattle?
+Yes for electrical, plumbing, and structural work. Cosmetic updates typically do not. We handle all permits and inspections.
 
 ### What is your warranty?
-We offer a 5-year craftsmanship warranty on all labor and installation. This covers any defects in workmanship. Manufacturer warranties on materials and products are passed through to the homeowner and vary by product.
-
-### Do you offer financing?
-Yes, we offer flexible financing options through our lending partners, including 0% interest plans for qualified buyers. Ask about financing during your free estimate consultation.
-
-### Are you licensed and insured?
-Yes. Best Kitchen and Bathroom Remodeling is fully licensed (WA contractor license KBREMRP787P3), bonded, and insured. We carry general liability insurance and workers' compensation coverage.
-
-### How do I get started?
-Request a free estimate through our website at /get-a-quote/ or call us at (206) 666-4370. We will schedule an in-home consultation to discuss your project, take measurements, and provide a detailed written estimate within 3-5 business days.
-
-## Blog (16 Articles)
-- Kitchen Remodel Ideas for Seattle Homes: /blog/kitchen-remodel-ideas-seattle/
-- Bathroom Remodel Ideas for Seattle: /blog/bathroom-remodel-ideas-seattle/
-- How Long Does a Kitchen Remodel Take?: /blog/how-long-kitchen-remodel-take/
-- Do You Need a Permit to Remodel in Seattle?: /blog/do-you-need-permit-remodel-seattle/
-- Quartz vs Granite Countertops: /blog/quartz-vs-granite-countertops-seattle/
-- Small Bathroom Remodel Ideas: /blog/small-bathroom-remodel-ideas/
-- Kitchen Cabinet Styles 2026: /blog/kitchen-cabinet-styles-2026/
-- Seattle Bathroom Tile Trends 2026: /blog/seattle-bathroom-tile-trends/
-- Hardwood vs LVP Flooring for Seattle: /blog/hardwood-vs-lvp-flooring-seattle/
-- Kitchen Remodel ROI in Seattle 2026: /blog/kitchen-remodel-roi-seattle-2026/
-- Walk-In Shower Ideas: /blog/walk-in-shower-ideas/
-- Kitchen Lighting Design Guide: /blog/kitchen-lighting-design-guide/
-- Open Concept Kitchen Remodel: /blog/open-concept-kitchen-remodel/
-- Master Bathroom Remodel Checklist: /blog/master-bathroom-remodel-checklist/
-- Aging-in-Place Bathroom Remodel Guide: /blog/aging-in-place-bathroom-remodel/
-- Bathroom Vanity Buying Guide: /blog/bathroom-vanity-buying-guide/
-
-## Reviews by Service
-- All Reviews (347+): /reviews/
-- Kitchen Remodeling Reviews: /reviews/kitchen-remodeling/
-- Bathroom Remodeling Reviews: /reviews/bathroom-remodeling/
-- Cabinet Refacing Reviews: /reviews/cabinet-refacing/
-- Countertop Installation Reviews: /reviews/countertop-installation/
-
-## Blog Categories
-- Kitchen Articles: /blog/category/kitchen/
-- Bathroom Articles: /blog/category/bathroom/
-- Tips & Guides: /blog/category/tips/
+5-year craftsmanship warranty on all labor and installation. Manufacturer warranties passed through to homeowner.
 
 ## Contact
-- Free Estimate: /get-a-quote/
-- Contact: /contact/
-- Gallery: /gallery/
-- Financing: /financing/
-- FAQ: /faq/
-- Our Process: /our-process/
-- About Us: /about/
+- Free Estimate: https://kitchenandbathroomremodelingpros.com/get-a-quote/
+- Contact: https://kitchenandbathroomremodelingpros.com/contact/
+- Gallery: https://kitchenandbathroomremodelingpros.com/gallery/
+- FAQ: https://kitchenandbathroomremodelingpros.com/faq/
+- About Us: https://kitchenandbathroomremodelingpros.com/about/
 
-## Social Profiles
-- Google Business: https://g.page/kitchenandbathroomremodelingpros
+## Service Pages by City
+
+### Seattle (All Services)
+- Kitchen Remodeling Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/kitchen-remodeling/
+- Bathroom Remodeling Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/bathroom-remodeling/
+- Cabinet Refacing Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/cabinet-refacing/
+- Countertop Installation Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/countertop-installation/
+- Tile Installation Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/tile-installation/
+- Shower Remodeling Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/shower-remodeling/
+- Bathtub Replacement Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/bathtub-replacement/
+- Vanity Installation Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/vanity-installation/
+- Kitchen Layout Design Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/kitchen-layout-design/
+- Custom Cabinetry Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/custom-cabinetry/
+- Flooring Installation Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/flooring-installation/
+- Aging-in-Place Seattle: https://kitchenandbathroomremodelingpros.com/areas-served/seattle/aging-in-place/
+
+### Bellevue
+- Kitchen Remodeling Bellevue: https://kitchenandbathroomremodelingpros.com/areas-served/bellevue/kitchen-remodeling/
+- Bathroom Remodeling Bellevue: https://kitchenandbathroomremodelingpros.com/areas-served/bellevue/bathroom-remodeling/
+
+### Kirkland
+- Kitchen Remodeling Kirkland: https://kitchenandbathroomremodelingpros.com/areas-served/kirkland/kitchen-remodeling/
+- Bathroom Remodeling Kirkland: https://kitchenandbathroomremodelingpros.com/areas-served/kirkland/bathroom-remodeling/
+
+### Redmond
+- Kitchen Remodeling Redmond: https://kitchenandbathroomremodelingpros.com/areas-served/redmond/kitchen-remodeling/
+- Bathroom Remodeling Redmond: https://kitchenandbathroomremodelingpros.com/areas-served/redmond/bathroom-remodeling/
+
+### Renton
+- Kitchen Remodeling Renton: https://kitchenandbathroomremodelingpros.com/areas-served/renton/kitchen-remodeling/
+- Bathroom Remodeling Renton: https://kitchenandbathroomremodelingpros.com/areas-served/renton/bathroom-remodeling/
+
+### Kent
+- Kitchen Remodeling Kent: https://kitchenandbathroomremodelingpros.com/areas-served/kent/kitchen-remodeling/
+- Bathroom Remodeling Kent: https://kitchenandbathroomremodelingpros.com/areas-served/kent/bathroom-remodeling/
+
+### Federal Way
+- Kitchen Remodeling Federal Way: https://kitchenandbathroomremodelingpros.com/areas-served/federal-way/kitchen-remodeling/
+- Bathroom Remodeling Federal Way: https://kitchenandbathroomremodelingpros.com/areas-served/federal-way/bathroom-remodeling/
+
+### Tacoma
+- Kitchen Remodeling Tacoma: https://kitchenandbathroomremodelingpros.com/areas-served/tacoma/kitchen-remodeling/
+- Bathroom Remodeling Tacoma: https://kitchenandbathroomremodelingpros.com/areas-served/tacoma/bathroom-remodeling/
+
+### Everett
+- Kitchen Remodeling Everett: https://kitchenandbathroomremodelingpros.com/areas-served/everett/kitchen-remodeling/
+- Bathroom Remodeling Everett: https://kitchenandbathroomremodelingpros.com/areas-served/everett/bathroom-remodeling/
+
+### Sammamish
+- Kitchen Remodeling Sammamish: https://kitchenandbathroomremodelingpros.com/areas-served/sammamish/kitchen-remodeling/
+- Bathroom Remodeling Sammamish: https://kitchenandbathroomremodelingpros.com/areas-served/sammamish/bathroom-remodeling/
+
+## Social
+- Google: https://g.page/kitchenandbathroomremodelingpros
 - Facebook: https://facebook.com/kitchenandbathroomremodelingpros
 - Instagram: https://instagram.com/kbremodelpros
 - Houzz: https://houzz.com/pro/kbremodelpros

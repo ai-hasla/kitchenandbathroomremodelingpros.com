@@ -140,6 +140,9 @@ const currentPath = Astro.url.pathname;
         <a href="/about/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath === '/about/' ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
           About
         </a>
+        <a href="/our-team/" class={`nav-link px-3 py-2 text-sm font-medium transition-colors ${currentPath === '/our-team/' ? 'text-accent' : 'text-dark-text hover:text-accent'}`}>
+          Our Team
+        </a>
       </div>
 
       <!-- Desktop CTA -->
@@ -198,6 +201,7 @@ const currentPath = Astro.url.pathname;
       <a href="/blog/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Blog</a>
       <a href="/reviews/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Reviews</a>
       <a href="/about/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">About</a>
+      <a href="/our-team/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Our Team</a>
       <a href="/contact/" class="block px-4 py-3 text-base font-semibold text-dark-text rounded-lg hover:bg-light">Contact</a>
       <div class="border-t border-border my-2"></div>
       <a href={`tel:${SITE.phoneRaw}`} class="flex items-center gap-2 px-4 py-3 text-base font-bold text-primary">

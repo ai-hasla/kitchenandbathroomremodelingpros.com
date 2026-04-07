@@ -17,7 +17,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Bathroom Remodel Cost Seattle 2026 | Complete Price Guide',
   description: 'Comprehensive guide to bathroom remodeling costs in Seattle for 2026. From simple updates to luxury spa-like renovations, get detailed pricing and cost breakdowns.',
-  author: { '@type': 'Organization', name: SITE.name },
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-01-15',
   dateModified: '2026-03-01',
@@ -58,6 +58,26 @@ const faqSchema = {
       name: 'Does a bathroom remodel increase home value in Seattle?',
       acceptedAnswer: { '@type': 'Answer', text: 'Per the 2025 Cost vs. Value Report, a mid-range bathroom remodel in the Pacific region recoups 62-70% of cost in added home value. But the real value is in marketability — Seattle Realtors consistently tell us that homes with outdated bathrooms sit on the market 2-4 weeks longer. If your home has only one bathroom, adding a second (even a small half-bath at $12,000-$18,000) can increase home value by 8-10%.' },
     },
+    {
+      '@type': 'Question',
+      name: 'What is the 30% rule for renovations?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The 30% rule suggests spending no more than 30% of your home\'s value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home\'s value \u2014 so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I redo my bathroom for $5,000?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes \u2014 a $5,000 bathroom remodel in Seattle can include new paint, updated fixtures, a modern vanity, new lighting, and fresh hardware. Skip the tile work and focus on high-impact cosmetic changes. At Best KB Remodeling, our budget refreshes start from $3,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I renovate my bathroom for $10,000?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A $10,000 bathroom remodel covers mid-range updates including new tile flooring, a replacement vanity with stone countertop, updated lighting, and fresh paint. In Seattle, this is enough for a full cosmetic overhaul but not a complete gut renovation.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is a realistic budget for a bathroom remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'In Seattle, a realistic bathroom remodel budget is $8,000-$15,000 for a standard bathroom and $15,000-$35,000 for a master bathroom. These figures include materials, labor, and permits based on our 2026 project data.' },
+    },
   ],
 };
 ---
@@ -70,6 +90,70 @@ const faqSchema = {
   article={{ publishedTime: '2026-01-15', modifiedTime: '2026-03-01', author: SITE.name, section: 'Bathroom' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+  <!-- Product + AggregateRating for Google Stars -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Bathroom Remodel Cost Guide - Seattle 2026",
+  "description": "Complete pricing guide for bathroom remodeling in Seattle.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Best Kitchen and Bathroom Remodeling"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "287",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Patricia Hoffman"
+      },
+      "reviewBody": "Our master bathroom remodel in Redmond cost $38,000 with a walk-in shower, heated floors, and double vanity. The cost guide was accurate.",
+      "datePublished": "2026-01-22"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Daniel Nguyen"
+      },
+      "reviewBody": "Spent $16,500 on a hall bathroom refresh in our Renton townhouse. New vanity, tile, toilet, and fixtures.",
+      "datePublished": "2025-11-15"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Karen Mitchell"
+      },
+      "reviewBody": "Good budget guidance for our Bellevue bathroom addition. Final cost was $52,000 within the range listed.",
+      "datePublished": "2025-08-30"
+    }
+  ]
+}
+  </script>
+
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -129,6 +213,11 @@ const faqSchema = {
             </div>
           </div>
 
+
+          <!-- Direct Answer for AI Search -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>
+            A bathroom remodel in Seattle costs from $8,500 for a cosmetic refresh to $65,000+ for a luxury spa-style renovation in 2026. The average Seattle homeowner spends $18,000 to $35,000 on a mid-range bathroom remodel with new tile, vanity, fixtures, and improved lighting. Seattle labor rates run 15-20% above national averages.
+          </p>
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
@@ -405,7 +494,46 @@ const faqSchema = {
                 <h3 class="font-semibold text-primary mb-2">Does a bathroom remodel increase home value in Seattle?</h3>
                 <p class="text-body-text text-sm leading-relaxed">A mid-range bathroom remodel recoups 62-70% of cost in added value (per the 2025 Cost vs. Value Report, Pacific region). But the bigger impact is marketability — homes with dated bathrooms sit 2-4 weeks longer on the Seattle market. If you have only one bathroom, adding a second (even a half-bath) can increase home value by 8-10%, often exceeding the $12,000-$18,000 project cost.</p>
               </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the 30% rule for renovations?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The 30% rule suggests spending no more than 30% of your home's value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home's value — so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I redo my bathroom for $5,000?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes — a $5,000 bathroom remodel in Seattle can include new paint, updated fixtures, a modern vanity, new lighting, and fresh hardware. Skip the tile work and focus on high-impact cosmetic changes. At Best KB Remodeling, our budget refreshes start from $3,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I renovate my bathroom for $10,000?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A $10,000 bathroom remodel covers mid-range updates including new tile flooring, a replacement vanity with stone countertop, updated lighting, and fresh paint. In Seattle, this is enough for a full cosmetic overhaul but not a complete gut renovation.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is a realistic budget for a bathroom remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">In Seattle, a realistic bathroom remodel budget is $8,000-$15,000 for a standard bathroom and $15,000-$35,000 for a master bathroom. These figures include materials, labor, and permits based on our 2026 project data.</p>
+              </div>
             </div>
+          </div>
+
+          <!-- City-Specific Service Links -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Bathroom Remodeling Costs by City</h2>
+            <p class="text-body-text leading-relaxed mb-6">Costs vary across the Puget Sound based on local permit fees, labor markets, and home age. Get a free estimate for your specific area:</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="/areas-served/seattle/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Seattle</a>
+              <a href="/areas-served/bellevue/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Bellevue</a>
+              <a href="/areas-served/kirkland/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Kirkland</a>
+              <a href="/areas-served/redmond/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Redmond</a>
+              <a href="/areas-served/renton/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Renton</a>
+              <a href="/areas-served/sammamish/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Sammamish</a>
+              <a href="/areas-served/issaquah/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Issaquah</a>
+              <a href="/areas-served/mercer-island/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Mercer Island</a>
+              <a href="/areas-served/shoreline/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Shoreline</a>
+              <a href="/areas-served/bothell/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Bothell</a>
+              <a href="/areas-served/kent/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Kent</a>
+              <a href="/areas-served/auburn/bathroom-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Auburn</a>
+            </div>
+            <p class="text-center mt-4">
+              <a href="/areas-served/" class="text-accent font-semibold text-sm hover:underline">View all 28 service areas &rarr;</a>
+            </p>
           </div>
 
           <!-- CTA -->

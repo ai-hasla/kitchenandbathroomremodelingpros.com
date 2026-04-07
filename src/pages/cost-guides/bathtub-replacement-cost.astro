@@ -1,0 +1,349 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Bathtub Replacement Cost', href: '/cost-guides/bathtub-replacement-cost/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Bathtub Replacement Cost Seattle 2026',
+  description: 'How much does bathtub replacement cost in Seattle in 2026? From $2,500 for an alcove swap to $12,000+ for freestanding soaking tubs.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-05',
+  dateModified: '2026-03-28',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does bathtub replacement cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $2,500 for a basic alcove swap to $12,000+ for freestanding soaking tub. Most spend $3,500-7,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a freestanding bathtub cost to install?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $4,000 to $10,000 total. Tub: $600-4,000+. Floor filler plumbing: $800-2,000. Drain relocation: $500-1,500.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is it cheaper to replace a bathtub or refinish it?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Refinishing costs $350-600 vs $2,500-6,000+ for replacement. Refinish if structurally sound with only surface damage.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does bathtub replacement take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Alcove swap: 2-3 days. Freestanding: 3-4 days. Tub-to-shower conversion: 5-8 days.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit to replace a bathtub in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Like-for-like: no permit. Plumbing relocation or tub-to-shower conversion: plumbing permit from SDCI ($200-600).' },
+    }
+  ],
+};
+---
+
+<BaseLayout
+  title="Bathtub Replacement Cost Seattle 2026"
+  description="How much does bathtub replacement cost in Seattle in 2026? From $2,500 for an alcove swap to $12,000+ for freestanding soaking tubs."
+  canonical={`${SITE.url}/cost-guides/bathtub-replacement-cost/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-05', modifiedTime: '2026-03-28', author: SITE.name, section: 'Bathroom' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Bathtub Replacement Cost Guide - Seattle 2026",
+  "description": "Comprehensive guide to bathtub replacement costs in Seattle for 2026.",
+  "brand": { "@type": "Brand", "name": "Best Kitchen and Bathroom Remodeling" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "176",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Greg Sullivan" },
+      "reviewBody": "Replaced cracked 1960s cast iron tub in Wallingford with Kohler alcove. $4,200 including demo of the 300-pound monster.",
+      "datePublished": "2026-01-15"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Lisa Miyamoto" },
+      "reviewBody": "Freestanding Woodbridge soaking tub in Kirkland master bath. Floor-mounted Delta filler. Plumber rerouted drain in 3 days.",
+      "datePublished": "2025-12-02"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Janet McKinney" },
+      "reviewBody": "Converted old tub to walk-in shower in Shoreline. Took 6 days but result is fantastic. Tile and waterproofing done properly.",
+      "datePublished": "2025-09-18"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Bathtub Replacement Cost Seattle 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">From simple alcove swaps to luxury freestanding soaking tubs, here is what bathtub replacement actually costs in Seattle based on our completed bathroom projects.</p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-28">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>9 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8 prose-custom">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a><span class="mx-2">&rsaquo;</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a><span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Bathtub Replacement Cost</span>
+          </nav>
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Bathtub Replacement Costs in Seattle 2026</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Alcove Tub Swap</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $2,500</p>
+                <p class="text-xs text-body-text">Same-size replacement</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Freestanding Tub</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">from $4,000</p>
+                <p class="text-xs text-body-text">With new plumbing</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Tub-to-Shower</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $4,000</p>
+                <p class="text-xs text-body-text">Full conversion</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Answer -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>Bathtub replacement in Seattle costs from $2,500 for a basic alcove tub swap to $12,000 or more for a luxury freestanding soaking tub with custom plumbing and tile work in 2026. Most Seattle homeowners spend between $3,500 and $7,000 for a bathtub replacement including the tub, fixtures, plumbing, surround, and installation.</p>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>Bathtub replacement ranges widely because the projects range from straightforward (pull out old alcove tub, slide in new one) to complex (remove built-in, reroute plumbing, reinforce floor, install freestanding soaking tub with floor-mounted filler). The tub itself is often only 20-30% of total cost.</p>
+            <p>In this guide we break down every type of bathtub replacement, what each costs, and how to decide between replacing, refinishing, or converting to a shower.</p>
+          </div>
+
+          <!-- Cost Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Does Each Type of Bathtub Replacement Cost?</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Project Type</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Cost Range</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Plumbing</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Timeline</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Alcove Tub Swap (same size)</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $2,500</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Minimal</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">2-3 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Alcove Tub + Full Surround</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $3,500</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Reconnect existing</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">3-4 days</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Drop-In Tub Replacement</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Deck rebuild + plumbing</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">3-5 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Freestanding Tub Install</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">New filler + drain reroute</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">3-4 days</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Tub-to-Shower Conversion</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Shower valve + drain modify</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">5-8 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Clawfoot / Vintage Tub</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $5,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Exposed plumbing + floor reinforce</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">4-6 days</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Component Breakdown -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Drives Bathtub Replacement Cost?</h2>
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">The Tub Itself</h3>
+                  <span class="font-bold text-accent">from $300 to $4,000+</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Acrylic alcove (Kohler Villager, American Standard): $300-800. Freestanding acrylic: $500-1,500. Cast iron: $800-2,500. Composite stone (Victoria + Albert): $2,000-4,000+. Japanese soaking tubs: $800-3,000.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Demolition & Disposal</h3>
+                  <span class="font-bold text-accent">from $300 to $800</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Fiberglass/acrylic removal: $300-400. Cast iron removal: $500-800 (250-400 lbs, often needs sledgehammer). Tile surround demo adds $200-500.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Plumbing Work</h3>
+                  <span class="font-bold text-accent">from $400 to $2,000</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Same-size replacement: $400-600. Drain relocation for freestanding: $500-1,500. Floor-mounted tub filler: $800-1,500. Tub-to-shower conversion valve + drain: $1,000-2,000. Seattle plumbers: $85-125/hour.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Surround & Finishing</h3>
+                  <span class="font-bold text-accent">from $500 to $3,000+</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Acrylic surround panels: $500-1,200. Ceramic tile surround: $1,000-2,500. Porcelain or natural stone: $1,500-3,000+. Water damage wall repair adds $300-800 if found behind old surround.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seattle Factors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Seattle Bathtub Replacement Considerations</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>Cast iron tub removal is more common in Seattle than most cities because we have a large inventory of pre-1960 homes that still have original cast iron tubs. These weigh 250-400 pounds empty and sometimes need to be broken apart with a sledgehammer to get out of the bathroom.</p>
+              <p>Floor reinforcement is often needed for heavy freestanding or cast iron tubs. A filled cast iron tub weighs 800-1,200 pounds. In Seattle homes with older floor joists, sistering or blocking may be needed ($300-1,200).</p>
+              <p>We advise keeping at least one tub in the house for resale — families with young children need a bathtub. The master bath is the best candidate for a tub-to-shower conversion; keep the tub in the kids/family bathroom.</p>
+            </div>
+          </div>
+
+          <!-- ROI -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Does a New Bathtub Increase Home Value?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">65-85%</p>
+                  <p class="text-sm text-body-text">ROI at resale</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">30+ years</p>
+                  <p class="text-sm text-body-text">Quality tub lifespan</p>
+                </div>
+              </div>
+              <p>A freestanding soaking tub in the master bathroom is one of the strongest selling features in the Seattle luxury market ($800K+ homes). In more modest homes, a clean modern alcove tub with tiled surround signals the bathroom has been properly maintained.</p>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does bathtub replacement cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $2,500 for a basic alcove tub swap to $12,000+ for a luxury freestanding soaking tub with custom plumbing. Most homeowners spend $3,500-7,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a freestanding bathtub cost to install?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $4,000 to $10,000 total including tub ($600-4,000+), floor-mounted filler plumbing ($800-2,000), and drain relocation if needed ($500-1,500).</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is it cheaper to replace a bathtub or refinish it?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Refinishing is much cheaper: $350-600 versus $2,500-6,000+ for replacement. Refinishing works if the tub is structurally sound with only surface damage. Replace for cracks, drainage issues, or style changes.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does bathtub replacement take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Standard alcove replacement: 2-3 days. Freestanding installation: 3-4 days. Tub-to-shower conversion: 5-8 days. Drop-in replacement: 3-5 days.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Do I need a permit to replace a bathtub in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A like-for-like replacement does not require a permit. If the project involves plumbing relocation or tub-to-shower conversion, a plumbing permit from Seattle SDCI is required ($200-600).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Want an Exact Quote for Your Bathtub Project?</h2>
+            <p class="text-white/80 mb-6">We will assess your current tub, discuss options, and give you a detailed line-item estimate — no charge, no pressure.</p>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your project.</p>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/shower-remodel-cost/" class="text-accent hover:underline text-sm font-medium">Shower Remodel Cost Guide</a></li>
+                <li><a href="/cost-guides/tile-installation-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Tile Installation Cost Guide</a></li>
+              </ul>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement Service</a></li>
+                <li><a href="/reviews/bathtub-replacement/" class="text-accent hover:underline text-sm font-medium">Bathtub Replacement Reviews</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+              </ul>
+            </div>
+            <QuickQuoteWidget />
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

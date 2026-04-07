@@ -10,7 +10,7 @@ const { type = 'LocalBusiness' } = Astro.props;
 const schema = {
   '@context': 'https://schema.org',
   '@type': type,
-  '@id': `${SITE.url}/#organization`,
+  '@id': `${SITE.url}/#local-business`,
   name: SITE.name,
   image: `${SITE.url}/images/og-default.jpg`,
   url: SITE.url,
@@ -68,31 +68,12 @@ const schema = {
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '19:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday'],
-      opens: '08:00',
-      closes: '17:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Sunday'],
-      opens: '09:00',
-      closes: '15:00',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
     },
   ],
   priceRange: '$$-$$$$',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: String(SITE.reviews.rating),
-    reviewCount: String(SITE.reviews.count),
-    bestRating: '5',
-    worstRating: '1',
-  },
   hasCredential: [
     {
       '@type': 'EducationalOccupationalCredential',

@@ -1,0 +1,452 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'The Complete Sammamish Home Remodeling Guide for 2026', href: '/blog/sammamish-home-remodeling-guide/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'The Complete Sammamish Home Remodeling Guide for 2026',
+  description: 'Everything Sammamish homeowners need to know about kitchen and bathroom remodeling in 2026. Permits, costs, popular projects, and neighborhood-specific advice for the Plateau.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-04-01',
+  dateModified: '2026-04-05',
+  image: '/images/blog-kitchen-ideas.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit for a kitchen remodel in Sammamish?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, most kitchen remodels in Sammamish require permits from the City of Sammamish Building Department. Electrical, plumbing, and structural changes all need separate permits. Cosmetic updates like painting, new countertops, and cabinet refacing typically do not require permits. The city processes residential permits through its online portal, and turnaround averages 2-4 weeks for standard projects.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a kitchen remodel cost in Sammamish?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Kitchen remodels in Sammamish typically cost from $55,000 for a mid-range renovation and from $110,000 for a high-end remodel. Sammamish costs run 10-20% higher than the Seattle metro average due to larger home sizes, higher material expectations, and longer drive times for contractors. Most Sammamish kitchens are 150-250 square feet, which also increases project scope.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the most popular remodeling projects in Sammamish?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The most popular remodeling projects in Sammamish are kitchen renovations (especially updating builder-grade finishes from the 1990s-2000s), primary bathroom remodels, and basement finishing. Many Sammamish homes were built during the 1990s-2010s construction boom and have dated finishes that homeowners want to modernize while keeping the open floor plans intact.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do Sammamish HOAs restrict remodeling projects?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most Sammamish HOAs focus on exterior modifications and do not restrict interior remodeling. However, communities like Klahanie, Sahalee, and Pine Lake have specific rules about construction hours (typically 8am-6pm weekdays), dumpster placement, and contractor parking. Always check your HOA CC&Rs before starting work and notify your HOA board about the project timeline.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a bathroom remodel take in Sammamish?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A standard bathroom remodel in Sammamish takes 3-6 weeks depending on scope. Simple updates like vanity replacement and new tile run 2-3 weeks. Full primary bathroom renovations with layout changes, custom tile showers, and heated floors typically take 5-7 weeks. Add 2-4 weeks for permit processing through the City of Sammamish before construction begins.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which Sammamish neighborhoods have the highest remodeling ROI?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sahalee and Klahanie properties tend to see the highest remodeling ROI in Sammamish due to strong buyer demand and higher home values (median $1.5M-$2M+). Pine Lake and Beaver Lake neighborhoods also perform well. Kitchen and bathroom remodels in these areas typically return 70-85% of the investment at resale, outperforming the national average.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Sammamish Remodeling Guide 2026 | Kitchen & Bath"
+  description="The complete Sammamish home remodeling guide for 2026. Kitchen and bathroom renovation costs, permits, HOA rules, and neighborhood-specific advice for Klahanie, Pine Lake, Sahalee, and the Plateau."
+  canonical={`${SITE.url}/blog/sammamish-home-remodeling-guide/`}
+  ogType="article"
+  article={{ publishedTime: '2026-04-01', modifiedTime: '2026-04-05', author: SITE.name, section: 'Tips' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Tips</span>
+          <span class="text-white/60 text-sm">April 1, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 12 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">The Complete Sammamish Home Remodeling Guide for 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          Sammamish sits on the Eastside plateau with some of the most beautiful homes in the Puget Sound region. But many of those homes — built during the 1990s and 2000s construction boom — are now overdue for kitchen and bathroom updates. Here is what Sammamish homeowners need to know before starting a remodel.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">&rsaquo;</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Sammamish Remodeling Guide</span>
+          </nav>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              Sammamish is one of the most desirable cities on the Eastside, with a population of about 65,000 residents spread across the Sammamish Plateau. Median home values here exceed $1.3 million, and the housing stock is predominantly newer construction from the 1990s through 2010s — large single-family homes on generous lots with 3-car garages, open floor plans, and builder-grade finishes that are ripe for upgrading.
+            </p>
+            <p>
+              Unlike remodeling a 1920s Craftsman in Seattle or a 1960s ranch in Bellevue, Sammamish remodeling projects tend to focus on replacing dated builder-grade materials with premium finishes rather than dealing with structural challenges or outdated layouts. That is both good news (fewer surprises behind walls) and a design challenge (making tract-style homes feel custom and high-end).
+            </p>
+            <p>
+              After completing dozens of projects across Klahanie, Pine Lake, Sahalee, Beaver Lake, and the broader Plateau, our team has developed a deep understanding of what works — and what to watch out for — when remodeling in Sammamish. This guide covers everything from permits and HOA rules to costs and the most popular projects.
+            </p>
+          </div>
+
+          <!-- Section 1 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Makes Sammamish Homes Different from Seattle Homes?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Sammamish homes differ from Seattle homes in several important ways that directly affect remodeling approach, cost, and timeline. Understanding these differences helps set realistic expectations before you start talking to contractors.
+              </p>
+              <p>
+                <strong>Newer construction.</strong> The majority of Sammamish homes were built between 1990 and 2015. That means modern framing standards, copper or PEX plumbing (not galvanized), 200-amp electrical panels, and engineered foundations. You are less likely to uncover knob-and-tube wiring, lead paint, or asbestos — common surprises in older Seattle neighborhoods like Capitol Hill or Wallingford.
+              </p>
+              <p>
+                <strong>Larger footprints.</strong> The average Sammamish home is 2,800-3,500 square feet, significantly larger than the Seattle average of about 1,600 square feet. Kitchens here are typically 150-250 square feet with islands, compared to 80-120 square feet in many Seattle homes. That means more countertop, more cabinetry, more flooring — and higher material costs.
+              </p>
+              <p>
+                <strong>Builder-grade starting point.</strong> Most Sammamish kitchens and bathrooms were built with production-grade cabinets, laminate countertops, standard tile, and basic fixtures. The bones are good, but the finishes are 15-25 years old and feel dated compared to what buyers expect in this price range. The goal is usually to bring finishes up to the level that the home's value demands.
+              </p>
+              <p>
+                <strong>HOA considerations.</strong> Many Sammamish communities — Klahanie, Sahalee, Trilogy, Pine Lake, and others — have homeowners associations with rules that affect exterior work and construction logistics. Interior remodels are rarely restricted, but dumpster placement, construction hours, and contractor parking often are.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Does the Sammamish Permit Process Work?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The City of Sammamish manages its own building permits separately from King County. If your project involves any structural, electrical, or plumbing changes, you need a permit from the Sammamish Building Department at City Hall (801 228th Ave SE). The city uses an online permitting portal for submissions and tracking.
+              </p>
+              <p>
+                <strong>What requires a permit:</strong> Moving or removing walls, adding or relocating plumbing fixtures, installing new electrical circuits, changing window or door openings, and any work that affects the building envelope. A full <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> with layout changes will require building, plumbing, and electrical permits.
+              </p>
+              <p>
+                <strong>What does not require a permit:</strong> Cosmetic updates like painting, new countertops on existing cabinets, <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a>, replacing fixtures in the same location, and flooring replacement. If you are keeping the same layout and not touching utilities, you can usually proceed without permits.
+              </p>
+              <p>
+                <strong>Timeline:</strong> Standard residential permit review in Sammamish takes 2-4 weeks. Complex projects with structural engineering review can take 4-6 weeks. Plan accordingly — submitting permits early in the design phase prevents delays once your contractor is ready to start. Permit fees for a typical kitchen remodel run $800-$2,000 depending on project valuation.
+              </p>
+              <p>
+                <strong>Inspections:</strong> The city requires inspections at key milestones — framing, rough plumbing, rough electrical, insulation, and final. Your contractor should coordinate these. Sammamish inspectors are thorough but fair, and scheduling is usually available within 2-3 business days.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Are the Most Popular Remodeling Projects in Sammamish?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Based on our experience working across the Sammamish Plateau, these are the projects homeowners request most frequently, ranked by popularity:
+              </p>
+              <p>
+                <strong>1. Kitchen renovation.</strong> By far the most common project. Sammamish kitchens are spacious but often have dated oak or maple cabinets, laminate countertops, and basic tile backsplashes. The typical upgrade includes <a href="/services/custom-cabinetry/" class="text-accent hover:underline">custom or semi-custom cabinets</a>, quartz countertops, a tile backsplash, new appliances, and updated lighting. Most homeowners keep the existing layout (which is usually well-designed) and focus on finish quality.
+              </p>
+              <p>
+                <strong>2. Primary bathroom remodel.</strong> Sammamish primary bathrooms from the 1990s-2000s era typically feature a garden tub that nobody uses, a small separate shower, and double vanities with cultured marble tops. The modern update replaces the tub with a large walk-in shower with frameless glass, installs a new freestanding soaking tub (or removes the tub entirely to create a spa-sized shower), and upgrades vanities to floating or furniture-style pieces with quartz tops. See our <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodeling</a> page for more details.
+              </p>
+              <p>
+                <strong>3. Basement finishing.</strong> Many Sammamish homes have unfinished or partially finished daylight basements that add 800-1,500 square feet of livable space. Finishing a basement with a bedroom, bathroom, and entertainment area is one of the highest-ROI projects in the Sammamish market.
+              </p>
+              <p>
+                <strong>4. Flooring replacement.</strong> Replacing carpet and dated hardwood with wide-plank <a href="/services/flooring-installation/" class="text-accent hover:underline">engineered hardwood or LVP</a> throughout the main floor transforms the look and feel of the entire home. This is often done alongside a kitchen remodel to create a cohesive aesthetic.
+              </p>
+              <p>
+                <strong>5. Secondary bathroom updates.</strong> Hall bathrooms and guest bathrooms get refreshed with new <a href="/services/vanity-installation/" class="text-accent hover:underline">vanities</a>, <a href="/services/tile-installation/" class="text-accent hover:underline">tile</a>, and fixtures. These smaller projects (from $8,000) deliver outsized impact because they are the bathrooms guests actually see.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Much Does Remodeling Cost in Sammamish?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Sammamish remodeling costs run higher than the broader Seattle metro average for three reasons: homes are larger (more material), homeowners expect premium finishes (higher material grade), and the Plateau location adds travel time for crews and deliveries. Here are realistic cost ranges for 2026:
+              </p>
+              <div class="overflow-x-auto my-6">
+                <table class="w-full text-sm border-collapse">
+                  <thead>
+                    <tr class="bg-light">
+                      <th class="text-left p-3 font-semibold text-primary border-b">Project</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Starting From</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Typical Range</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b"><td class="p-3">Kitchen remodel (mid-range)</td><td class="p-3">from $55,000</td><td class="p-3">4-8 weeks</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3">Kitchen remodel (high-end)</td><td class="p-3">from $110,000</td><td class="p-3">8-14 weeks</td></tr>
+                    <tr class="border-b"><td class="p-3">Primary bathroom remodel</td><td class="p-3">from $35,000</td><td class="p-3">4-7 weeks</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3">Secondary bathroom update</td><td class="p-3">from $8,000</td><td class="p-3">1-3 weeks</td></tr>
+                    <tr class="border-b"><td class="p-3">Cabinet refacing</td><td class="p-3">from $12,000</td><td class="p-3">1-2 weeks</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3">Countertop installation (quartz)</td><td class="p-3">from $4,500</td><td class="p-3">1-2 days install</td></tr>
+                    <tr class="border-b"><td class="p-3">Whole-home flooring</td><td class="p-3">from $15,000</td><td class="p-3">1-2 weeks</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                These prices reflect the Sammamish market specifically. Projects in Sahalee and other luxury communities often skew toward the higher end due to larger square footage and premium material selections. For a personalized estimate, <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">request a free in-home consultation</a> — we will measure your space and provide detailed pricing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 5 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Which Sammamish Neighborhoods Are We Most Active In?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                We have completed projects across every major Sammamish neighborhood. Here is what we see in each area:
+              </p>
+              <p>
+                <strong>Klahanie.</strong> One of Sammamish's largest planned communities with about 3,800 homes built between 1990 and 2010. Klahanie homes range from 1,800-3,200 square feet. The HOA is well-organized with clear construction guidelines (8am-6pm Monday-Friday, 9am-5pm Saturday, no Sunday work). Most Klahanie remodels focus on updating kitchens from original builder-grade oak to modern shaker-style cabinets with quartz countertops.
+              </p>
+              <p>
+                <strong>Pine Lake.</strong> The area around Pine Lake features a mix of older 1980s homes and newer 2000s construction. Older Pine Lake homes offer the most dramatic remodeling transformations because the original layouts and finishes are truly dated. These projects often involve opening up walls between the kitchen and family room — a popular upgrade that adds both light and functional space.
+              </p>
+              <p>
+                <strong>Beaver Lake.</strong> A well-established neighborhood with mature trees and homes from the late 1980s through 2000s. Beaver Lake properties tend to be on larger lots with bigger homes (3,000+ square feet). Primary bathroom remodels are especially popular here, converting 1990s garden-tub-and-separate-shower layouts into spa-like walk-in showers with heated floors and frameless glass enclosures.
+              </p>
+              <p>
+                <strong>Sahalee.</strong> The most upscale neighborhood in Sammamish, centered around the Sahalee Country Club. Homes here range from $1.5M to $3M+, and remodeling projects reflect that price point. Sahalee clients typically invest in high-end materials — custom inset cabinetry, natural stone countertops, designer tile, and professional-grade appliances like Sub-Zero, Wolf, and Thermador. The HOA has specific architectural review requirements for any exterior-visible changes.
+              </p>
+              <p>
+                <strong>Plateau communities (general).</strong> Newer developments along 228th Avenue and the Town Center corridor feature homes built from 2005-2020. These homes have modern floor plans but production-grade finishes. The most cost-effective upgrade path is <a href="/services/countertop-installation/" class="text-accent hover:underline">countertop replacement</a> plus cabinet refacing — transforming the kitchen for from $20,000 without a full gut renovation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 6 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What HOA Rules Should Sammamish Homeowners Know About?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Most Sammamish HOAs do not restrict interior remodeling. You do not need HOA approval to remodel your kitchen or bathroom. However, construction logistics are often regulated:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Construction hours:</strong> Typically 8am-6pm weekdays, 9am-5pm Saturdays. Most HOAs prohibit Sunday and holiday work. Violations can result in fines from $50 to $250 per occurrence.</li>
+                <li><strong>Dumpster placement:</strong> Roll-off dumpsters must usually be placed on your driveway, not on the street. Some HOAs limit dumpster duration to 7-14 days. Tarps or covers may be required.</li>
+                <li><strong>Contractor parking:</strong> Work vehicles must park in your driveway or in designated areas. Street parking for contractor vans and trailers may be restricted or require a permit from the HOA.</li>
+                <li><strong>Noise:</strong> Power tools, demolition, and other loud work must stay within approved hours. We always coordinate with our clients' HOA schedules to prevent issues.</li>
+                <li><strong>Exterior changes:</strong> If your remodel includes exterior-visible modifications (new windows, a vent hood exhaust, or an addition), you will need HOA architectural review in addition to city permits.</li>
+              </ul>
+              <p>
+                Before signing a contract, pull up your HOA CC&Rs and share them with your contractor. A good contractor will factor HOA restrictions into the project schedule from day one. At Best KB Remodeling, we are familiar with the specific rules for Klahanie, Sahalee, Pine Lake, and other Sammamish communities and plan our work schedules accordingly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 7 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Design Trends Work Best for Sammamish Homes?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Sammamish homes have a different character than Seattle homes. While Capitol Hill and Ballard lean toward urban-industrial and mid-century modern aesthetics, Sammamish design tends toward a polished transitional style — clean lines with warm materials, blending contemporary and traditional elements. Here are the trends we see working best on the Plateau:
+              </p>
+              <p>
+                <strong>Transitional white kitchens with warm accents.</strong> White or off-white shaker cabinets remain the most popular choice in Sammamish, but homeowners are adding warmth through walnut or white oak floating shelves, warm-toned quartz countertops (Calacatta Laza, for example), and brushed gold hardware. This palette works with the large, open floor plans common in Sammamish homes.
+              </p>
+              <p>
+                <strong>Spa-inspired primary bathrooms.</strong> Walk-in showers with linear drains, full-height porcelain tile, frameless glass, heated floors, and freestanding tubs create a resort-quality primary bathroom. This is the single most requested <a href="/services/shower-remodeling/" class="text-accent hover:underline">shower remodeling</a> project in Sammamish.
+              </p>
+              <p>
+                <strong>Wide-plank flooring.</strong> 7-inch or wider planks in white oak or hickory replace the narrower hardwoods and carpet common in 1990s-2000s construction. Lighter finishes (natural, whitewashed, or matte) brighten interior spaces and complement the Pacific Northwest forest views that many Sammamish homes enjoy.
+              </p>
+              <p>
+                <strong>Oversized kitchen islands.</strong> Sammamish kitchens have the square footage to accommodate large islands — 8-foot or longer — that serve as the primary gathering spot for families. Waterfall edges, integrated seating for 4-5 stools, and built-in storage are standard features.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 8 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Can You Choose the Right Contractor in Sammamish?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Sammamish homeowners have high standards, and the contractor you choose needs to match them. Not every contractor who works in Seattle proper has experience with the specific characteristics of Sammamish homes and communities. Here is what to look for:
+              </p>
+              <p>
+                <strong>Eastside experience.</strong> Choose a contractor who regularly works on the Eastside — Sammamish, Issaquah, Redmond, and Bellevue. They will understand the housing stock, know the local permit process, and have relationships with Sammamish inspectors. Contractors who primarily work in Seattle may not be familiar with HOA requirements or the expectations of Sammamish homebuyers.
+              </p>
+              <p>
+                <strong>Active WA state license.</strong> Verify the contractor's license through Washington State Department of Labor & Industries (L&I). The license should be active, bonded, and insured. In Washington, contractors must carry a $12,000 surety bond minimum and maintain general liability insurance.
+              </p>
+              <p>
+                <strong>Portfolio of comparable projects.</strong> Ask to see kitchens and bathrooms in homes similar to yours — not just downtown condos or historic bungalows. The design sensibility and construction approach for a 3,200 square foot Sammamish home is different from a 1,400 square foot Capitol Hill apartment.
+              </p>
+              <p>
+                <strong>Transparent pricing.</strong> Reputable contractors provide detailed, line-item estimates — not ballpark numbers. You should see material costs, labor costs, permit fees, and a clear scope of work. At Best KB Remodeling, every estimate includes a detailed breakdown so you know exactly where your money goes. <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Request your free estimate here</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 9 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What ROI Can Sammamish Homeowners Expect?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Sammamish's strong real estate market — with median home prices consistently above $1.3 million — means that well-executed remodels deliver solid returns. Buyers in this market expect modern kitchens and bathrooms, and homes with dated finishes sell for significantly less than updated comparable properties.
+              </p>
+              <p>
+                Based on local sales data and our experience, here are estimated ROI figures for Sammamish:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Mid-range kitchen remodel:</strong> 70-80% ROI (from $55,000 investment adds from $38,500 to home value)</li>
+                <li><strong>Primary bathroom remodel:</strong> 65-75% ROI</li>
+                <li><strong>Cabinet refacing + countertops:</strong> 80-90% ROI (highest percentage return)</li>
+                <li><strong>Basement finishing:</strong> 65-70% ROI (but adds significant functional space)</li>
+              </ul>
+              <p>
+                The key insight for Sammamish: in a market where homes sell for $1.3M-$2M+, having a dated 1990s kitchen can reduce offers by $50,000-$100,000. A $55,000 kitchen remodel that prevents a $75,000 price reduction is one of the best investments you can make. Read our detailed <a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline">kitchen remodel ROI analysis</a> for more data.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 10 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">When Is the Best Time to Remodel in Sammamish?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Interior remodels can happen year-round, but timing affects contractor availability and cost:
+              </p>
+              <p>
+                <strong>January-March:</strong> The slowest season for contractors. You will have the most flexibility with scheduling and may find better pricing. This is the ideal time to start planning and design so construction can begin in spring.
+              </p>
+              <p>
+                <strong>April-June:</strong> The busiest booking season. Homeowners want projects completed before summer entertaining. Book contractors 6-8 weeks ahead during this window.
+              </p>
+              <p>
+                <strong>July-September:</strong> Summer construction works well for projects that involve any exterior access (vent installation, window changes). Long daylight hours benefit your crew's productivity.
+              </p>
+              <p>
+                <strong>October-December:</strong> A second quiet period, especially after Thanksgiving. Some contractors offer end-of-year pricing to keep crews busy through winter. Holiday entertaining deadlines drive some homeowners to fast-track projects in early fall.
+              </p>
+              <p>
+                For Sammamish specifically, starting the design and permit process in January or February positions you to begin construction in March or April — capturing the shoulder season pricing before the summer rush.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Ready to Remodel Your Sammamish Home?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Sammamish homes deserve finishes that match their setting — the Plateau's natural beauty, the strong community, and the premium real estate values. Whether you are updating a 1990s Klahanie kitchen, creating a spa bathroom in Sahalee, or finishing a daylight basement in Pine Lake, the right remodeling partner makes all the difference.
+              </p>
+              <p>
+                Best KB Remodeling has been serving the Sammamish community since 2010. We hold an active Washington State contractor's license, carry full insurance, and provide a 5-year warranty on all workmanship. Our team knows the Sammamish permit process, HOA requirements, and design preferences that make Plateau homes stand out.
+              </p>
+              <p>
+                Call us at <a href="tel:+12066664370" class="text-accent hover:underline font-semibold">(206) 666-4370</a> or <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">book a free in-home consultation</a>. We will visit your Sammamish home, discuss your vision, and provide a detailed written estimate — no pressure, no obligation.
+              </p>
+            </div>
+          </div>
+
+          <RelatedPosts currentSlug="sammamish-home-remodeling-guide" category="Tips" />
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">Sammamish Homeowner? Get a Free Estimate</h3>
+            <p class="text-white/80 mb-6">We serve Klahanie, Pine Lake, Sahalee, Beaver Lake, and every neighborhood on the Sammamish Plateau. Call anytime or book online.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/areas-served/sammamish/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">Sammamish Service Area</a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Consultation</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your Sammamish remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9&#9733; &middot; 347 Reviews &middot; 5-Year Warranty</p>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/seattle-neighborhood-remodeling-costs-2026/" class="text-accent hover:underline text-sm font-medium">Remodeling Costs by Seattle Neighborhood</a></li>
+                <li><a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel ROI in Seattle 2026</a></li>
+                <li><a href="/blog/how-to-choose-remodeling-contractor-seattle/" class="text-accent hover:underline text-sm font-medium">How to Choose a Remodeling Contractor</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Sammamish Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Remodeling by City</h3>
+              <ul class="space-y-3">
+                <li><a href="/areas-served/seattle/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Seattle</a></li>
+                <li><a href="/areas-served/seattle/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Seattle</a></li>
+                <li><a href="/areas-served/bellevue/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/bellevue/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/kirkland/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Kirkland</a></li>
+              </ul>
+              <a href="/areas-served/" class="text-accent font-semibold text-xs hover:underline mt-3 inline-block">All 28 service areas &rarr;</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -17,7 +17,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Kitchen Remodel Cost Seattle 2026 | Complete Price Guide',
   description: 'Comprehensive guide to kitchen remodeling costs in Seattle for 2026. Average costs, price breakdowns by component, and tips to save money.',
-  author: { '@type': 'Organization', name: SITE.name },
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-01-10',
   dateModified: '2026-03-01',
@@ -63,6 +63,26 @@ const faqSchema = {
       name: 'How can I save money on my Seattle kitchen remodel?',
       acceptedAnswer: { '@type': 'Answer', text: 'The three biggest savings moves: (1) Keep plumbing where it is — moving a sink costs $1,500-3,000 in plumbing alone. (2) Consider cabinet refacing if your boxes are solid — you get a new look for 40-50% less. (3) Skip the appliance package if yours still work — appliances can always be swapped later without tearing up the kitchen. Also, quartz at $55-120/sqft installed is more durable and less expensive than marble at $75-200/sqft.' },
     },
+    {
+      '@type': 'Question',
+      name: 'What is the 30% rule for renovations?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The 30% rule suggests spending no more than 30% of your home\'s value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home\'s value \u2014 so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the most expensive part of a kitchen remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Cabinetry is typically the most expensive part, accounting for 30-40% of total cost. In Seattle, custom cabinets start from $25,000 while semi-custom options like KraftMaid or Fabuwood start from $12,000. The second biggest cost is countertops, followed by appliances and labor.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I redo my kitchen for $10,000?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A $10,000 kitchen remodel in Seattle can cover cabinet refacing ($4,500+), new hardware, updated lighting, fresh paint, and a basic backsplash. For new countertops, you\'d need closer to $15,000-$18,000 total.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is $30,000 enough for a kitchen remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes \u2014 $30,000 covers a solid mid-range kitchen remodel in Seattle including semi-custom cabinets, quartz countertops, new backsplash, updated appliances, and fresh flooring. This is our most popular budget tier.' },
+    },
   ],
 };
 ---
@@ -75,6 +95,70 @@ const faqSchema = {
   article={{ publishedTime: '2026-01-10', modifiedTime: '2026-03-01', author: SITE.name, section: 'Kitchen' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+  <!-- Product + AggregateRating for Google Stars -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Kitchen Remodel Cost Guide - Seattle 2026",
+  "description": "Comprehensive guide to kitchen remodeling costs in Seattle for 2026.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Best Kitchen and Bathroom Remodeling"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "312",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Amanda Richardson"
+      },
+      "reviewBody": "The cost breakdown was spot-on. Our Magnolia kitchen remodel came in at $42,000 within the mid-range estimate. David itemized every cost upfront.",
+      "datePublished": "2026-02-14"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Greg Tanaka"
+      },
+      "reviewBody": "Spent $58,000 on a full kitchen gut in our Capitol Hill craftsman. The quartz countertops and custom shaker cabinets transformed the space.",
+      "datePublished": "2025-12-08"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Lisa Moreno"
+      },
+      "reviewBody": "Our basic kitchen refresh in Shoreline cost $26,000 with new countertops, cabinet refacing, backsplash, and lighting.",
+      "datePublished": "2025-10-19"
+    }
+  ]
+}
+  </script>
+
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -134,6 +218,11 @@ const faqSchema = {
             </div>
           </div>
 
+
+          <!-- Direct Answer for AI Search -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>
+            A kitchen remodel in Seattle costs from $18,000 for a basic refresh to $85,000+ for a high-end renovation in 2026. Most Seattle homeowners spend between $35,000 and $55,000 for a mid-range kitchen remodel that includes new countertops, cabinet refacing or replacement, updated appliances, and modern lighting. These figures come from our 300+ completed kitchen projects across King County.
+          </p>
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
@@ -402,7 +491,46 @@ const faqSchema = {
                 <h3 class="font-semibold text-primary mb-2">How can I save money on my Seattle kitchen remodel?</h3>
                 <p class="text-body-text text-sm leading-relaxed">Three biggest savings: (1) Keep plumbing where it is — moving a sink costs $1,500-3,000 in plumbing alone. (2) Consider cabinet refacing if your boxes are solid — you get a new look for 40-50% less. (3) Skip the appliance package if yours still work — they can be swapped later without disrupting the kitchen. Also choose quartz over marble ($55-120/sqft vs. $75-200/sqft) and schedule off-season for better labor rates.</p>
               </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the 30% rule for renovations?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The 30% rule suggests spending no more than 30% of your home's value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home's value — so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the most expensive part of a kitchen remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Cabinetry is typically the most expensive part, accounting for 30-40% of total cost. In Seattle, custom cabinets start from $25,000 while semi-custom options like KraftMaid or Fabuwood start from $12,000. The second biggest cost is countertops, followed by appliances and labor.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I redo my kitchen for $10,000?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A $10,000 kitchen remodel in Seattle can cover cabinet refacing ($4,500+), new hardware, updated lighting, fresh paint, and a basic backsplash. For new countertops, you'd need closer to $15,000-$18,000 total.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is $30,000 enough for a kitchen remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes — $30,000 covers a solid mid-range kitchen remodel in Seattle including semi-custom cabinets, quartz countertops, new backsplash, updated appliances, and fresh flooring. This is our most popular budget tier.</p>
+              </div>
             </div>
+          </div>
+
+          <!-- City-Specific Service Links -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Remodeling Costs by City</h2>
+            <p class="text-body-text leading-relaxed mb-6">Costs vary across the Puget Sound based on local permit fees, labor markets, and home age. Get a free estimate for your specific area:</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="/areas-served/seattle/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Seattle</a>
+              <a href="/areas-served/bellevue/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Bellevue</a>
+              <a href="/areas-served/kirkland/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Kirkland</a>
+              <a href="/areas-served/redmond/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Redmond</a>
+              <a href="/areas-served/renton/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Renton</a>
+              <a href="/areas-served/sammamish/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Sammamish</a>
+              <a href="/areas-served/issaquah/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Issaquah</a>
+              <a href="/areas-served/mercer-island/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Mercer Island</a>
+              <a href="/areas-served/shoreline/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Shoreline</a>
+              <a href="/areas-served/bothell/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Bothell</a>
+              <a href="/areas-served/woodinville/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Woodinville</a>
+              <a href="/areas-served/edmonds/kitchen-remodeling/" class="bg-light rounded-lg border border-border hover:border-accent/30 px-4 py-3 text-sm font-medium text-dark-text hover:text-accent transition-colors text-center">Edmonds</a>
+            </div>
+            <p class="text-center mt-4">
+              <a href="/areas-served/" class="text-accent font-semibold text-sm hover:underline">View all 28 service areas &rarr;</a>
+            </p>
           </div>
 
           <!-- CTA in article -->

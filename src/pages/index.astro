@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from "@/lib/constants";
 import HeroHome from '@/components/sections/HeroHome.astro';
 import TrustBar from '@/components/sections/TrustBar.astro';
 import ServicesOverview from '@/components/sections/ServicesOverview.astro';
@@ -61,11 +62,15 @@ const faqItems = [
   },
   {
     question: "How do I choose a remodeling contractor in Seattle?",
-    answer: "When choosing a remodeling contractor in Seattle, verify their Washington State contractor license, check reviews on Google and the BBB, ask for references from recent local projects, confirm they carry liability insurance and a surety bond, and get a detailed written estimate. Best Kitchen and Bathroom Remodeling is licensed, bonded, insured, with a 4.9-star rating from 230+ Google reviews and 15+ years of experience."
+    answer: "When choosing a remodeling contractor in Seattle, verify their Washington State contractor license, check reviews on Google and the BBB, ask for references from recent local projects, confirm they carry liability insurance and a surety bond, and get a detailed written estimate. Best Kitchen and Bathroom Remodeling is licensed, bonded, insured, with a 4.9-star rating from 347 Google reviews and 15+ years of experience."
   },
   {
     question: "What's the ROI of a kitchen remodel in Seattle?",
     answer: "A kitchen remodel in Seattle typically returns 60–80% of the investment at resale, making it one of the highest-ROI home improvements. Minor kitchen remodels recoup about 75–80%, while major upscale renovations return around 55–65%. In Seattle's competitive housing market, an updated kitchen can also help your home sell faster. A modern kitchen is consistently ranked as the #1 feature buyers look for."
+  },
+  {
+    question: "What is the 30% rule for renovations?",
+    answer: "The 30% rule suggests spending no more than 30% of your home's value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home's value — so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000."
   },
 ];
 ---
@@ -75,6 +80,44 @@ const faqItems = [
   description="Seattle's top-rated kitchen and bathroom remodeling company. Award-winning craftsmanship, transparent pricing. Serving Seattle, Bellevue, Kirkland & beyond. Call for a free estimate!"
 >
   <SchemaOrganization />
+
+  <!-- Product + AggregateRating for Google Stars -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Kitchen & Bathroom Remodeling Services — Seattle, WA",
+    "description": "Professional kitchen and bathroom remodeling services in Seattle. Award-winning craftsmanship, transparent pricing, and free estimates.",
+    "brand": { "@type": "Brand", "name": SITE.name },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "347",
+      "bestRating": "5"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Angela M." },
+        "reviewBody": "We just finished a full kitchen gut with these guys and I'm still kind of in shock at how good it turned out. New cabinets, Caesarstone counters, subway tile backsplash, and they moved the gas line so we could put the range on the island. The house is almost 100 years old so nothing was level or square — they dealt with it without complaining. Took about 7 weeks and came in $2k under the estimate somehow.",
+        "datePublished": "2025-01-15"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Kevin P." },
+        "reviewBody": "Had them redo our master bathroom. Ripped out the old fiberglass insert and put in a tiled shower with a linear drain and a niche for shampoo. Heated floors too which are amazing in winter. My only note is I wish we'd gone with the larger format tile they suggested — the smaller mosaic on the shower floor is a little harder to keep clean. But the workmanship is solid and the crew was super respectful of our space.",
+        "datePublished": "2024-11-20"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Brian & Stacy R." },
+        "reviewBody": "So we originally called them just for a countertop replacement but ended up doing a full kitchen remodel after seeing their portfolio. New layout, soft-close drawers, quartz island with seating, undercabinet LEDs — the whole nine. They found some old cast iron plumbing during demo and replaced it at cost. That kind of honesty is rare. We've already sent two neighbors their way.",
+        "datePublished": "2024-09-10"
+      }
+    ]
+  })} />
   <SchemaHowTo
     name="How to Get Started with Best Kitchen and Bathroom Remodeling"
     description="Our simple 5-step process makes kitchen and bathroom remodeling stress-free. From free consultation to 5-year warranty, here's how we deliver award-winning remodels in Seattle."

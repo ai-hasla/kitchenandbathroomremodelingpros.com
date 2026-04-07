@@ -1,0 +1,406 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Kitchen & Bathroom Remodeling in South Lake Union', href: '/blog/south-lake-union-bathroom-kitchen-remodel/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Kitchen & Bathroom Remodeling in South Lake Union: What Condo Owners Need to Know',
+  description: 'A practical guide for South Lake Union condo owners planning kitchen or bathroom remodels. HOA rules, building requirements, noise restrictions, and costs specific to SLU high-rises.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-04-01',
+  dateModified: '2026-04-05',
+  image: '/images/blog-modern-kitchen.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Can I remodel my kitchen in a South Lake Union condo?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, you can remodel your kitchen in a South Lake Union condo, but you will need written approval from your HOA or condo board before starting. Most SLU buildings require a renovation application that includes contractor credentials, insurance certificates, project scope, and a construction schedule. Approval typically takes 2-6 weeks depending on the building.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the noise restrictions for condo remodeling in SLU?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most South Lake Union condo buildings restrict construction noise to weekdays between 9am and 5pm, with some buildings allowing 8am-6pm. No work is typically permitted on weekends or holidays. Demolition work (the loudest phase) may be further restricted to midday hours. Your building manager will provide the specific noise policy during the approval process.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a condo kitchen remodel cost in South Lake Union?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A condo kitchen remodel in South Lake Union costs from $35,000 for a mid-range renovation and from $75,000 for a high-end remodel. Condo remodels often cost slightly less per square foot than house remodels because kitchens are smaller (60-120 sq ft typical), but logistics costs are higher due to elevator scheduling, floor protection, and building insurance requirements.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a permit for a bathroom remodel in my SLU condo?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'If your bathroom remodel involves plumbing changes, electrical work, or moving walls, you need a permit from the City of Seattle. Cosmetic updates like new tile, vanity replacement in the same footprint, or painting do not require a city permit. However, even permit-exempt work may still require HOA approval — most SLU buildings require board notification for any renovation project.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What building-specific challenges affect SLU condo remodeling?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The main challenges are elevator access (booking freight elevator time for material delivery and debris removal), floor protection requirements (protecting hallways and common areas from construction damage), insurance requirements (most buildings require $1M+ additional insured naming the HOA), noise restrictions, and plumbing limitations (some buildings restrict plumbing modifications to prevent water damage to lower units).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a condo bathroom remodel take in South Lake Union?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A condo bathroom remodel in South Lake Union typically takes 3-5 weeks for construction, plus 2-6 weeks for building approval beforehand. The restricted work hours (typically 9am-5pm weekdays only) extend timelines compared to single-family homes where crews can work longer hours. Budget 8-12 weeks total from application to completion.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="South Lake Union Condo Remodeling Guide | SLU"
+  description="Kitchen and bathroom remodeling guide for South Lake Union condo owners. HOA approval, noise restrictions, building requirements, and costs for SLU high-rise renovations in 2026."
+  canonical={`${SITE.url}/blog/south-lake-union-bathroom-kitchen-remodel/`}
+  ogType="article"
+  article={{ publishedTime: '2026-04-01', modifiedTime: '2026-04-05', author: SITE.name, section: 'Tips' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Tips</span>
+          <span class="text-white/60 text-sm">April 1, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 10 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Kitchen & Bathroom Remodeling in South Lake Union: What Condo Owners Need to Know</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          South Lake Union has transformed from a warehouse district into one of Seattle's most sought-after neighborhoods. The condos here are modern, well-built, and in high demand. But remodeling a condo in an SLU high-rise is a different process than renovating a single-family home. Here is what you need to know before you start.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">&rsaquo;</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">SLU Condo Remodeling</span>
+          </nav>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              South Lake Union is home to Amazon's headquarters campus, dozens of tech companies, and some of the newest residential construction in Seattle. Most SLU condos were built between 2010 and 2024 — buildings like ARIS, Kiara, Modera, Cirrus, Insignia, and AMLI mark the neighborhood's skyline. These units came with clean, modern finishes, but after 5-15 years of use, many owners are ready for upgrades that reflect their personal style and increase resale value.
+            </p>
+            <p>
+              Condo remodeling follows a fundamentally different process than renovating a house. You share walls, floors, and ceilings with neighbors. You access your unit through common areas owned by the condo association. Plumbing and electrical systems are interconnected. Your building has rules about when, how, and who can perform construction work. None of this is a dealbreaker — but it requires planning and a contractor who understands the condo remodeling process.
+            </p>
+          </div>
+
+          <!-- Section 1 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Is the HOA Approval Process for SLU Condo Remodels?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Every condo building in South Lake Union requires board or management approval before renovation work begins. The process varies by building, but typically involves these steps:
+              </p>
+              <p>
+                <strong>Step 1: Submit a renovation application.</strong> Most buildings have a formal application that requests project details, contractor information, insurance certificates, and a proposed construction schedule. Buildings like Insignia and Cirrus use online portals; others accept paper applications through the management office.
+              </p>
+              <p>
+                <strong>Step 2: Provide contractor credentials.</strong> Your contractor must show proof of a valid Washington State contractor's license, general liability insurance (typically $1M minimum), and workers' compensation coverage. Most SLU buildings also require the contractor to add the HOA as an additional insured on their liability policy. At Best KB Remodeling, we carry $2M in general liability and handle all HOA paperwork for our clients.
+              </p>
+              <p>
+                <strong>Step 3: Review and approval.</strong> The building management or architectural review committee reviews your application. Simple projects (new countertops, vanity swap, painting) may be approved in a few days. Projects involving plumbing, electrical, or demolition typically go to the board and take 2-6 weeks. Some buildings charge a renovation deposit ($500-$2,000) refundable upon completion.
+              </p>
+              <p>
+                <strong>Step 4: Pre-construction walkthrough.</strong> Many buildings require a walkthrough with the building engineer to document existing conditions of common areas (hallways, elevators) before work begins. This protects both you and the building from damage disputes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Noise and Work-Hour Restrictions Apply in SLU Buildings?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Noise restrictions are the single biggest factor that extends condo remodel timelines compared to single-family homes. Typical SLU building rules include:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Permitted work hours:</strong> Monday-Friday, 9am-5pm (some buildings allow 8am-6pm)</li>
+                <li><strong>No weekend work:</strong> Most buildings prohibit all construction activity on Saturdays and Sundays</li>
+                <li><strong>No holiday work:</strong> Federal holidays and building-specific blackout dates are off-limits</li>
+                <li><strong>Demolition windows:</strong> Loud demo work (tile removal, wall demolition) may be restricted to 10am-3pm in some buildings</li>
+                <li><strong>Quiet work exceptions:</strong> Painting, measuring, and planning work that does not produce noise can sometimes be performed outside restricted hours</li>
+              </ul>
+              <p>
+                These restrictions mean a condo remodel that would take 3 weeks in a house may take 4-5 weeks in an SLU condo. We factor this into every condo estimate and project timeline. Rushing work to beat deadlines creates problems — it is better to plan realistic schedules from the start.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Do Elevator and Access Logistics Work?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Getting materials into and debris out of an upper-floor condo unit requires careful logistics coordination with building management:
+              </p>
+              <p>
+                <strong>Freight elevator booking.</strong> Most SLU buildings have a dedicated freight or service elevator. You will need to reserve time slots for material deliveries (cabinets, countertop slabs, tile pallets, appliances) and debris removal. Popular buildings may have limited availability, especially during peak moving seasons (June-September). Book freight elevator time as soon as your project is approved.
+              </p>
+              <p>
+                <strong>Floor and hallway protection.</strong> Buildings require contractors to protect common area flooring, walls, and elevators during the project. This means temporary floor coverings from the freight elevator to your unit, corner guards on walls, and protective blankets in the elevator. Some buildings provide these materials; others require your contractor to supply them.
+              </p>
+              <p>
+                <strong>Material staging.</strong> You cannot store materials in hallways or common areas. Everything must go directly into your unit. For small condos, this means carefully sequencing deliveries — cabinets one day, countertops the next — rather than receiving everything at once. Our project managers create detailed delivery schedules that minimize disruption and keep your unit workable.
+              </p>
+              <p>
+                <strong>Debris removal.</strong> Construction debris cannot sit in hallways. Smaller debris goes out in contractor bags via the freight elevator daily. Large items (old cabinets, bathtubs, countertop pieces) require scheduled freight elevator time. We handle all debris removal as part of our condo remodeling service.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Kitchen Remodels Are Most Popular in SLU Condos?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                SLU condo kitchens are typically 60-120 square feet — compact but efficient galley, L-shaped, or peninsula layouts. Most original finishes are builder-modern: flat-panel cabinets, basic quartz or granite countertops, stainless steel appliances, and subway tile backsplashes. Here are the upgrades our SLU clients request most:
+              </p>
+              <p>
+                <strong>Countertop upgrade.</strong> Replacing builder-grade quartz or granite with a premium slab — Calacatta-look quartz, Dekton, or natural marble — is the single most impactful change per dollar spent. A new <a href="/services/countertop-installation/" class="text-accent hover:underline">countertop</a> transforms the look of the kitchen for from $4,500, and the installation takes just 1-2 days with minimal noise.
+              </p>
+              <p>
+                <strong>Cabinet refinishing or refacing.</strong> SLU condo cabinets are often structurally sound but visually dated. <a href="/services/cabinet-refacing/" class="text-accent hover:underline">Cabinet refacing</a> replaces door fronts and drawer faces while keeping the existing cabinet boxes — a cost-effective approach that avoids the logistics headaches of full cabinet replacement in a high-rise. New doors in a shaker profile with soft-close hinges and upgraded hardware run from $8,000 for a typical condo kitchen.
+              </p>
+              <p>
+                <strong>Backsplash upgrade.</strong> Replacing a basic subway tile backsplash with herringbone marble, zellige tile, or large-format porcelain adds texture and personality. <a href="/services/tile-installation/" class="text-accent hover:underline">Backsplash installation</a> is a 2-3 day project that stays within most buildings' noise thresholds.
+              </p>
+              <p>
+                <strong>Full kitchen remodel.</strong> When clients want to change the layout — moving the peninsula, adding a breakfast bar, or opening the kitchen to the living space — a full remodel is required. This involves plumbing relocation, electrical work, new cabinets, countertops, backsplash, flooring, appliances, and lighting. A full condo <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> runs from $35,000 and takes 4-6 weeks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 5 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Bathroom Upgrades Work Best in SLU Condos?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                SLU condo bathrooms range from compact 40-square-foot secondaries to 80-100 square foot primary baths. The original finishes are usually clean but generic — white subway tile, basic vanities, and chrome fixtures. Here is what makes the biggest difference:
+              </p>
+              <p>
+                <strong>Walk-in shower conversion.</strong> Many SLU condos have tub-shower combos in the primary bath. Converting to a walk-in shower with frameless glass, large-format tile, and a rain showerhead creates a modern, spa-like feel. <a href="/services/shower-remodeling/" class="text-accent hover:underline">Shower remodeling</a> in a condo starts from $12,000 and typically takes 2-3 weeks.
+              </p>
+              <p>
+                <strong>Vanity upgrade.</strong> Swapping a builder-grade vanity for a floating or furniture-style piece with a quartz top dramatically changes the bathroom's character. <a href="/services/vanity-installation/" class="text-accent hover:underline">Vanity installation</a> is one of the quickest bathroom upgrades — often completed in a single day.
+              </p>
+              <p>
+                <strong>Full bathroom remodel.</strong> A complete <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom renovation</a> — new tile floors and walls, new shower or tub, vanity, toilet, fixtures, lighting, and mirror — runs from $18,000 for a secondary bath and from $30,000 for a primary bath in SLU condos.
+              </p>
+              <p>
+                <strong>Important plumbing note:</strong> In concrete high-rises, moving plumbing fixture locations is more complex and expensive than in wood-framed buildings. Moving a toilet, for example, requires coring through concrete — a process that is possible but adds $2,000-$5,000 and requires building engineering approval. When possible, we recommend keeping fixtures in their original locations and focusing on finish upgrades.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 6 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Much Does Condo Remodeling Cost in South Lake Union?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Condo remodeling costs in SLU are influenced by unit size, building requirements, access logistics, and finish quality. Here are 2026 starting prices:
+              </p>
+              <div class="overflow-x-auto my-6">
+                <table class="w-full text-sm border-collapse">
+                  <thead>
+                    <tr class="bg-light">
+                      <th class="text-left p-3 font-semibold text-primary border-b">Project</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Starting From</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Timeline</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b"><td class="p-3">Kitchen countertop replacement</td><td class="p-3">from $4,500</td><td class="p-3">1-2 days</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3">Cabinet refacing</td><td class="p-3">from $8,000</td><td class="p-3">1-2 weeks</td></tr>
+                    <tr class="border-b"><td class="p-3">Full kitchen remodel</td><td class="p-3">from $35,000</td><td class="p-3">4-6 weeks</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3">High-end kitchen remodel</td><td class="p-3">from $75,000</td><td class="p-3">6-10 weeks</td></tr>
+                    <tr class="border-b"><td class="p-3">Secondary bathroom remodel</td><td class="p-3">from $18,000</td><td class="p-3">2-3 weeks</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3">Primary bathroom remodel</td><td class="p-3">from $30,000</td><td class="p-3">3-5 weeks</td></tr>
+                    <tr class="border-b"><td class="p-3">Walk-in shower conversion</td><td class="p-3">from $12,000</td><td class="p-3">2-3 weeks</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                Condo remodel costs include a logistics premium of roughly 10-15% over comparable work in a single-family home. This covers floor protection, elevator booking, extended timelines due to noise restrictions, and the additional insurance and paperwork required by building management. We include all of this in our estimates — no surprise fees.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 7 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Permits Does Seattle Require for Condo Remodels?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                City of Seattle permits are separate from HOA approval — you may need both. Here is the breakdown:
+              </p>
+              <p>
+                <strong>Permit required:</strong> Moving or adding plumbing fixtures, new electrical circuits or panel upgrades, removing or modifying walls (even non-load-bearing in some cases), changing window openings, and adding gas lines.
+              </p>
+              <p>
+                <strong>No permit required:</strong> Countertop replacement, cabinet refacing or replacement in the same footprint, painting, new tile over existing substrate, fixture replacement in the same location (new faucet, new toilet, new showerhead), and appliance swaps on existing connections.
+              </p>
+              <p>
+                Seattle processes residential permits through the Seattle Department of Construction and Inspections (SDCI). Standard permits take 4-6 weeks for review. We submit permit applications during the HOA approval phase so both processes run in parallel, minimizing overall delays.
+              </p>
+              <p>
+                Our team at Best KB Remodeling handles all permitting for SLU condo projects. We know which inspectors service the South Lake Union area and what documentation they expect. This saves you time and ensures inspections pass the first time.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 8 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Which SLU Buildings Have We Worked In?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Our team has completed remodeling projects in numerous South Lake Union buildings, including both newer high-rises and the mid-rise buildings along Westlake and Dexter. Experience in a specific building matters because every building has its own management company, rules, elevator configuration, and construction requirements.
+              </p>
+              <p>
+                We are also experienced in condo remodeling in adjacent neighborhoods — Capitol Hill, Queen Anne, Belltown, and Fremont — where many of the same building types and management challenges apply. Whether your building is a 6-story mid-rise or a 40-story tower, our condo remodeling process is designed to handle the logistics smoothly.
+              </p>
+              <p>
+                If you live in an SLU condo and are considering a remodel, we recommend starting with a consultation at least 6-8 weeks before your desired start date. This gives us time to assess your unit, prepare the HOA application, and get everything approved before construction day one. Call us at <a href="tel:+12066664370" class="text-accent hover:underline font-semibold">(206) 666-4370</a> or <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">schedule online</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 9 -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Does Condo Remodeling Increase Resale Value in SLU?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                South Lake Union condo values have climbed steadily since the neighborhood's tech-driven transformation. A well-executed kitchen or bathroom remodel positions your unit above comparable listings — which matters in a market where buyers comparison-shop aggressively on platforms like Redfin and Zillow.
+              </p>
+              <p>
+                In the SLU condo market, updated kitchens and bathrooms are the primary differentiators between otherwise similar units in the same building. Two identical floor plans on the same floor can have a $30,000-$60,000 price gap based solely on whether the finishes have been updated. A $35,000 kitchen remodel that adds $25,000-$40,000 to your sale price is a strong investment, especially if you also enjoy the upgraded space for several years before selling.
+              </p>
+              <p>
+                For a deeper analysis of remodeling returns in the Seattle market, read our <a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline">kitchen remodel ROI guide</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Start Planning Your SLU Condo Remodel</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Remodeling a South Lake Union condo is absolutely worth it — the neighborhood's strong demand and tech-professional buyer pool mean that updated units command premium prices. The key is choosing a contractor who understands the condo remodeling process: HOA applications, building logistics, noise restrictions, and the specific construction techniques required for high-rise residential work.
+              </p>
+              <p>
+                Best KB Remodeling has been remodeling condos across Seattle since 2010. We carry the insurance coverage SLU buildings require, we handle all HOA paperwork and permitting, and our crews are experienced with the freight-elevator-and-floor-protection logistics that condo work demands. We also provide a 5-year warranty on all workmanship.
+              </p>
+              <p>
+                Ready to upgrade your SLU condo? Call <a href="tel:+12066664370" class="text-accent hover:underline font-semibold">(206) 666-4370</a> or <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">book a free consultation</a>. We will visit your unit, review your building's requirements, and provide a detailed estimate tailored to your specific condo.
+              </p>
+            </div>
+          </div>
+
+          <RelatedPosts currentSlug="south-lake-union-bathroom-kitchen-remodel" category="Tips" />
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">SLU Condo Owner? Let's Talk</h3>
+            <p class="text-white/80 mb-6">We handle HOA paperwork, building logistics, and all permitting. Get a free estimate for your condo remodel.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Condo Consultation</h3>
+              <p class="text-body-text text-sm mb-4">We handle HOA paperwork and building logistics for you.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9&#9733; &middot; 347 Reviews &middot; 5-Year Warranty</p>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/seattle-neighborhood-remodeling-costs-2026/" class="text-accent hover:underline text-sm font-medium">Remodeling Costs by Seattle Neighborhood</a></li>
+                <li><a href="/blog/kitchen-remodel-ideas-seattle/" class="text-accent hover:underline text-sm font-medium">15 Kitchen Remodel Ideas for Seattle</a></li>
+                <li><a href="/blog/small-bathroom-remodel-ideas/" class="text-accent hover:underline text-sm font-medium">25 Small Bathroom Remodel Ideas</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Condo Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+                <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
+                <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Remodeling by City</h3>
+              <ul class="space-y-3">
+                <li><a href="/areas-served/seattle/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Seattle</a></li>
+                <li><a href="/areas-served/seattle/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Seattle</a></li>
+                <li><a href="/areas-served/bellevue/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/bellevue/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/kirkland/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Kirkland</a></li>
+              </ul>
+              <a href="/areas-served/" class="text-accent font-semibold text-xs hover:underline mt-3 inline-block">All 28 service areas &rarr;</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

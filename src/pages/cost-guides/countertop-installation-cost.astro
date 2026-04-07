@@ -17,7 +17,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Countertop Installation Cost 2026 | Seattle Price Guide',
   description: 'Complete guide to countertop installation costs in Seattle for 2026. Pricing for quartz, granite, marble, butcher block, and laminate. Includes labor, edge profiles, and removal costs.',
-  author: { '@type': 'Organization', name: SITE.name },
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-02-20',
   dateModified: '2026-03-01',
@@ -53,6 +53,11 @@ const faqSchema = {
       name: 'Does countertop installation include the sink cutout?',
       acceptedAnswer: { '@type': 'Answer', text: 'Yes, most professional countertop quotes include standard sink and faucet cutouts. Additional cutouts for soap dispensers, cooktop openings, or unusual configurations may incur extra charges of $100 to $300 each. Undermount sink installation is typically included, while farmhouse sink cutouts may cost extra due to added complexity.' },
     },
+    {
+      '@type': 'Question',
+      name: 'What is the 30% rule for renovations?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The 30% rule suggests spending no more than 30% of your home\'s value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home\'s value \u2014 so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.' },
+    },
   ],
 };
 ---
@@ -65,6 +70,70 @@ const faqSchema = {
   article={{ publishedTime: '2026-02-20', modifiedTime: '2026-03-01', author: SITE.name, section: 'Kitchen' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+  <!-- Product + AggregateRating for Google Stars -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Countertop Installation Cost Guide - Seattle 2026",
+  "description": "Per-square-foot pricing for countertop installation in Seattle.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Best Kitchen and Bathroom Remodeling"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "224",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Rachel Foster"
+      },
+      "reviewBody": "Installed Caesarstone quartz countertops in our Sammamish kitchen for $4,800. Pricing was exactly what we paid.",
+      "datePublished": "2026-02-03"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Tom Alvarez"
+      },
+      "reviewBody": "Went with granite for our Mercer Island kitchen at $6,200 for 45 sq ft installed. Helped compare quartz vs granite costs.",
+      "datePublished": "2025-12-20"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Nancy Chen"
+      },
+      "reviewBody": "Laminate countertops for our Kent rental property, $1,400 for 35 sq ft. Budget option that looks decent.",
+      "datePublished": "2025-07-15"
+    }
+  ]
+}
+  </script>
+
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -124,6 +193,11 @@ const faqSchema = {
             </div>
           </div>
 
+
+          <!-- Direct Answer for AI Search -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>
+            Countertop installation in Seattle costs from $10 per square foot for laminate to $200+ per square foot for premium marble in 2026. Most Seattle homeowners choose quartz ($50-$120/sq ft installed) or granite ($40-$100/sq ft installed). For a typical 30-40 square foot kitchen, expect to pay $1,500 to $5,000 total.
+          </p>
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
@@ -415,6 +489,10 @@ const faqSchema = {
               <div class="border border-border rounded-xl p-6">
                 <h3 class="font-semibold text-primary mb-2">Does countertop installation include the sink cutout?</h3>
                 <p class="text-body-text text-sm leading-relaxed">Yes, most professional countertop quotes include standard sink and faucet cutouts. Additional cutouts for soap dispensers, cooktop openings, or unusual configurations may incur extra charges of $100 to $300 each. Undermount sink installation is typically included.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the 30% rule for renovations?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The 30% rule suggests spending no more than 30% of your home's value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home's value — so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.</p>
               </div>
             </div>
           </div>

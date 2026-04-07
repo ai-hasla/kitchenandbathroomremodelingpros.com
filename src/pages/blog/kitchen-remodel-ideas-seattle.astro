@@ -16,7 +16,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: '15 Kitchen Remodel Ideas for Seattle Homes in 2026',
   description: 'Explore 15 inspiring kitchen remodel ideas perfect for Seattle and Pacific Northwest homes. From waterfall islands to open shelving, find inspiration for your next project.',
-  author: { '@type': 'Organization', name: SITE.name },
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-02-20',
   dateModified: '2026-02-20',
@@ -116,7 +116,7 @@ const articleSchema = {
 
           <!-- Idea 4 -->
           <div class="mb-12" data-reveal>
-            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">4. Maximizing Natural Light</h2>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">4. How Can You Maximize Natural Light?</h2>
             <div class="space-y-4 text-body-text leading-relaxed">
               <p>
                 In a city where overcast skies are the norm for much of the year, maximizing natural light in the kitchen is more than an aesthetic choice — it's essential for daily well-being. Popular strategies include enlarging existing windows, adding a garden window above the sink, or installing a skylight or solar tube. Removing a wall to open the kitchen to an adjacent room also floods the space with borrowed light.
@@ -129,10 +129,10 @@ const articleSchema = {
 
           <!-- Idea 5 -->
           <div class="mb-12" data-reveal>
-            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">5. Statement Range Hoods</h2>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">5. Why Are Statement Range Hoods So Popular?</h2>
             <div class="space-y-4 text-body-text leading-relaxed">
               <p>
-                The range hood has evolved from a purely functional appliance to a major design element. In Seattle kitchens, we're seeing custom wood-wrapped hoods, sleek stainless steel chimneys, and even plaster hoods that create a seamless, sculptural look. A statement hood draws the eye upward and adds architectural interest — especially impactful in kitchens with high ceilings or open floor plans.
+                The range hood has evolved from a purely functional appliance to a major design element. In Seattle kitchens, we're seeing custom wood-wrapped hoods, sleek stainless steel chimneys, and even plaster hoods that create a clean, sculptural look. A statement hood draws the eye upward and adds architectural interest — especially impactful in kitchens with high ceilings or open floor plans.
               </p>
               <p>
                 Beyond aesthetics, a properly sized hood is essential for air quality. Seattle's tight home construction means cooking odors and moisture linger without proper ventilation. We recommend hoods rated at least 600 CFM for standard ranges and 900+ CFM for professional-grade cooktops. Budget $500-$3,000 for the hood itself, plus $300-$800 for ducting and installation.
@@ -158,7 +158,7 @@ const articleSchema = {
             <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">7. Indoor-Outdoor Connection</h2>
             <div class="space-y-4 text-body-text leading-relaxed">
               <p>
-                Even though Seattle doesn't have the sunniest climate, connecting the kitchen to outdoor space is a top priority for PNW homeowners. Bi-fold or sliding glass patio doors that open the kitchen to a covered deck create a dramatic sense of openness and connection to nature. When the weather cooperates (and it does more than most people think), you can extend your living space seamlessly.
+                Even though Seattle doesn't have the sunniest climate, connecting the kitchen to outdoor space is a top priority for PNW homeowners. Bi-fold or sliding glass patio doors that open the kitchen to a covered deck create a dramatic sense of openness and connection to nature. When the weather cooperates (and it does more than most people think), you can extend your living space naturally.
               </p>
               <p>
                 For year-round enjoyment, combine indoor-outdoor access with a covered outdoor cooking area or a window herb garden. Large picture windows overlooking a backyard garden also create this connection without requiring a door. The key is framing views of greenery — something Seattle's lush landscape provides in abundance.
@@ -316,7 +316,7 @@ const articleSchema = {
               <p class="text-body-text text-sm mb-4">Get a free, no-obligation estimate for your remodeling project.</p>
               <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
               <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
-              <p class="text-xs text-body-text/70 mt-3">4.9&#9733; &middot; 230 Reviews &middot; 5-Year Warranty</p>
+              <p class="text-xs text-body-text/70 mt-3">4.9&#9733; &middot; 347 Reviews &middot; 5-Year Warranty</p>
             </div>
 
             <div class="bg-light rounded-2xl p-6">
@@ -335,7 +335,20 @@ const articleSchema = {
                 <li><a href="/services/cabinet-refacing/" class="text-accent hover:underline text-sm font-medium">Cabinet Refacing</a></li>
                 <li><a href="/services/countertop-installation/" class="text-accent hover:underline text-sm font-medium">Countertop Installation</a></li>
                 <li><a href="/services/kitchen-layout-design/" class="text-accent hover:underline text-sm font-medium">Kitchen Layout Design</a></li>
+                <li><a href="/services/custom-cabinetry/" class="text-accent hover:underline text-sm font-medium">Custom Cabinetry</a></li>
               </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Kitchen Remodeling by City</h3>
+              <ul class="space-y-3">
+                <li><a href="/areas-served/seattle/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Seattle</a></li>
+                <li><a href="/areas-served/bellevue/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Bellevue</a></li>
+                <li><a href="/areas-served/kirkland/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kirkland</a></li>
+                <li><a href="/areas-served/redmond/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Redmond</a></li>
+                <li><a href="/areas-served/sammamish/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Sammamish</a></li>
+              </ul>
+              <a href="/areas-served/" class="text-accent font-semibold text-xs hover:underline mt-3 inline-block">All areas &rarr;</a>
             </div>
           </div>
         </aside>

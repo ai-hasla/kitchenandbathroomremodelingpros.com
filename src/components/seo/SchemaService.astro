@@ -135,6 +135,19 @@ const schema = {
         highPrice: range.high,
         offerCount: String(features.length || 6),
       },
+      review: [
+        {
+          '@type': 'Review',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review.rating,
+            bestRating: '5',
+          },
+          author: { '@type': 'Person', name: review.author },
+          reviewBody: review.body,
+          datePublished: review.date,
+        },
+      ],
     },
     {
       '@type': 'Service',

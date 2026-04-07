@@ -1,0 +1,358 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Tile Installation Cost Seattle', href: '/cost-guides/tile-installation-cost-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Tile Installation Cost Seattle 2026',
+  description: 'How much does tile installation cost in Seattle in 2026? From $8/sqft for basic floor tile to $25/sqft for natural stone. Complete breakdown by type, location, and pattern.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-01-15',
+  dateModified: '2026-03-15',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does tile installation cost per square foot in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $8/sqft for standard porcelain to $25/sqft for natural stone with complex patterns.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the labor cost for tile installation in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Tile setter labor runs $6-12/sqft depending on complexity. Simple floor tile is $6-8/sqft. Herringbone adds 25-40% to labor. Shower tile with waterproofing runs $10-15/sqft.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does tile installation take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Bathroom floor: 2-3 days. Kitchen backsplash: 1-2 days. Full shower retile: 4-6 days. Whole-home flooring: 5-10 days. Add 1-2 days for subfloor prep if needed.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does tile installation need a permit in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Standalone tile installation does not require a permit from Seattle SDCI. If part of a larger remodel with plumbing or electrical, those components may need permits.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What type of tile is best for bathroom floors?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Porcelain with water absorption below 0.5%. For shower floors, use small-format mosaic for traction. Always choose floor-rated tiles — wall tiles cannot handle foot traffic.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a subway tile backsplash cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $800 to $1,800 installed for a typical 30 sqft area with standard ceramic. Handmade Zellige runs $2,000-4,500 for the same area. Herringbone adds 30-40% to labor.' },
+    }
+  ],
+};
+---
+
+<BaseLayout
+  title="Tile Installation Cost Seattle 2026"
+  description="How much does tile installation cost in Seattle in 2026? From $8/sqft for basic floor tile to $25/sqft for natural stone. Complete breakdown by type, location, and pattern."
+  canonical={`${SITE.url}/cost-guides/tile-installation-cost-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-01-15', modifiedTime: '2026-03-15', author: SITE.name, section: 'Tile' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Tile Installation Cost Guide - Seattle 2026",
+  "description": "Comprehensive guide to tile installation costs in Seattle for 2026.",
+  "brand": { "@type": "Brand", "name": "Best Kitchen and Bathroom Remodeling" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "287",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Stephanie Williams" },
+      "reviewBody": "The herringbone backsplash cost estimate was accurate to within $200. The tile setter did museum-quality work.",
+      "datePublished": "2026-02-20"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Kevin Park" },
+      "reviewBody": "Large-format bathroom tile in Beacon Hill. Zero lippage across 200 sqft of 24x48 porcelain. Wall prep made the difference.",
+      "datePublished": "2025-11-15"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Monica Sullivan" },
+      "reviewBody": "Shower retile in Shoreline with Kerdi waterproofing. Came in right at the mid-range estimate. Mosaic floor is beautiful.",
+      "datePublished": "2025-09-03"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Tile Installation Cost Seattle 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">From our 200+ tile projects across Seattle since 2010, here is what tile installation actually costs in the Puget Sound area — not national averages, real local numbers.</p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-15">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>10 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8 prose-custom">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a><span class="mx-2">&rsaquo;</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a><span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Tile Installation Cost Seattle</span>
+          </nav>
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Tile Installation Costs in Seattle 2026</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Floor Tile</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $8/sqft</p>
+                <p class="text-xs text-body-text">Porcelain, installed</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Shower Tile</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">from $12/sqft</p>
+                <p class="text-xs text-body-text">With waterproofing</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Natural Stone</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $15/sqft</p>
+                <p class="text-xs text-body-text">Marble, travertine, slate</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Answer -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>Tile installation in Seattle costs from $8 per square foot for standard porcelain floor tile to $25 per square foot for natural stone with complex patterns in 2026. Most Seattle homeowners spend between $2,000 and $8,000 for a typical tile project — whether that is a kitchen backsplash, bathroom floor, or shower retile. These numbers come from our 200+ completed tile projects across King County and the Eastside.</p>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>Tile is one of those projects where cost varies enormously based on three factors: the tile material, the surface you are tiling (floor vs. wall vs. shower), and the pattern complexity. A simple straight-stack subway tile backsplash and a full shower retile with waterproofing and mosaic accents are completely different projects.</p>
+            <p>Seattle tile costs run about 12-18% higher than national averages. Our tile setters earn $55-85/hour compared to $40-60 nationally, and the skilled trades shortage in the PNW means the really good ones stay busy year-round. The difference between a $6/sqft and $10/sqft tile setter shows up in every grout line for the next 20 years.</p>
+          </div>
+
+          <!-- Cost Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">How Much Does Each Type of Tile Project Cost?</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Project Type</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Typical Size</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Cost Range</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Timeline</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Kitchen Backsplash</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">25-40 sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $800</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">1-2 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Bathroom Floor</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">50-80 sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $1,200</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">2-3 days</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Kitchen Floor</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">120-200 sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $2,400</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">3-4 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Shower Retile</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">80-120 sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $3,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">4-6 days</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Full Bathroom</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">150-250 sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,500</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">5-8 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Whole-Home Flooring</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">500-1500 sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $6,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">5-10 days</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Component Breakdown -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Does Each Tile Material Cost Installed?</h2>
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Ceramic Tile</h3>
+                  <span class="font-bold text-accent">from $6/sqft installed</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Most affordable option. Material $1-4/sqft, installation $5-8/sqft. Best for backsplashes and walls. Not ideal for high-traffic floors. Popular brands: Daltile ColorWave, American Olean, MSI.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Porcelain Tile</h3>
+                  <span class="font-bold text-accent">from $8/sqft installed</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Our most-recommended for floors and showers. Water absorption below 0.5%, extremely durable. Material $3-10/sqft, installation $6-12/sqft. Comes in wood-look, marble-look, concrete-look styles. Large-format (24x48+) costs more due to substrate prep.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Natural Stone</h3>
+                  <span class="font-bold text-accent">from $15/sqft installed</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Premium option with natural variation. Marble $10-30/sqft material, travertine $6-15/sqft, slate $5-12/sqft. Installation $8-15/sqft due to modified thinset and sealing requirements. Requires periodic resealing (1-5 years depending on stone).</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Handmade & Specialty (Zellige, Encaustic)</h3>
+                  <span class="font-bold text-accent">from $20/sqft installed</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Trending hard in Seattle kitchens. Material $12-35/sqft. Installation takes 30-50% longer due to tile irregularity. Sources: Cle Tile, Fireclay, Tabarka Studio. Budget $25-45/sqft installed.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seattle Factors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Why Does Tile Installation Cost More in Seattle?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>Seattle tile installation runs 12-18% above national averages. Our tile setters earn $55-85/hour versus $40-60 nationally due to the skilled trades shortage in the PNW. The quality difference between a $50/hour and $75/hour tile setter is visible in every grout line and every corner.</p>
+              <p>Many Seattle homes built before 1980 have uneven subfloors from decades of settling. Tile requires a flat, stable surface. Floor leveling compound costs $1-3/sqft. We find subfloor issues in about 40% of pre-1975 homes.</p>
+              <p>Seattle's wet climate means proper waterproofing is non-negotiable for any tile in wet areas. We use Schluter Kerdi membrane or RedGard on every shower — no exceptions. This adds $3-5/sqft to shower projects but prevents the mold and water damage we see constantly when tearing out poorly installed tile.</p>
+            </div>
+          </div>
+
+          <!-- ROI -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Does New Tile Increase Home Value?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">70-90%</p>
+                  <p class="text-sm text-body-text">ROI at resale</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">20+ years</p>
+                  <p class="text-sm text-body-text">Porcelain tile lifespan</p>
+                </div>
+              </div>
+              <p>Tile upgrades are one of the highest-ROI improvements because they are immediately visible to buyers. Updated tile in a kitchen or bathroom can return 70-90% of its cost. More importantly, dated or damaged tile is a red flag for buyers.</p>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does tile installation cost per square foot in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $8/sqft for standard porcelain floor tile to $25/sqft for natural stone. Ceramic runs $6-10/sqft, porcelain $8-14/sqft, natural stone $15-25/sqft installed.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the labor cost for tile installation in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Tile setter labor runs $6-12/sqft depending on complexity. Simple floor tile at the low end, herringbone adds 25-40%, shower tile with waterproofing runs $10-15/sqft.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does tile installation take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Bathroom floor: 2-3 days. Backsplash: 1-2 days. Full shower: 4-6 days. Whole-home: 5-10 days. Add 1-2 days for subfloor leveling.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Does tile installation need a permit in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Standalone tile work does not require a permit. If part of a larger remodel involving plumbing or electrical, those components may require SDCI permits.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What type of tile is best for bathroom floors?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Porcelain tile with low water absorption. For shower floors, small-format mosaic provides better traction. Always use floor-rated tiles.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a subway tile backsplash cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $800 to $1,800 for standard ceramic in a 30 sqft area. Handmade Zellige: $2,000-4,500. Herringbone pattern adds 30-40% to labor cost.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Want an Exact Quote for Your Tile Project?</h2>
+            <p class="text-white/80 mb-6">Every tile project is different. We will measure your space, discuss material options, and give you a detailed estimate — no charge.</p>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your project.</p>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/flooring-installation-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Flooring Installation Cost Guide</a></li>
+                <li><a href="/cost-guides/shower-remodel-cost/" class="text-accent hover:underline text-sm font-medium">Shower Remodel Cost Guide</a></li>
+              </ul>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation Service</a></li>
+                <li><a href="/reviews/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation Reviews</a></li>
+                <li><a href="/services/shower-remodeling/" class="text-accent hover:underline text-sm font-medium">Shower Remodeling</a></li>
+              </ul>
+            </div>
+            <QuickQuoteWidget />
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

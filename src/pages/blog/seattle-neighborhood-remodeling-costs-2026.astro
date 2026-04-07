@@ -1,0 +1,486 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+import RelatedPosts from '@/components/sections/RelatedPosts.astro';
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'What Does Remodeling Cost in Every Seattle Neighborhood?', href: '/blog/seattle-neighborhood-remodeling-costs-2026/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'What Does Remodeling Cost in Every Seattle Neighborhood? 2026 Price Breakdown',
+  description: 'Neighborhood-by-neighborhood kitchen and bathroom remodeling cost analysis for Seattle in 2026. Capitol Hill, Ballard, Queen Anne, Wallingford, West Seattle, and more.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-04-01',
+  dateModified: '2026-04-05',
+  image: '/images/blog-kitchen-remodel.jpg',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Which Seattle neighborhood has the highest remodeling costs?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Queen Anne (especially upper Queen Anne) and Madison Park/Montlake have the highest remodeling costs in Seattle. Kitchen remodels in these neighborhoods average from $65,000 for mid-range and from $130,000 for high-end due to older homes requiring more structural work, difficult access on steep lots, and higher homeowner expectations for premium finishes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a kitchen remodel cost per square foot in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Kitchen remodeling in Seattle costs from $250 per square foot for a mid-range renovation and from $450 per square foot for a high-end remodel. These per-square-foot costs vary by neighborhood — Capitol Hill and Ballard tend to be at the lower end (older but accessible homes), while Queen Anne and Magnolia skew higher due to access challenges and older infrastructure.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is remodeling cheaper in South Seattle neighborhoods?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, remodeling costs in Columbia City, Beacon Hill, and Rainier Beach tend to run 10-20% lower than North Seattle and the Eastside. Labor costs are similar across the city, but homes in these neighborhoods are often smaller (reducing material costs) and homeowners tend to choose mid-range rather than luxury finishes. Kitchen remodels start from $35,000 in these areas.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why does home age affect remodeling cost in Seattle?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Older Seattle homes (pre-1960) often have knob-and-tube wiring, galvanized plumbing, lead paint, and non-standard framing that must be addressed during a remodel. These hidden conditions add $3,000 to $15,000 in unplanned costs. Neighborhoods with predominantly older housing stock — Capitol Hill, Wallingford, Fremont, and Ravenna — have higher rates of these surprises.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the average bathroom remodel cost in Seattle in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The average bathroom remodel in Seattle costs from $18,000 for a secondary bathroom and from $30,000 for a primary bathroom in 2026. High-end primary bathroom remodels with custom tile, frameless glass showers, and premium fixtures start from $50,000. Costs vary by neighborhood due to home age, bathroom size, and access factors.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does the permit cost vary by Seattle neighborhood?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No, permit costs are set by the City of Seattle (SDCI) and are the same regardless of neighborhood. Residential remodeling permits are based on project valuation, typically $500 to $2,500 for kitchen and bathroom remodels. However, homes in historic districts like Pioneer Square or the Harvard-Belmont Landmark District on Capitol Hill may require additional design review, adding time and cost.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Seattle Remodeling Costs by Neighborhood 2026"
+  description="What does kitchen and bathroom remodeling cost in every Seattle neighborhood? 2026 price breakdown for Capitol Hill, Ballard, Queen Anne, Wallingford, West Seattle, Columbia City, and more."
+  canonical={`${SITE.url}/blog/seattle-neighborhood-remodeling-costs-2026/`}
+  ogType="article"
+  article={{ publishedTime: '2026-04-01', modifiedTime: '2026-04-05', author: SITE.name, section: 'Tips' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Tips</span>
+          <span class="text-white/60 text-sm">April 1, 2026</span>
+          <span class="text-white/60 text-sm">&middot; 14 min read</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">What Does Remodeling Cost in Every Seattle Neighborhood? 2026 Price Breakdown</h1>
+        <p class="text-lg text-white/80 leading-relaxed">
+          A kitchen remodel in Ballard costs different than the same project in Queen Anne or Columbia City. Home age, lot access, housing stock, and local market expectations all push prices up or down. Here is a neighborhood-by-neighborhood breakdown of what Seattle homeowners are actually paying in 2026.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Article -->
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a>
+            <span class="mx-2">&rsaquo;</span>
+            <a href="/blog/" class="hover:text-accent">Blog</a>
+            <span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Remodeling Costs by Neighborhood</span>
+          </nav>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>
+              "How much does a kitchen remodel cost in Seattle?" is the most common question we hear. The honest answer: it depends heavily on where your home is. A mid-range kitchen remodel in a 1920s Capitol Hill bungalow involves different challenges (and costs) than the same scope of work in a 2005 townhome in Columbia City or a 1960s split-level in Magnolia.
+            </p>
+            <p>
+              After completing over 500 projects across greater Seattle, we have hard data on what drives cost differences between neighborhoods. This guide breaks down kitchen and bathroom remodeling costs for 12 Seattle neighborhoods, explains the factors behind the price variations, and helps you set a realistic budget for your specific home.
+            </p>
+          </div>
+
+          <!-- Cost Factors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Factors Drive Cost Differences Between Neighborhoods?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Before diving into neighborhood-specific pricing, here are the five factors that create cost variation across Seattle:
+              </p>
+              <p>
+                <strong>1. Home age.</strong> Homes built before 1960 are significantly more likely to have knob-and-tube wiring, galvanized steel plumbing, lead paint, asbestos insulation, and non-standard framing. Dealing with these conditions during a remodel adds $3,000-$15,000 in unplanned costs. Neighborhoods with older housing stock (Capitol Hill, Wallingford, Fremont, Ravenna) have a higher risk of these surprises.
+              </p>
+              <p>
+                <strong>2. Home size and kitchen footprint.</strong> Larger kitchens require more cabinetry, more countertop, more flooring, and more labor. The average kitchen size varies significantly by neighborhood — a Craftsman bungalow in Wallingford might have a 90-square-foot kitchen, while a newer home in Beacon Hill could have 150+ square feet.
+              </p>
+              <p>
+                <strong>3. Access and logistics.</strong> Hillside homes in Queen Anne, steep lot homes in Magnolia, and walk-up units in Capitol Hill all present logistical challenges that increase costs. Carrying materials up flights of stairs, working on steep grades, and limited staging space all add time and labor.
+              </p>
+              <p>
+                <strong>4. Local market expectations.</strong> Homeowners in higher-value neighborhoods tend to select premium materials — natural stone countertops instead of quartz, custom cabinetry instead of semi-custom, designer tile instead of standard ceramic. Material selection is the single largest cost variable in any remodel.
+              </p>
+              <p>
+                <strong>5. Permit complexity.</strong> While Seattle permit fees are the same citywide, homes in historic districts or with specific zoning overlays may require additional review. The Harvard-Belmont Landmark District on Capitol Hill and certain Pioneer Square buildings have additional design review requirements that add 2-4 weeks and $500-$1,500 in fees.
+              </p>
+            </div>
+          </div>
+
+          <!-- Summary Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Do Kitchen Remodel Costs Compare Across Seattle?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                This table summarizes mid-range kitchen remodel starting costs by neighborhood. These figures reflect a typical project: new cabinets, quartz countertops, tile backsplash, new flooring, updated appliances, and lighting. Layout changes, structural work, or premium materials push costs higher.
+              </p>
+              <div class="overflow-x-auto my-6">
+                <table class="w-full text-sm border-collapse">
+                  <thead>
+                    <tr class="bg-light">
+                      <th class="text-left p-3 font-semibold text-primary border-b">Neighborhood</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Typical Home Age</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Kitchen Remodel (Mid-Range)</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Key Cost Factor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b"><td class="p-3 font-medium">Capitol Hill</td><td class="p-3">1900s-1940s</td><td class="p-3">from $45,000</td><td class="p-3">Old wiring/plumbing, small kitchens</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Ballard</td><td class="p-3">1910s-1950s + new infill</td><td class="p-3">from $42,000</td><td class="p-3">Mix of old/new stock</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Queen Anne</td><td class="p-3">1900s-1930s</td><td class="p-3">from $55,000</td><td class="p-3">Steep lots, access, old infrastructure</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Wallingford</td><td class="p-3">1920s-1950s</td><td class="p-3">from $45,000</td><td class="p-3">Craftsman-era infrastructure</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Fremont</td><td class="p-3">1920s-1960s</td><td class="p-3">from $43,000</td><td class="p-3">Older plumbing, compact layouts</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Green Lake</td><td class="p-3">1930s-1960s</td><td class="p-3">from $48,000</td><td class="p-3">Higher expectations, mid-century homes</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Magnolia</td><td class="p-3">1940s-1970s</td><td class="p-3">from $52,000</td><td class="p-3">Large homes, steep lots, premium finishes</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">West Seattle</td><td class="p-3">1940s-1970s</td><td class="p-3">from $42,000</td><td class="p-3">Moderate access, mixed stock</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Columbia City</td><td class="p-3">1910s-1950s + new builds</td><td class="p-3">from $38,000</td><td class="p-3">Smaller homes, mid-range finishes</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Beacon Hill</td><td class="p-3">1920s-1960s</td><td class="p-3">from $35,000</td><td class="p-3">Smaller footprints, value-focused</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Ravenna</td><td class="p-3">1920s-1950s</td><td class="p-3">from $46,000</td><td class="p-3">Craftsman homes, older systems</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">University District</td><td class="p-3">1920s-1960s</td><td class="p-3">from $38,000</td><td class="p-3">Older stock, rental conversions</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                These are starting points for mid-range projects. Your actual cost depends on specific scope, material selections, and what we find behind the walls. Every estimate from Best KB Remodeling includes a contingency recommendation based on your home's age and condition. For detailed pricing, see our <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline">kitchen remodel cost guide</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Capitol Hill -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Should Capitol Hill Homeowners Expect?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Capitol Hill has some of the oldest residential housing stock in Seattle, with many homes dating to the 1900s-1920s. These Craftsman bungalows and early-century homes have character and charm, but they also have small kitchens (often 80-100 square feet), outdated electrical systems, and galvanized plumbing that may need replacement during a remodel.
+              </p>
+              <p>
+                <strong>Common surprises:</strong> Knob-and-tube wiring (requires electrician to reroute, $2,000-$8,000), galvanized pipes (often corroded, replacement runs $3,000-$6,000), lead paint (abatement adds $1,500-$4,000), and non-standard stud spacing that complicates cabinet installation.
+              </p>
+              <p>
+                <strong>Budget recommendation:</strong> Plan a 15-20% contingency on top of the base estimate for pre-1940 Capitol Hill homes. A mid-range <a href="/services/kitchen-remodeling/" class="text-accent hover:underline">kitchen remodel</a> starts from $45,000, with most projects landing between $45,000 and $75,000 after addressing infrastructure. Bathroom remodels start from $20,000.
+              </p>
+              <p>
+                <strong>Design note:</strong> Capitol Hill homeowners tend toward modern-eclectic aesthetics that respect the Craftsman character of their homes while adding contemporary touches. Two-tone cabinets, open shelving, and statement tile backsplashes are popular choices.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ballard -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Why Does Ballard Have Such a Wide Cost Range?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Ballard's housing stock is uniquely diverse. You have 1910s Craftsman bungalows along the numbered streets, 1950s ramblers near Golden Gardens, and brand-new townhomes and condos throughout the neighborhood. This mix creates a wide cost range because remodeling a 100-year-old bungalow is a fundamentally different project than updating a 2018 townhome.
+              </p>
+              <p>
+                <strong>Older Ballard homes (pre-1960):</strong> Kitchen remodels start from $42,000 and frequently run to $65,000+ due to infrastructure updates. These homes have the same age-related challenges as Capitol Hill but often have slightly larger kitchens and better street-level access for material delivery.
+              </p>
+              <p>
+                <strong>Newer Ballard townhomes (2010s+):</strong> Kitchen remodels start from $30,000 because the infrastructure is modern and the layouts are already efficient. These projects focus purely on finish upgrades — better countertops, custom cabinets, premium appliances, and designer tile. No surprises behind the walls.
+              </p>
+              <p>
+                <strong>Bathroom costs:</strong> From $18,000 for a secondary bath, from $30,000 for a primary bath in older Ballard homes. New townhome bathrooms start from $15,000. See our <a href="/services/bathroom-remodeling/" class="text-accent hover:underline">bathroom remodeling</a> page for scope details.
+              </p>
+            </div>
+          </div>
+
+          <!-- Queen Anne -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Why Is Queen Anne the Most Expensive Neighborhood to Remodel?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Queen Anne — particularly upper Queen Anne — consistently has the highest remodeling costs in Seattle. Three factors converge: old homes (1900s-1930s), steep hillside lots with difficult access, and affluent homeowners who expect premium finishes.
+              </p>
+              <p>
+                <strong>Access challenges:</strong> Many upper Queen Anne homes sit on steep lots with narrow driveways or no driveway at all. Getting a countertop slab, a bathtub, or a refrigerator up 40 stairs and through a narrow hallway requires additional labor and sometimes specialty equipment. Access logistics can add $2,000-$5,000 to a project.
+              </p>
+              <p>
+                <strong>Old infrastructure:</strong> Queen Anne homes share the same age-related challenges as Capitol Hill — old wiring, old plumbing, lead paint — but the homes tend to be larger and more architecturally detailed, making updates more complex and time-consuming.
+              </p>
+              <p>
+                <strong>Premium expectations:</strong> Queen Anne homeowners invest in high-end materials — Sub-Zero and Wolf appliances, natural stone countertops, inset custom cabinetry, hand-made tile. These selections push project costs well above the mid-range.
+              </p>
+              <p>
+                <strong>Budget:</strong> Mid-range kitchen remodels start from $55,000. High-end projects with premium appliances and custom cabinetry commonly reach from $130,000. Budget a 15-20% contingency. Bathroom remodels start from $25,000.
+              </p>
+            </div>
+          </div>
+
+          <!-- Wallingford / Fremont / Green Lake -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Do Wallingford, Fremont, and Green Lake Compare?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                These three neighborhoods form a cluster of similar housing stock — primarily 1920s-1960s Craftsman bungalows and mid-century homes on flat to gently sloping lots. Remodeling costs are comparable across all three, with some variation based on home size and owner expectations.
+              </p>
+              <p>
+                <strong>Wallingford</strong> is the most consistently Craftsman of the three. Kitchens here are small (80-110 sq ft) with charming but inefficient layouts. Opening the kitchen to the dining room is the most requested structural change, requiring header installation for wall removal ($3,000-$6,000 for the structural work alone). Kitchen remodels start from $45,000.
+              </p>
+              <p>
+                <strong>Fremont</strong> has a slightly younger and more eclectic housing stock. You will find 1920s bungalows alongside 1950s ramblers and some newer infill townhomes. The older homes have the same infrastructure concerns as Wallingford, while newer homes are straightforward to remodel. Kitchen remodels start from $43,000.
+              </p>
+              <p>
+                <strong>Green Lake</strong> homes tend to be slightly larger and pricier than Wallingford and Fremont, and homeowner expectations reflect the higher property values (median $950K+). We see more requests for premium appliances and natural stone in Green Lake than in Fremont. Kitchen remodels start from $48,000. Bathroom remodels across all three neighborhoods start from $18,000.
+              </p>
+            </div>
+          </div>
+
+          <!-- Magnolia / West Seattle -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What About Magnolia and West Seattle?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                <strong>Magnolia</strong> is a quieter, residential neighborhood with larger homes (many 2,000-3,000 sq ft) built in the 1940s-1970s. The homes are well-maintained but many have never had their kitchens or bathrooms updated. Large kitchen footprints (120-180 sq ft) mean more material costs. Some Magnolia homes have view-lot access challenges similar to Queen Anne. Kitchen remodels start from $52,000. Bathroom remodels start from $22,000.
+              </p>
+              <p>
+                <strong>West Seattle</strong> offers a wide range of housing — from 1920s bungalows in the Admiral District to 1960s ramblers in Gatewood to newer construction near the Junction. Costs are moderate compared to North Seattle due to slightly smaller home sizes and a broader range of finish expectations. The West Seattle Bridge situation (now resolved) depressed property values for a period, but the market has recovered strongly, driving increased remodeling investment. Kitchen remodels start from $42,000. Bathroom remodels start from $18,000.
+              </p>
+            </div>
+          </div>
+
+          <!-- South Seattle -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Are South Seattle Neighborhoods More Affordable to Remodel?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Columbia City, Beacon Hill, and the Rainier Valley offer some of the most cost-effective remodeling opportunities in Seattle. Labor rates are the same across the city, but these neighborhoods benefit from smaller home sizes (reducing material quantities), a mix of old and new construction, and homeowner preferences that lean toward mid-range rather than luxury finishes.
+              </p>
+              <p>
+                <strong>Columbia City</strong> has experienced a surge of new construction alongside its historic Craftsman homes. Kitchen remodels start from $38,000 for older homes and from $28,000 for newer construction. The neighborhood's strong appreciation trend (median home prices up 40%+ over five years) makes remodeling a particularly good investment here.
+              </p>
+              <p>
+                <strong>Beacon Hill</strong> is one of Seattle's most underrated neighborhoods for remodeling ROI. Median home prices are still below the citywide average, which means a well-executed remodel can push your home above comparable listings and capture more of the investment at resale. Kitchen remodels start from $35,000. <a href="/services/flooring-installation/" class="text-accent hover:underline">Flooring installation</a> is especially popular here, with many homeowners replacing worn carpet with LVP throughout the main floor.
+              </p>
+              <p>
+                <strong>Ravenna and the University District</strong> round out the north-central cluster. Ravenna has larger Craftsman homes with the same infrastructure challenges as Wallingford (kitchen remodels from $46,000). The U-District has a mix of older single-family homes and rental conversions, with kitchen remodels starting from $38,000.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bathroom Cost Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Do Bathroom Remodel Costs Vary by Neighborhood?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Bathroom costs follow similar patterns to kitchens, but the cost spread between neighborhoods is narrower because bathrooms are smaller and less variable in scope.
+              </p>
+              <div class="overflow-x-auto my-6">
+                <table class="w-full text-sm border-collapse">
+                  <thead>
+                    <tr class="bg-light">
+                      <th class="text-left p-3 font-semibold text-primary border-b">Neighborhood</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Secondary Bath</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Primary Bath</th>
+                      <th class="text-left p-3 font-semibold text-primary border-b">Walk-In Shower</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b"><td class="p-3 font-medium">Capitol Hill</td><td class="p-3">from $20,000</td><td class="p-3">from $35,000</td><td class="p-3">from $12,000</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Ballard</td><td class="p-3">from $18,000</td><td class="p-3">from $30,000</td><td class="p-3">from $11,000</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Queen Anne</td><td class="p-3">from $25,000</td><td class="p-3">from $42,000</td><td class="p-3">from $15,000</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Wallingford / Fremont</td><td class="p-3">from $18,000</td><td class="p-3">from $32,000</td><td class="p-3">from $11,000</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Green Lake</td><td class="p-3">from $20,000</td><td class="p-3">from $35,000</td><td class="p-3">from $12,000</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Magnolia</td><td class="p-3">from $22,000</td><td class="p-3">from $38,000</td><td class="p-3">from $13,000</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">West Seattle</td><td class="p-3">from $18,000</td><td class="p-3">from $30,000</td><td class="p-3">from $11,000</td></tr>
+                    <tr class="border-b bg-light/50"><td class="p-3 font-medium">Columbia City</td><td class="p-3">from $15,000</td><td class="p-3">from $28,000</td><td class="p-3">from $10,000</td></tr>
+                    <tr class="border-b"><td class="p-3 font-medium">Beacon Hill</td><td class="p-3">from $14,000</td><td class="p-3">from $25,000</td><td class="p-3">from $9,000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                These figures cover standard-scope remodels: new tile, new vanity, new fixtures, new lighting. <a href="/services/shower-remodeling/" class="text-accent hover:underline">Shower remodeling</a> and <a href="/services/bathtub-replacement/" class="text-accent hover:underline">bathtub replacement</a> are priced separately above for quick reference.
+              </p>
+            </div>
+          </div>
+
+          <!-- Contingency -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Much Contingency Should You Budget?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Contingency — the extra budget you set aside for unexpected costs — is one of the most important numbers in your remodeling budget. We recommend different contingency percentages based on your home's age:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Pre-1940 homes</strong> (Capitol Hill, Wallingford, parts of Ballard): 15-20% contingency</li>
+                <li><strong>1940s-1970s homes</strong> (Magnolia, West Seattle, Green Lake): 10-15% contingency</li>
+                <li><strong>1980s-2000s homes</strong> (much of the Eastside, newer Seattle construction): 5-10% contingency</li>
+                <li><strong>2010s+ construction</strong> (new townhomes, condos): 5% contingency</li>
+              </ul>
+              <p>
+                A 15% contingency on a $50,000 kitchen remodel means setting aside $7,500 for surprises. If everything goes smoothly, you keep that money. If the electrician discovers knob-and-tube wiring behind the backsplash, you have budget to address it without scrambling. In our experience, about 60% of pre-1960 home remodels encounter at least one significant hidden condition.
+              </p>
+            </div>
+          </div>
+
+          <!-- Per Sq Ft -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">What Is the Cost Per Square Foot for Kitchen Remodeling?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Per-square-foot pricing provides a useful (though imperfect) benchmark. In Seattle's 2026 market:
+              </p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Budget remodel:</strong> from $150/sq ft (cosmetic updates, existing layout)</li>
+                <li><strong>Mid-range remodel:</strong> from $250/sq ft (new cabinets, quartz, tile, appliances)</li>
+                <li><strong>High-end remodel:</strong> from $450/sq ft (custom cabinets, natural stone, pro appliances, layout changes)</li>
+                <li><strong>Luxury remodel:</strong> from $600/sq ft (bespoke everything, structural changes, smart home integration)</li>
+              </ul>
+              <p>
+                Per-square-foot costs are higher in neighborhoods with older homes because infrastructure work (electrical, plumbing) is priced per system, not per square foot. A 90-square-foot Capitol Hill kitchen with full electrical upgrade costs more per square foot than a 150-square-foot Green Lake kitchen that only needs finish work.
+              </p>
+              <p>
+                For an accurate estimate specific to your home, <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">schedule a free in-home consultation</a>. We will measure your space, assess existing conditions, and provide line-item pricing.
+              </p>
+            </div>
+          </div>
+
+          <!-- How to Save -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">How Can You Reduce Remodeling Costs Without Sacrificing Quality?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                Regardless of neighborhood, these strategies help maximize your budget:
+              </p>
+              <p>
+                <strong>Keep the existing layout.</strong> Moving plumbing and electrical is expensive. If your current kitchen or bathroom layout works functionally, focus your budget on premium finishes instead of structural changes. This single decision can save $8,000-$20,000.
+              </p>
+              <p>
+                <strong>Reface instead of replace.</strong> If your cabinet boxes are solid, <a href="/services/cabinet-refacing/" class="text-accent hover:underline">cabinet refacing</a> saves 40-50% compared to full replacement while delivering a completely new look. This works especially well in Craftsman homes where cabinets were built with quality materials.
+              </p>
+              <p>
+                <strong>Choose quartz over natural stone.</strong> Quartz costs 20-30% less than granite or marble, requires no sealing, and is more durable. Modern quartz from Caesarstone, Cambria, and Silestone convincingly mimics natural marble and stone. See our <a href="/services/countertop-installation/" class="text-accent hover:underline">countertop guide</a> for options.
+              </p>
+              <p>
+                <strong>Time your project strategically.</strong> Winter months (January-March) offer better contractor availability and sometimes better pricing. Summer is peak season, and wait times can stretch 6-8 weeks.
+              </p>
+              <p>
+                <strong>Invest in high-impact areas.</strong> Countertops, cabinet fronts, and lighting deliver the most visual impact per dollar. Spending less on items hidden inside cabinets (drawer organizers, pull-out shelves) or under countertops (standard plumbing) frees budget for the finishes you see and touch every day.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-primary mb-4">Get a Neighborhood-Specific Estimate</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>
+                The numbers in this guide are starting points based on our experience across Seattle. Your actual cost depends on your specific home, your material selections, and what we discover during demolition. The only way to get an accurate number is a professional in-home estimate.
+              </p>
+              <p>
+                Best KB Remodeling provides free, no-obligation estimates for homeowners across every Seattle neighborhood. We will visit your home, assess the existing conditions, discuss your goals and budget, and provide a detailed written proposal with line-item pricing. No surprises, no pressure.
+              </p>
+              <p>
+                Call <a href="tel:+12066664370" class="text-accent hover:underline font-semibold">(206) 666-4370</a> or <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">book your free estimate online</a>. We serve every neighborhood mentioned in this guide plus the entire Eastside — <a href="/areas-served/bellevue/" class="text-accent hover:underline">Bellevue</a>, <a href="/areas-served/kirkland/" class="text-accent hover:underline">Kirkland</a>, <a href="/areas-served/redmond/" class="text-accent hover:underline">Redmond</a>, <a href="/areas-served/sammamish/" class="text-accent hover:underline">Sammamish</a>, and beyond.
+              </p>
+            </div>
+          </div>
+
+          <RelatedPosts currentSlug="seattle-neighborhood-remodeling-costs-2026" category="Tips" />
+
+          <!-- End-of-Article CTA -->
+          <div class="bg-primary rounded-2xl p-8 my-12 text-white" data-reveal>
+            <h3 class="text-2xl font-[family-name:var(--font-heading)] mb-3">What Will Your Remodel Cost?</h3>
+            <p class="text-white/80 mb-6">Get a free, neighborhood-specific estimate. We will visit your home and provide detailed line-item pricing.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Get Free Estimate</a>
+              <a href="/cost-guides/" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">View Cost Guides</a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Free Estimate</h3>
+              <p class="text-body-text text-sm mb-4">Get neighborhood-specific pricing for your remodeling project.</p>
+              <a href="tel:+12066664370" class="block text-primary font-bold text-lg mb-3 hover:text-accent transition-colors">(206) 666-4370</a>
+              <a href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-hover transition-colors text-sm">Book Free Estimate</a>
+              <p class="text-xs text-body-text/70 mt-3">4.9&#9733; &middot; 347 Reviews &middot; 5-Year Warranty</p>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Articles</h3>
+              <ul class="space-y-3">
+                <li><a href="/blog/kitchen-remodel-roi-seattle-2026/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel ROI in Seattle 2026</a></li>
+                <li><a href="/blog/sammamish-home-remodeling-guide/" class="text-accent hover:underline text-sm font-medium">Sammamish Remodeling Guide</a></li>
+                <li><a href="/blog/how-to-choose-remodeling-contractor-seattle/" class="text-accent hover:underline text-sm font-medium">How to Choose a Remodeling Contractor</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Cost Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide</a></li>
+                <li><a href="/cost-guides/countertop-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Countertop Cost Guide</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Remodeling by City</h3>
+              <ul class="space-y-3">
+                <li><a href="/areas-served/seattle/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Seattle</a></li>
+                <li><a href="/areas-served/seattle/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Seattle</a></li>
+                <li><a href="/areas-served/bellevue/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/bellevue/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling Bellevue</a></li>
+                <li><a href="/areas-served/kirkland/kitchen-remodeling/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodeling Kirkland</a></li>
+              </ul>
+              <a href="/areas-served/" class="text-accent font-semibold text-xs hover:underline mt-3 inline-block">All 28 service areas &rarr;</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

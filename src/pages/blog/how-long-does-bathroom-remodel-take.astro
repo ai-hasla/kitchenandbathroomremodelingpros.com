@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const title = 'How Long Does a Bathroom Remodel Take? | Timeline Guide';
+const description = 'Realistic bathroom remodel timelines for Seattle homeowners. From 2-week refreshes to 8-week full gut renovations, learn what affects your project timeline.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <SchemaBreadcrumb
+    items={[
+      { label: 'Blog', href: '/blog/' },
+      { label: 'How Long Does a Bathroom Remodel Take?', href: '/blog/how-long-does-bathroom-remodel-take/' },
+    ]}
+  />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <nav aria-label="Breadcrumb" class="text-sm text-white/60 mb-6">
+          <ol class="flex flex-wrap items-center gap-1.5">
+            <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-white/40">/</span>
+              <a href="/blog/" class="hover:text-white transition-colors">Blog</a>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-white/40">/</span>
+              <span class="text-white font-medium">Bathroom Remodel Timeline</span>
+            </li>
+          </ol>
+        </nav>
+        <h1 class="text-4xl lg:text-5xl font-[family-name:var(--font-heading)] text-white leading-tight mb-6">
+          How Long Does a Bathroom Remodel Take?
+        </h1>
+        <p class="text-white/80 text-lg leading-relaxed">
+          Full article coming soon. In the meantime, get a personalized timeline estimate for your project.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-3xl mx-auto prose prose-lg">
+        <p>We're currently putting the finishing touches on this comprehensive guide to bathroom remodel timelines. It will cover:</p>
+        <ul>
+          <li>Typical timelines by project scope (cosmetic refresh, partial remodel, full gut renovation)</li>
+          <li>What factors extend or shorten your timeline</li>
+          <li>How Seattle permitting affects scheduling</li>
+          <li>Tips to keep your project on track</li>
+        </ul>
+        <p>Want a personalized timeline for your bathroom remodel? We can give you a realistic estimate during a free in-home consultation.</p>
+        <h3>Explore Our Bathroom Services</h3>
+        <ul>
+          <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline">Bathroom Remodeling</a></li>
+          <li><a href="/services/shower-remodeling/" class="text-accent hover:underline">Shower Remodeling</a></li>
+          <li><a href="/services/bathtub-replacement/" class="text-accent hover:underline">Bathtub Replacement</a></li>
+          <li><a href="/services/vanity-installation/" class="text-accent hover:underline">Vanity Installation</a></li>
+          <li><a href="/services/tile-installation/" class="text-accent hover:underline">Tile Installation</a></li>
+        </ul>
+        <h3>Bathroom Remodeling by City</h3>
+        <ul>
+          <li><a href="/areas-served/seattle/bathroom-remodeling/" class="text-accent hover:underline">Seattle</a> | <a href="/areas-served/bellevue/bathroom-remodeling/" class="text-accent hover:underline">Bellevue</a> | <a href="/areas-served/kirkland/bathroom-remodeling/" class="text-accent hover:underline">Kirkland</a> | <a href="/areas-served/redmond/bathroom-remodeling/" class="text-accent hover:underline">Redmond</a></li>
+        </ul>
+        <p><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline font-semibold">See our full Bathroom Remodel Cost Guide &rarr;</a></p>
+      </div>
+      <div class="max-w-3xl mx-auto mt-10 flex flex-col sm:flex-row gap-4">
+        <Button variant="primary" size="lg" href="/contact/">
+          Get a Free Estimate
+        </Button>
+        <Button variant="outline" size="lg" href={`tel:${SITE.phoneRaw}`}>
+          Call {SITE.phone}
+        </Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

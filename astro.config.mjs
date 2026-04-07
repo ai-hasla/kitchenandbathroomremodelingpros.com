@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://kitchenandbathroomremodelingpros.com',
+  trailingSlash: 'always',
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/api/'),
@@ -20,6 +21,9 @@ export default defineConfig({
           item.priority = 0.85;
           item.changefreq = 'weekly';
         } else if (item.url.includes('/cost-guides/')) {
+          item.priority = 0.8;
+          item.changefreq = 'monthly';
+        } else if (/\/areas-served\/[^/]+\/[^/]+/.test(item.url)) {
           item.priority = 0.8;
           item.changefreq = 'monthly';
         } else if (item.url.includes('/areas-served/')) {

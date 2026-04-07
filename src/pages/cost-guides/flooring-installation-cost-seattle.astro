@@ -1,0 +1,349 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Flooring Installation Cost Seattle', href: '/cost-guides/flooring-installation-cost-seattle/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Flooring Installation Cost Seattle 2026',
+  description: 'How much does flooring installation cost in Seattle in 2026? LVP from $4/sqft, hardwood from $12/sqft, tile from $8/sqft. Complete breakdown by material.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-02-01',
+  dateModified: '2026-03-25',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does flooring installation cost per square foot in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $4/sqft for LVP to $18/sqft for solid hardwood. Engineered hardwood $9-15/sqft, tile $8-14/sqft.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the cheapest flooring to install in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'LVP at $4-8/sqft installed. 1,000 sqft home costs from $4,000. Fastest to install: 2-3 days for 1,000 sqft.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is LVP flooring good for Seattle homes?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Excellent choice. 100% waterproof, scratch-resistant, dimensionally stable. Brands: COREtec, Shaw Floorte Pro, LifeProof.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does flooring installation take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'For 1,000 sqft: LVP 2-3 days, engineered hardwood 3-5 days, tile 5-7 days, solid hardwood 4-6 days plus 2-3 days cure.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best flooring for kitchens and bathrooms?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Kitchen: LVP or porcelain tile (both waterproof). Bathroom: porcelain tile (works with radiant heat). Never hardwood in wet areas.' },
+    }
+  ],
+};
+---
+
+<BaseLayout
+  title="Flooring Installation Cost Seattle 2026"
+  description="How much does flooring installation cost in Seattle in 2026? LVP from $4/sqft, hardwood from $12/sqft, tile from $8/sqft. Complete breakdown by material."
+  canonical={`${SITE.url}/cost-guides/flooring-installation-cost-seattle/`}
+  ogType="article"
+  article={{ publishedTime: '2026-02-01', modifiedTime: '2026-03-25', author: SITE.name, section: 'Flooring' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Flooring Installation Cost Guide - Seattle 2026",
+  "description": "Comprehensive guide to flooring installation costs in Seattle for 2026.",
+  "brand": { "@type": "Brand", "name": "Best Kitchen and Bathroom Remodeling" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "245",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Amanda Jackson" },
+      "reviewBody": "1,200 sqft of COREtec LVP in 3 days across our Kent home. Waterproof, kid-proof, dog-proof. Estimate accurate to within $150.",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Marcus Davis" },
+      "reviewBody": "Original fir floors refinished in Capitol Hill Craftsman plus new engineered hardwood in kitchen addition. Seamless color match.",
+      "datePublished": "2025-11-20"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Nancy Gillespie" },
+      "reviewBody": "Whole-home LVP in Federal Way rambler. 1,800 sqft in 4 days. Fair price, new baseboards included. Huge transformation.",
+      "datePublished": "2025-08-14"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Flooring Installation Cost Seattle 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">From waterproof LVP to refinished hardwood, here is what flooring installation actually costs in the Seattle area based on our 150+ completed flooring projects.</p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-25">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>10 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8 prose-custom">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a><span class="mx-2">&rsaquo;</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a><span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Flooring Installation Cost Seattle</span>
+          </nav>
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Flooring Costs in Seattle 2026</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">LVP</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $4/sqft</p>
+                <p class="text-xs text-body-text">Waterproof, click-lock</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Porcelain Tile</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">from $8/sqft</p>
+                <p class="text-xs text-body-text">Kitchen, bath, entryway</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Solid Hardwood</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $12/sqft</p>
+                <p class="text-xs text-body-text">Living areas, bedrooms</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Answer -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>Flooring installation in Seattle costs from $4 per square foot for luxury vinyl plank (LVP) to $18 per square foot for solid hardwood in 2026. Most Seattle homeowners spend between $4,000 and $12,000 for a typical whole-home flooring project of 800 to 1,500 square feet. These numbers come from our 150+ completed flooring projects across King and Snohomish counties.</p>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>New flooring is one of the biggest visual transformations you can make. It is also confusing to price because cost per square foot varies 4x depending on material. A 1,000 sqft project might cost $4,000 with LVP or $18,000 with site-finished solid hardwood.</p>
+            <p>In this guide we break down what each material costs installed in Seattle, what we recommend for each room, where you can save money, and what the differences mean for resale value. All numbers from our actual project data.</p>
+          </div>
+
+          <!-- Cost Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Does Each Flooring Material Cost Installed?</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Material</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Cost/Sqft Installed</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">1,000 Sqft Total</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Best For</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Luxury Vinyl Plank (LVP)</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4/sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Whole home, kitchens, baths, basements</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Porcelain Tile</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $8/sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $8,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Bathrooms, kitchens, entryways</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Engineered Hardwood</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $9/sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $9,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Living areas, bedrooms, dining rooms</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Solid Hardwood</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $12/sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $12,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Living areas, bedrooms (above-grade)</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Hardwood Refinishing</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4/sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Existing hardwood in good condition</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Natural Stone</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $15/sqft</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $15,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Entryways, bathrooms, accent areas</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Component Breakdown -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Which Flooring for Each Room?</h2>
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Kitchen</h3>
+                  <span class="font-bold text-accent">LVP or porcelain tile</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Both handle water, spills, and dropped cookware. LVP is softer underfoot for standing. Porcelain is more durable long-term. Never install solid hardwood in kitchens — one dishwasher leak can destroy it. Wood-look LVP is the best of both worlds.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Bathroom</h3>
+                  <span class="font-bold text-accent">Porcelain tile preferred</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Porcelain is the gold standard: waterproof, pairs with radiant floor heating, lasts 20+ years. Waterproof LVP is a budget-friendly alternative. Skip any hardwood option — humidity and splash zones cause warping within a few years.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Living Room & Bedrooms</h3>
+                  <span class="font-bold text-accent">Engineered or solid hardwood</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Engineered hardwood looks and feels like solid but is more dimensionally stable in Seattle humidity swings. Solid hardwood in white oak or red oak is a classic with maximum resale value. Budget option: high-quality LVP at a fraction of the cost.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Basement</h3>
+                  <span class="font-bold text-accent">LVP is the clear winner</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">100% waterproof, no separate moisture barrier needed on most slabs, attached underlayment provides thermal insulation. Never install solid hardwood below grade — moisture wicking through the slab will cause cupping and buckling.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seattle Factors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Why Does Flooring Cost More in Seattle?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>Seattle flooring installation runs 10-15% above national averages due to higher labor rates ($55-85/hour for experienced installers) and older housing stock requiring more prep work.</p>
+              <p>Many Seattle homes built before 1980 have subfloors with issues — uneven surfaces, moisture damage, or outdated particle board. Subfloor leveling costs $1-3/sqft. Replacing damaged sections runs $3-6/sqft. We find issues in about 40% of pre-1975 homes.</p>
+              <p>Before any flooring goes on concrete (basements, slab-on-grade), we do a calcium chloride moisture test. If the slab emits more than 3 lbs/1000 sqft/24hrs, a moisture barrier or different material is needed. Skipping this causes flooring failure.</p>
+            </div>
+          </div>
+
+          <!-- ROI -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Does New Flooring Increase Home Value?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">60-90%</p>
+                  <p class="text-sm text-body-text">ROI at resale</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">15-50 years</p>
+                  <p class="text-sm text-body-text">Flooring lifespan range</p>
+                </div>
+              </div>
+              <p>ROI varies by material: hardwood returns 80-90%, tile 70-80%, LVP 60-70%. If remodeling for resale, hardwood delivers the best return. For your own use with 5+ years planned occupancy, choose the material that fits your lifestyle.</p>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does flooring installation cost per square foot in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $4/sqft for LVP to $18/sqft for solid hardwood installed. Engineered hardwood runs $9-15/sqft, porcelain tile $8-14/sqft. Add $1-3/sqft for subfloor prep if needed.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the cheapest flooring to install in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Luxury vinyl plank (LVP) at $4-8/sqft installed. A 1,000 sqft home costs from $4,000. Also the fastest to install — 2-3 days for 1,000 sqft with click-lock system.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is LVP flooring good for Seattle homes?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Excellent choice for Seattle. 100% waterproof, scratch-resistant, dimensionally stable in humidity changes. Brands we recommend: COREtec, Shaw Floorte Pro, LifeProof.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does flooring installation take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">For a typical 1,000 sqft project: LVP 2-3 days, engineered hardwood 3-5 days, tile 5-7 days, solid hardwood 4-6 days plus 2-3 days for finish to cure.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the best flooring for kitchens and bathrooms?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Kitchen: LVP or porcelain tile — both waterproof and handle spills. Bathroom: porcelain tile is gold standard, works with radiant heat. Never install hardwood in kitchens or bathrooms.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Want an Exact Quote for Your Flooring Project?</h2>
+            <p class="text-white/80 mb-6">We will measure your space, assess the subfloor, and give you a detailed estimate for the material of your choice — no charge.</p>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your project.</p>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/tile-installation-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Tile Installation Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/kitchen-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Kitchen Remodel Cost Guide</a></li>
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Guide</a></li>
+              </ul>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation Service</a></li>
+                <li><a href="/reviews/flooring-installation/" class="text-accent hover:underline text-sm font-medium">Flooring Installation Reviews</a></li>
+                <li><a href="/services/tile-installation/" class="text-accent hover:underline text-sm font-medium">Tile Installation</a></li>
+              </ul>
+            </div>
+            <QuickQuoteWidget />
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

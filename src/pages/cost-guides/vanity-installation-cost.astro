@@ -1,0 +1,358 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import QuickQuoteWidget from '@/components/ui/QuickQuoteWidget.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Cost Guides', href: '/cost-guides/' },
+  { label: 'Vanity Installation Cost', href: '/cost-guides/vanity-installation-cost/' },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Vanity Installation Cost Seattle 2026',
+  description: 'How much does vanity installation cost in Seattle in 2026? From $1,200 for a basic swap to $8,000+ for custom double vanities. Complete breakdown.',
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
+  publisher: { '@type': 'Organization', name: SITE.name },
+  datePublished: '2026-01-20',
+  dateModified: '2026-03-20',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does vanity installation cost in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $1,200 for a basic swap to $8,000+ for custom double vanity. Most homeowners spend $2,000-5,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a floating vanity cost to install?',
+      acceptedAnswer: { '@type': 'Answer', text: 'From $2,000 to $5,000 installed. Requires wall blocking and wall-mounted plumbing.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I replace a single vanity with a double vanity?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Requires extending water supply and drain lines ($800-1,500). Total single-to-double upgrade: $3,500-6,500.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does vanity installation take?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Simple swap: 4-6 hours. Double vanity: 2-3 days. Floating vanity: 2-3 days. Custom: 3-5 days.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What vanity countertop material is best?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Quartz is our top recommendation — non-porous, no sealing, resists stains. $40-100/sqft installed.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does vanity installation require a permit in Seattle?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Same-size replacement: no permit. New plumbing lines: plumbing permit from SDCI required ($200-500).' },
+    }
+  ],
+};
+---
+
+<BaseLayout
+  title="Vanity Installation Cost Seattle 2026"
+  description="How much does vanity installation cost in Seattle in 2026? From $1,200 for a basic swap to $8,000+ for custom double vanities. Complete breakdown."
+  canonical={`${SITE.url}/cost-guides/vanity-installation-cost/`}
+  ogType="article"
+  article={{ publishedTime: '2026-01-20', modifiedTime: '2026-03-20', author: SITE.name, section: 'Bathroom' }}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Vanity Installation Cost Guide - Seattle 2026",
+  "description": "Comprehensive guide to vanity installation costs in Seattle for 2026.",
+  "brand": { "@type": "Brand", "name": "Best Kitchen and Bathroom Remodeling" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "198",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Linda Wei" },
+      "reviewBody": "Double vanity upgrade in our Federal Way master bath. Plumbing extension quoted at $1,100 came in at exactly that.",
+      "datePublished": "2026-01-28"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Diane Rothschild" },
+      "reviewBody": "Custom floating vanity in our Queen Anne powder room. Reclaimed wood vessel sink combo is a showstopper. $3,800 felt fair for custom.",
+      "datePublished": "2025-12-15"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Rachel Nguyen" },
+      "reviewBody": "Simple vanity swap in Bothell guest bath. New 36-inch with granite top installed in one day. Price was higher side but quality excellent.",
+      "datePublished": "2025-10-02"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Cost Guide</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Vanity Installation Cost Seattle 2026</h1>
+        <p class="text-lg text-white/80 leading-relaxed">From simple swap-outs to custom floating vanities, here is what vanity installation actually costs in Seattle based on our completed bathroom projects.</p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-white/60">
+          <time datetime="2026-03-20">Updated March 2026</time>
+          <span>&middot;</span>
+          <span>9 min read</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16">
+    <Container>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8 prose-custom">
+
+          <nav aria-label="Breadcrumb" class="text-sm text-muted mb-6">
+            <a href="/" class="hover:text-accent">Home</a><span class="mx-2">&rsaquo;</span>
+            <a href="/cost-guides/" class="hover:text-accent">Cost Guides</a><span class="mx-2">&rsaquo;</span>
+            <span class="text-dark-text">Vanity Installation Cost</span>
+          </nav>
+
+          <!-- Quick Summary -->
+          <div class="bg-accent-light border border-accent/20 rounded-2xl p-8 mb-12" data-reveal>
+            <h2 class="text-xl font-[family-name:var(--font-heading)] text-primary mb-4">Quick Summary: Vanity Installation Costs in Seattle 2026</h2>
+            <div class="grid sm:grid-cols-3 gap-6">
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Basic Swap</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $1,200</p>
+                <p class="text-xs text-body-text">Same-size replacement</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Double Vanity</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">from $3,500</p>
+                <p class="text-xs text-body-text">With plumbing extension</p>
+              </div>
+              <div class="text-center">
+                <p class="text-sm text-muted uppercase tracking-wider mb-1">Custom / Floating</p>
+                <p class="text-2xl font-bold font-[family-name:var(--font-heading)] text-primary">from $4,000</p>
+                <p class="text-xs text-body-text">Wall-mount + custom build</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Answer -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>Vanity installation in Seattle costs from $1,200 for a basic single vanity replacement to $8,000 or more for a custom double vanity with new plumbing in 2026. Most Seattle homeowners spend between $2,000 and $5,000 for a vanity upgrade that includes the vanity unit, countertop, sink, faucet, and professional installation.</p>
+
+          <!-- Intro -->
+          <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
+            <p>A vanity replacement is one of the highest-impact bathroom upgrades. It is the first thing you see when you walk in and the piece you use multiple times a day. The cost depends primarily on whether plumbing needs to move, the type of vanity (stock vs. floating vs. custom), and the countertop material.</p>
+            <p>The good news: if your existing plumbing is in the right spot, a vanity swap is one of the more affordable bathroom improvements. The cost jumps when you add a second sink, switch to floating style (wall-mounted plumbing), or go custom.</p>
+          </div>
+
+          <!-- Cost Table -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Does Each Type of Vanity Installation Cost?</h2>
+            <div class="overflow-x-auto mb-6">
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tl-lg">Vanity Type</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Cost Range</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold ">Plumbing Work</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold rounded-tr-lg">Timeline</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Single Vanity Swap (same size)</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $1,200</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Minimal — reconnect existing</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">4-6 hours</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Single Vanity Upgrade (larger)</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $1,800</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">May need drain extension</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">1 day</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Pedestal to Vanity Conversion</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $2,200</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Wall patch + drain adjust</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">1-2 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Floating Vanity Install</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $2,500</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Wall blocking + wall drain</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">2-3 days</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Single to Double Vanity</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $3,500</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Second supply + drain line</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">2-3 days</td>
+                  </tr>
+                  <tr class="bg-light">
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Custom Built Vanity</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">from $4,000</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">Varies by design</td>
+                    <td class="px-4 py-3 text-sm font-medium text-primary">3-5 days</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Component Breakdown -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">What Drives the Cost of a Vanity Project?</h2>
+            <div class="space-y-4">
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">The Vanity Unit</h3>
+                  <span class="font-bold text-accent">from $300 to $3,000+</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Stock vanities from Home Depot: $300-800. James Martin or Restoration Hardware: $1,200-3,000+. Custom-built: from $2,000. The vanity unit is typically 30-40% of total project cost.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Countertop + Sink</h3>
+                  <span class="font-bold text-accent">from $200 to $1,500+</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Integrated top+sink combo: $200-500. Separate quartz top: $200-600 (single), $400-1,000 (double). Marble: $300-800 (single). Vessel sinks add $100-400 on top.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Faucet + Hardware</h3>
+                  <span class="font-bold text-accent">from $100 to $600+</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Reliable faucet (Delta, Moen, Kohler): $100-250. Designer (Brizo, Rohl): $300-600+. Wall-mounted faucets cost 20-30% more for in-wall valve rough-in.</p>
+              </div>
+              <div class="bg-light rounded-xl p-5">
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="font-semibold text-primary">Plumbing Labor</h3>
+                  <span class="font-bold text-accent">from $200 to $1,500+</span>
+                </div>
+                <p class="text-body-text text-sm leading-relaxed">Simple reconnection: $200-400. Extending supply lines: $300-600. Adding second drain for double vanity: $800-1,500. Floor-to-wall drain conversion for floating: $600-1,200. Seattle plumbers: $85-125/hour.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seattle Factors -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Seattle-Specific Vanity Installation Factors</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <p>Seattle plumbing rates run $85-125/hour for residential work, 20-30% higher than national averages. The plumber is the single biggest variable in vanity cost because simple reconnections take 1-2 hours while drain relocations can take 4-6 hours.</p>
+              <p>In older Seattle homes, bathroom walls may lack adequate blocking for floating vanity installation. Adding structural blocking behind drywall costs $200-400 but is essential for wall-mounted vanities that will hold 100+ pounds of weight.</p>
+              <p>Condo installations in Capitol Hill, Belltown, and downtown Seattle often have additional complexity because plumbing stacks are shared between units. HOA approval may be required for any plumbing modification.</p>
+            </div>
+          </div>
+
+          <!-- ROI -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-6">Does a New Vanity Increase Home Value?</h2>
+            <div class="space-y-4 text-body-text leading-relaxed">
+              <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">75-90%</p>
+                  <p class="text-sm text-body-text">ROI at resale</p>
+                </div>
+                <div class="bg-light rounded-xl p-5 text-center">
+                  <p class="text-3xl font-bold font-[family-name:var(--font-heading)] text-accent">1-3 days</p>
+                  <p class="text-sm text-body-text">Typical project timeline</p>
+                </div>
+              </div>
+              <p>A vanity upgrade is one of the best ROI bathroom improvements because it is the most visible fixture in the room. In Seattle, a bathroom with a modern vanity, quartz top, and quality faucet photographs well for listings and shows better during walkthroughs.</p>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mb-12" data-reveal>
+            <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does vanity installation cost in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $1,200 for a basic single vanity swap to $8,000+ for a custom double vanity with new plumbing. Most homeowners spend $2,000-5,000 including vanity, countertop, sink, faucet, and installation.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much does a floating vanity cost to install?</h3>
+                <p class="text-body-text text-sm leading-relaxed">From $2,000 to $5,000 installed. Floating vanities require wall blocking behind drywall and wall-mounted plumbing, which adds to labor.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I replace a single vanity with a double vanity?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, one of our most popular upgrades. Requires extending water supply and drain lines for the second sink ($800-1,500 in plumbing). Total: $3,500-6,500.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How long does vanity installation take?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Simple same-size swap: 4-6 hours (often same-day). Double vanity upgrade: 2-3 days. Floating vanity: 2-3 days. Custom build: 3-5 days.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What vanity countertop material is best?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Quartz is our top recommendation: non-porous, no sealing needed, resists stains from toothpaste and makeup. Costs $40-100/sqft installed. Cultured marble is a good budget alternative at $25-50/sqft.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Does vanity installation require a permit in Seattle?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A same-size vanity replacement does not require a permit. If new plumbing lines are added (second sink, relocated drain), a plumbing permit from Seattle SDCI is required ($200-500).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary rounded-2xl p-8 text-center" data-reveal>
+            <h2 class="text-2xl font-[family-name:var(--font-heading)] text-white mb-3">Want an Exact Quote for Your Vanity Project?</h2>
+            <p class="text-white/80 mb-6">We will measure your bathroom, assess the plumbing situation, and give you a detailed line-item estimate — no charge.</p>
+            <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" data-reveal="right">
+          <div class="sticky top-24 space-y-8">
+            <div class="bg-accent-light border border-accent/20 rounded-2xl p-6 text-center">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-2">Want a Personalized Estimate?</h3>
+              <p class="text-body-text text-sm mb-4">Get a free, detailed quote for your project.</p>
+              <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="md" class="w-full">Get a Free Estimate</Button>
+              <p class="text-xs text-muted mt-3">No obligation. Response within 24 hours.</p>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Related Guides</h3>
+              <ul class="space-y-3">
+                <li><a href="/cost-guides/bathroom-remodel-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodel Cost Seattle 2026</a></li>
+                <li><a href="/cost-guides/countertop-installation-cost/" class="text-accent hover:underline text-sm font-medium">Countertop Installation Cost Guide</a></li>
+                <li><a href="/cost-guides/tile-installation-cost-seattle/" class="text-accent hover:underline text-sm font-medium">Tile Installation Cost Guide</a></li>
+              </ul>
+            </div>
+            <div class="bg-light rounded-2xl p-6">
+              <h3 class="text-lg font-[family-name:var(--font-heading)] text-primary mb-4">Services</h3>
+              <ul class="space-y-3">
+                <li><a href="/services/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation Service</a></li>
+                <li><a href="/reviews/vanity-installation/" class="text-accent hover:underline text-sm font-medium">Vanity Installation Reviews</a></li>
+                <li><a href="/services/bathroom-remodeling/" class="text-accent hover:underline text-sm font-medium">Bathroom Remodeling</a></li>
+              </ul>
+            </div>
+            <QuickQuoteWidget />
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

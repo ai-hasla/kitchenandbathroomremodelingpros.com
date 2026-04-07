@@ -3,12 +3,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaProduct from '@/components/seo/SchemaProduct.astro';
 import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
-import { SITE } from '@/lib/constants';
-import { locationData, type LocationData } from '@/data/locations/location-data';
+import { SITE, SERVICES } from '@/lib/constants';
+import { locationData, allLocationData, type LocationData } from '@/data/locations/location-data';
 
 export function getStaticPaths() {
-  return Object.values(locationData).map((loc) => ({
+  return Object.values(allLocationData).map((loc) => ({
     params: { city: loc.slug },
     props: { location: loc },
   }));
@@ -70,13 +71,6 @@ const schema = {
       name: `${location.county} County, ${location.state}`,
     },
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: String(SITE.reviews.rating),
-    reviewCount: String(SITE.reviews.count),
-    bestRating: '5',
-    worstRating: '1',
-  },
   priceRange: '$$-$$$$',
 };
 ---
@@ -96,6 +90,11 @@ const schema = {
     ]}
   />
 
+  <SchemaProduct
+    productName={`Kitchen & Bathroom Remodeling in ${location.city}, WA`}
+    productDescription={`Expert kitchen and bathroom remodeling in ${location.city}, WA. Licensed, insured, free estimates.`}
+    pageUrl={`${SITE.url}/areas-served/${location.slug}/`}
+  />
   <!-- LocalBusiness Schema for this city -->
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
@@ -176,63 +175,97 @@ const schema = {
           Our Remodeling Services in {location.city}
         </h2>
         <p class="text-muted text-lg max-w-2xl mx-auto">
-          We do two things and we do them well. No general contracting, no additions, no decks — just kitchens and bathrooms, every day, for over 15 years.
+          From full kitchen gut renovations to accessible bathroom upgrades — 12 specialized services, each backed by 15+ years of local experience.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" data-reveal>
-        <!-- Kitchen Remodeling Card -->
-        <a
-          href={`/areas-served/${location.slug}/kitchen-remodeling/`}
-          class="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1"
-        >
-          <div class="bg-primary/5 p-8 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <div class="max-w-5xl mx-auto space-y-10" data-reveal>
+        {/* Kitchen Services */}
+        <div>
+          <h3 class="text-xl font-bold text-dark-text mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819" />
             </svg>
+            Kitchen Services
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SERVICES.filter(s => s.category === 'kitchen').map((service) => (
+              <a
+                href={`/areas-served/${location.slug}/${service.slug}/`}
+                class="group bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-5 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <h4 class="text-base font-bold text-dark-text group-hover:text-accent transition-colors mb-2">
+                  {service.title} in {location.city}
+                </h4>
+                <p class="text-muted text-sm leading-relaxed mb-3">{service.shortDescription}</p>
+                <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </a>
+            ))}
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-dark-text group-hover:text-accent transition-colors mb-3">
-              Kitchen Remodeling in {location.city}
-            </h3>
-            <p class="text-muted text-sm leading-relaxed mb-4">
-              From cabinet refacing to complete gut renovations in {location.city}'s{' '}
-              {location.housingStyles[0].toLowerCase()} homes. We handle layout changes, custom cabinetry, stone countertops, and everything in between.
-            </p>
-            <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
-          </div>
-        </a>
+        </div>
 
-        <!-- Bathroom Remodeling Card -->
-        <a
-          href={`/areas-served/${location.slug}/bathroom-remodeling/`}
-          class="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1"
-        >
-          <div class="bg-primary/5 p-8 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        {/* Bathroom Services */}
+        <div>
+          <h3 class="text-xl font-bold text-dark-text mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
+            Bathroom Services
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SERVICES.filter(s => s.category === 'bathroom').map((service) => (
+              <a
+                href={`/areas-served/${location.slug}/${service.slug}/`}
+                class="group bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-5 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <h4 class="text-base font-bold text-dark-text group-hover:text-accent transition-colors mb-2">
+                  {service.title} in {location.city}
+                </h4>
+                <p class="text-muted text-sm leading-relaxed mb-3">{service.shortDescription}</p>
+                <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </a>
+            ))}
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-dark-text group-hover:text-accent transition-colors mb-3">
-              Bathroom Remodeling in {location.city}
-            </h3>
-            <p class="text-muted text-sm leading-relaxed mb-4">
-              Walk-in shower conversions, custom tile work, vanity upgrades, and full gut renovations. Built for the PNW climate with proper waterproofing and ventilation.
-            </p>
-            <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </span>
+        </div>
+
+        {/* General Services */}
+        <div>
+          <h3 class="text-xl font-bold text-dark-text mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.384-3.19A.75.75 0 005 12.604V17.4a.75.75 0 001.036.692l5.384-3.19a.75.75 0 000-1.332zM19.42 15.17l-5.384-3.19A.75.75 0 0013 12.604V17.4a.75.75 0 001.036.692l5.384-3.19a.75.75 0 000-1.332z" />
+            </svg>
+            General Services
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SERVICES.filter(s => s.category === 'general').map((service) => (
+              <a
+                href={`/areas-served/${location.slug}/${service.slug}/`}
+                class="group bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 p-5 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <h4 class="text-base font-bold text-dark-text group-hover:text-accent transition-colors mb-2">
+                  {service.title} in {location.city}
+                </h4>
+                <p class="text-muted text-sm leading-relaxed mb-3">{service.shortDescription}</p>
+                <span class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm group-hover:gap-2.5 transition-all duration-300">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </a>
+            ))}
           </div>
-        </a>
+        </div>
       </div>
     </Container>
   </section>
@@ -473,18 +506,11 @@ const schema = {
           Explore our specialized remodeling services available to {location.city} homeowners.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href={`/areas-served/${location.slug}/kitchen-remodeling/`} class="group px-6 py-4 bg-light rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819" />
-            </svg>
-            <span class="font-semibold text-dark-text group-hover:text-accent transition-colors">Kitchen Remodeling in {location.city} &rarr;</span>
-          </a>
-          <a href={`/areas-served/${location.slug}/bathroom-remodeling/`} class="group px-6 py-4 bg-light rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="font-semibold text-dark-text group-hover:text-accent transition-colors">Bathroom Remodeling in {location.city} &rarr;</span>
-          </a>
+          {SERVICES.map((service) => (
+            <a href={`/areas-served/${location.slug}/${service.slug}/`} class="group px-5 py-3 bg-light rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2">
+              <span class="font-semibold text-sm text-dark-text group-hover:text-accent transition-colors">{service.title} in {location.city} &rarr;</span>
+            </a>
+          ))}
         </div>
       </div>
     </Container>

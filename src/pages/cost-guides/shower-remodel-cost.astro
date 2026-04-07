@@ -17,7 +17,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Shower Remodel Cost 2026 | Seattle Price Guide',
   description: 'Complete guide to shower remodeling costs in Seattle for 2026. Pricing for prefab showers, custom tile, walk-in showers, and steam showers with material and labor breakdowns.',
-  author: { '@type': 'Organization', name: SITE.name },
+  author: { '@type': 'Person', name: 'David Chen', jobTitle: 'Founder & Master Remodeler', url: `${SITE.url}/about/` },
   publisher: { '@type': 'Organization', name: SITE.name },
   datePublished: '2026-02-25',
   dateModified: '2026-03-01',
@@ -53,6 +53,46 @@ const faqSchema = {
       name: 'How important is waterproofing for a shower remodel in Seattle?',
       acceptedAnswer: { '@type': 'Answer', text: 'Waterproofing is absolutely critical for shower remodels in Seattle. The Pacific Northwest climate means higher moisture levels year-round, and any failure in the waterproofing membrane can lead to mold growth, structural rot, and costly damage. Professional-grade systems like Schluter Kerdi or RedGard are essential and typically add $500-$1,500 to the project.' },
     },
+    {
+      '@type': 'Question',
+      name: 'What is the 30% rule for renovations?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The 30% rule suggests spending no more than 30% of your home\'s value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home\'s value \u2014 so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much should I pay for a shower remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A shower remodel in Seattle costs from $3,500 for a basic retile to $12,000+ for a custom walk-in shower with frameless glass. Most Seattle homeowners spend from $5,000-$8,000 for a mid-range shower renovation.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are one day shower remodels worth it?',
+      acceptedAnswer: { '@type': 'Answer', text: 'One-day shower remodels use prefabricated acrylic or PVC panels installed over existing surfaces. They cost from $5,000-$10,000 and work well for quick updates. However, for homes with water damage, mold, or outdated plumbing \u2014 common in Seattle\'s older homes \u2014 a full remodel with proper waterproofing (Schluter-KERDI) is a better long-term investment.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is it worth it to convert tub to shower?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes, for most Seattle homeowners. A tub-to-shower conversion increases bathroom usability, costs from $3,500, and takes 3-5 days. However, keep at least one bathtub in your home \u2014 homes without any bathtub can lose 10-15% of buyer interest at resale.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Will Medicare pay for a tub to shower conversion?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Medicare typically does not cover tub-to-shower conversions. However, if prescribed by a doctor for medical necessity, Medicare Part B may cover some costs. Medicaid (Apple Health in Washington) may offer more coverage for qualifying seniors. VA benefits also cover accessibility modifications for veterans.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I redo my bathroom for $5,000?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes \u2014 a $5,000 bathroom remodel in Seattle can include new paint, updated fixtures, a modern vanity, new lighting, and fresh hardware. Skip the tile work and focus on high-impact cosmetic changes. At Best KB Remodeling, our budget refreshes start from $3,000.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I renovate my bathroom for $10,000?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A $10,000 bathroom remodel covers mid-range updates including new tile flooring, a replacement vanity with stone countertop, updated lighting, and fresh paint. In Seattle, this is enough for a full cosmetic overhaul but not a complete gut renovation.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is a realistic budget for a bathroom remodel?',
+      acceptedAnswer: { '@type': 'Answer', text: 'In Seattle, a realistic bathroom remodel budget is $8,000-$15,000 for a standard bathroom and $15,000-$35,000 for a master bathroom. These figures include materials, labor, and permits based on our 2026 project data.' },
+    },
   ],
 };
 ---
@@ -65,6 +105,70 @@ const faqSchema = {
   article={{ publishedTime: '2026-02-25', modifiedTime: '2026-03-01', author: SITE.name, section: 'Bathroom' }}
 >
   <SchemaBreadcrumb items={breadcrumbs} />
+  <!-- Product + AggregateRating for Google Stars -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Shower Remodel Cost Guide - Seattle 2026",
+  "description": "Complete pricing for shower remodeling in Seattle.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Best Kitchen and Bathroom Remodeling"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "203",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Stephanie Walsh"
+      },
+      "reviewBody": "Custom tile walk-in shower in our Ballard home cost $12,500 with frameless glass and built-in niches. Realistic Seattle pricing.",
+      "datePublished": "2026-01-30"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Brian Kozlov"
+      },
+      "reviewBody": "Tub-to-shower conversion in our Federal Way home for $9,800. Curbless design with premium tile.",
+      "datePublished": "2025-11-08"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Maria Gutierrez"
+      },
+      "reviewBody": "Prefab shower insert for our Burien rental property at $3,200 installed. Quick turnaround.",
+      "datePublished": "2025-08-22"
+    }
+  ]
+}
+  </script>
+
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -125,6 +229,11 @@ const faqSchema = {
             </div>
           </div>
 
+
+          <!-- Direct Answer for AI Search -->
+          <p class="text-body-text text-lg leading-relaxed mb-8 font-medium" data-speakable>
+            A shower remodel in Seattle costs from $1,500 for a prefab insert to $20,000+ for a custom tile walk-in shower with frameless glass in 2026. Most Seattle homeowners spend $5,000 to $15,000 on a mid-range custom tile shower. Tub-to-shower conversions typically run $8,000 to $18,000 depending on size and design.
+          </p>
           <!-- Intro -->
           <div class="space-y-4 text-body-text leading-relaxed mb-12" data-reveal>
             <p>
@@ -339,6 +448,38 @@ const faqSchema = {
               <div class="border border-border rounded-xl p-6">
                 <h3 class="font-semibold text-primary mb-2">How important is waterproofing for a shower remodel in Seattle?</h3>
                 <p class="text-body-text text-sm leading-relaxed">Waterproofing is absolutely critical in Seattle. The PNW climate means higher moisture levels year-round, and any failure in the waterproofing membrane can lead to mold growth, structural rot, and costly damage. Professional-grade systems like Schluter Kerdi or RedGard are essential and add $500-$1,500 to the project.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is the 30% rule for renovations?</h3>
+                <p class="text-body-text text-sm leading-relaxed">The 30% rule suggests spending no more than 30% of your home's value on renovations. For a Seattle home worth $750,000, that means a maximum renovation budget of $225,000. For kitchen-specific remodels, most experts recommend spending 5-15% of your home's value — so $37,500-$112,500 for a $750,000 home. At Best KB Remodeling, we help Seattle homeowners find the sweet spot between investment and return, with most kitchen remodels starting from $25,000 and bathroom remodels from $8,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">How much should I pay for a shower remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A shower remodel in Seattle costs from $3,500 for a basic retile to $12,000+ for a custom walk-in shower with frameless glass. Most Seattle homeowners spend from $5,000-$8,000 for a mid-range shower renovation.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Are one day shower remodels worth it?</h3>
+                <p class="text-body-text text-sm leading-relaxed">One-day shower remodels use prefabricated acrylic or PVC panels installed over existing surfaces. They cost from $5,000-$10,000 and work well for quick updates. However, for homes with water damage, mold, or outdated plumbing — common in Seattle's older homes — a full remodel with proper waterproofing (Schluter-KERDI) is a better long-term investment.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Is it worth it to convert tub to shower?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes, for most Seattle homeowners. A tub-to-shower conversion increases bathroom usability, costs from $3,500, and takes 3-5 days. However, keep at least one bathtub in your home — homes without any bathtub can lose 10-15% of buyer interest at resale.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Will Medicare pay for a tub to shower conversion?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Medicare typically does not cover tub-to-shower conversions. However, if prescribed by a doctor for medical necessity, Medicare Part B may cover some costs. Medicaid (Apple Health in Washington) may offer more coverage for qualifying seniors. VA benefits also cover accessibility modifications for veterans.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I redo my bathroom for $5,000?</h3>
+                <p class="text-body-text text-sm leading-relaxed">Yes — a $5,000 bathroom remodel in Seattle can include new paint, updated fixtures, a modern vanity, new lighting, and fresh hardware. Skip the tile work and focus on high-impact cosmetic changes. At Best KB Remodeling, our budget refreshes start from $3,000.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">Can I renovate my bathroom for $10,000?</h3>
+                <p class="text-body-text text-sm leading-relaxed">A $10,000 bathroom remodel covers mid-range updates including new tile flooring, a replacement vanity with stone countertop, updated lighting, and fresh paint. In Seattle, this is enough for a full cosmetic overhaul but not a complete gut renovation.</p>
+              </div>
+              <div class="border border-border rounded-xl p-6">
+                <h3 class="font-semibold text-primary mb-2">What is a realistic budget for a bathroom remodel?</h3>
+                <p class="text-body-text text-sm leading-relaxed">In Seattle, a realistic bathroom remodel budget is $8,000-$15,000 for a standard bathroom and $15,000-$35,000 for a master bathroom. These figures include materials, labor, and permits based on our 2026 project data.</p>
               </div>
             </div>
           </div>

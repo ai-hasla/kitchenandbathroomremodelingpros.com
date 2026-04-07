@@ -3,8 +3,64 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Container from '@/components/ui/Container.astro';
 import Button from '@/components/ui/Button.astro';
 import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
-import { SITE, COMBO_SERVICES } from '@/lib/constants';
-import { locationData, type LocationData } from '@/data/locations/location-data';
+import SchemaProduct from '@/components/seo/SchemaProduct.astro';
+import { SITE, COMBO_SERVICES, SERVICES } from '@/lib/constants';
+import { locationData, allLocationData, type LocationData } from '@/data/locations/location-data';
+import { getServiceContent } from '@/data/service-content-data';
+import { selectReviewsForPage, getReviewCountForPage, getRatingForPage } from '@/lib/review-selector';
+import { cityUniqueContent, type CityUniqueContent } from '@/data/locations/city-unique-content';
+
+// Service relationship map: for each service, list related services by category
+const SERVICE_RELATIONS: Record<string, { sameCategory: string[]; crossCategory: string[] }> = {
+  'kitchen-remodeling': {
+    sameCategory: ['cabinet-refacing', 'countertop-installation', 'custom-cabinetry', 'kitchen-layout-design'],
+    crossCategory: ['bathroom-remodeling', 'flooring-installation'],
+  },
+  'bathroom-remodeling': {
+    sameCategory: ['shower-remodeling', 'bathtub-replacement', 'vanity-installation', 'tile-installation'],
+    crossCategory: ['kitchen-remodeling', 'flooring-installation'],
+  },
+  'cabinet-refacing': {
+    sameCategory: ['kitchen-remodeling', 'custom-cabinetry', 'countertop-installation'],
+    crossCategory: ['bathroom-remodeling', 'vanity-installation'],
+  },
+  'countertop-installation': {
+    sameCategory: ['kitchen-remodeling', 'cabinet-refacing', 'custom-cabinetry'],
+    crossCategory: ['bathroom-remodeling', 'tile-installation'],
+  },
+  'tile-installation': {
+    sameCategory: ['bathroom-remodeling', 'shower-remodeling', 'flooring-installation'],
+    crossCategory: ['kitchen-remodeling', 'countertop-installation'],
+  },
+  'shower-remodeling': {
+    sameCategory: ['bathroom-remodeling', 'bathtub-replacement', 'tile-installation'],
+    crossCategory: ['kitchen-remodeling', 'aging-in-place'],
+  },
+  'bathtub-replacement': {
+    sameCategory: ['bathroom-remodeling', 'shower-remodeling', 'tile-installation'],
+    crossCategory: ['kitchen-remodeling', 'aging-in-place'],
+  },
+  'vanity-installation': {
+    sameCategory: ['bathroom-remodeling', 'tile-installation', 'shower-remodeling'],
+    crossCategory: ['kitchen-remodeling', 'countertop-installation'],
+  },
+  'kitchen-layout-design': {
+    sameCategory: ['kitchen-remodeling', 'custom-cabinetry', 'countertop-installation'],
+    crossCategory: ['bathroom-remodeling', 'flooring-installation'],
+  },
+  'custom-cabinetry': {
+    sameCategory: ['kitchen-remodeling', 'cabinet-refacing', 'kitchen-layout-design'],
+    crossCategory: ['bathroom-remodeling', 'vanity-installation'],
+  },
+  'flooring-installation': {
+    sameCategory: ['tile-installation', 'kitchen-remodeling', 'bathroom-remodeling'],
+    crossCategory: ['countertop-installation', 'aging-in-place'],
+  },
+  'aging-in-place': {
+    sameCategory: ['bathroom-remodeling', 'shower-remodeling', 'bathtub-replacement'],
+    crossCategory: ['kitchen-remodeling', 'flooring-installation'],
+  },
+};
 
 export function getStaticPaths() {
   const paths: {
@@ -12,7 +68,7 @@ export function getStaticPaths() {
     props: { location: LocationData; serviceSlug: string };
   }[] = [];
 
-  for (const loc of Object.values(locationData)) {
+  for (const loc of Object.values(allLocationData)) {
     for (const service of COMBO_SERVICES) {
       paths.push({
         params: { city: loc.slug, service },
@@ -31,72 +87,26 @@ interface Props {
 
 const { location, serviceSlug } = Astro.props;
 
-const isKitchen = serviceSlug === 'kitchen-remodeling';
-const serviceName = isKitchen ? 'Kitchen Remodeling' : 'Bathroom Remodeling';
-const serviceNameLower = isKitchen ? 'kitchen remodeling' : 'bathroom remodeling';
-const serviceRoom = isKitchen ? 'kitchen' : 'bathroom';
+const serviceContent = getServiceContent(serviceSlug);
+const serviceName = serviceContent.title;
+const serviceNameLower = serviceName.toLowerCase();
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 
 // Dynamic cost ranges based on median home value
-const costMultiplier = location.medianHomeValue / 500000;
-const baseCostLow = isKitchen ? 25000 : 15000;
-const baseCostHigh = isKitchen ? 75000 : 45000;
-const costLow = Math.round((baseCostLow * costMultiplier) / 1000) * 1000;
-const costHigh = Math.round((baseCostHigh * costMultiplier) / 1000) * 1000;
+const costLow = Math.round((location.medianHomeValue * serviceContent.costMultiplierLow) / 1000) * 1000;
+const costHigh = Math.round((location.medianHomeValue * serviceContent.costMultiplierHigh) / 1000) * 1000;
 const avgCost = Math.round(((costLow + costHigh) / 2) / 1000) * 1000;
 
 // Filter relevant popular projects
-const relevantProjects = location.popularProjects.filter((p) => {
-  const lower = p.toLowerCase();
-  if (isKitchen) {
-    return lower.includes('kitchen') || lower.includes('cabinet') || lower.includes('countertop') || lower.includes('island') || lower.includes('pantry');
-  }
-  return lower.includes('bathroom') || lower.includes('bath') || lower.includes('shower') || lower.includes('tub') || lower.includes('vanity') || lower.includes('tile') || lower.includes('floor');
-});
+const relevantProjects = location.popularProjects.filter(serviceContent.projectFilter);
 
 // Use all projects if none matched the filter
 const displayProjects = relevantProjects.length > 0 ? relevantProjects : location.popularProjects.slice(0, 3);
 
 // Generate FAQ content
-const faqs = isKitchen
-  ? [
-      {
-        question: `How much does a kitchen remodel cost in ${location.city}, WA?`,
-        answer: `For ${location.city} homes valued around ${formatCurrency(location.medianHomeValue)}, we typically see kitchen remodels ranging from ${formatCurrency(costLow)} for a basic refresh (cabinet refacing, new countertops, updated fixtures) to ${formatCurrency(costHigh)} for a high-end renovation with custom cabinetry, premium stone, and layout changes. The average project in ${location.city} runs about ${formatCurrency(avgCost)}. Older ${location.housingStyles[0].toLowerCase()} homes in the area often need electrical or plumbing updates once walls are opened, which can add 10-15% — we identify these issues during your free in-home consultation so there are no budget surprises.`,
-      },
-      {
-        question: `How long does a kitchen remodel take in ${location.city}?`,
-        answer: `A basic refresh in ${location.city} takes 2-3 weeks. A mid-range remodel with new cabinets and countertops runs 6-8 weeks. High-end renovations with layout changes take 10-16 weeks. If your project requires permits from ${location.county} County, add 2-5 weeks for plan review before construction starts — we use that time for material selection and ordering so you're not waiting twice. The ${location.medianHomeAge}-year-old homes common in ${location.city} sometimes reveal surprises during demo that add a few days, which is why we always build contingency into our project schedule.`,
-      },
-      {
-        question: `Do I need a permit for a kitchen remodel in ${location.city}?`,
-        answer: `${location.permitInfo} Bottom line: if you're moving plumbing, adding electrical circuits, or touching structural walls, you need a permit. Cosmetic work (painting, countertops on existing cabinets, hardware) does not. We handle the entire permit process — filing, plan review, inspections — as part of our service. It's included in every quote, not an add-on.`,
-      },
-      {
-        question: `What kitchen remodeling styles are popular in ${location.city}?`,
-        answer: `The most common requests from ${location.city} homeowners: opening up closed-off galley kitchens (very common in the area's ${location.housingStyles[0].toLowerCase()} homes), quartz countertops to replace worn laminate, shaker-style cabinets in white or warm wood tones, and modern tile backsplashes. With homes here averaging ${location.medianHomeAge} years old, many kitchens still have the original cabinets and layout. Popular upgrades also include ${displayProjects.slice(0, 2).join(', ').toLowerCase()} — projects that match the housing stock and lifestyle in this part of the Puget Sound.`,
-      },
-    ]
-  : [
-      {
-        question: `How much does a bathroom remodel cost in ${location.city}, WA?`,
-        answer: `For ${location.city} homes valued around ${formatCurrency(location.medianHomeValue)}, bathroom remodels range from ${formatCurrency(costLow)} for a cosmetic refresh (new vanity, fixtures, paint, lighting) to ${formatCurrency(costHigh)} for a full spa-style renovation with custom tile, frameless glass shower, heated floors, and premium fixtures. The average project in ${location.city} comes in around ${formatCurrency(avgCost)}. Tile selection is the biggest cost variable — porcelain at $7-14/sqft vs. marble at $18-35/sqft can swing the total by $3,000-$8,000. We'll walk through all the options during your free consultation.`,
-      },
-      {
-        question: `How long does a bathroom remodel take in ${location.city}?`,
-        answer: `A cosmetic refresh takes 5-8 days. A mid-range remodel with new tile and fixtures runs 2-3 weeks. A full gut renovation in ${location.city} takes 4-6 weeks. Permits from ${location.county} County add 2-4 weeks before construction if your project involves plumbing or electrical work. Tile is the biggest time factor — a fully tiled shower with floor-to-ceiling tile needs 3-5 days just for the tile setter, plus cure time. In ${location.city}'s ${location.medianHomeAge}-year-old homes, we sometimes find plumbing or waterproofing issues during demo that add a couple of days.`,
-      },
-      {
-        question: `Do I need a permit for a bathroom remodel in ${location.city}?`,
-        answer: `${location.permitInfo} In practical terms: a tub-to-shower conversion requires a plumbing permit. Adding or moving electrical outlets or circuits requires an electrical permit. Structural changes need a building permit. Cosmetic updates (new vanity, paint, accessories) don't need permits. We handle all the paperwork and inspections as part of our standard service — it's included in your quote.`,
-      },
-      {
-        question: `What are popular bathroom remodel features in ${location.city}?`,
-        answer: `The #1 request from ${location.city} homeowners is converting an old tub-shower combo to a walk-in shower with frameless glass — we do this project more than any other. Heated tile floors are extremely popular in our PNW climate (they cost $600-$1,600 and add about $30/year to your electric bill). Other common requests: floating vanities, large-format porcelain tile that mimics marble, proper exhaust fans with humidity sensors, and built-in shower niches. In the ${location.housingStyles[0].toLowerCase()} homes common to ${location.city}, improving ventilation is especially important given our 9 months of damp weather.`,
-      },
-    ];
+const faqs = serviceContent.faqs(location, formatCurrency, costLow, costHigh, avgCost);
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -111,12 +121,336 @@ const faqSchema = {
   })),
 };
 
-const pageTitle = `${serviceName} ${location.city}, WA | ${SITE.shortName}`;
-const pageDescription = `Expert ${serviceNameLower} in ${location.city}, WA. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Licensed, insured, ${SITE.reviews.count}+ 5-star reviews. Free estimates.`;
+// Deterministic hash for template variation (stable across builds)
+function simpleHash(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+const pageHash = simpleHash(`${location.slug}+${serviceSlug}`);
+
+// ─────────────────────────────────────────────
+// City Content Angles — unique paragraphs per city+service combo
+// Hash selects 2-3 of 6 angles so different pages get different structure
+// ─────────────────────────────────────────────
+
+interface ContentAngle {
+  heading: string;
+  paragraph: string;
+}
+
+function getDecadeBucket(homeAge: number): { decade: string; era: string } {
+  const builtYear = new Date().getFullYear() - homeAge;
+  if (builtYear < 1940) return { decade: '1920s-30s', era: 'pre-war' };
+  if (builtYear < 1960) return { decade: '1940s-50s', era: 'post-war' };
+  if (builtYear < 1980) return { decade: '1960s-70s', era: 'mid-century' };
+  if (builtYear < 2000) return { decade: '1980s-90s', era: 'late 20th century' };
+  return { decade: '2000s-2010s', era: 'modern' };
+}
+
+function generateContentAngles(loc: LocationData, svcSlug: string, svcName: string, hash: number): ContentAngle[] {
+  const allAngles: ContentAngle[] = [];
+  const { decade, era } = getDecadeBucket(loc.medianHomeAge);
+  const svcLower = svcName.toLowerCase();
+  const primaryStyle = loc.housingStyles[0]?.toLowerCase() || 'residential';
+  const secondaryStyle = loc.housingStyles[1]?.toLowerCase() || 'mid-century';
+
+  // Angle 1 — Historical context
+  const historicalImplications: Record<string, string> = {
+    'kitchen-remodeling': `kitchens from this period typically feature closed-off galley layouts, limited counter space, and outdated electrical that cannot support modern appliance loads — all issues we address during renovation`,
+    'bathroom-remodeling': `bathrooms from this era often have cast-iron drain pipes nearing end-of-life, inadequate ventilation for the Pacific Northwest climate, and tile work that predates modern waterproofing standards`,
+    'cabinet-refacing': `the cabinet boxes in these homes were often built with solid plywood or hardwood — far sturdier than today's particleboard — making them ideal candidates for refacing rather than full replacement`,
+    'countertop-installation': `original laminate or tile countertops from this period are often paired with non-standard cabinet depths, requiring precise templating to ensure new stone surfaces fit correctly`,
+    'tile-installation': `subfloors in homes this age may have shifted or settled unevenly, requiring leveling compound and sometimes subfloor reinforcement before new tile can be properly set`,
+    'shower-remodeling': `shower pans and waterproofing from this era relied on hot-mopped tar paper or plastic sheeting — methods that degrade over decades and are the leading cause of hidden moisture damage we find during demo`,
+    'bathtub-replacement': `alcove dimensions in older homes rarely match today's standard tub sizes, so replacement often involves reframing the alcove or selecting a custom-fit unit`,
+    'vanity-installation': `bathroom proportions in older homes are typically more compact, with door swings and fixture placements that require careful vanity sizing to maintain usable floor space`,
+    'kitchen-layout-design': `load-bearing walls between kitchens and dining rooms are common in homes from this era, requiring structural engineering for open-concept conversions`,
+    'custom-cabinetry': `non-standard ceiling heights and out-of-square walls in older construction mean stock cabinets almost never fit properly — custom cabinetry resolves these issues with precision`,
+    'flooring-installation': `homes from this period often have multiple flooring layers stacked on top of each other, and the original subfloor may contain materials that require professional assessment before new flooring goes down`,
+    'aging-in-place': `narrow doorways, high tub walls, and step-up thresholds in older homes create the most common accessibility barriers that aging-in-place modifications address`,
+  };
+  const implication = historicalImplications[svcSlug] || `homes from this period present specific challenges that our team encounters and resolves on a regular basis`;
+  const capitalizedStyle = primaryStyle.charAt(0).toUpperCase() + primaryStyle.slice(1);
+  allAngles.push({
+    heading: `${loc.city}'s ${capitalizedStyle} Heritage and Your ${svcName} Project`,
+    paragraph: `Built primarily in the ${decade}, ${loc.city}'s ${primaryStyle} homes reflect ${era} building standards and construction techniques. This means ${implication}. Understanding the specific characteristics of ${era}-era ${primaryStyle} construction is not just academic — it directly impacts material choices, project timelines, and the structural considerations that determine whether your ${svcLower} project goes smoothly or hits unexpected complications.`,
+  });
+
+  // Angle 2 — Neighborhood spotlight
+  if (loc.neighborhoods.length >= 3) {
+    const nIdx = hash % loc.neighborhoods.length;
+    const n1 = loc.neighborhoods[nIdx % loc.neighborhoods.length];
+    const n2 = loc.neighborhoods[(nIdx + 3) % loc.neighborhoods.length];
+    const n3 = loc.neighborhoods[(nIdx + 7) % loc.neighborhoods.length];
+
+    const neighborhoodIssues: Record<string, string[]> = {
+      'kitchen-remodeling': [
+        'galley layouts with limited natural light that benefit from skylight additions during renovation',
+        'open floor plans that need better-defined kitchen zones without sacrificing the spacious feel',
+        'original cabinetry with solid-wood construction worth preserving through refacing rather than replacement',
+      ],
+      'bathroom-remodeling': [
+        'single-bathroom floor plans where a temporary portable facility is essential during renovation',
+        'bathrooms positioned on exterior walls where moisture intrusion is a particular concern',
+        'split-level homes where bathroom plumbing runs through the slab, complicating fixture relocation',
+      ],
+      'cabinet-refacing': [
+        'honey oak cabinets from the 1990s that are structurally excellent but aesthetically outdated',
+        'original hardwood cabinet boxes built to a quality standard rarely seen in modern construction',
+        'custom-depth cabinets that make stock door replacements impossible — refacing with custom doors is the solution',
+      ],
+      'countertop-installation': [
+        'older laminate counters with non-standard overhangs that require precise templating for stone replacement',
+        'kitchen islands added during previous remodels that may not be properly supported for heavy stone',
+        'tight kitchen access through narrow hallways that challenges slab delivery — our team plans routes in advance',
+      ],
+      'tile-installation': [
+        'concrete slab foundations where moisture testing is critical before tile installation',
+        'wood-framed upper floors that need deflection assessment for large-format tile',
+        'original tile over multiple previous layers that all need removal before proper installation',
+      ],
+      'shower-remodeling': [
+        'older showers with signs of hidden moisture damage behind the tile — something we check before quoting',
+        'master suites where tub-to-shower conversions are the most requested upgrade',
+        'hall bathrooms shared by multiple bedrooms where shower accessibility matters most',
+      ],
+      'bathtub-replacement': [
+        'clawfoot tubs in character homes where owners want a modern soaker tub that fits the aesthetic',
+        'standard alcove tubs in tract homes that are straightforward to replace with a modern unit',
+        'garden tubs from the 1990s that homeowners are converting to walk-in showers or freestanding soakers',
+      ],
+      'vanity-installation': [
+        'pedestal sinks that owners want to replace with storage-rich vanity cabinets',
+        'double-vanity master baths where counter space and storage are the priority',
+        'powder rooms with limited floor space that need wall-mounted or corner vanity solutions',
+      ],
+      'kitchen-layout-design': [
+        'U-shaped kitchens that feel closed off and benefit from removing one wall to create a peninsula',
+        'L-shaped layouts in corner units where the work triangle is too spread out',
+        'galley kitchens where a pass-through window or half-wall can open the space without full wall removal',
+      ],
+      'custom-cabinetry': [
+        'non-standard ceiling heights where stock cabinets leave awkward gaps above',
+        'kitchen alcoves and built-in nooks that only custom-fitted cabinetry can utilize properly',
+        'pantry conversions from coat closets where every inch of depth and height matters',
+      ],
+      'flooring-installation': [
+        'homes with radiant heating systems underneath existing floors requiring careful removal',
+        'split-level transitions where floor height changes need seamless material transitions',
+        'high-traffic entryways where durability matters more than aesthetics',
+      ],
+      'aging-in-place': [
+        'narrow bathroom doorways that need widening for wheelchair accessibility',
+        'stepped entries between rooms that require threshold ramps or leveling',
+        'bathtubs with high walls that pose fall risks for aging residents',
+      ],
+    };
+    const issues = neighborhoodIssues[svcSlug] || [
+      'homes with specific construction characteristics that our crew knows how to handle',
+      'properties where previous renovation work needs to be assessed before proceeding',
+      'residences where the local building department has specific requirements we navigate regularly',
+    ];
+    allAngles.push({
+      heading: `${svcName} Across ${loc.city}'s Neighborhoods`,
+      paragraph: `${loc.city}'s neighborhoods each have their own character and remodeling profile. In ${n1}, we frequently work on homes with ${issues[0]}. Over in ${n2}, the common scenario is ${issues[1]}. And in ${n3}, we typically encounter ${issues[2]}. These neighborhood-level differences are why we always start with an in-home assessment rather than quoting sight-unseen — the specifics of your home's location within ${loc.city} directly affect scope, timeline, and cost.`,
+    });
+  }
+
+  // Angle 3 — Climate/weather impact (PNW-specific)
+  const climateImpacts: Record<string, string> = {
+    'kitchen-remodeling': `Seattle's 37 inches of annual rainfall and 200+ overcast days make kitchen lighting design critical — we compensate with layered lighting (under-cabinet, pendant, recessed) and reflective surfaces like light quartz countertops and glass tile backsplashes that maximize available natural light. Ventilation is equally important: our range hood installations account for the fact that opening windows for cooking ventilation isn't practical for much of the year.`,
+    'bathroom-remodeling': `The Pacific Northwest's 9 months of elevated humidity makes bathroom ventilation the single most important investment in any remodel. We install humidity-sensing exhaust fans rated at minimum 110 CFM on every bathroom project — not the builder-grade 50 CFM units that can't keep up with PNW moisture levels. Proper waterproofing behind tile (Schluter Kerdi system) is non-negotiable here, unlike drier climates where paint-on membranes might suffice.`,
+    'cabinet-refacing': `PNW humidity can cause wood veneer to expand and contract seasonally. We use moisture-resistant adhesives and allow proper acclimation time for materials before installation. Thermofoil doors — popular in drier climates — tend to delaminate faster in our humid environment, which is why we recommend wood veneer or high-pressure laminate for ${loc.city} kitchens unless the kitchen has excellent climate control.`,
+    'countertop-installation': `In the PNW climate, natural stone countertops require consistent sealing schedules — granite should be sealed annually, marble every 6 months. This is more frequent than manufacturers recommend for drier regions because our sustained humidity accelerates penetration. Quartz, being non-porous, has a natural advantage in our climate and is our most recommended material for ${loc.city} homeowners who want minimal maintenance.`,
+    'tile-installation': `Tile installation in the Pacific Northwest requires waterproofing standards that exceed national norms. We use the Schluter Kerdi system on all wet-area installations — not just in showers, but on any wall adjacent to a tub or sink. Our region's sustained humidity means moisture migrates through grout and into wall cavities faster than in arid climates, making membrane waterproofing essential rather than optional.`,
+    'shower-remodeling': `Every shower we build in ${loc.city} gets Schluter Kerdi waterproofing as standard — no exceptions. In the PNW's high-humidity environment, a shower produces more sustained moisture than the same shower in Phoenix or Denver. We also spec exhaust fans at 110+ CFM (vs. the code-minimum 50 CFM) because our ambient humidity means the fan has to work harder to remove moisture. These details prevent the mold problems we regularly find behind showers in older ${loc.city} homes.`,
+    'bathtub-replacement': `The PNW climate means the area around your bathtub is exposed to sustained humidity even when the tub isn't in use. During replacement, we inspect and replace the waterproof membrane behind the surround, check for any moisture damage in the subfloor, and ensure proper caulking with mildew-resistant silicone rated for high-humidity environments. These preventive steps during installation save thousands in potential moisture damage repair down the road.`,
+    'vanity-installation': `Bathroom vanities in the Pacific Northwest face constant humidity exposure. We recommend solid wood or marine-grade plywood construction over particleboard or MDF for vanity cabinets in ${loc.city} homes. Wall-mounted vanities have become increasingly popular here because they allow air circulation underneath, reducing the moisture contact that causes base cabinet deterioration in our climate. All plumbing connections get checked for slow leaks that our humid environment can mask until damage is significant.`,
+    'kitchen-layout-design': `Seattle's overcast climate directly influences optimal kitchen layout. North-facing kitchens — common in ${loc.city} — benefit from layouts that position work surfaces near windows and use light-reflective materials. We design lighting plans with 3-4 independent circuits (ambient, task, accent, under-cabinet) because artificial light carries most of the burden for 8+ months of the year. Open layouts that borrow light from adjacent rooms are especially effective in PNW homes.`,
+    'custom-cabinetry': `Custom cabinetry for ${loc.city} homes should be built with moisture-resistant materials. We use marine-grade plywood for cabinet boxes in high-humidity areas (near dishwashers, under sinks) and apply finished interiors to prevent moisture absorption. Our cabinet makers account for seasonal wood movement in their joinery — critical in the PNW where indoor humidity swings from 35% (winter with heating) to 65% (summer) can cause solid wood panels to shift by 1/8" or more.`,
+    'flooring-installation': `PNW homes present unique flooring challenges: tracked-in rain and mud 8+ months per year, radiant heating systems in many newer homes, and sustained humidity that affects wood and laminate stability. We recommend engineered hardwood over solid hardwood for ${loc.city} installations — the cross-grain plywood core resists the moisture-driven expansion that causes solid wood floors to cup and buckle in our climate. LVP (luxury vinyl plank) has also become extremely popular here for its complete moisture resistance.`,
+    'aging-in-place': `The Pacific Northwest's wet climate makes slip resistance the top safety priority for aging-in-place modifications. We install textured-finish tile (minimum 0.60 DCOF rating) on all bathroom and entry floors, add grab bars rated for 500 lbs at strategic locations, and ensure thresholds are flush to prevent tripping in low-light conditions that are common during our extended overcast seasons. Proper exterior lighting at entries is also critical — our early-sunset months from October through March create fall risks at doorways.`,
+  };
+  const climate = climateImpacts[svcSlug] || `The Pacific Northwest's high-humidity environment and extended rainy season create specific requirements for ${svcLower} projects that differ significantly from national standards. Our team applies region-specific techniques to ensure durability in this climate.`;
+  allAngles.push({
+    heading: `How ${loc.city}'s Climate Affects Your ${svcName} Project`,
+    paragraph: climate,
+  });
+
+  // Angle 4 — Investment/ROI
+  const roiPercentages: Record<string, { low: number; high: number; insight: string }> = {
+    'kitchen-remodeling': { low: 60, high: 80, insight: 'buyers consistently rank an updated kitchen as their #1 decision factor — homes with recently remodeled kitchens sell 15-20 days faster on average' },
+    'bathroom-remodeling': { low: 55, high: 70, insight: 'a dated bathroom is the most common deal-breaker cited by buyers in this market, and updated bathrooms consistently rank in the top 3 features on listing searches' },
+    'cabinet-refacing': { low: 75, high: 95, insight: 'the cost-to-impact ratio of refacing is among the highest of any kitchen project because buyers see the dramatic visual change without knowing you invested a fraction of full replacement cost' },
+    'countertop-installation': { low: 65, high: 85, insight: 'stone countertops are now an expected feature at this price point — homes without them often get flagged as needing updates in listing descriptions' },
+    'tile-installation': { low: 50, high: 70, insight: 'quality tile work signals overall home maintenance to buyers, and a well-tiled shower or floor rarely needs revisiting for 20+ years' },
+    'shower-remodeling': { low: 55, high: 75, insight: 'walk-in showers have displaced bathtubs as the preferred feature in master bathrooms, and buyers increasingly expect frameless glass enclosures at this price point' },
+    'bathtub-replacement': { low: 50, high: 65, insight: 'while walk-in showers dominate master baths, maintaining at least one bathtub in the home remains important for families with young children — the key resale play' },
+    'vanity-installation': { low: 60, high: 80, insight: 'vanities anchor a bathroom\'s visual impression, and an updated vanity with stone top and modern fixtures can make the entire room feel renovated' },
+    'kitchen-layout-design': { low: 65, high: 85, insight: 'open-concept kitchens sell for 7-12% more than comparable homes with closed layouts in this market, making layout redesign one of the highest-ROI investments' },
+    'custom-cabinetry': { low: 55, high: 75, insight: 'custom cabinetry appeals to discerning buyers who can immediately tell the difference between stock and built-to-fit — it positions your home in a higher tier of listings' },
+    'flooring-installation': { low: 70, high: 90, insight: 'new flooring has one of the highest ROI percentages because it transforms every room at once and is immediately visible in listing photos' },
+    'aging-in-place': { low: 40, high: 60, insight: 'accessibility features are increasingly valued by buyers planning to age in place themselves, and universal design modifications rarely detract from a home\'s appeal to younger buyers' },
+  };
+  const roi = roiPercentages[svcSlug] || { low: 50, high: 70, insight: 'strategic remodeling investments in this market consistently return a significant portion of their cost at resale' };
+  const valueStr = loc.medianHomeValue >= 1000000
+    ? `$${(loc.medianHomeValue / 1000000).toFixed(1)} million`
+    : `$${Math.round(loc.medianHomeValue / 1000)}K`;
+  allAngles.push({
+    heading: `${svcName} ROI in ${loc.city}'s Housing Market`,
+    paragraph: `With ${loc.city} homes valued at a median of ${formatCurrency(loc.medianHomeValue)}, a well-executed ${svcLower} project typically recovers ${roi.low}-${roi.high}% of its cost in added home value. In ${loc.city}'s competitive real estate market, ${roi.insight}. The ${secondaryStyle} and ${primaryStyle} homes that make up much of ${loc.city}'s housing stock are at the sweet spot where remodeling investment makes the most financial sense — the homes are established enough to need updating, and the neighborhood values are strong enough to support the investment.`,
+  });
+
+  // Angle 5 — Local regulations
+  const permitTimelines: Record<string, { permitType: string; weeks: string; detail: string }> = {
+    'kitchen-remodeling': { permitType: 'building, electrical, and plumbing permits', weeks: '3-6', detail: 'Structural changes like wall removal also require an engineering review, which adds 1-2 weeks but ensures your open-concept kitchen meets seismic requirements' },
+    'bathroom-remodeling': { permitType: 'plumbing and electrical permits', weeks: '2-5', detail: 'Even a tub-to-shower conversion triggers a plumbing permit because it changes the drain configuration, and adding GFCI outlets requires an electrical permit' },
+    'cabinet-refacing': { permitType: 'no permits (cosmetic work)', weeks: '0', detail: 'Refacing is classified as cosmetic maintenance, not construction. The only exception is adding under-cabinet electrical circuits, which requires an electrical permit' },
+    'countertop-installation': { permitType: 'plumbing permit only if sink is relocated', weeks: '1-3', detail: 'A straight countertop swap with the sink in the same position needs no permit. Moving the sink even a few inches triggers a plumbing permit because it changes the drain and supply line routing' },
+    'tile-installation': { permitType: 'no permits for tile itself; plumbing permit if fixtures move', weeks: '0-3', detail: 'Tile is classified as a finish material and does not require a permit. However, if your tile project is part of a larger bathroom renovation with plumbing or electrical changes, those elements need their own permits' },
+    'shower-remodeling': { permitType: 'plumbing permit (required for all shower modifications)', weeks: '2-4', detail: 'Any change to the shower valve, drain, or supply lines requires a plumbing permit. If you are adding electrical (steam unit, body spray pump), an electrical permit is also needed' },
+    'bathtub-replacement': { permitType: 'plumbing permit', weeks: '2-4', detail: 'Replacing a tub with a different size or type changes the drain configuration and often the supply line routing, triggering a plumbing permit' },
+    'vanity-installation': { permitType: 'plumbing permit if supply/drain lines change', weeks: '1-3', detail: 'A vanity swap on existing plumbing rarely needs a permit. Relocating the vanity or changing from a single to double sink requires a plumbing permit' },
+    'kitchen-layout-design': { permitType: 'building, structural, electrical, and plumbing permits', weeks: '4-8', detail: 'Layout redesign almost always involves structural, plumbing, and electrical changes. A structural engineer\'s stamped plans are required for any wall removal or modification in this jurisdiction' },
+    'custom-cabinetry': { permitType: 'no permits for cabinetry itself', weeks: '0', detail: 'Cabinet installation is classified as finish work. If the project includes adding lighting circuits, gas lines, or plumbing for new features, those specific elements need permits' },
+    'flooring-installation': { permitType: 'no permits for standard flooring', weeks: '0', detail: 'Flooring replacement is cosmetic maintenance. If your project involves leveling the subfloor with structural modifications (sistering joists, adding support), a building permit may be required' },
+    'aging-in-place': { permitType: 'varies by modification scope', weeks: '2-5', detail: 'Grab bar installation alone needs no permit, but widening doorways (structural), adding curbless showers (plumbing), or installing stair lifts (electrical) each require their respective trade permits' },
+  };
+  const permit = permitTimelines[svcSlug] || { permitType: 'depends on scope', weeks: '2-5', detail: 'Our team handles all permit applications, plan review coordination, and inspections as part of our standard service' };
+  if (permit.weeks !== '0') {
+    allAngles.push({
+      heading: `${loc.county} County Permit Requirements for ${svcName}`,
+      paragraph: `${loc.county} County requires ${permit.permitType} for most ${svcLower} projects. The typical timeline for permit approval in ${loc.city} is ${permit.weeks} weeks. ${permit.detail}. We handle the entire permit process — application filing, plan submission, review coordination, and scheduling inspections — as part of every project quote. No separate charges, no hassle, and no risk of unpermitted work that could create problems when you sell your home. Our crews file permits with ${loc.city}'s building department on a weekly basis and know exactly what the reviewers look for.`,
+    });
+  }
+
+  // Angle 6 — Common problems in this area
+  const commonProblems: Record<string, { p1: string; p2: string; p3: string }> = {
+    'kitchen-remodeling': { p1: 'outdated electrical panels that cannot support modern appliance loads (electric range, dishwasher, disposal, microwave on separate circuits)', p2: 'galvanized steel water supply lines that restrict flow and discolor water — we replace these with PEX or copper during renovation', p3: 'inadequate kitchen ventilation leading to moisture buildup in cabinets and chronic grease accumulation on surfaces' },
+    'bathroom-remodeling': { p1: 'hidden mold behind tile walls from decades of inadequate waterproofing', p2: 'galvanized drain pipes that are corroded internally, causing slow drains that no amount of cleaning will fix', p3: 'exhaust fans vented into the attic instead of outside, creating moisture damage in the roof structure' },
+    'cabinet-refacing': { p1: 'thermofoil doors peeling at the edges from heat and humidity exposure near stoves and dishwashers', p2: 'water damage at the base of sink cabinets from slow leaks that went unnoticed for years', p3: 'sagging shelves from overloading particle-board interiors that were standard in budget 1990s construction' },
+    'countertop-installation': { p1: 'existing cabinets that are not level after decades of settling — requiring shimming before new stone goes on', p2: 'previous laminate counters glued directly to the cabinet tops, making removal messy and time-consuming', p3: 'undermount sink cutouts in the wrong position for the new counter layout, requiring plumbing adjustment' },
+    'tile-installation': { p1: 'multiple layers of flooring stacked on top of each other (vinyl over tile over linoleum) that all need removal', p2: 'subfloors that flex too much for tile — wood-framed floors need 1.25" minimum combined thickness to prevent cracked grout', p3: 'improperly sloped shower pans that pool water instead of directing it to the drain' },
+    'shower-remodeling': { p1: 'hidden water damage behind existing tile from failed or nonexistent waterproofing membranes', p2: 'corroded shower valves that leak behind the wall where you can not see the damage until demo', p3: 'shower pans built without proper pre-slope or waterproof liner, allowing water to seep into the subfloor' },
+    'bathtub-replacement': { p1: 'cast-iron tubs that weigh 300-400 lbs and require careful removal planning to avoid floor and wall damage', p2: 'subfloor rot around the tub base from years of splash-over and condensation', p3: 'non-standard alcove dimensions that do not match any current tub models, requiring reframing' },
+    'vanity-installation': { p1: 'plumbing centered on the wall from an era when vanity sizes were smaller — supply and drain may need repositioning', p2: 'water damage on the floor and wall behind the existing vanity from undetected slow leaks', p3: 'electrical outlets positioned behind the vanity that need to be relocated to meet current code for GFCI placement' },
+    'kitchen-layout-design': { p1: 'load-bearing walls between the kitchen and living areas that require structural beams for removal', p2: 'HVAC ductwork running through walls slated for removal, requiring rerouting', p3: 'electrical panels located on kitchen walls that need to be relocated before layout changes can proceed' },
+    'custom-cabinetry': { p1: 'walls that are out of square by 1/2" or more — invisible with stock cabinets but obvious with precision custom work unless compensated for', p2: 'ceiling heights that vary across the kitchen, requiring custom crown molding cuts to maintain a level line', p3: 'existing soffit spaces that hide HVAC ducts or electrical — opening them up for taller cabinets requires rerouting' },
+    'flooring-installation': { p1: 'asbestos-containing vinyl flooring tiles or adhesive in pre-1980 homes that require professional abatement before removal', p2: 'concrete slabs with high moisture vapor emission rates that cause adhesive failure under LVP or hardwood', p3: 'floor height transitions between rooms where the new flooring meets existing surfaces at different levels' },
+    'aging-in-place': { p1: 'bathroom doorways narrower than 32 inches that do not accommodate wheelchairs or walkers', p2: 'high bathtub walls that create the #1 fall risk for seniors — converting to curbless showers eliminates this hazard', p3: 'poor lighting in hallways and bathrooms that increases fall risk during nighttime use' },
+  };
+  const problems = commonProblems[svcSlug] || { p1: 'age-related wear that has accumulated over decades', p2: 'previous repair work that was done improperly or without permits', p3: 'outdated materials that no longer meet current building codes' };
+  allAngles.push({
+    heading: `Common ${svcName} Issues in ${loc.city}'s ${loc.medianHomeAge}-Year-Old Homes`,
+    paragraph: `The ${loc.medianHomeAge}-year-old homes common in ${loc.city} frequently present issues our team is experienced at handling. The most common: ${problems.p1}. We also regularly find ${problems.p2}. And during demolition, our crews often discover ${problems.p3}. None of these are deal-breakers — they are routine findings in ${loc.city}'s ${primaryStyle} housing stock, and we factor likely discoveries into every project timeline and budget. Our pre-project inspection catches most of these issues before demo day so you get an accurate quote, not a surprise change order.`,
+  });
+
+  // Select 2-3 angles based on hash
+  // Shuffle deterministically using hash, then pick first 2 or 3
+  const angleCount = (hash % 3 === 0) ? 3 : 2; // ~33% get 3 angles, ~67% get 2
+  const indices = allAngles.map((_, i) => i);
+  // Fisher-Yates-ish shuffle with hash
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = simpleHash(`${loc.slug}:${svcSlug}:${i}`) % (i + 1);
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices.slice(0, angleCount).map(i => allAngles[i]);
+}
+
+const contentAngles = generateContentAngles(location, serviceSlug, serviceName, pageHash);
+
+// ─────────────────────────────────────────────
+// City-unique content (400-500 unique words per page)
+// ─────────────────────────────────────────────
+const uniqueContent = cityUniqueContent[location.slug] as CityUniqueContent | undefined;
+
+// Select the service-specific paragraph based on service category
+const kitchenServices = ['kitchen-remodeling', 'cabinet-refacing', 'countertop-installation', 'custom-cabinetry', 'kitchen-layout-design'];
+const bathroomServices = ['bathroom-remodeling', 'shower-remodeling', 'bathtub-replacement', 'vanity-installation', 'tile-installation'];
+
+function getServiceUniqueContext(uc: CityUniqueContent | undefined, svcSlug: string): string | undefined {
+  if (!uc) return undefined;
+  if (kitchenServices.includes(svcSlug)) return uc.kitchenContext;
+  if (bathroomServices.includes(svcSlug)) return uc.bathroomContext;
+  return uc.generalContext;
+}
+
+const serviceUniqueContext = getServiceUniqueContext(uniqueContent, serviceSlug);
+
+// Pick 1-2 neighborhood insights deterministically
+const neighborhoodInsights = uniqueContent?.neighborhoodInsights || [];
+const selectedInsightIdx = pageHash % Math.max(neighborhoodInsights.length, 1);
+const selectedInsights = neighborhoodInsights.length > 0
+  ? [neighborhoodInsights[selectedInsightIdx % neighborhoodInsights.length], neighborhoodInsights[(selectedInsightIdx + 1) % neighborhoodInsights.length]].filter((v, i, a) => a.indexOf(v) === i)
+  : [];
+
+// ─────────────────────────────────────────────
+
+// Title variations (4 patterns)
+const titleTemplates = [
+  `${serviceName} ${location.city}, WA | ${SITE.shortName}`,
+  `${serviceName} in ${location.city}, WA — Free Estimates | KB Remodeling`,
+  `Top ${serviceName} ${location.city} WA | ${SITE.reviews.rating}★ Rated | ${SITE.shortName}`,
+  `${location.city} ${serviceName} Experts | ${SITE.shortName}`,
+];
+const pageTitle = titleTemplates[pageHash % titleTemplates.length];
+
+// Description variations (5 patterns)
+const neighborhoods3 = location.neighborhoods.slice(0, 3).join(', ');
+const descTemplates = [
+  `Expert ${serviceNameLower} in ${location.city}, WA. Serving ${neighborhoods3} & more. Licensed, insured, ${SITE.reviews.count}+ 5-star reviews. Free estimates.`,
+  `${serviceName} specialists in ${location.city}, WA. Trusted by ${location.city} homeowners since ${SITE.yearFounded}. From ${formatCurrency(costLow)}. Call ${SITE.phone}.`,
+  `Looking for ${serviceNameLower} in ${location.city}? We've completed ${SITE.projects}+ projects across ${location.county} County. ${SITE.reviews.rating}★ rated. Free in-home estimates.`,
+  `Professional ${serviceNameLower} for ${location.city}'s ${location.housingStyles[0].toLowerCase()} homes. ${SITE.warranty} warranty, transparent pricing. Schedule your free consultation.`,
+  `Top-rated ${serviceNameLower} in ${location.city}, WA. Serving ${neighborhoods3}. See why ${SITE.reviews.count}+ homeowners trust us. Get a free quote today.`,
+];
+const pageDescription = descTemplates[pageHash % descTemplates.length];
+
+const canonicalUrl = `${SITE.url}/areas-served/${location.slug}/${serviceSlug}/`;
 
 const nearbyLocations = location.nearbyAreas
   .map((slug) => locationData[slug])
   .filter(Boolean);
+
+// Build related services list: 3 from same category + 1 cross-category
+const relations = SERVICE_RELATIONS[serviceSlug] || { sameCategory: [], crossCategory: [] };
+const relatedServiceSlugs = [
+  ...relations.sameCategory.slice(0, 3),
+  ...relations.crossCategory.slice(0, 1),
+];
+const relatedServices = relatedServiceSlugs
+  .map((slug) => SERVICES.find((s) => s.slug === slug))
+  .filter(Boolean);
+
+// Cost guide mapping for contextual link
+const costGuideMap: Record<string, string> = {
+  'kitchen-remodeling': '/cost-guides/kitchen-remodel-cost-seattle/',
+  'bathroom-remodeling': '/cost-guides/bathroom-remodel-cost-seattle/',
+  'cabinet-refacing': '/cost-guides/cabinet-refacing-cost/',
+  'countertop-installation': '/cost-guides/countertop-installation-cost/',
+  'shower-remodeling': '/cost-guides/shower-remodel-cost/',
+  'bathtub-replacement': '/cost-guides/bathtub-replacement-cost/',
+  'vanity-installation': '/cost-guides/vanity-installation-cost/',
+  'tile-installation': '/cost-guides/tile-installation-cost-seattle/',
+  'flooring-installation': '/cost-guides/flooring-installation-cost-seattle/',
+  'custom-cabinetry': '/cost-guides/custom-cabinetry-cost-seattle/',
+};
+const costGuideUrl = costGuideMap[serviceSlug];
+
+// Per-page reviews (deterministic, visible on page, passed to schema)
+const pageReviews = selectReviewsForPage(serviceSlug, location.slug);
+const pageReviewCount = getReviewCountForPage(serviceSlug, location.slug);
+const pageRating = getRatingForPage(serviceSlug, location.slug);
+
+// Format star display helper
+const fullStars = Math.floor(pageRating);
+const hasHalfStar = pageRating % 1 >= 0.3;
 ---
 
 <BaseLayout
@@ -133,6 +467,17 @@ const nearbyLocations = location.nearbyAreas
       { label: location.city, href: `/areas-served/${location.slug}/` },
       { label: serviceName, href: `/areas-served/${location.slug}/${serviceSlug}/` },
     ]}
+  />
+
+  <!-- Product Schema with AggregateRating — reviews match visible section below -->
+  <SchemaProduct
+    productName={`${serviceName} in ${location.city}, WA`}
+    productDescription={pageDescription}
+    pageUrl={canonicalUrl}
+    lowPrice={String(costLow)}
+    reviews={pageReviews}
+    reviewCount={pageReviewCount}
+    ratingValue={pageRating}
   />
 
   <!-- FAQ Schema -->
@@ -173,9 +518,7 @@ const nearbyLocations = location.nearbyAreas
           {serviceName} in {location.city}, WA
         </h1>
         <p class="text-white/80 text-lg leading-relaxed mb-8">
-          {isKitchen
-            ? `We've remodeled kitchens in ${location.city}'s ${location.housingStyles[0].toLowerCase()} homes, ${location.housingStyles[1]?.toLowerCase() || 'newer construction'}, and everything in between. Got a cramped galley from 1955 or an open-concept layout that just needs better finishes? We know how to make it work for your life and your budget.`
-            : `From tub-to-shower conversions in ${location.city}'s older ${location.housingStyles[0].toLowerCase()} homes to full spa-style builds in newer construction, we handle bathroom remodels of every scope. Proper waterproofing, quality tile work, and fixtures that last — built for the PNW climate.`}
+          {serviceContent.heroText(location, pageHash)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <Button variant="primary" size="lg" href="/contact/">
@@ -194,45 +537,120 @@ const nearbyLocations = location.nearbyAreas
     </Container>
   </section>
 
+  <!-- Citable Answer Block — optimized for AI Overviews / Featured Snippets -->
+  <section class="py-8 bg-white border-b border-gray-100">
+    <Container>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-lg text-body-text leading-relaxed speakable-summary" data-speakable>
+          {serviceName} in {location.city}, WA costs from {formatCurrency(costLow)} to {formatCurrency(costHigh)} for homes at the {formatCurrency(location.medianHomeValue)} median value.
+          {' '}{location.city} homeowners typically choose {serviceContent.room === 'kitchen' ? 'quartz countertops, custom cabinetry, and modern fixtures' : serviceContent.room === 'bathroom' ? 'walk-in showers, heated tile floors, and frameless glass enclosures' : 'durable materials suited to Pacific Northwest climate conditions'}, with projects taking {serviceContent.room === 'kitchen' ? '3-12 weeks' : serviceContent.room === 'bathroom' ? '1-6 weeks' : '1-4 weeks'} depending on scope.
+          {' '}With homes averaging {location.medianHomeAge} years old in {location.city}, most {serviceNameLower} projects include updates to plumbing, electrical, or structural elements.
+          {' '}{pageRating}★ rated by {pageReviewCount}+ homeowners. Licensed, bonded & insured. Free estimates: <a href={`tel:${SITE.phoneRaw}`} class="text-accent font-semibold hover:underline">{SITE.phone}</a>.
+        </p>
+      </div>
+    </Container>
+  </section>
+
   <!-- Main Content -->
   <section class="py-16 lg:py-24">
     <Container>
       <div class="max-w-4xl mx-auto" data-reveal>
         <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-6">
-          {isKitchen
-            ? `What ${location.city} Homeowners Typically Want in a Kitchen Remodel`
-            : `What ${location.city} Homeowners Ask for in Bathroom Remodels`}
+          {serviceContent.mainHeading(location)}
         </h2>
         <div class="prose prose-lg max-w-none text-body-text leading-relaxed space-y-6">
           <p>
-            {isKitchen
-              ? `Most of the ${location.city} kitchens we remodel are in ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'mid-century'} homes that are ${location.medianHomeAge} years old on average. At that age, you're typically looking at dated cabinets, laminate countertops, worn flooring, and a layout that doesn't match how families cook and live today. With homes here valued around ${formatCurrency(location.medianHomeValue)}, most ${location.city} homeowners invest ${formatCurrency(Math.round(location.medianHomeValue * 0.06 / 1000) * 1000)} to ${formatCurrency(Math.round(location.medianHomeValue * 0.12 / 1000) * 1000)} in a kitchen remodel — enough to make a real transformation without overcapitalizing relative to the neighborhood.`
-              : `The bathrooms we see in ${location.city}'s ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'mid-century'} homes are typically ${location.medianHomeAge} years old and showing it: cracked grout, dated tile, worn-out fixtures, and ventilation that can't keep up with PNW moisture levels. With homes valued around ${formatCurrency(location.medianHomeValue)}, ${location.city} homeowners are putting ${formatCurrency(Math.round(location.medianHomeValue * 0.03 / 1000) * 1000)} to ${formatCurrency(Math.round(location.medianHomeValue * 0.07 / 1000) * 1000)} into bathroom remodels that solve real problems while adding lasting value.`}
+            {serviceContent.mainParagraph1(location, formatCurrency, pageHash)}
           </p>
           <p>
-            {location.description}
+            {serviceContent.mainParagraph2(location)}
           </p>
           <p>
-            {isKitchen
-              ? `Here's what we see most often from ${location.city} homeowners: they want more counter space, better storage, updated finishes, and a kitchen that feels connected to the rest of the home. Many ${location.housingStyles[0].toLowerCase()} homes in the area have closed-off galley kitchens — opening that up to the dining or living area is one of our most requested projects. Others have the right layout but need everything resurfaced: new quartz countertops, refaced or replaced cabinets, modern backsplash, and better lighting. We'll help you figure out which approach makes sense for your home and your budget during a free in-home consultation.`
-              : `The most common requests from ${location.city} homeowners: converting an old tub-shower combo to a walk-in shower, upgrading to a modern vanity with storage, replacing worn tile throughout, and — this is a big one in the Pacific Northwest — fixing ventilation issues that are causing mold or moisture damage. Heated tile floors are also a popular add-on in our climate. We start every ${location.city} bathroom project with an assessment of the existing plumbing, electrical, and waterproofing situation so there are no surprises once demo starts.`}
+            {serviceContent.mainParagraph3(location, pageHash)}
           </p>
+          {serviceUniqueContext && (
+            <p>
+              {serviceUniqueContext}
+            </p>
+          )}
         </div>
       </div>
     </Container>
   </section>
 
+  <!-- City-Unique Housing Stock & Market Context -->
+  {uniqueContent && (
+    <section class="py-16 lg:py-24 bg-white">
+      <Container>
+        <div class="max-w-4xl mx-auto" data-reveal>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4">
+                {location.city}'s Housing Stock
+              </h3>
+              <p class="text-body-text leading-relaxed">
+                {uniqueContent.housingStockDetail}
+              </p>
+            </div>
+            <div>
+              <h3 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4">
+                Local Market Conditions
+              </h3>
+              <p class="text-body-text leading-relaxed">
+                {uniqueContent.marketInsight}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )}
+
+  <!-- City-Specific Content Angles (unique per city+service combination) -->
+  {contentAngles.length > 0 && (
+    <section class="py-16 lg:py-24 bg-light">
+      <Container>
+        <div class="max-w-4xl mx-auto" data-reveal>
+          <div class="space-y-10">
+            {contentAngles.map((angle) => (
+              <div>
+                <h3 class="text-2xl lg:text-3xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4">
+                  {angle.heading}
+                </h3>
+                <p class="text-body-text text-lg leading-relaxed">
+                  {angle.paragraph}
+                </p>
+              </div>
+            ))}
+            {selectedInsights.length > 0 && (
+              <div>
+                <h3 class="text-2xl lg:text-3xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4">
+                  Neighborhood Remodeling Profiles in {location.city}
+                </h3>
+                <div class="space-y-4">
+                  {selectedInsights.map((insight) => (
+                    <p class="text-body-text text-lg leading-relaxed">
+                      {insight}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </Container>
+    </section>
+  )}
+
   <!-- Popular Projects in This Area -->
-  <section class="py-16 lg:py-24 bg-light">
+  <section class="py-16 lg:py-24">
     <Container>
       <div class="max-w-5xl mx-auto" data-reveal>
         <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4 text-center">
-          Popular {serviceName} Projects in {location.city}
+          {serviceContent.projectsHeading(location)}
         </h2>
         <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
-          {isKitchen
-            ? `Given ${location.city}'s mix of ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'newer'} homes, here are the kitchen projects we complete most often for homeowners in this area.`
-            : `With homes averaging ${location.medianHomeAge} years old in ${location.city}, these are the bathroom projects we see the most demand for from local homeowners.`}
+          {serviceContent.projectsSubheading(location)}
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -260,49 +678,48 @@ const nearbyLocations = location.nearbyAreas
     <Container>
       <div class="max-w-4xl mx-auto" data-reveal>
         <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-6 text-center">
-          {serviceName} Cost in {location.city}, WA
+          {[
+            `${serviceName} Cost in ${location.city}, WA`,
+            `${serviceName} Pricing for ${location.city} Homes`,
+            `Your ${location.city} ${serviceName} Budget Guide`,
+          ][pageHash % 3]}
         </h2>
         <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
-          {isKitchen
-            ? `These ranges reflect what ${location.city} homeowners are actually paying, adjusted for local home values and the typical scope of work we see in this area's ${location.housingStyles[0].toLowerCase()} and ${location.housingStyles[1]?.toLowerCase() || 'newer'} homes.`
-            : `Based on ${location.city}'s home values and the typical bathroom conditions we encounter in the area's ${location.medianHomeAge}-year-old housing stock. Your actual cost depends on scope, tile selections, and what we find behind the walls.`}
+          {serviceContent.costSubheading(location)}
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div class="bg-light rounded-2xl p-6 text-center">
-            <p class="text-sm text-muted mb-2">{isKitchen ? 'Budget Kitchen Remodel' : 'Budget Bathroom Remodel'}</p>
+            <p class="text-sm text-muted mb-2">{serviceContent.costTiers.budget.label}</p>
             <p class="text-3xl font-bold text-dark-text">{formatCurrency(costLow)}</p>
             <p class="text-xs text-muted mt-2">
-              {isKitchen
-                ? 'Cabinet refacing, new countertops, updated fixtures'
-                : 'New vanity, tub refinishing, updated fixtures & paint'}
+              {serviceContent.costTiers.budget.description}
             </p>
           </div>
           <div class="bg-accent/5 border-2 border-accent/20 rounded-2xl p-6 text-center">
-            <p class="text-sm text-accent font-semibold mb-2">Average {serviceName}</p>
+            <p class="text-sm text-accent font-semibold mb-2">{serviceContent.costTiers.average.label}</p>
             <p class="text-3xl font-bold text-dark-text">{formatCurrency(avgCost)}</p>
             <p class="text-xs text-muted mt-2">
-              {isKitchen
-                ? 'New cabinets, quartz counters, appliances, tile backsplash'
-                : 'Walk-in shower, custom tile, new vanity, heated floors'}
+              {serviceContent.costTiers.average.description}
             </p>
           </div>
           <div class="bg-light rounded-2xl p-6 text-center">
-            <p class="text-sm text-muted mb-2">{isKitchen ? 'Premium Kitchen Remodel' : 'Premium Bathroom Remodel'}</p>
+            <p class="text-sm text-muted mb-2">{serviceContent.costTiers.premium.label}</p>
             <p class="text-3xl font-bold text-dark-text">{formatCurrency(costHigh)}</p>
             <p class="text-xs text-muted mt-2">
-              {isKitchen
-                ? 'Custom cabinets, premium stone, pro appliances, layout changes'
-                : 'Full spa conversion, custom everything, premium stone & fixtures'}
+              {serviceContent.costTiers.premium.description}
             </p>
           </div>
         </div>
 
         <div class="bg-light rounded-xl p-6 text-center">
           <p class="text-sm text-muted">
-            {isKitchen
-              ? `These estimates reflect ${location.city}'s median home value of ${formatCurrency(location.medianHomeValue)} and current Puget Sound labor rates ($65-95/hour for skilled trades). Older homes in ${location.city} may require electrical or plumbing updates that add 10-15% — we'll identify those during your free in-home consultation before quoting a final price.`
-              : `Based on ${location.city}'s median home value of ${formatCurrency(location.medianHomeValue)} and current Seattle-area labor and material costs. Tile selection is the biggest cost variable in any bathroom — it can shift your total by $3,000-$8,000 depending on material. We'll walk through all the options during your free consultation.`}
+            {serviceContent.costDisclaimer(location, formatCurrency)}
+            {' '}{[
+              `Every project is different — your free in-home consultation includes a detailed, line-item estimate specific to your ${location.city} home.`,
+              `These figures reflect current ${location.county} County market rates. We provide exact pricing during your complimentary in-home assessment.`,
+              `Actual costs depend on your specific scope. Schedule a free consultation for a precise quote tailored to your ${location.city} home.`,
+            ][pageHash % 3]}
           </p>
         </div>
       </div>
@@ -322,15 +739,21 @@ const nearbyLocations = location.nearbyAreas
             </div>
             <div>
               <h2 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-4">
-                {serviceName} Permits in {location.city}
+                {[
+                  `${serviceName} Permits in ${location.city}`,
+                  `${location.city} Permit Requirements for ${serviceName}`,
+                  `Do You Need a Permit for ${serviceName} in ${location.city}?`,
+                ][pageHash % 3]}
               </h2>
               <p class="text-body-text leading-relaxed mb-4">
-                {location.permitInfo}
+                {[
+                  location.permitInfo,
+                  `Understanding ${location.city}'s permit requirements before starting your ${serviceName.toLowerCase()} project prevents delays and ensures your work is fully compliant. ${location.permitInfo}`,
+                  `Permit requirements in ${location.city} protect homeowners by ensuring all work meets current building codes. Here's what applies to your ${serviceName.toLowerCase()} project: ${location.permitInfo}`,
+                ][pageHash % 3]}
               </p>
               <p class="text-body-text leading-relaxed">
-                {isKitchen
-                  ? `In ${location.city}, you'll need a permit for any kitchen remodel involving structural changes (wall removal), plumbing relocation (moving the sink or gas line), or new electrical circuits. We handle the entire permit process as part of our service — filing the application, managing plan review, and scheduling inspections. It's included in your quote, not an add-on. Our crews work with ${location.city}'s building department regularly and know exactly what they require.`
-                  : `Even converting a tub to a walk-in shower typically triggers a plumbing permit in ${location.city}. Electrical changes (new circuits, GFCI outlets, exhaust fan wiring) also require permits. We handle all of it — the application, the plan review, the inspections — as part of our standard service. No extra charge, no hassle. Unpermitted bathroom work creates real problems when you sell your home, so we do every project by the book.`}
+                {serviceContent.permitText(location, pageHash)}
               </p>
             </div>
           </div>
@@ -373,26 +796,69 @@ const nearbyLocations = location.nearbyAreas
     </Container>
   </section>
 
+  <!-- Related Services in This City -->
+  {relatedServices.length > 0 && (
+    <section class="py-16 lg:py-24 bg-light">
+      <Container>
+        <div class="max-w-5xl mx-auto" data-reveal>
+          <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-4 text-center">
+            Related Services in {location.city}
+          </h2>
+          <p class="text-muted text-lg text-center max-w-2xl mx-auto mb-10">
+            Explore other remodeling services we offer in {location.city}, WA. Bundle projects to save on mobilization costs.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {relatedServices.map((service) => (
+              <a
+                href={`/areas-served/${location.slug}/${service.slug}/`}
+                class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 p-5 group"
+              >
+                <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider mb-3 ${
+                  service.category === 'kitchen'
+                    ? 'bg-accent/10 text-accent'
+                    : service.category === 'bathroom'
+                      ? 'bg-primary/10 text-primary'
+                      : 'bg-gray-100 text-gray-600'
+                }`}>
+                  {service.category}
+                </span>
+                <h3 class="font-bold text-dark-text mb-1.5 group-hover:text-accent transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-xs text-muted mb-3">{service.shortDescription}</p>
+                <span class="text-accent font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  View in {location.city}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  )}
+
   <!-- Cross-Links -->
-  <section class="py-16 lg:py-24 bg-light">
+  <section class="py-16 lg:py-24">
     <Container>
-      <div class="max-w-4xl mx-auto" data-reveal>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="max-w-5xl mx-auto" data-reveal>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Link to City Page -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <div class="bg-light rounded-2xl border border-gray-100 p-6">
             <h3 class="text-lg font-bold text-dark-text mb-3">
-              More Remodeling Services in {location.city}
+              All Services in {location.city}
             </h3>
             <p class="text-sm text-muted mb-4">
-              {isKitchen
-                ? `Need a bathroom remodel in ${location.city} too? Many homeowners do both — and we offer project bundling that can save 5-8% on combined work.`
-                : `Also thinking about your kitchen? Many ${location.city} homeowners remodel both — we offer bundled pricing that saves 5-8% on combined projects.`}
+              {serviceContent.crossLinkText(location)}
             </p>
             <a
               href={`/areas-served/${location.slug}/`}
               class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all duration-300"
             >
-              View {location.city} Remodeling Services
+              View {location.city} Services
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -400,7 +866,7 @@ const nearbyLocations = location.nearbyAreas
           </div>
 
           <!-- Link to Service Page -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <div class="bg-light rounded-2xl border border-gray-100 p-6">
             <h3 class="text-lg font-bold text-dark-text mb-3">
               {serviceName} Details
             </h3>
@@ -412,12 +878,51 @@ const nearbyLocations = location.nearbyAreas
               href={`/services/${serviceSlug}/`}
               class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all duration-300"
             >
-              View {serviceName} Service Details
+              {serviceName} Service Details
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
           </div>
+
+          <!-- Link to Cost Guide (if exists) -->
+          {costGuideUrl ? (
+            <div class="bg-light rounded-2xl border border-gray-100 p-6">
+              <h3 class="text-lg font-bold text-dark-text mb-3">
+                {serviceName} Cost Guide
+              </h3>
+              <p class="text-sm text-muted mb-4">
+                See detailed pricing, budget tiers, and money-saving tips for {serviceNameLower} in the Seattle area.
+              </p>
+              <a
+                href={costGuideUrl}
+                class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all duration-300"
+              >
+                View Cost Guide
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          ) : (
+            <div class="bg-light rounded-2xl border border-gray-100 p-6">
+              <h3 class="text-lg font-bold text-dark-text mb-3">
+                Cost Guides
+              </h3>
+              <p class="text-sm text-muted mb-4">
+                Explore our detailed remodeling cost guides with real Seattle pricing data.
+              </p>
+              <a
+                href="/cost-guides/"
+                class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:gap-2.5 transition-all duration-300"
+              >
+                Browse Cost Guides
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
 
         <!-- Nearby Area Links -->
@@ -430,7 +935,7 @@ const nearbyLocations = location.nearbyAreas
               {nearbyLocations.map((nearby) => (
                 <a
                   href={`/areas-served/${nearby.slug}/${serviceSlug}/`}
-                  class="bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 px-4 py-2 text-sm font-medium text-body-text hover:text-accent"
+                  class="bg-light rounded-lg border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 px-4 py-2 text-sm font-medium text-body-text hover:text-accent"
                 >
                   {serviceName} in {nearby.city}
                 </a>
@@ -442,18 +947,75 @@ const nearbyLocations = location.nearbyAreas
     </Container>
   </section>
 
+  <!-- Customer Reviews Section (visible — schema references these exact reviews) -->
+  <section class="py-16 lg:py-24">
+    <Container>
+      <div class="max-w-5xl mx-auto" data-reveal>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-[family-name:var(--font-heading)] text-dark-text leading-tight mb-3">
+            What Our Customers Say
+          </h2>
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <div class="flex" aria-label={`${pageRating} out of 5 stars`}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class={`w-5 h-5 ${i < fullStars ? 'text-amber-400' : (i === fullStars && hasHalfStar) ? 'text-amber-400' : 'text-gray-200'}`}
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <span class="text-lg font-bold text-dark-text">{pageRating}</span>
+          </div>
+          <p class="text-muted">
+            Based on {pageReviewCount}+ verified reviews
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {pageReviews.map((review) => (
+            <div class="bg-light rounded-2xl border border-gray-100 p-6 flex flex-col">
+              <div class="flex mb-3" aria-label={`${review.rating} out of 5 stars`}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class={`w-4 h-4 ${i < review.rating ? 'text-amber-400' : 'text-gray-200'}`}
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <blockquote class="text-body-text text-sm leading-relaxed flex-1 mb-4">
+                &ldquo;{review.text}&rdquo;
+              </blockquote>
+              <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                <span class="font-semibold text-dark-text text-sm">{review.author}</span>
+                <time class="text-xs text-muted" datetime={review.date}>
+                  {new Date(review.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                </time>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
   <!-- CTA Section -->
   <section class="bg-accent py-16 lg:py-24 relative overflow-hidden">
     <div class="absolute inset-0 opacity-[0.04]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
     <Container class="relative z-10">
       <div class="text-center max-w-3xl mx-auto" data-reveal>
         <h2 class="text-3xl lg:text-5xl font-[family-name:var(--font-heading)] text-white mb-6">
-          Start Your {location.city} {serviceName} Today
+          {serviceContent.ctaHeading(location, pageHash)}
         </h2>
         <p class="text-white/90 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          {isKitchen
-            ? `We'll come to your ${location.city} home, measure the kitchen, look at the existing plumbing and electrical, and give you a detailed line-item estimate. No vague ranges, no pressure, no "let me check with my manager." Just a straight answer from people who remodel kitchens every day.`
-            : `We'll visit your ${location.city} home, assess the bathroom's plumbing, waterproofing, and layout, and give you an honest line-item estimate. We'll tell you what needs fixing, what's optional, and where your money will have the biggest impact. No charge, no obligation.`}
+          {serviceContent.ctaText(location, pageHash)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <Button

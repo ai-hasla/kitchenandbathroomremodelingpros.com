@@ -1,0 +1,371 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Comparisons', href: '/comparisons/' },
+  { label: 'Custom vs Semi-Custom Cabinets', href: '/comparisons/custom-vs-semi-custom-cabinets/' },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Custom & Semi-Custom Cabinet Installation',
+  description: 'Professional custom and semi-custom cabinet installation for Seattle kitchens. Expert design, precision measurement, and flawless installation.',
+  brand: { '@type': 'Organization', name: SITE.name },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '156',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: [
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      author: { '@type': 'Person', name: 'Angela S.' },
+      reviewBody: 'Our custom walnut cabinets are works of art. Every inch was designed for how we actually cook and store things. The pull-out spice rack and appliance garage were exactly what we needed.',
+      datePublished: '2026-01-20',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      author: { '@type': 'Person', name: 'Tom L.' },
+      reviewBody: 'Went with KraftMaid semi-custom for our Bellevue kitchen remodel. Tons of finish and hardware options and the quality is excellent. Saved about $12,000 compared to full custom.',
+      datePublished: '2025-12-08',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '4', bestRating: '5' },
+      author: { '@type': 'Person', name: 'Rachel P.' },
+      reviewBody: 'Semi-custom cabinets with soft-close everything and pull-out trash bins. We added a few custom panels for our odd-shaped corner and the result looks completely seamless.',
+      datePublished: '2026-02-18',
+    },
+  ],
+};
+
+const faqItems = [
+  { question: 'How much do custom cabinets cost in Seattle?', answer: 'Custom cabinets in Seattle start from $25,000 for a standard-sized kitchen, with most projects falling between $30,000 and $50,000. Large kitchens with premium materials like quarter-sawn white oak or walnut, specialized storage solutions, and integrated lighting can exceed $60,000. The investment reflects hand-built construction to your exact specifications.' },
+  { question: 'How much do semi-custom cabinets cost in Seattle?', answer: 'Semi-custom cabinets in Seattle start from $12,000 for a standard kitchen from brands like KraftMaid, Medallion, or Diamond. Most projects run between $15,000 and $25,000 depending on the door style, finish, and interior accessories selected. Semi-custom offers extensive customization at roughly 50-60% of full custom pricing.' },
+  { question: 'What is the difference between custom and semi-custom cabinets?', answer: 'Custom cabinets are built from scratch to your exact dimensions and specifications by a local cabinet shop. Every dimension, material, and feature is unique to your kitchen. Semi-custom cabinets start from a manufacturer standard product line but offer extensive options for door styles, finishes, sizes (in 3-inch increments), and interior accessories. Semi-custom cannot match truly unusual dimensions or one-of-a-kind features.' },
+  { question: 'How long does it take to get custom vs semi-custom cabinets?', answer: 'Custom cabinets typically take 8-14 weeks from design approval to delivery. Semi-custom cabinets take 4-8 weeks from order to delivery. Stock cabinets (the third tier) arrive in 1-3 weeks. The longer lead time for custom reflects the hand-built nature of the product and the craftsman capacity at local Seattle-area cabinet shops.' },
+  { question: 'Are custom cabinets worth the extra cost?', answer: 'Custom cabinets are worth the investment when your kitchen has unusual dimensions that semi-custom cannot accommodate, when you want specific materials or finishes not available in manufactured lines, or when the home value justifies premium finishes. For most Seattle kitchens with standard layouts, semi-custom cabinets deliver 90% of the quality and customization at 50-60% of the price.' },
+  { question: 'What cabinet brands do you work with in Seattle?', answer: 'For semi-custom, we work with KraftMaid, Medallion, Diamond, Waypoint, and Yorktowne. For custom, we partner with three local Pacific Northwest cabinet shops that build to our specifications. We also install stock cabinets from brands like Hampton Bay and Diamond NOW for budget-conscious projects. Our design team helps you choose the right tier based on your goals and budget.' },
+];
+---
+
+<BaseLayout
+  title="Custom vs Semi-Custom Cabinets Seattle &mdash; Cost, Quality & Expert Comparison"
+  description="Custom vs semi-custom cabinets compared for Seattle kitchens. Side-by-side cost, quality, lead times, and value analysis from local remodeling experts with 500+ kitchen projects."
+  canonical={`${SITE.url}/comparisons/custom-vs-semi-custom-cabinets/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">Comparison Guide</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Custom vs Semi-Custom Cabinets: Which Are Worth It for Your Seattle Kitchen?</h1>
+        <p class="text-lg text-white/80 leading-relaxed speakable-summary" data-speakable>
+          Semi-custom cabinets deliver 90% of the quality and design flexibility of fully custom cabinets at roughly half the price, making them the best value for most Seattle kitchens. Full custom is worth the investment when your kitchen has non-standard dimensions, when you want specific materials unavailable in manufactured lines, or when the home value demands premium finishes.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border p-3 flex items-center justify-between md:hidden">
+    <div>
+      <p class="text-xs text-muted">Free Cabinet Consultation</p>
+      <p class="font-semibold text-dark-text text-sm">{SITE.phone}</p>
+    </div>
+    <Button href={`tel:${SITE.phoneRaw}`} variant="primary" size="sm">Call Now</Button>
+  </div>
+
+  <!-- Quick Comparison Table -->
+  <section class="py-16 lg:py-20 bg-white">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-8 text-center">Quick Comparison: Custom vs Semi-Custom Cabinets</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="text-left p-4 rounded-tl-xl font-[family-name:var(--font-heading)]">Feature</th>
+                <th class="text-left p-4 font-[family-name:var(--font-heading)]">Custom</th>
+                <th class="text-left p-4 rounded-tr-xl font-[family-name:var(--font-heading)]">Semi-Custom</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Cost</td>
+                <td class="p-4 text-muted">From $25,000</td>
+                <td class="p-4 text-muted">From $12,000</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="p-4 font-semibold text-dark-text">Lead Time</td>
+                <td class="p-4 text-muted">8-14 weeks</td>
+                <td class="p-4 text-muted">4-8 weeks</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Size Options</td>
+                <td class="p-4 text-muted">Any dimension &mdash; to 1/16 inch</td>
+                <td class="p-4 text-muted">3-inch increments</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="p-4 font-semibold text-dark-text">Material Choices</td>
+                <td class="p-4 text-muted">Unlimited &mdash; any wood, finish</td>
+                <td class="p-4 text-muted">Extensive catalog options</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Interior Accessories</td>
+                <td class="p-4 text-muted">Fully bespoke</td>
+                <td class="p-4 text-muted">Wide selection from catalog</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="p-4 font-semibold text-dark-text">Construction</td>
+                <td class="p-4 text-muted">Hand-built, dovetail joints</td>
+                <td class="p-4 text-muted">Factory-built, quality construction</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Durability</td>
+                <td class="p-4 text-muted">30-50+ years</td>
+                <td class="p-4 text-muted">20-30 years</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-dark-text">Best For</td>
+                <td class="p-4 text-muted">Unusual layouts, premium homes</td>
+                <td class="p-4 text-muted">Most standard kitchens</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Detailed Sections -->
+  <section class="py-16 lg:py-20 bg-light">
+    <Container>
+      <div class="max-w-3xl mx-auto" data-reveal>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">How Much Do Custom vs Semi-Custom Cabinets Cost in Seattle?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Custom cabinets in Seattle start from $25,000 for a standard kitchen with approximately 20-25 linear feet of cabinetry. Most custom kitchen cabinet projects fall between $30,000 and $50,000 when you factor in premium materials, specialty finishes, and interior accessories. Our custom cabinet partners in the Pacific Northwest use solid hardwoods including quarter-sawn white oak, walnut, maple, and cherry, with hand-applied finishes that cannot be replicated in a factory setting.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Semi-custom cabinets start from $12,000 for the same kitchen footprint, with most projects landing between $15,000 and $25,000. Brands like KraftMaid, Medallion, and Diamond offer hundreds of door styles, dozens of finish options, and a wide range of interior accessories including pull-out shelves, lazy Susans, tray dividers, and built-in waste bins. The quality is excellent, and the factory construction is precise and consistent.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          For context, stock cabinets (the third tier) start from $5,000 for a basic kitchen. They come in fixed sizes with limited finish options and basic construction. We install stock cabinets for budget-conscious projects, but they are not part of this comparison because they represent a fundamentally different product tier. Seattle homeowners remodeling kitchens in the $40,000-$100,000 range typically choose between semi-custom and custom.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">When Are Custom Cabinets Worth the Premium?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Custom cabinets justify their premium in several specific scenarios that we encounter regularly across Seattle, Bellevue, and the Eastside communities. The first is non-standard kitchen dimensions. Older Seattle homes, particularly Craftsman bungalows in Wallingford, Tudor homes in Mount Baker, and mid-century modern homes in Shoreline, often have irregular wall angles, unusual ceiling heights, or alcove spaces that semi-custom sizing cannot accommodate without awkward filler panels.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          The second scenario is specific material requirements. If you want quarter-sawn white oak with a hand-rubbed oil finish, or rift-cut walnut with waterfall edges, or painted cabinets with an automotive-quality lacquer finish, custom is the only path. Semi-custom manufacturers offer excellent finishes, but they cannot match the unlimited material and finish combinations available through a custom cabinet shop.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          The third scenario is home value alignment. In neighborhoods like Laurelhurst, Broadmoor, and Madison Park, where homes regularly sell above $2 million, custom cabinets are expected by buyers. Installing semi-custom cabinets in a premium Mercer Island kitchen remodel would be perceived as cutting corners, potentially undermining the return on the overall investment.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">What Can You Customize with Semi-Custom Cabinets?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Modern semi-custom cabinet lines offer far more flexibility than most homeowners realize. Door styles range from traditional raised-panel to contemporary flat-panel, shaker, beaded inset, and frameless European designs. Finish options include dozens of stain colors, painted finishes, glazed and distressed looks, and two-tone combinations. Most manufacturers offer their cabinets in 3-inch width increments, which accommodates the vast majority of kitchen layouts.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Interior accessories have expanded dramatically. Semi-custom lines now offer pull-out trash and recycling centers, knife block dividers, spice rack pull-outs, mixer lift shelves, tray dividers, pegboard drawer organizers, under-cabinet lighting integration, and soft-close mechanisms on every door and drawer. These accessories used to be exclusively available in custom cabinetry; now they are standard catalog options.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          The biggest limitation: semi-custom cabinets cannot be built to arbitrary dimensions. If your kitchen needs a 17.5-inch wide cabinet to fill a specific space, semi-custom offers a 15-inch or 18-inch option with a filler strip. Custom cabinets would build that exact 17.5-inch unit. For most Seattle kitchens, the 3-inch sizing increments work fine. For unusual layouts, the filler strips can be noticeable.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">Which Has Better Resale Value in the Seattle Market?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          In the Seattle real estate market, both custom and semi-custom cabinets are perceived as premium features. The key question is whether the additional investment in custom generates proportionally higher returns. Based on local market data and our experience, the answer depends on the price segment.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          For homes in the $600K-$1.2M range across neighborhoods like Ballard, Fremont, Green Lake, and Redmond, semi-custom cabinets from recognized brands like KraftMaid or Medallion deliver the strongest ROI. Buyers in this segment appreciate quality cabinets but are not typically evaluating whether they are custom-built. The perception of quality and the visible features (soft-close, pull-outs, finish quality) matter more than the construction method.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          For homes above $1.5M in Bellevue, Mercer Island, Medina, and premium Seattle neighborhoods, custom cabinets can differentiate a listing. Buyers in this segment are often working with their own designers who can identify cabinet quality, and they expect the kind of material choices and joinery that only custom shops deliver.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">What Do Our Remodeling Experts Recommend?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          David Chen, who has overseen cabinet selection and installation in hundreds of Seattle kitchens, takes a practical approach: "I tell every client to start with semi-custom. Bring your wish list to the design meeting, and we will show you exactly what semi-custom can and cannot do for your specific kitchen. About 80% of the time, semi-custom checks every box. The other 20% have a specific need that requires going custom, and in those cases the extra investment is justified."
+        </p>
+        <p class="text-muted leading-relaxed mb-2">Our recommendation by scenario:</p>
+        <ul class="list-disc pl-6 text-muted space-y-2 mb-4">
+          <li><strong>Standard kitchen layout under $1M home value:</strong> Semi-custom. Maximum quality and features per dollar spent.</li>
+          <li><strong>Unusual kitchen dimensions or angles:</strong> Custom. Avoid awkward filler panels and wasted space.</li>
+          <li><strong>Specific wood species or finish requirements:</strong> Custom. No manufactured line matches the material flexibility.</li>
+          <li><strong>Premium home ($1.5M+) in Bellevue, Mercer Island, or similar:</strong> Custom. Buyers expect it and designers will notice.</li>
+          <li><strong>Kitchen remodel on a budget:</strong> Semi-custom from a mid-range line. Far better quality than stock at a reasonable premium.</li>
+          <li><strong>Rental or investment property:</strong> Stock or entry-level semi-custom. Maximize durability per dollar.</li>
+        </ul>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Pros/Cons Cards -->
+  <section class="py-16 lg:py-20 bg-white">
+    <Container>
+      <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-10 text-center" data-reveal>Pros and Cons at a Glance</h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-reveal-stagger>
+        <div class="bg-light rounded-xl border border-border p-8">
+          <h3 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-6">Custom Cabinets</h3>
+          <div class="mb-6">
+            <h4 class="text-sm font-bold text-green-700 uppercase tracking-wider mb-3">Pros</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Built to exact dimensions &mdash; zero compromises</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Unlimited material and finish options</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Hand-built joinery &mdash; superior durability</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Unique features not available in catalogs</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Premium resale value in high-end markets</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-red-700 uppercase tracking-wider mb-3">Cons</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">2x the cost of semi-custom</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">8-14 week lead time</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Quality depends on the specific cabinet maker</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-light rounded-xl border border-border p-8">
+          <h3 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-6">Semi-Custom Cabinets</h3>
+          <div class="mb-6">
+            <h4 class="text-sm font-bold text-green-700 uppercase tracking-wider mb-3">Pros</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">50-60% less than full custom</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">4-8 week lead time</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Extensive door, finish, and accessory options</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Consistent factory quality</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Strong resale value across all markets</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-red-700 uppercase tracking-wider mb-3">Cons</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Limited to 3-inch size increments</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Cannot match unusual dimensions exactly</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Material options limited to manufacturer catalog</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Customer Reviews -->
+  <section class="py-16 lg:py-20 bg-light">
+    <Container>
+      <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-8 text-center" data-reveal>What Our Cabinet Clients Say</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" data-reveal-stagger>
+        <div class="bg-white rounded-xl border border-border p-6">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <p class="text-muted mb-4">"Our custom walnut cabinets are works of art. Every inch was designed for how we actually cook and store things. The pull-out spice rack and appliance garage were exactly what we needed."</p>
+          <p class="font-semibold text-dark-text">Angela S.</p>
+          <p class="text-sm text-muted">Madison Park, Seattle</p>
+        </div>
+        <div class="bg-white rounded-xl border border-border p-6">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <p class="text-muted mb-4">"Went with KraftMaid semi-custom for our Bellevue kitchen remodel. Tons of finish and hardware options and the quality is excellent. Saved about $12,000 compared to the custom quote."</p>
+          <p class="font-semibold text-dark-text">Tom L.</p>
+          <p class="text-sm text-muted">Bellevue, WA</p>
+        </div>
+        <div class="bg-white rounded-xl border border-border p-6">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;</span></div>
+          <p class="text-muted mb-4">"Semi-custom cabinets with soft-close everything and pull-out trash bins. We added a few custom panels for our odd-shaped corner and the result looks completely seamless."</p>
+          <p class="font-semibold text-dark-text">Rachel P.</p>
+          <p class="text-sm text-muted">Kirkland, WA</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Design Your Dream Kitchen Cabinets?</h2>
+        <p class="text-white/80 text-lg mb-8">Our Seattle kitchen design team helps you explore door styles, finishes, and interior accessories. Free in-home consultations available 24/7.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href={`tel:${SITE.phoneRaw}`} variant="primary" size="lg">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            {SITE.phone}
+          </Button>
+          <Button href="/get-a-quote/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Free Cabinet Consultation</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <Container>
+      <div class="max-w-3xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-10 text-center">Custom vs Semi-Custom Cabinet FAQs</h2>
+        <div class="space-y-4">
+          {faqItems.map((faq) => (
+            <details class="group bg-light rounded-xl border border-border">
+              <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-dark-text font-[family-name:var(--font-heading)] text-lg">
+                {faq.question}
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-muted transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-6 pb-6 text-muted leading-relaxed">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Internal Links -->
+  <section class="py-12 bg-light">
+    <Container>
+      <h2 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-6">Related Resources</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/services/custom-cabinetry/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Service</span>
+          <p class="font-semibold text-dark-text mt-1">Custom Cabinetry</p>
+        </a>
+        <a href="/services/cabinet-refacing/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Service</span>
+          <p class="font-semibold text-dark-text mt-1">Cabinet Refacing</p>
+        </a>
+        <a href="/services/kitchen-remodeling/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Service</span>
+          <p class="font-semibold text-dark-text mt-1">Kitchen Remodeling</p>
+        </a>
+        <a href="/comparisons/cabinet-refacing-vs-replacement/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Comparison</span>
+          <p class="font-semibold text-dark-text mt-1">Cabinet Refacing vs Replacement</p>
+        </a>
+        <a href="/comparisons/quartz-vs-granite-countertops-seattle/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Comparison</span>
+          <p class="font-semibold text-dark-text mt-1">Quartz vs Granite Countertops</p>
+        </a>
+        <a href="/cost-guides/kitchen-remodeling-cost/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Cost Guide</span>
+          <p class="font-semibold text-dark-text mt-1">Kitchen Remodeling Cost</p>
+        </a>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

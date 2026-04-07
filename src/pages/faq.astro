@@ -42,7 +42,7 @@ const faqCategories = [
       },
       {
         q: 'Can you help me design an open-concept kitchen?',
-        a: 'Absolutely. Open-concept kitchen remodels are one of our specialties. We handle everything from structural engineering assessments (to determine if walls are load-bearing) to permit applications with the City of Seattle. We install proper support beams, update electrical and plumbing as needed, and create a seamless flow between your kitchen and living areas. Costs for wall removal typically range from $3,000 to $10,000 depending on structural requirements.',
+        a: 'Absolutely. Open-concept kitchen remodels are one of our specialties. We handle everything from structural engineering assessments (to determine if walls are load-bearing) to permit applications with the City of Seattle. We install proper support beams, update electrical and plumbing as needed, and create a smooth flow between your kitchen and living areas. Costs for wall removal typically range from $3,000 to $10,000 depending on structural requirements.',
       },
       {
         q: 'What cabinet styles are trending in Seattle in 2026?',
@@ -72,7 +72,7 @@ const faqCategories = [
       },
       {
         q: 'What tile trends are popular for Seattle bathrooms in 2026?',
-        a: 'Large-format tiles (24x48 and larger) are dominating Seattle bathroom designs for their seamless, modern look and fewer grout lines. Natural stone looks, terrazzo, and handmade zellige tiles are also popular. Patterned cement tiles are trending for floor accents. Warm neutrals, soft greens, and earthy tones reflect the Pacific Northwest aesthetic. Our design team can help you choose tiles that match your vision and budget.',
+        a: 'Large-format tiles (24x48 and larger) are dominating Seattle bathroom designs for their clean, modern look and fewer grout lines. Natural stone looks, terrazzo, and handmade zellige tiles are also popular. Patterned cement tiles are trending for floor accents. Warm neutrals, soft greens, and earthy tones reflect the Pacific Northwest aesthetic. Our design team can help you choose tiles that match your vision and budget.',
       },
       {
         q: 'Do you do aging-in-place bathroom modifications?',
@@ -227,6 +227,7 @@ const allFaqs = faqCategories.flatMap(cat => cat.faqs);
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
+  'dateModified': '2026-03-15',
   mainEntity: allFaqs.map(faq => ({
     '@type': 'Question',
     name: faq.q,
@@ -254,8 +255,9 @@ const faqSchema = {
         <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Frequently Asked Questions</p>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Remodeling FAQ</h1>
         <p class="text-lg text-white/80 leading-relaxed">
-          Everything you need to know about kitchen and bathroom remodeling in Seattle — costs, timelines, permits, materials, and our process.
+          Practical answers to common questions about kitchen and bathroom remodeling in Seattle — costs, timelines, permits, materials, and our process.
         </p>
+        <p class="text-sm text-white/50 mt-4">Last updated: March 2026</p>
       </div>
     </Container>
   </section>

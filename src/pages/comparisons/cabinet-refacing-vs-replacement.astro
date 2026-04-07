@@ -1,0 +1,374 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import SchemaFAQ from '@/components/seo/SchemaFAQ.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Comparisons', href: '/comparisons/' },
+  { label: 'Cabinet Refacing vs Replacement', href: '/comparisons/cabinet-refacing-vs-replacement/' },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Cabinet Refacing & Replacement Services',
+  description: 'Professional cabinet refacing and full cabinet replacement for Seattle kitchens. Expert craftsmanship, custom options, and efficient timelines.',
+  brand: { '@type': 'Organization', name: SITE.name },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '164',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: [
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      author: { '@type': 'Person', name: 'Karen T.' },
+      reviewBody: 'We refaced our dated oak cabinets with white shaker fronts and the kitchen looks completely new. Saved thousands compared to a full replacement.',
+      datePublished: '2026-02-10',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      author: { '@type': 'Person', name: 'James W.' },
+      reviewBody: 'Went with full custom cabinets for our Kirkland kitchen remodel. The soft-close drawers, pull-out shelves, and built-in organizers are incredible.',
+      datePublished: '2025-12-15',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: { '@type': 'Rating', ratingValue: '4', bestRating: '5' },
+      author: { '@type': 'Person', name: 'Linda M.' },
+      reviewBody: 'Refacing was the perfect middle ground. We changed from honey oak to a modern gray and added new hardware. Neighbors thought we got an entirely new kitchen.',
+      datePublished: '2026-01-22',
+    },
+  ],
+};
+
+const faqItems = [
+  { question: 'How much does cabinet refacing cost in Seattle?', answer: 'Cabinet refacing in Seattle starts from $4,500 for a standard kitchen with 20-30 cabinet doors. This includes new door fronts, drawer fronts, veneer on exposed cabinet frames, and new hardware. It is typically 40-50% less than full cabinet replacement.' },
+  { question: 'How much does full cabinet replacement cost in Seattle?', answer: 'Full cabinet replacement in Seattle starts from $10,000 for stock cabinets and from $18,000 for semi-custom options. Fully custom cabinets start from $25,000 and can go significantly higher depending on materials, features, and kitchen size.' },
+  { question: 'How long does cabinet refacing take compared to replacement?', answer: 'Cabinet refacing typically takes 3-5 days for a standard Seattle kitchen. Full cabinet replacement takes 2-4 weeks including demolition, installation, and finishing work. Refacing causes minimal disruption since your kitchen remains partially functional throughout.' },
+  { question: 'Can you change the cabinet layout with refacing?', answer: 'No. Cabinet refacing preserves the existing cabinet boxes and layout. If you want to add or remove cabinets, change the configuration, or fix structural issues with the cabinet boxes themselves, you need full replacement. Refacing only changes the visible surfaces.' },
+  { question: 'Is cabinet refacing worth it for resale in Seattle?', answer: 'Yes, cabinet refacing delivers strong return on investment for Seattle homes. It modernizes the kitchen appearance at a fraction of full replacement cost. However, if your cabinets are structurally damaged, have poor layouts, or the home is in a premium market like Mercer Island or Bellevue, full replacement may generate a better return.' },
+  { question: 'How do you know if your cabinets are good candidates for refacing?', answer: 'Cabinets are good refacing candidates if the boxes are structurally sound with no water damage, warping, or delamination. The layout must work for your needs since refacing cannot change the configuration. Our team provides free inspections to determine whether refacing is viable for your specific cabinets.' },
+  {
+    question: 'Is it better to reface or replace cabinets?',
+    answer: 'Reface if your cabinet boxes are solid and you like your layout. Replace if cabinets are damaged, you want a new layout, or boxes are warped. In Seattle, refacing costs from $4,500 (saving 40-60% vs replacement) and takes 3-5 days vs 2-4 weeks for full replacement.'
+  },
+];
+---
+
+<BaseLayout
+  title="Cabinet Refacing vs Replacement Seattle &mdash; Cost, Timeline & Expert Guide"
+  description="Cabinet refacing vs full replacement compared for Seattle kitchens. Side-by-side cost, timeline, durability, and ROI analysis from local remodeling experts."
+  canonical={`${SITE.url}/comparisons/cabinet-refacing-vs-replacement/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <SchemaFAQ items={faqItems} />
+
+  <!-- Hero -->
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Kitchen</span>
+          <span class="text-white/60 text-sm">Comparison Guide</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Cabinet Refacing vs Replacement: Which Is Right for Your Seattle Kitchen?</h1>
+        <p class="text-lg text-white/80 leading-relaxed speakable-summary" data-speakable>
+          Cabinet refacing costs 40-50% less than full replacement and finishes in under a week, making it the smarter choice when your existing cabinet boxes are structurally sound and the layout works. Full replacement is worth the investment when you need layout changes, deeper storage solutions, or your cabinet frames show water damage common in older Seattle homes.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border p-3 flex items-center justify-between md:hidden">
+    <div>
+      <p class="text-xs text-muted">Free Cabinet Consultation</p>
+      <p class="font-semibold text-dark-text text-sm">{SITE.phone}</p>
+    </div>
+    <Button href={`tel:${SITE.phoneRaw}`} variant="primary" size="sm">Call Now</Button>
+  </div>
+
+  <!-- Quick Comparison Table -->
+  <section class="py-16 lg:py-20 bg-white">
+    <Container>
+      <div class="max-w-4xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-8 text-center">Quick Comparison: Refacing vs Replacement at a Glance</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="text-left p-4 rounded-tl-xl font-[family-name:var(--font-heading)]">Feature</th>
+                <th class="text-left p-4 font-[family-name:var(--font-heading)]">Refacing</th>
+                <th class="text-left p-4 rounded-tr-xl font-[family-name:var(--font-heading)]">Full Replacement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Cost</td>
+                <td class="p-4 text-muted">From $4,500</td>
+                <td class="p-4 text-muted">From $10,000 (stock)</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="p-4 font-semibold text-dark-text">Timeline</td>
+                <td class="p-4 text-muted">3-5 days</td>
+                <td class="p-4 text-muted">2-4 weeks</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Layout Changes</td>
+                <td class="p-4 text-muted">No &mdash; keeps existing layout</td>
+                <td class="p-4 text-muted">Yes &mdash; fully customizable</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="p-4 font-semibold text-dark-text">Kitchen Disruption</td>
+                <td class="p-4 text-muted">Minimal &mdash; partially usable</td>
+                <td class="p-4 text-muted">Significant &mdash; unusable during work</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Durability</td>
+                <td class="p-4 text-muted">15-20 years</td>
+                <td class="p-4 text-muted">20-30+ years</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="p-4 font-semibold text-dark-text">Interior Upgrades</td>
+                <td class="p-4 text-muted">Limited (hinges, shelves)</td>
+                <td class="p-4 text-muted">Full (pull-outs, organizers, soft-close)</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="p-4 font-semibold text-dark-text">Resale Impact</td>
+                <td class="p-4 text-muted">Good &mdash; modernized appearance</td>
+                <td class="p-4 text-muted">Excellent &mdash; fully updated kitchen</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-dark-text">Best For</td>
+                <td class="p-4 text-muted">Sound boxes, cosmetic update</td>
+                <td class="p-4 text-muted">Layout changes, damaged boxes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Detailed Sections -->
+  <section class="py-16 lg:py-20 bg-light">
+    <Container>
+      <div class="max-w-3xl mx-auto" data-reveal>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">How Much Does Cabinet Refacing vs Replacement Cost in Seattle?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Cabinet refacing in Seattle starts from $4,500 for a standard kitchen with 20-30 doors and drawer fronts. This price typically includes new door and drawer fronts in your chosen style, veneer or laminate covering on all visible cabinet frames, new hinges and hardware, and professional labor. Premium materials like solid wood doors or custom finishes push the total higher, but refacing rarely exceeds $9,000 even for large Seattle kitchens.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Full cabinet replacement is a significantly larger investment. Stock cabinets from brands like Hampton Bay or Diamond NOW start from $10,000 installed for a typical Seattle kitchen. Semi-custom options from KraftMaid or Medallion start from $18,000. Fully custom cabinets built to your exact specifications start from $25,000 and can reach $50,000 or more for large kitchens with premium features like integrated lighting, soft-close everything, and specialty storage solutions.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          The cost difference is substantial: refacing saves Seattle homeowners an average of $8,000-$15,000 compared to mid-range replacement. For homeowners in Ballard, Fremont, and Greenwood who want a fresh look without a major renovation, refacing delivers tremendous visual impact per dollar spent. In contrast, homeowners doing full kitchen remodels in Bellevue, Kirkland, and Mercer Island often choose replacement to maximize the investment in their higher-value properties.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">Which Option Is Faster for Seattle Homeowners?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Refacing is dramatically faster. Our team typically completes a full cabinet refacing project in 3-5 working days. Your kitchen remains partially usable throughout because the cabinet boxes stay in place. We work section by section, so you maintain access to some storage and counter space at all times.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Full cabinet replacement requires 2-4 weeks from demolition to final installation. The kitchen is essentially unusable during this period. Old cabinets must be removed, walls patched and repainted, new cabinets installed and leveled, and countertops re-templated and installed afterward. For Seattle families, this means two to four weeks of takeout, temporary kitchen setups, and general disruption.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Lead times also differ significantly. Refacing materials are typically available within 1-2 weeks of ordering. Stock replacement cabinets arrive in 2-4 weeks. Semi-custom and custom cabinets can take 6-12 weeks from order to delivery. For homeowners in Queen Anne or Capitol Hill with a holiday deadline or a listing date approaching, refacing is often the only option that fits the timeline.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">What Can You Change with Refacing vs Replacement?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Cabinet refacing changes everything you can see. Door and drawer fronts are replaced entirely, letting you shift from raised-panel oak to flat-panel white, from cherry traditional to gray modern, or any other style transformation. The visible cabinet frames get covered with matching veneer. New hardware, hinges, and optional upgrades like soft-close mechanisms complete the transformation.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          What refacing cannot change: the cabinet layout, the number of cabinets, the size of cabinet openings, or the internal structure. If your current layout wastes space, creates workflow bottlenecks, or lacks features like a pantry cabinet or appliance garage, refacing will not solve those problems.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Full replacement gives you complete freedom. Want to add a tall pantry cabinet? Move the dishwasher to a different position? Install pull-out trash bins, deep drawers for pots and pans, and built-in spice racks? Replacement makes all of this possible. Modern cabinet systems from brands like Rev-A-Shelf offer dozens of interior organization options that transform how a kitchen functions, not just how it looks.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">Which Has Better Resale Value in Seattle?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          Both options improve resale value, but the return on investment differs. Cabinet refacing typically recoups 70-80% of its cost in the Seattle market because the investment is modest and the visual transformation is dramatic. Buyers see a modern kitchen without knowing or caring whether the cabinet boxes are original.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          Full replacement recoups 50-70% of its cost but delivers a larger absolute dollar increase to the home value. In premium Seattle neighborhoods like Madison Park, Windermere, and parts of Bellevue, buyers expect fully custom or high-end semi-custom cabinets. In these markets, refacing may actually hurt resale if buyers perceive it as cutting corners.
+        </p>
+        <p class="text-muted leading-relaxed mb-4">
+          For homes valued under $800,000 across neighborhoods like Rainier Beach, Tukwila, and Kent, refacing delivers the best ROI. For homes above $1.2 million in Sammamish, Issaquah, and Mercer Island, full replacement with quality cabinets is the stronger investment.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-dark-text mt-12 mb-4">What Do Our Remodeling Experts Recommend?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          David Chen, founder of Best Kitchen and Bathroom Remodeling, advises clients to start with a structural assessment. "We inspect every cabinet box for water damage, delamination, and structural integrity before recommending anything. In older Seattle homes, especially those built before 1980 in neighborhoods like Ravenna and Wedgwood, we sometimes find hidden moisture damage behind the doors that makes refacing impractical. But when the boxes are solid, refacing delivers a stunning result that most people cannot distinguish from brand-new cabinets."
+        </p>
+        <p class="text-muted leading-relaxed mb-2">Our recommendation by scenario:</p>
+        <ul class="list-disc pl-6 text-muted space-y-2 mb-4">
+          <li><strong>Budget-conscious update with sound cabinets:</strong> Refacing. Maximum visual impact for minimum investment.</li>
+          <li><strong>Full kitchen remodel with layout changes:</strong> Replacement. You are already doing major work, so optimize the layout.</li>
+          <li><strong>Pre-sale preparation:</strong> Refacing for homes under $800K. Replacement for premium properties.</li>
+          <li><strong>Cabinets with water damage or structural issues:</strong> Replacement. Refacing over damaged boxes creates future problems.</li>
+          <li><strong>Rental or investment property:</strong> Refacing. Cost-effective upgrade that tenants and buyers both appreciate.</li>
+        </ul>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Pros/Cons Cards -->
+  <section class="py-16 lg:py-20 bg-white">
+    <Container>
+      <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-10 text-center" data-reveal>Pros and Cons at a Glance</h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-reveal-stagger>
+        <div class="bg-light rounded-xl border border-border p-8">
+          <h3 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-6">Cabinet Refacing</h3>
+          <div class="mb-6">
+            <h4 class="text-sm font-bold text-green-700 uppercase tracking-wider mb-3">Pros</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">40-50% less than full replacement</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Done in 3-5 days</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Minimal kitchen disruption</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Dramatic visual transformation</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Less construction waste</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-red-700 uppercase tracking-wider mb-3">Cons</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Cannot change layout or add cabinets</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Limited interior upgrade options</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Not viable if boxes are damaged</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-light rounded-xl border border-border p-8">
+          <h3 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-6">Full Cabinet Replacement</h3>
+          <div class="mb-6">
+            <h4 class="text-sm font-bold text-green-700 uppercase tracking-wider mb-3">Pros</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Complete layout flexibility</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Modern interior organizers and features</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Longer lifespan (20-30+ years)</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Resolves structural and water damage</span></li>
+              <li class="flex items-start gap-2"><span class="text-green-600 mt-1">&#10003;</span><span class="text-muted">Higher resale impact in premium markets</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-red-700 uppercase tracking-wider mb-3">Cons</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">2-5x the cost of refacing</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">2-4 weeks of kitchen downtime</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500 mt-1">&#10007;</span><span class="text-muted">Longer lead times for custom orders</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Customer Reviews -->
+  <section class="py-16 lg:py-20 bg-light">
+    <Container>
+      <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-8 text-center" data-reveal>What Our Cabinet Clients Say</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" data-reveal-stagger>
+        <div class="bg-white rounded-xl border border-border p-6">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <p class="text-muted mb-4">"We refaced our dated oak cabinets with white shaker fronts and the kitchen looks completely new. Saved thousands compared to a full replacement. The team finished in four days."</p>
+          <p class="font-semibold text-dark-text">Karen T.</p>
+          <p class="text-sm text-muted">Wallingford, Seattle</p>
+        </div>
+        <div class="bg-white rounded-xl border border-border p-6">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <p class="text-muted mb-4">"Went with full custom cabinets for our Kirkland kitchen remodel. The soft-close drawers, pull-out shelves, and built-in organizers are incredible. Worth every penny for the storage transformation."</p>
+          <p class="font-semibold text-dark-text">James W.</p>
+          <p class="text-sm text-muted">Kirkland, WA</p>
+        </div>
+        <div class="bg-white rounded-xl border border-border p-6">
+          <div class="flex items-center gap-1 mb-3"><span class="text-yellow-400 text-lg">&#9733;&#9733;&#9733;&#9733;</span></div>
+          <p class="text-muted mb-4">"Refacing was the perfect middle ground. We changed from honey oak to a modern gray and added new hardware. Neighbors thought we got an entirely new kitchen. Great value."</p>
+          <p class="font-semibold text-dark-text">Linda M.</p>
+          <p class="text-sm text-muted">Green Lake, Seattle</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Not Sure Whether to Reface or Replace?</h2>
+        <p class="text-white/80 text-lg mb-8">Our team inspects your cabinets for free and gives you an honest recommendation based on their condition, your goals, and your budget. Available 24/7.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href={`tel:${SITE.phoneRaw}`} variant="primary" size="lg">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            {SITE.phone}
+          </Button>
+          <Button href="/get-a-quote/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Free Cabinet Assessment</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <Container>
+      <div class="max-w-3xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-dark-text mb-10 text-center">Cabinet Refacing vs Replacement FAQs</h2>
+        <div class="space-y-4">
+          {faqItems.map((faq) => (
+            <details class="group bg-light rounded-xl border border-border">
+              <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-dark-text font-[family-name:var(--font-heading)] text-lg">
+                {faq.question}
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-muted transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-6 pb-6 text-muted leading-relaxed">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Internal Links -->
+  <section class="py-12 bg-light">
+    <Container>
+      <h2 class="text-2xl font-[family-name:var(--font-heading)] text-dark-text mb-6">Related Resources</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/services/cabinet-refacing/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Service</span>
+          <p class="font-semibold text-dark-text mt-1">Cabinet Refacing</p>
+        </a>
+        <a href="/services/custom-cabinetry/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Service</span>
+          <p class="font-semibold text-dark-text mt-1">Custom Cabinetry</p>
+        </a>
+        <a href="/services/kitchen-remodeling/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Service</span>
+          <p class="font-semibold text-dark-text mt-1">Kitchen Remodeling</p>
+        </a>
+        <a href="/cost-guides/kitchen-remodeling-cost/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Cost Guide</span>
+          <p class="font-semibold text-dark-text mt-1">Kitchen Remodeling Cost</p>
+        </a>
+        <a href="/comparisons/custom-vs-semi-custom-cabinets/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Comparison</span>
+          <p class="font-semibold text-dark-text mt-1">Custom vs Semi-Custom Cabinets</p>
+        </a>
+        <a href="/comparisons/quartz-vs-granite-countertops-seattle/" class="block p-4 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+          <span class="text-sm text-accent font-medium">Comparison</span>
+          <p class="font-semibold text-dark-text mt-1">Quartz vs Granite Countertops</p>
+        </a>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

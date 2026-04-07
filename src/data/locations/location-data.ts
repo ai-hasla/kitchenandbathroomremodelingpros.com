@@ -1,3 +1,5 @@
+import { neighborhoodData } from './neighborhood-data';
+
 export interface LocationData {
   city: string;
   slug: string;
@@ -1584,4 +1586,10 @@ export const locationData: Record<string, LocationData> = {
     metaDescription:
       'Kitchen and bathroom remodeling in Newcastle, WA. Premium renovations for this hilltop community. Golf club estates, view homes & more. Free estimates.',
   },
+};
+
+// Merged location + neighborhood data for routes that need both
+export const allLocationData: Record<string, LocationData> = {
+  ...locationData,
+  ...neighborhoodData,
 };

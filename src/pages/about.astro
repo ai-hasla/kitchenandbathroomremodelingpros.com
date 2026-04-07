@@ -53,9 +53,9 @@ const certifications = [
   <SchemaBreadcrumb items={breadcrumbs} />
 
   <!-- Person Schema for Team Members -->
-  <script type="application/ld+json" set:html={JSON.stringify(
-    team.map((member) => ({
-      "@context": "https://schema.org",
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": team.map((member) => ({
       "@type": "Person",
       "name": member.name,
       "jobTitle": member.role,
@@ -66,7 +66,7 @@ const certifications = [
         "url": SITE.url,
       },
     }))
-  )} />
+  })} />
 
   <!-- Hero -->
   <section class="bg-primary pt-32 pb-16">
@@ -98,7 +98,7 @@ const certifications = [
               Our mission is simple: deliver exceptional remodeling results through transparent communication, fair pricing, and craftsmanship that stands the test of time. We believe every homeowner deserves to understand exactly what their project will cost, how long it will take, and what to expect at every stage of the process. No surprises, no hidden fees, no corners cut.
             </p>
             <p>
-              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 250+ reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
+              We treat every home as if it were our own. That means protecting your floors and furniture during construction, cleaning up at the end of every workday, and standing behind our work with a comprehensive warranty. Our 4.9-star rating across 340+ reviews is a testament to the relationships we build with our clients, many of whom come back to us for additional projects and refer us to their friends and neighbors.
             </p>
           </div>
           <blockquote class="border-l-4 border-accent pl-6 my-8 text-lg text-dark-text italic">

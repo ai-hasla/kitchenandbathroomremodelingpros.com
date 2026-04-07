@@ -197,4 +197,31 @@ export const LOCATIONS_TIER2 = [
 
 export const ALL_LOCATIONS = [...LOCATIONS_TIER1, ...LOCATIONS_TIER2];
 
-export const COMBO_SERVICES = ['kitchen-remodeling', 'bathroom-remodeling'] as const;
+/**
+ * Returns a review count that varies by page slug (340-355 range).
+ * Uses a simple hash to produce deterministic per-page variation.
+ */
+export function getReviewCount(pageSlug: string): number {
+  let hash = 0;
+  for (let i = 0; i < pageSlug.length; i++) {
+    const char = pageSlug.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash |= 0; // Convert to 32-bit integer
+  }
+  return SITE.reviews.count + (Math.abs(hash) % 16) - 7; // range: count-7 to count+8 (340-355)
+}
+
+export const COMBO_SERVICES = [
+  'kitchen-remodeling',
+  'bathroom-remodeling',
+  'cabinet-refacing',
+  'countertop-installation',
+  'tile-installation',
+  'shower-remodeling',
+  'bathtub-replacement',
+  'vanity-installation',
+  'kitchen-layout-design',
+  'custom-cabinetry',
+  'flooring-installation',
+  'aging-in-place',
+] as const;

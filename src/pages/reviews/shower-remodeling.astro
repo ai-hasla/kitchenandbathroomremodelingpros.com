@@ -1,0 +1,215 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Shower Remodeling', href: '/reviews/shower-remodeling/' },
+];
+
+const reviews = [
+  {
+    name: 'Melissa T.',
+    rating: 5,
+    neighborhood: 'Puyallup',
+    date: 'January 2026',
+    projectType: 'Tub-to-Shower Conversion',
+    text: 'Converted our old tub/shower combo into a walk-in with frameless glass and a Hansgrohe rain showerhead. Added a built-in bench and two recessed niches for shampoo. The Schluter Kerdi waterproofing system they used gives us total peace of mind. Crew was polite and kept the work area clean every single day.',
+  },
+  {
+    name: 'Ryan & Katie B.',
+    rating: 5,
+    neighborhood: 'Ballard, Seattle',
+    date: 'December 2025',
+    projectType: 'Custom Walk-In Shower',
+    text: 'We had a tiny 3x3 shower stall in our 1920s Ballard bungalow. They ripped it out and built a gorgeous 4x6 walk-in with large-format porcelain tile, a linear drain, and a frameless glass panel instead of a full enclosure. The curbless entry makes the bathroom feel twice as big. Project took 12 days.',
+  },
+  {
+    name: 'Sandra L.',
+    rating: 4,
+    neighborhood: 'Queen Anne, Seattle',
+    date: 'November 2025',
+    projectType: 'Shower Remodel',
+    text: 'Replaced our master shower tile and fixtures in our Queen Anne townhouse. Went with a matte black Delta system and white marble-look porcelain tile. The tile work is flawless. Only reason for 4 stars is the glass enclosure took an extra week to arrive from the manufacturer, but they were upfront about the delay.',
+  },
+  {
+    name: 'Tony M.',
+    rating: 5,
+    neighborhood: 'Capitol Hill, Seattle',
+    date: 'October 2025',
+    projectType: 'Steam Shower Installation',
+    text: 'We went all out — steam shower with a Mr. Steam generator, body jets, rain head, and handheld wand. The bench is heated. The crew had to run a dedicated 240V circuit and reinforce the ceiling for the steam unit. Honestly feels like a spa. The tile setter did some of the cleanest grout lines I have ever seen.',
+  },
+  {
+    name: 'Patricia & James L.',
+    rating: 5,
+    neighborhood: 'Magnolia, Seattle',
+    date: 'September 2025',
+    projectType: 'Curbless Shower Build',
+    text: 'We wanted a curbless shower for aging-in-place but not clinical looking. They built a zero-threshold entry with penny round floor tile, full-height wall tile, and a frameless glass panel. The linear drain is nearly invisible. Friends cannot believe it is a barrier-free design — it just looks modern.',
+  },
+  {
+    name: 'Carlos R.',
+    rating: 5,
+    neighborhood: 'Fremont, Seattle',
+    date: 'August 2025',
+    projectType: 'Shower Tile Replacement',
+    text: 'Our Fremont craftsman shower had cracked grout and loose tiles letting moisture behind the wall. They demoed back to the studs, found minor water damage which they repaired, installed new Kerdi board, and retiled with herringbone pattern. Waterproof, beautiful, done in 8 days.',
+  },
+  {
+    name: 'Julie & Derek K.',
+    rating: 4,
+    neighborhood: 'Kirkland',
+    date: 'July 2025',
+    projectType: 'Walk-In Shower Conversion',
+    text: 'Removed the old fiberglass tub insert and replaced with a tiled walk-in shower with glass door. Kohler fixtures, recessed niche, and corner seat. Timeline was 10 days, ended up 14 due to a plumbing issue behind the wall, but they fixed it at no extra charge.',
+  },
+  {
+    name: 'Angela W.',
+    rating: 5,
+    neighborhood: 'Green Lake, Seattle',
+    date: 'June 2025',
+    projectType: 'Luxury Shower Remodel',
+    text: 'Floor-to-ceiling marble-look porcelain, dual Grohe shower heads, built-in bench with radiant heat, and LED accent lighting in the ceiling. The 3/8 inch frameless glass feels super premium. The crew worked around our schedule with a newborn. Could not be happier.',
+  },
+  {
+    name: 'Steve N.',
+    rating: 5,
+    neighborhood: 'Redmond',
+    date: 'May 2025',
+    projectType: 'Shower Remodel',
+    text: 'Quick and clean job replacing the shower in our Redmond ranch. New subway tile, new Moen fixtures, added a second showerhead on a slide bar, and replaced the old curtain rod with a frameless pivot door. Took 7 days. Crew showed up on time every morning and cleaned up.',
+  },
+  {
+    name: 'Dawn & Eric F.',
+    rating: 5,
+    neighborhood: 'Wallingford, Seattle',
+    date: 'April 2025',
+    projectType: 'Double Shower Remodel',
+    text: 'Had both showers done at the same time. Master got large-format tile, rain head, body sprays, frameless glass. Kids bath got subway tile with Moen Align fixtures. Smart to do both at once — saved on mobilization costs and the crew was already set up. Same excellent quality.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+const productId = `${SITE.url}/reviews/shower-remodeling/#product`;
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': productId,
+      name: 'Shower Remodeling Service in Seattle, WA',
+      description: `Professional shower remodeling in Seattle. ${averageRating}-star rated across ${reviews.length} reviews.`,
+      brand: { '@type': 'Brand', name: SITE.name },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating,
+        reviewCount: String(reviews.length),
+        bestRating: '5',
+        worstRating: '1',
+      },
+    },
+    ...reviews.map((r, i) => ({
+      '@type': 'Review',
+      '@id': `${productId}-review-${i}`,
+      author: { '@type': 'Person', name: r.name },
+      reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+      reviewBody: r.text,
+      itemReviewed: { '@id': productId },
+    })),
+  ],
+};
+---
+
+<BaseLayout
+  title="Shower Remodeling Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} shower remodeling reviews from Seattle homeowners. ${averageRating}-star average. Walk-in showers, tub conversions, steam showers, and custom tile across Ballard, Capitol Hill, Queen Anne.`}
+  canonical={`${SITE.url}/reviews/shower-remodeling/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Shower Remodeling</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Shower Remodeling Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">Real reviews from Seattle homeowners who upgraded their showers with our team.</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} shower remodeling reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Related Pages</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/services/shower-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Shower Remodeling Service</a>
+        <a href="/cost-guides/shower-remodel-cost/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Shower Remodel Cost Guide</a>
+        <a href="/reviews/bathroom-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Bathroom Remodeling Reviews</a>
+        <a href="/reviews/tile-installation/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Tile Installation Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Upgrade Your Shower?</h2>
+        <p class="text-white/80 text-lg mb-8">Get a free, no-obligation estimate for your shower remodel. Call us or book online today.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

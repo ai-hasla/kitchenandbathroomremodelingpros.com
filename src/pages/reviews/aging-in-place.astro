@@ -1,0 +1,215 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Aging-in-Place', href: '/reviews/aging-in-place/' },
+];
+
+const reviews = [
+  {
+    name: 'Barbara & Frank H.',
+    rating: 5,
+    neighborhood: 'Shoreline',
+    date: 'January 2026',
+    projectType: 'ADA Bathroom Remodel',
+    text: 'Retired and wanted our Shoreline ranch updated for aging in place. Moen Home Care grab bars that look stylish, zero-threshold curbless shower with bench, comfort-height toilet, lever-handle faucets. Anti-slip tile on shower floor. Everything ADA-compliant but not clinical. Thoughtful design.',
+  },
+  {
+    name: 'Margaret & Bill T.',
+    rating: 5,
+    neighborhood: 'Magnolia, Seattle',
+    date: 'December 2025',
+    projectType: 'Accessible Master Suite',
+    text: 'After knee surgery, we needed modifications. Widened bathroom doorway to 36 inches, curbless shower with fold-down teak bench, continuous grab bars, hand-held showerhead on slide bar alongside rain head. Lever door handles throughout master suite. Safety and aesthetics not mutually exclusive.',
+  },
+  {
+    name: 'Dorothy S.',
+    rating: 5,
+    neighborhood: 'Wallingford, Seattle',
+    date: 'November 2025',
+    projectType: 'Kitchen Accessibility Update',
+    text: 'I am 74 and plan to stay in my Wallingford home. They lowered a counter section to seated height, installed pull-out shelves in every lower cabinet, lever-handle faucets, task lighting under uppers, D-shaped cabinet pulls easy to grip with arthritic hands. Small changes, massive difference.',
+  },
+  {
+    name: 'Robert & Carol N.',
+    rating: 5,
+    neighborhood: 'Bellevue',
+    date: 'October 2025',
+    projectType: 'Full Accessible Bathroom',
+    text: 'Our son uses a wheelchair. Demolished the hall bath and rebuilt with roll-in shower, fold-down seat, adjustable-height hand shower, wall-mounted sink at wheelchair height, comfort-height toilet with grab bars on both sides. Tile floor carefully graded to linear drain. Outstanding expertise and empathy.',
+  },
+  {
+    name: 'Helen & Jim P.',
+    rating: 4,
+    neighborhood: 'Green Lake, Seattle',
+    date: 'September 2025',
+    projectType: 'Grab Bars + Safety Upgrades',
+    text: 'Simpler project: grab bars in both bathrooms, non-slip floor treatment, lever-handle faucets, comfort-height toilet, motion-activated hallway night light. Quick 3-day project. Four stars because first grab bars were chrome instead of our specified brushed nickel, but swapped next day.',
+  },
+  {
+    name: 'George & Ruth W.',
+    rating: 5,
+    neighborhood: 'Sammamish',
+    date: 'August 2025',
+    projectType: 'Multi-Room Accessibility',
+    text: 'Comprehensive project: curbless shower with bench, grab bars in guest bath, non-slip flooring in both bathrooms, lever handles on all doors, small ramp at garage entry, rocker light switches. The crew understood maintaining independence requires attention to dozens of small details.',
+  },
+  {
+    name: 'Patricia M.',
+    rating: 5,
+    neighborhood: 'Renton',
+    date: 'July 2025',
+    projectType: 'Bathroom Safety Renovation',
+    text: 'After a fall in the shower, I knew it was time. Converted tub/shower combo to walk-in with low threshold, textured anti-slip floor tile, grab bars at entry and inside, built-in seat. Shower controls reachable from the seat. Handheld wand on 60-inch hose. I feel so much safer now.',
+  },
+  {
+    name: 'James & Ellen K.',
+    rating: 5,
+    neighborhood: 'Kirkland',
+    date: 'June 2025',
+    projectType: 'Proactive Aging-in-Place',
+    text: 'We are in our early 60s, doing this proactively. Reinforced bathroom walls with blocking so grab bars can be added anywhere later without renovation. Curbless shower entry, comfort-height toilet, lever faucets, widened door to 34 inches. Make the investment while it is still a choice, not an emergency.',
+  },
+  {
+    name: 'Shirley D.',
+    rating: 5,
+    neighborhood: 'Bothell',
+    date: 'May 2025',
+    projectType: 'Kitchen + Bathroom Accessibility',
+    text: 'Kitchen: pull-out shelves, lowered microwave, lever faucet, under-cabinet lighting. Bathroom: curbless shower, fold-down teak bench, grab bars, raised toilet, lighted mirror. Light switches moved to 42 inches for seated reach. Every modification chosen with purpose. I plan to live here 20 more years.',
+  },
+  {
+    name: 'Arthur & Grace L.',
+    rating: 5,
+    neighborhood: 'Federal Way',
+    date: 'April 2025',
+    projectType: 'Full ADA Bathroom Build',
+    text: 'Brand new ADA bathroom converting an underused office near master bedroom. Roll-in shower, wall-hung sink, comfort-height toilet, grab bars throughout. Turning radius meets wheelchair clearance. Worked with our occupational therapist for exact grab bar heights and toilet position. Life-changing.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+const productId = `${SITE.url}/reviews/aging-in-place/#product`;
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': productId,
+      name: 'Aging-in-Place Service in Seattle, WA',
+      description: `Professional aging-in-place in Seattle. ${averageRating}-star rated across ${reviews.length} reviews.`,
+      brand: { '@type': 'Brand', name: SITE.name },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating,
+        reviewCount: String(reviews.length),
+        bestRating: '5',
+        worstRating: '1',
+      },
+    },
+    ...reviews.map((r, i) => ({
+      '@type': 'Review',
+      '@id': `${productId}-review-${i}`,
+      author: { '@type': 'Person', name: r.name },
+      reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+      reviewBody: r.text,
+      itemReviewed: { '@id': productId },
+    })),
+  ],
+};
+---
+
+<BaseLayout
+  title="Aging-in-Place Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} aging-in-place reviews from Seattle homeowners. ${averageRating}-star average. Walk-in showers, tub conversions, steam showers, and custom tile across Ballard, Capitol Hill, Queen Anne.`}
+  canonical={`${SITE.url}/reviews/aging-in-place/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Aging-in-Place</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Aging-in-Place Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">Real reviews from Seattle homeowners who made their homes safer and more accessible with our team.</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} aging-in-place reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Related Pages</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/services/aging-in-place/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Aging-in-Place Service</a>
+        <a href="/reviews/bathroom-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Bathroom Remodeling Reviews</a>
+        <a href="/reviews/shower-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Shower Remodeling Reviews</a>
+        <a href="/cost-guides/bathroom-remodel-cost-seattle/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Bathroom Remodel Cost Guide</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Want to Age in Place Safely and Comfortably?</h2>
+        <p class="text-white/80 text-lg mb-8">Get a free accessibility consultation. We will assess your home and recommend modifications for safety and comfort.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

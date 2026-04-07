@@ -1,0 +1,215 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Kitchen Layout Design', href: '/reviews/kitchen-layout-design/' },
+];
+
+const reviews = [
+  {
+    name: 'Sarah & Dan K.',
+    rating: 5,
+    neighborhood: 'Wallingford, Seattle',
+    date: 'January 2026',
+    projectType: 'Open Concept Layout Redesign',
+    text: 'Closed-off galley kitchen transformed to open concept with a 10-foot island, sink relocated to island, and walk-in pantry where the old coat closet was. The 3D renderings before starting were incredibly detailed. Final kitchen matched the rendering almost perfectly.',
+  },
+  {
+    name: 'Jennifer W.',
+    rating: 5,
+    neighborhood: 'Queen Anne, Seattle',
+    date: 'December 2025',
+    projectType: 'Full Kitchen Layout Redesign',
+    text: 'David came out, measured everything, and had a detailed layout plan within a week. Redesigned our Queen Anne kitchen with island seating, relocated fridge for a proper work triangle, and under-cabinet lighting. Project manager Carlos kept us updated constantly.',
+  },
+  {
+    name: 'Amy & Josh M.',
+    rating: 5,
+    neighborhood: 'Green Lake, Seattle',
+    date: 'November 2025',
+    projectType: 'Bright Modern Kitchen Design',
+    text: 'Our bungalow kitchen was dark and cramped. David suggested enlarging the window and replacing upper cabinets with open shelving. Those two changes transformed the space. White flat-panel cabinets, Caesarstone counters, optimized workflow. Natural light changed everything.',
+  },
+  {
+    name: 'Derek M.',
+    rating: 5,
+    neighborhood: 'Renton',
+    date: 'October 2025',
+    projectType: 'Wall Removal + Island Design',
+    text: '1960s split-level wall between kitchen and dining room made both feel tiny. David designed the wall removal, specified the LVL beam, and planned a 9-foot island. Redesigned electrical from 2 circuits to 6. The pot filler over the range was his idea and it is a favorite feature.',
+  },
+  {
+    name: 'Maria & Carlos V.',
+    rating: 5,
+    neighborhood: 'Bothell',
+    date: 'September 2025',
+    projectType: 'Kitchen + Pantry Design',
+    text: 'David converted our old laundry closet into a walk-in pantry and added a coffee bar nook. The original dishwasher was on the opposite side from the sink. He redesigned the entire workflow. Also got a breakfast nook with built-in bench seating where there was dead space.',
+  },
+  {
+    name: 'Priya K.',
+    rating: 5,
+    neighborhood: 'Ravenna, Seattle',
+    date: 'August 2025',
+    projectType: 'Gut Renovation Design',
+    text: 'Gutted our kitchen and David designed a completely new layout. Sink relocated under the window, island we were told would not fit (fits perfectly), proper landing zone by the back door. When knob-and-tube wiring was found, David had already planned for that contingency.',
+  },
+  {
+    name: 'Tom & Leslie A.',
+    rating: 4,
+    neighborhood: 'Kirkland',
+    date: 'July 2025',
+    projectType: 'Kitchen Triangle Optimization',
+    text: 'Our Kirkland kitchen had a weird layout where you walked past the island to get from fridge to stove. David reconfigured the work triangle by swapping fridge and pantry locations. Smart solution, no plumbing needed to move. Four stars only because the design consultation took 3 weeks to schedule.',
+  },
+  {
+    name: 'David & Susan C.',
+    rating: 5,
+    neighborhood: 'Mercer Island',
+    date: 'June 2025',
+    projectType: 'Luxury Kitchen Design',
+    text: 'Most detailed and transparent designer we met. Full gut plan with custom walnut cabinets, Dekton countertops, Wolf appliances, and a butlers pantry. The 3D rendering was so realistic we used it to pick backsplash tile. Final product matched almost perfectly. That level of planning is rare.',
+  },
+  {
+    name: 'Lisa & Kevin N.',
+    rating: 5,
+    neighborhood: 'Capitol Hill, Seattle',
+    date: 'May 2025',
+    projectType: 'Condo Kitchen Redesign',
+    text: 'Kitchen design in a condo is tricky because you cannot move plumbing stacks without the HOA. David worked within constraints brilliantly. Peninsula instead of island, pull-out pantry cabinets, slim-profile appliances. Kitchen feels twice as big. He coordinated with our HOA board.',
+  },
+  {
+    name: 'Nancy G.',
+    rating: 5,
+    neighborhood: 'Issaquah',
+    date: 'April 2025',
+    projectType: 'Kitchen + Dining Layout',
+    text: 'Wanted to open up kitchen to dining room but not sure if structurally possible. David brought a structural engineer on first visit, confirmed load-bearing wall, designed support beam wrapped in reclaimed wood matching floors. New bar-height counter between rooms serves as workspace and serving area.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+const productId = `${SITE.url}/reviews/kitchen-layout-design/#product`;
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': productId,
+      name: 'Kitchen Layout Design Service in Seattle, WA',
+      description: `Professional kitchen layout design in Seattle. ${averageRating}-star rated across ${reviews.length} reviews.`,
+      brand: { '@type': 'Brand', name: SITE.name },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating,
+        reviewCount: String(reviews.length),
+        bestRating: '5',
+        worstRating: '1',
+      },
+    },
+    ...reviews.map((r, i) => ({
+      '@type': 'Review',
+      '@id': `${productId}-review-${i}`,
+      author: { '@type': 'Person', name: r.name },
+      reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+      reviewBody: r.text,
+      itemReviewed: { '@id': productId },
+    })),
+  ],
+};
+---
+
+<BaseLayout
+  title="Kitchen Layout Design Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} kitchen layout design reviews from Seattle homeowners. ${averageRating}-star average. Walk-in showers, tub conversions, steam showers, and custom tile across Ballard, Capitol Hill, Queen Anne.`}
+  canonical={`${SITE.url}/reviews/kitchen-layout-design/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Kitchen Layout Design</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Kitchen Layout Design Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">Real reviews from Seattle homeowners who worked with our design team to reimagine their kitchen layout.</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} kitchen layout design reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Related Pages</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/services/kitchen-layout-design/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Layout Design Service</a>
+        <a href="/cost-guides/kitchen-remodel-cost-seattle/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Remodel Cost Guide</a>
+        <a href="/reviews/kitchen-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Remodeling Reviews</a>
+        <a href="/reviews/custom-cabinetry/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Custom Cabinetry Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Want to Redesign Your Kitchen Layout?</h2>
+        <p class="text-white/80 text-lg mb-8">Get a free design consultation. We will measure your space, discuss your goals, and show you what is possible.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

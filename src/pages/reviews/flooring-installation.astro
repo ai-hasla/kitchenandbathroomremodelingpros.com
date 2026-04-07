@@ -1,0 +1,215 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import SchemaBreadcrumb from '@/components/seo/SchemaBreadcrumb.astro';
+import { SITE } from '@/lib/constants';
+
+const breadcrumbs = [
+  { label: 'Reviews', href: '/reviews/' },
+  { label: 'Flooring Installation', href: '/reviews/flooring-installation/' },
+];
+
+const reviews = [
+  {
+    name: 'Amanda J.',
+    rating: 5,
+    neighborhood: 'Kent',
+    date: 'February 2026',
+    projectType: 'Whole-Home LVP Flooring',
+    text: 'COREtec Plus Enhanced LVP throughout our Kent home, kitchen, bathrooms, hallways, about 1,200 sqft. Waterproof and critical for us with two kids and a golden retriever. Transitions between rooms seamless. Click-lock installation, no glue or nails. Done in 3 days. Crew moved all furniture.',
+  },
+  {
+    name: 'Chris & Amy W.',
+    rating: 5,
+    neighborhood: 'Kirkland',
+    date: 'January 2026',
+    projectType: 'Engineered Hardwood Install',
+    text: 'Provenza Moda Living engineered hardwood in our Kirkland home, about 900 sqft. Wide plank European oak look is gorgeous. Glued down over concrete slab. Crew was meticulous keeping boards tight. Transitions at doorways perfectly flush. Also installed matching quarter-round molding.',
+  },
+  {
+    name: 'Tanya R.',
+    rating: 5,
+    neighborhood: 'Ballard, Seattle',
+    date: 'December 2025',
+    projectType: 'Kitchen Floor Tile',
+    text: 'Replaced old linoleum with large-format porcelain that looks like natural stone. Leveled the subfloor first due to 80 years of settling. Brick pattern with minimal grout lines. Also waterproofed under tile near dishwasher and sink. Smart detail I would not have thought of.',
+  },
+  {
+    name: 'Nancy & Peter G.',
+    rating: 4,
+    neighborhood: 'Redmond',
+    date: 'November 2025',
+    projectType: 'LVP + Tile Combo',
+    text: 'LVP in living areas and porcelain tile in bathrooms, about 1,400 sqft. Metal T-strip transitions look clean. Colors match closely so flow between rooms feels natural. Four stars because project ran 2 days over, but quality is very good and crew communicated the delay early.',
+  },
+  {
+    name: 'Marcus & Janelle D.',
+    rating: 5,
+    neighborhood: 'Capitol Hill, Seattle',
+    date: 'October 2025',
+    projectType: 'Hardwood Refinishing + New Install',
+    text: 'Original fir floors in living and dining rooms sanded and refinished, damaged boards replaced with salvaged fir. Three coats of Bona Traffic HD. New white oak engineered hardwood in kitchen addition complements the original fir perfectly. Whole main floor feels cohesive now.',
+  },
+  {
+    name: 'Laura & Jeff S.',
+    rating: 5,
+    neighborhood: 'Bothell',
+    date: 'September 2025',
+    projectType: 'Basement Flooring',
+    text: 'LifeProof LVP directly over concrete in our Bothell finished basement after moisture testing the slab. Attached underlayment provides thermal insulation. Ran it into the basement bathroom with proper transition strip. 600 sqft done in 2 days. The floor feels warm, not like cold basement.',
+  },
+  {
+    name: 'Kim P.',
+    rating: 5,
+    neighborhood: 'Queen Anne, Seattle',
+    date: 'August 2025',
+    projectType: 'Bathroom Floor Replacement',
+    text: 'Replaced cracked marble floor tile in both bathrooms with heated Ditra-Heat mat under new porcelain. Warm bathroom floor in January is life-changing. Hexagon mosaic in guest bath is particularly beautiful. Each bathroom took about 3 days including the heating system.',
+  },
+  {
+    name: 'Eric & Donna M.',
+    rating: 5,
+    neighborhood: 'Federal Way',
+    date: 'July 2025',
+    projectType: 'Whole-Home Flooring Overhaul',
+    text: 'Complete flooring overhaul in our Federal Way rambler. Ripped out 30-year-old carpet and put in Shaw Floorte Pro LVP throughout the entire house. 1,800 sqft in 4 days. Crew was fast but not sloppy. Every cut around door frames is tight. New 3.25-inch baseboards too. Huge transformation.',
+  },
+  {
+    name: 'Grace L.',
+    rating: 4,
+    neighborhood: 'Shoreline',
+    date: 'June 2025',
+    projectType: 'Tile Floor Installation',
+    text: 'New porcelain tile in kitchen and laundry room mimicking honed concrete with nice matte finish. Large 18x36 tiles make the small kitchen look bigger. No lippage, level throughout. Four stars because of a grout color mix-up, but they caught it before fully grouting and swapped correctly.',
+  },
+  {
+    name: 'Sam & Wendy K.',
+    rating: 5,
+    neighborhood: 'Magnolia, Seattle',
+    date: 'May 2025',
+    projectType: 'Natural Stone Entryway',
+    text: 'Travertine tile in our Magnolia entryway, about 120 sqft. Tumbled finish with warm cream tone in a Versailles pattern. Sealed with penetrating sealer that protects without changing the matte look. This entryway sets the tone for the whole house now. Guests always comment on it.',
+  },
+];
+
+const averageRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+const productId = `${SITE.url}/reviews/flooring-installation/#product`;
+
+const aggregateSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Product',
+      '@id': productId,
+      name: 'Flooring Installation Service in Seattle, WA',
+      description: `Professional flooring installation in Seattle. ${averageRating}-star rated across ${reviews.length} reviews.`,
+      brand: { '@type': 'Brand', name: SITE.name },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating,
+        reviewCount: String(reviews.length),
+        bestRating: '5',
+        worstRating: '1',
+      },
+    },
+    ...reviews.map((r, i) => ({
+      '@type': 'Review',
+      '@id': `${productId}-review-${i}`,
+      author: { '@type': 'Person', name: r.name },
+      reviewRating: { '@type': 'Rating', ratingValue: String(r.rating), bestRating: '5' },
+      reviewBody: r.text,
+      itemReviewed: { '@id': productId },
+    })),
+  ],
+};
+---
+
+<BaseLayout
+  title="Flooring Installation Reviews Seattle | Best KB Remodeling"
+  description={`Read ${reviews.length} flooring installation reviews from Seattle homeowners. ${averageRating}-star average. Walk-in showers, tub conversions, steam showers, and custom tile across Ballard, Capitol Hill, Queen Anne.`}
+  canonical={`${SITE.url}/reviews/flooring-installation/`}
+>
+  <SchemaBreadcrumb items={breadcrumbs} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateSchema)} />
+
+  <section class="bg-primary pt-32 pb-16">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <p class="text-accent font-semibold uppercase tracking-wider text-sm mb-3">Flooring Installation</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-heading)] text-white mb-6">Flooring Installation Reviews</h1>
+        <p class="text-lg text-white/80 leading-relaxed">Real reviews from Seattle homeowners who upgraded their floors with our team. LVP, hardwood, tile, and more.</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-8 bg-accent-light border-b border-border">
+    <Container>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4" data-reveal>
+        <div class="flex items-center gap-4">
+          <p class="text-4xl font-bold font-[family-name:var(--font-heading)] text-primary">{averageRating}</p>
+          <div>
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-sm text-muted">{reviews.length} flooring installation reviews</p>
+          </div>
+        </div>
+        <a href="/reviews/" class="text-sm font-medium text-accent hover:underline">&larr; All Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        {reviews.map((review) => (
+          <div class="bg-white border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-semibold text-primary">{review.name}</h3>
+                <p class="text-sm text-muted">{review.neighborhood} &middot; {review.date}</p>
+              </div>
+              <span class="text-xs font-medium bg-accent-light text-primary px-3 py-1 rounded-full">{review.projectType}</span>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg class={`w-4 h-4 ${i < review.rating ? 'text-accent' : 'text-border'}`} fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <p class="text-body-text leading-relaxed text-sm">{review.text}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 bg-light">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-8" data-reveal>
+        <h2 class="text-2xl md:text-3xl font-[family-name:var(--font-heading)] text-primary mb-4">Related Pages</h2>
+      </div>
+      <div class="flex flex-wrap gap-4 justify-center" data-reveal>
+        <a href="/services/flooring-installation/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Flooring Installation Service</a>
+        <a href="/cost-guides/flooring-installation-cost-seattle/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Flooring Installation Cost Guide</a>
+        <a href="/reviews/tile-installation/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Tile Installation Reviews</a>
+        <a href="/reviews/kitchen-remodeling/" class="inline-flex items-center gap-2 border border-border bg-white rounded-lg px-5 py-3 hover:shadow-md transition-shadow text-sm font-medium text-primary">Kitchen Remodeling Reviews</a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 bg-primary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-[family-name:var(--font-heading)] text-white mb-4">Ready to Upgrade Your Floors?</h2>
+        <p class="text-white/80 text-lg mb-8">Get a free, no-obligation estimate for your flooring project. Call us or book online today.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="https://nexfield.pro/crm/book?u=137" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Get a Free Estimate</Button>
+          <Button href={`tel:${SITE.phoneRaw}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary">Call {SITE.phone}</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
